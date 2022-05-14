@@ -1,0 +1,33 @@
+
+SIS - Sparc Instruction Simulator README file  (v3.0.1, 09-10-1998)
+-------------------------------------------------------------------
+
+The SIS manual is provided in sis-3.0.1.pdf.
+
+Two version of sis are now provided; sis and sis64. The later uses 64-bit
+time which allows (almost) infinite simulation times. The downside is
+a performance penalty of about 20% compared to the standard sis.
+
+Below is a table for the execution speed (simulated KIPS) of SIS on various 
+platforms using the stanford benchmark:
+
+PLATFORM                                       KIPS
+
+Sparcstation-5 (SunOs, 70 MHz)                  285
+Sparcstation-5 (SunOs, 110 MHz)                 337
+TI Extensa (Linux, pentium-133 MHz)             500
+ASUS TX97-X (Win95, AMD K6 200 MHz)             834
+Sparcstation Ultra-1 (usparc I, 140 MHz)        868
+ASUS TX97-X (Linux, AMD K6 200 MHz)             970
+SUN Ultra 10 Creator (usparc IIi, 300 MHz)     1347
+Dell Optiplex G1 (Linux PII 300 Mhz)	       1426
+Gateway 2K (Linux PII 333 Mhz)		       1472
+
+To test your machine, just do 'sis stanford.exe' and type 'go' at the prompt.
+After the program is finished, do 'per' to see the statistics.  
+Run the test several times and with no other load on the machine.
+
+Report results to jgais@ws.estec.esa.nl
+
+Enjoy, Jiri.
+

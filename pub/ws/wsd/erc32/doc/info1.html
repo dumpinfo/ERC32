@@ -1,0 +1,225 @@
+
+<!-- This file was created with the fm2html filter.The filter is copyright Norwegian Telecom Research and was programmed by Jon Stephenson von Tetzchner.  -->
+<TITLE>ERC32 Newsletter 1</TITLE>
+<IMG SRC="../../../images/ws.gif" ALT="Spacecraft Control and Data Systems Division">
+<H1><A NAME="HDT0">ERC32 Newsletter 1</A></H1>
+<HR><H2>Table of Contents</H2>
+<A HREF="#HDT0"><B>ERC32 Newsletter 1</B></A>
+
+<UL>
+<A HREF="#HDR1"><B>Introduction</B></A>
+<BR>
+
+<A HREF="#HDR2"><B>ERC32 Development Programme</B></A>
+
+<UL>
+<A HREF="#HDR3">Hardware Description and Development Status</A>
+<BR>
+
+<A HREF="#HDR4">Software Description and Development Status</A>
+</UL>
+
+<A HREF="#HDR5"><B>Radiation characteristics</B></A>
+<BR>
+
+<A HREF="#HDR6"><B>Performance tests</B></A>
+<BR>
+
+<A HREF="#HDR7"><B>Additional software development tools</B></A>
+
+<UL>
+<A HREF="#HDR8">Real-time kernels</A>
+<BR>
+
+<A HREF="#HDR9">Compiler and debuggers</A>
+<BR>
+
+<A HREF="#HDR10">The GNU tool-chain</A>
+<BR>
+
+<A HREF="#HDR11">How to test you future ERC32 application now - Q &amp; A</A>
+</UL>
+
+<A HREF="#HDR12"><B>Planned Activities</B></A>
+
+<UL>
+<A HREF="#HDR13">ERC32 Evaluation programme</A>
+<BR>
+
+<A HREF="#HDR14">Access of ERC32 related information through FTP or WWW</A>
+</UL>
+
+<A HREF="#REF16033"><B>Available Documentation and Reports</B></A>
+<BR>
+
+<A HREF="#HDR15"><B>Companies and contact persons</B></A>
+</UL>
+
+
+<H2><A NAME="HDR1">Introduction</A></H2>
+This newsletter is the first in a series of technical notes that will provide information about the ERC32 development programme. It is prepared by the staff at ESTEC's On-Board Data Division. If you have any comments or contributions, please contact J.Gaisler at ESTEC/WD. <p>
+<H2><A NAME="HDR2">ERC32 Development Programme</A></H2>
+In 1992, the European Space Agency started a programme to develop a high-performance 32-bit processing core for space applications. The processing core, ERC32, is based on the SPARC V7 instruction set architecture and consists of three devices, an integer unit (90C601E), a floating-point unit (90C602E) and a memory controller (MEC). The ERC32 development programme also includes a software part, where tools for software development and analysis are developed. The tool-chain consists of an ADA cross-compiler with optional ATAC (ADA tasking co-processor) interface, remote debugger, target simulator and various real-time analysis tools. <p>
+The hardware part of the programme is carried out by three companies, Matra MHS, Matra MMS and Saab Ericsson Space. Matra MHS will manufacture and market all three devices, and is designing the 90C601E and 90C602E. The MEC is defined by Saab Ericsson Space and designed by Matra MMS. The software part is carried out by Logica, Alsys and Spacebel. See paragraph &quot;Available Documentation&quot; for how to obtain more information about the ERC32 components and software tools.<p>
+<pre>
+ERC32 Development Milestones 
+-------------------------------------------------------------
+<B>Date</B>      <B>Milestone description</B>                                
+-------------------------------------------------------------
+Jun 1995  Samples of ERC32 devices                             
+Sep 1995  ERC32 ADA cross-compiler system                      
+Dec 1995  Radiation and life tests of ERC32 devices completed  
+Jan 1996  Real-time software analysis tools                    
+Mar 1996  AJPO validation of ERC32 ADA cross-compiler system   
+                                                               
+-------------------------------------------------------------
+</pre>
+</A><H3><A NAME="HDR3">Hardware Description and Development Status</A></H3>
+The ERC32 is a three chip computing core implementing a SPARC V7 processor and associated support circuitry for embedded space applications. The integer and floating-point units (90C601E &amp; 90C602E) are based on the Cypress 7C601 and 7C602, with additional error-detection and recovery functions. The memory controller (MEC) implements system support functions such as address decoding, memory interface, DMA interface, UARTs, timers, interrupt control, write-protection, memory reconfiguration and error-detection and reconfiguration. The core is designed to work at 25MHz, but using space qualified memories will limit the system frequency to around 15 MHz, resulting in a performance of 10 MIPS and 2 MFLOPS.<p>
+The development program has up to now concentrated on defining, specifying and simulating the ERC32 devices and a complete ERC32-based computer. All three devices have been modelled in VHDL and extensively simulated to verify correct operation. Maximum effort is now being put on detailed design and layout. The logic design and floorplan for 90C601E and 90C602E is completed and the work on layout generation and verification has been started. The MEC is currently being synthesized from VHDL and will be implemented on a MC-RT gate array. The layout of all three devices is planned to be completed in January 1995, after which the first set of prototypes will be manufactured. The first samples are expected end Q2 1995.<p>
+<H3><A NAME="HDR4">Software Description and Development Status</A></H3>
+The ERC32 software tool-set is centered around an <B>A</B>da83 cross-<B>C</B>ompiler <B>S</B>ystem (ERC32 ACS), and the ERC32 target simulator, both running on Solaris (v2.0+). The ACS is currently being developed by Alsys Ltd. (UK) as an evolution of their internal Ada technology. The ERC32 ACS augments the standard version of Ada83 with a number of features for the development of predictable time-critical software. It also supports the option to run in ATAC-mode (i.e. by producing code whose tasking-related services are provided in hardware, by the Ada Tasking Co-processor). The first release of the ERC32 ACS is expected by end of Q3 1995; this will be accompanied by a transition plan to Ada9X. The compiler will undergo formal Ada 83 AJPO certification in Q1 1996.<p>
+In complement to the ERC32 ACS, the ERC32 target simulator is primarily intended to support module testing, but it may also perform the timing characterization of application components. Access and commanding to the target simulator are possible both via the ACS debugger and in stand-alone mode. The ERC32 target simulator, which builds on the well-known Sparcsim package, is developed by Spacebel (B). Its first release integrated with the ERC32 ACS debugger is foreseen by Q4 1995.<p>
+The primary goal of the ERC32 software tool-set is to provide advanced support for the development of hard real-time Ada applications. Such provision consists of a combination of run-time and off-line features, specifically aimed at the support of the deadline-monotonic scheduling scheme. The run-time features (which effectively bridge Ada83 to selected real-time features of Ada9X) are directly supported by the ERC32 ACS. The off-line support is provided by a pair of tools for the deadline-monotonic scheduling analysis of Ada applications. Such tools, when input a schematic description of the application (essentially its timing attributes and requirements), predict the response time of the individual threads of execution in relation to the relevant deadline, and enable the user to inspect the corresponding (simulated) sequence of scheduling events. Both scheduling prediction and simulation take full account of the actual overheads to be experienced when running ERC32 Ada applications on ERC32 hardware based platforms. These tools, often referred to as hard real-time tools, are implemented by Spacebel. Their first release is expected by Q4 1995.<p>
+<H2><A NAME="HDR5">Radiation characteristics</A></H2>
+Precautions have been taken to meet the radiation requirements of most on-board applications. The IU and FPU are designed with cells from MHS space library, specially designed for radiation tolerance and proven in earlier applications. The MEC is implemented as a MC-RT gate-array, inside the MHS capability domain for space qualified components. The target is to be able to guarantee 50 Krad total-dose tolerance for all three devices. This will be verified through testing as soon as the prototypes will become available. The confidence for reaching the radiation tolerance target is high, tests on other devices manufactured on the same process have shown total-dose tolerances above 100 Krad.<p>
+To minimize the risk for SEU (Single-Event Upset) induced errors, a special register cell has been used for all registers on the devices. This cell is designed to have high SEU immunity, tests have shown an LET of more than 30 MeV. In addition to the SEU resistant cells, dedicated error-detection logic is used on all devices, capable of detecting more than 99% of all SEU errors. Due to the pipelined architecture of the IU, many errors may be removed transparently through a instruction restart procedure. For more details on the error-detection mechanisms implemented in ERC32, please refer to <A HREF="#REF16033">&quot;Available Documentation and Reports&quot; on page 6</A>. <p>
+<H2><A NAME="HDR6">Performance tests</A></H2>
+The performance of the ERC32 has been analyzed by running a number of benchmarks. The results indicated that ERC32 will achieve approximately 90% of the performance of a Sun Sparcstation 1. The tests were done on an ERC32 simulator with third-party software tools. The full report can be obtained from ESTEC. <A HREF="#REF16033">See &quot;Available Documentation and Reports&quot; on page 6.</A><p>
+<H2><A NAME="HDR7">Additional software development tools</A></H2>
+Being 100% compatible with the SPARC V7 ISA, other tools than the ERC32 ACS can be used for software development. The tools can be grouped in to two main categories, compiler systems and real-time kernels. <p>
+<H3><A NAME="HDR8">Real-time kernels</A></H3>
+The kernels in the list support VME based SPARC boards from Sun, Force or Themis, as well as ordinary Sun Sparcstations. They are in general configurable to support most bare boards as long as there is at least one UART and one timer interrupt. Some kernels might require an MMU for full functionality, refer to supplier for details.<p>
+In addition to the listed kernels, there is also Myth-Os from Florida State University. Myth-Os is a free, stand-alone kernel for SparcEngine 1E. It is based on Pthreads, also from FSU, which is a package implementing the POSIX thread extension (1003.1b). Check the WWW page of
+<A HREF="../../../../../../../../../../www.cs.fsu.edu/~mueller/default.htm"> Frank Mueller</A> for more information on Pthreads and Myth-Os. Plans are made to port Myth-Os to ERC32, and provide it free of charge for prototyping and tests.<p>
+<pre>
+Real-time kernels for SPARC 
+--------------------------------------------------
+<B>Kernel name</B>  <B>Features</B>       <B>Supplier</B>                
+--------------------------------------------------
+RTUX-EX                     Emerge Systems          
+C-Executive  Partial POSIX  JMI Software Systems    
+<A HREF="../../../../../../../../../../ftp@ftp.lynx.com/pub/FAQ">LynxOs</A>       POSIX 1003.1b  Lynx Real Time Systems  
+VRTX/OS 3.0                 <A HREF="../../../../../../../../../../www.mri.com/default.htm">Microtec Research SA</A>
+RTMX         Full POSIX     RTMX                   
+SuperTask                   US Software,            
+VxWorks      Partial POSIX  Wind River Systems      
+                                                    
+--------------------------------------------------
+</pre>
+<H3><A NAME="HDR9">Compiler and debuggers</A></H3>
+The following (non-exhaustive) list contains available ADA and C compilers for embedded SPARC boards. Most of them are hosted on Sun workstations, for more details contact the suppliers. The ADA compiler offered by Alsys France is a complete Ada83 cross-compiler for SPARC, and was used for the French Rafale fighter airplane. It can be configured to support any SPARC-based bare board, including ERC32. The ERC32 ACS is based on this compiler but will include additional ERC32-specific features including an interface to the real-time analysis tools.<p>
+<pre>
+Compilers for SPARC 
+-----------------------------------------------------------
+<B>Language</B>           <B>Features</B>            <B>Supplier</B>              
+-----------------------------------------------------------
+C, C++, Fortran,   Debugger            Oasys                 
+Pascal, ADA                                                  
+C, C++             Debugger, Monitor   Microtec Research SA  
+ADA                Debugger            Alsys France          
+                   Run-time kernel                           
+ADA                Debugger, runs on   Rational/Verdix       
+                   top of VxWorks                            
+-----------------------------------------------------------
+</pre>
+<H3><A NAME="HDR10">The GNU tool-chain</A></H3>
+The highly optimizing GNU C/C++ compiler is a good alternative to commercial compilers. In fact, several of the commercial real-time kernel vendors supply GNU C with their products as their preferred compiler. Together with the debugger (GDB) and assembler (GAS), it forms a powerful, yet free, software development environment. An ADA9X compiler is under development at the New York University and is planned to be integrated in the GNU tool-set in 1995. The next ERC32 newsletter will describe in detail how to use the GNU tool-set as a cross-compiler and remote debugger for ERC32. More information about GNU can be obtained from
+<A HREF="../../../../../../../../../../www.cygnus.com/cygnus.html"> Cygnus Support</A>, who specializes in GNU software support.<p>
+<H3><A NAME="HDR11">How to test you future ERC32 application now - Q &amp; A</A></H3>
+If you are planning to use ERC32 or wish to understand what type of performance that can be achieved, you don't have to wait until Q3 1995 to start your work. The SPARC compatibility offers several ways of testing your application on existing platforms with relevant results. The way to proceed depends on your application and objectives, below is a number of possible scenarios with tips on how to continue.<p>
+<UNKNOWN>1.  I have an application and want to know its performance on
+ERC32.</UNKNOWN><BR><p>
+Get hold of a Sparcstation 1 or similar (FORCE, Themis etc.). Compile your application with the compiler of your choice and run it in native mode on the Sparcstation. Multiply the execution time with 1.1 and you will be within 10% of the ERC32 performance. If you use a Sparcstation 2, multiply with 2.3.<p>
+<UNKNOWN>2.  As above, but I don't have any ADA/C compiler for
+SPARC.</UNKNOWN><BR><p>
+Get hold of <A HREF="../../../../../../../../../../info.desy.de/gnu/www/GNU.html">GCC-2.6.0</A> and <A HREF="../../../../../../../../../../ftp@cs.nyu.edu/pub/gnat">GNAT-1.8.3</A> (or higher). 
+Install on your Sparcstation and - voil&aacute; - you have one of the best C compilers available together with a fairly complete ADA9X compiler (native). Alternatively, there are commercial host/host ADA compilers available from Alsys, Telesoft and Verdix just to mention a few.<p>
+<UNKNOWN>3.  I want to test an application with strong real-time
+requirements</UNKNOWN><BR><p>
+To get your real-time application running in an UNIX environment, install VxWorks, LynxOs, RTX32 or even Solaris 2.3 on your Sparcstation or SPARC VME-board. If your application is written in ADA, use Verdix ADA which runs on top of VxWorks. For C applications, you can use almost any C-compiler and link with the run-time libraries provided by the OS. It can be useful to know, that if your application is using 1553-buses, there is a commercial SBus-board available with dual 1553-interfaces which plugs straight in into most Sparcstations. If you are using a VME-based SPARC-board, there are of course several types of interface boards available.<p>
+<UNKNOWN>4.  I want to test my application but don't have any time or money to do it
+now</UNKNOWN><BR><p>
+Get in contact with J.Gaisler at ESTEC/WDI. If your application is reasonably structured and documented, he could be persuaded to compile it and run it on a Sparcstation or ERC32 simulator.<p>
+<UNKNOWN>5.  I want to design a breadboard with ERC32 for evaluation
+purposes</UNKNOWN><BR><p>
+This is a tricky one. Since the components are not yet available, you can start by obtaining the VHDL models from Matra MHS and then design and simulate your board in VHDL. The pin-out of the devices will be available in January 1995, after which you can make the final layout of your board. Port your monitor and other software using the VHDL model of your board and wait for the ERC32 prototypes (end Q2 1995). Alternatively, you can use the commercial 90C601/90C602 from MHS and design a limited MEC in a FPGA. In the later case however, my feeling is that by the time you have all things up and running, the ERC32 components will be available anyway.<p>
+<H2><A NAME="HDR12">Planned Activities</A></H2>
+<H3><A NAME="HDR13">ERC32 Evaluation programme</A></H3>
+ESTEC is planning to setup an ERC32 evaluation programme similar to the one carried out with MA31750. This means that the ERC32 chip-set will be made available on loan to companies willing to test the functions of ERC32. Support with design information and software tools will also be given. The next newsletter will describe the details of the evaluation programme.<p>
+<H3><A NAME="HDR14">Access of ERC32 related information through FTP or WWW</A></H3>
+Using the internet for distribution of information has proven very efficient, especially using the World Wide Web and FTP services. An ERC32 home page will therefore be setup, containing ERC32 documentation, design notes and free software. The home page is planned to be operational in December 1994, pending the opening of the ESTEC public WWW-server. Note that even if your system don't have WWW browsing capability, you will be able to download relevant information through FTP.<p>
+<H2><A NAME="REF16033">Available Documentation and Reports</A></H2>
+To gain a more detailed knowledge of the ERC32 components and software tools, the following documents and reports are available.<p>
+<pre>
+Available documentation<A HREF="#FN1a">(a)</A> 
+-------------------------------------------------------------------------------
+<B>Source</B>     <B>Document</B>                                                              
+-------------------------------------------------------------------------------
+MHS        90C601E - IU Device Specification                                     
+MHS        90C602E - FPU Device Specification                                    
+MHS        <A HREF="../../../../../../../../../../ftp@ftp.estec.esa.nl/pub/ws/wsd/erc32/doc/mecspec.ps.Z">MEC DeviceSpecification</A>
+MHS/ESTEC  ERC32 Functional Specification                                        
+MHS/ESTEC  <A HREF="../../../../../../../../../../ftp@ftp.estec.esa.nl/pub/ws/wsd/erc32/doc/sysdes.ps.Z">ERC32 System Design Document</A>
+ESTEC      <A HREF="../../../../../../../../../../ftp@ftp.estec.esa.nl/pub/ws/wsd/erc32/doc/ftcs24.ps.Z">ERC32 Error-detection and fault-tolerance</A> (FTCS-24 conference paper)
+ESTEC      <A HREF="../../../../../../../../../../ftp@ftp.estec.esa.nl/pub/ws/wsd/erc32/doc/bench1.ps.Z">ERC32 Benchmark report</A>
+                                                                                 
+-------------------------------------------------------------------------------
+</pre>
+<DL COMPACT>
+<DT><A NAME=FN1a>(a)</A><DD>Documents relating the ERC32 Ada Compilation System will be available in Q1 1995
+</DL>
+If you wish to receive a copy of any of the above documents, contact the mentioned company or organisation (see below for addresses).<p>
+<H2><A NAME="HDR15">Companies and contact persons</A></H2>
+<pre>
+SPARC product vendors 
+-------------------------------------------------------------------------------------------------
+<B>Company</B>                                            <B>Contact person</B>            <B>Products/Functions</B>    
+-------------------------------------------------------------------------------------------------
+Alsys SA, 29 Avenue Lucien Ren&eacute; Duchesne,          J-L Goutagny              ADA compilation       
+78170 La Celle Saint-Cloud, France                 goutagny@alsys.fr         system                
++31-1-30781730, FAX: +31-1-39182680                                                               
+<p>
+Emerge Systems, 3950 Dow Rd. Unit D Melbourne                                RTUX-EX kernel        
+FL 32934, USA, (407)259-1165                                                                      
+<p>
+ESA/ESTEC, Postbus 299, 2200 AG Noordwijk,         Jiri Gaisler              ERC32 technical       
+The Netherlands, +31-1719-84880,                   jgais@wd.estec.esa.nl     officer               
+email: jgais@wd.estec.esa.nl                                                                      
+<p>
+JMI Software Systems, 904 Sheble Lane, Spring                                C-Executive           
+House, PA 19477, USA, (215)621-0840                                                               
+<p>
+Lynx Real Time Systems, 16780 Lark Avenue, Los     sales@lynx.com            LynxOs                
+Gatos, CA 95030, USA, (800)327-5969                                                               
+<p>
+Matra MHS SA, 3 Avenue du Centre, BP 309,          Amar Guennon              ERC32 components      
+78054 St-Quentin-en-Yvelines, Cedex, France        amar.guennon@matramhs.fr  and VHDL models       
++31-1-30607087 FAX: +31-1-30640693                                                                
+<p>
+Microtec Research SA, Immeuble le S&eacute;same, 8 rue    Michel Limonet            C/C++ Compiler        
+Germain Soufflot, 78184 Saint-Quentin en Yve                                 VRTX kernel           
+lines CEDEX, France, +33-1-30120210, FAX:                                                          
++33-1-30120220                                                                                    
+<p>
+Oasys, One Cranberry Hill, Lexington, Massachu     David W. Chandler         C, C++, Fortran, Pas  
+setts 02173, USA, (617)862-2002, FAX: (617)863-                              cal and ADA compil    
+2633                                                                         ers                  
+<p>
+Rational Software Corporation, 2800 San Tomas                                Verdix ADA com        
+Expressway, Santa Clara, CA 95051-0951, USA                                  piler                 
+email: product_info@rational.com                                                                  
+<p>
+RTMX, 333 Chapel Hill Blvd., Suite D200                                      RTMX kernel           
+Durham, MC 27707, USA, (919)493-1452                                                              
+<p>
+US Software, 14215 NE Science Park Dr., Portland                             SuperTask             
+OR 97229, USA, (503)641-8446                                                                      
+<p>
+Wind River Systems, 27 Avenue de la Baltique,                                VxWorks               
+B&acirc;timent B4, LP739 Z.A. de Courtaboeuf, 91962                                                      
+Les Ulis, Cedex, France. +31-1-69077878                                                            
+FAX: +31-1-69070826                                                                                
+-------------------------------------------------------------------------------------------------
+</pre>
+<A NAME="ENDFILE"><PRE> </PRE></A>

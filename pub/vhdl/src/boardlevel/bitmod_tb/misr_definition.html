@@ -1,0 +1,291 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : MISR_Definition (Package declaration and body)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : misr_definition.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : This packages defines a MISR subprogram to be used for
+</font></i><font color=green><i>--                verification of models.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : (see further below)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : (independent)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc, sandi@ws.estec.esa.nl
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P.O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1996. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.3b, on Sun SPARCstation 5, SunOS 4.1.3_U1
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New package
+</font></i><font color=green><i>-- 0.2     SH      1 May  96 MISR made independent of bit ordering of inputs
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Multiple-Input Signature Register (MISR)
+</font></i><font color=green><i>-- This procedure implements a variable length MISR. The length is determined by
+</font></i><font color=green><i>-- the length of Input, ranging from 4 to 100. The Input can be sampled on
+</font></i><font color=green><i>-- either Clk edge or both, delayed by Sense, selected with the Rising and
+</font></i><font color=green><i>-- Falling parameters. If neither option is selected, events on Input will
+</font></i><font color=green><i>-- determine the sampling point. Events happening in the same simulation cycle,
+</font></i><font color=green><i>-- differing only in delta cycles, will be sampled when the last event has
+</font></i><font color=green><i>-- occurred, and the MISR will then be shifted.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- The rising edge of the Reset input will reset the MISR to all-ones. 
+</font></i><font color=green><i>-- When sampling is made with Clk, it will re-start on the next relevant Clk 
+</font></i><font color=green><i>-- edge after the rising Reset edge. If Reset is detected between a Clk edge 
+</font></i><font color=green><i>-- and the sampling point, the MISR will be reset and the sample will be 
+</font></i><font color=green><i>-- ignored. If there is a relevant Clk edge in the same delta cycle as the 
+</font></i><font color=green><i>-- rising Reset edge, the sample will be ignored. But if the relevant Clk edge 
+</font></i><font color=green><i>-- is in a delta cycle after the Rising Reset edge, then the sample will be 
+</font></i><font color=green><i>-- made.  When asynchronous sampling is used, the first event on Input after the
+</font></i><font color=green><i>-- rising Reset edge (in the next or following delta cycles) will trigger the 
+</font></i><font color=green><i>-- first sample and shift the MISR. The MISR signal can be read at any point and
+</font></i><font color=green><i>-- should be compared with a predetermined signature.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- The MISR is implemented as a primitive polynomial with up to five terms. The
+</font></i><font color=green><i>-- terms are taken from the text book Built-In Test for VLSI: Pseudorandom
+</font></i><font color=green><i>-- Techniques, by Bardell et al. The elements in the Input vector are expanded
+</font></i><font color=green><i>-- to four bits, each Std_Logic value having a unique bit pattern,
+</font></i><font color=green><i>-- the intermediate vector is then divided in four and each part is shifted into
+</font></i><font color=green><i>-- the MISR separately. The procedure can be used as a concurrent subprogram,
+</font></i><font color=green><i>-- not needing any surrounding process or block.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- The MISR is shifted from left to right, independently of falling or rising
+</font></i><font color=green><i>-- bit order definition (i.e. to or downto).
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Inputs:  Clk,   sample clock used with Rising and Falling
+</font></i><font color=green><i>--          Reset, reset of MISR when an event is detected and Reset is True
+</font></i><font color=green><i>--          Input, input vector to the MISR, same length and order as MISR
+</font></i><font color=green><i>--          Rising/Falling:
+</font></i><font color=green><i>--          False  False  sample at each Input event
+</font></i><font color=green><i>--          False  True   sample Input after Sense on falling Clk edge
+</font></i><font color=green><i>--          True   False  sample Input after Sense on rising Clk edge
+</font></i><font color=green><i>--          True   True   sample Input after Sense on rising or falling Clk edge
+</font></i><font color=green><i>--          Sense, positive time after the Clk edge when Input is sampled
+</font></i><font color=green><i>--          HeaderMsg, message header
+</font></i><font color=green><i>-- In/Outs: MISR, Multiple-Input Signature Register
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author:  Sandi Habinc, ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--          P.O. Box 299, 2200 AG Noordwijk, The Netherlands
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;
+
+<font color=blue>package</font> MISR_Definition <font color=blue>is</font>
+   <font color=blue>procedure</font> MISR(
+      <font color=blue>signal</font>   Clk:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;            <font color=green><i>-- Sample clock
+</font></i>      <font color=blue>signal</font>   Reset:     <font color=blue>in</font>    <font color=red>Boolean</font>;               <font color=green><i>-- Reset of MISR
+</font></i>      <font color=blue>signal</font>   Input:     <font color=blue>in</font>    <font color=red>Std_Logic_Vector</font>;      <font color=green><i>-- Input vector
+</font></i>      <font color=blue>signal</font>   MISR:      <font color=blue>inout</font> <font color=red>Std_Logic_Vector</font>;      <font color=green><i>-- MISR
+</font></i>      <font color=blue>constant</font> Rising:    <font color=blue>in</font>    <font color=red>Boolean</font> := <font color=red>True</font>;       <font color=green><i>-- See above
+</font></i>      <font color=blue>constant</font> Falling:   <font color=blue>in</font>    <font color=red>Boolean</font> := <font color=red>False</font>;      <font color=green><i>-- See above
+</font></i>      <font color=blue>constant</font> HeaderMsg: <font color=blue>in</font>    <font color=red>String</font>  := <font color=black>"MISR:"</font>;    <font color=green><i>-- Message header
+</font></i>      <font color=blue>constant</font> Sense:     <font color=blue>in</font>    <font color=red>Time</font>    := 0 ns);      <font color=green><i>-- Sense time after clock
+</font></i>
+<font color=blue>end</font> MISR_Definition; <font color=green><i>--=============== End of package header =================--
+</font></i>
+<font color=blue>package</font> <font color=blue>body</font> MISR_Definition <font color=blue>is</font>
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Local declarations of minimum and maximum MISR lengths.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>constant</font> MaxLen:   <font color=red>Integer</font> := 100;
+   <font color=blue>constant</font> MinLen:   <font color=red>Integer</font> := 4;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Local declarations defining subtypes and types needed for the definition
+</font></i>   <font color=green><i>-- of the Std_Logic to 4bit vector transfer function. Each Std_Logic value
+</font></i>   <font color=green><i>-- has a unique 4bit vector associated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>subtype</font>  Index  <font color=blue>is</font> <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 3;            <font color=green><i>-- Definition of table
+</font></i>   <font color=blue>subtype</font>  Vector <font color=blue>is</font> <font color=red>Std_Logic_Vector</font>(Index);         <font color=green><i>-- with a 4bit vector for
+</font></i>   <font color=blue>type</font>     VTable <font color=blue>is</font> <font color=blue>array</font> (<font color=red>Std_Logic</font>) <font color=blue>of</font> Vector;     <font color=green><i>-- each Std_Logic value
+</font></i>   <font color=blue>constant</font> Std4:     VTable := ('U' => <font color=black>"0001", 'X' => "0010", '0' => "0100"</font>,
+                                 '1' => <font color=black>"1000", 'Z' => "0011", 'W' => "0110"</font>,
+                                 'L' => <font color=black>"1100", 'H' => "0111", '-' => "1110"</font>);
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Expands every Std_Logic_Vector element to four bits returning a
+</font></i>   <font color=green><i>-- Std_Logic_Vector with four times the length of the input.
+</font></i>   <font color=green><i>-- The expansion is always made from left to right, bit order independent.
+</font></i>   <font color=green><i>-- Input:  V Std_Logic_Vector
+</font></i>   <font color=green><i>-- Output:   Std_Logic_Vector (0 to (V'Length*4-1))
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font> To01(V:         <font color=red>Std_Logic_Vector</font>;
+                 HeaderMsg: <font color=red>String</font> := <font color=black>"MISR:"</font>) <font color=blue>return</font> <font color=red>Std_Logic_Vector</font> <font color=blue>is</font>
+      <font color=blue>variable</font> R: <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> (V'Length*4-1));
+      <font color=blue>variable</font> J: <font color=red>Integer</font> := 0;
+   <font color=blue>begin</font>
+      <font color=blue>assert</font> (V'Length<=MaxLen) <font color=blue>and</font> (V'Length>=MinLen) <font color=green><i>-- Check length
+</font></i>         <font color=blue>report</font> HeaderMsg&<font color=black>" Only vectors of Length 4 to 100 are supported."</font>
+         <font color=blue>severity</font> <font color=red>Failure</font>;
+
+      <font color=blue>for</font> i <font color=blue>in</font> V'<font color=blue>range</font> <font color=blue>loop</font>
+         R(J*4+0 <font color=blue>to</font> J*4+3):= Std4(V(i));               <font color=green><i>-- Expand input
+</font></i>         J := J + 1;
+      <font color=blue>end</font> <font color=blue>loop</font>;
+      <font color=blue>return</font> R;
+   <font color=blue>end</font> To01;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Logical and operation between Std_ULogic scalar and Std_Logic_Vector.
+</font></i>   <font color=green><i>-- Input:  B Std_ULogic scalar, V Std_Logic_Vector vector
+</font></i>   <font color=green><i>-- Output: Std_Logic_Vector with same array definition as V
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font> <font color=black>"and"</font> (B: <font color=red>Std_ULogic</font>;
+                   V: <font color=red>Std_Logic_Vector</font>) <font color=blue>return</font> <font color=red>Std_Logic_Vector</font> <font color=blue>is</font>
+      <font color=blue>variable</font> R: <font color=red>Std_Logic_Vector</font>(V'<font color=blue>range</font>);
+   <font color=blue>begin</font>
+      <font color=blue>for</font> i <font color=blue>in</font> V'<font color=blue>range</font> <font color=blue>loop</font>
+         R(i):= B <font color=blue>and</font> V(i);                            <font color=green><i>-- logical and
+</font></i>      <font color=blue>end</font> <font color=blue>loop</font>;
+      <font color=blue>return</font> R;                                        <font color=green><i>-- return vector
+</font></i>   <font color=blue>end</font> <font color=black>"and"</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Expands the Input four times using To01, the resulting vector is then
+</font></i>   <font color=green><i>-- shifted into the MISR in four parts. The resulting MISR value is returned.
+</font></i>   <font color=green><i>-- The MISR is shifted from left to right, independently of bit ordering.
+</font></i>   <font color=green><i>-- Input is applied to the MISR from left to right, independently of bit
+</font></i>   <font color=green><i>-- ordering. Note that Input is expanded four times before applied to MISR.
+</font></i>   <font color=green><i>-- Input:  MISR and Input may have rising or falling bit ordering
+</font></i>   <font color=green><i>--         Poly shall be defined as (0 to Input'Length-1)
+</font></i>   <font color=green><i>-- Output: Std_Logic_Vector defined as (0 to Input'Length-1)
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font> Shift(MISR:  <font color=red>Std_Logic_Vector</font>;
+                  Input: <font color=red>Std_Logic_Vector</font>;
+                  Poly:  <font color=red>Std_Logic_Vector</font>;
+                  HeaderMsg: <font color=red>String</font>:=<font color=black>"MISR:"</font>) <font color=blue>return</font> <font color=red>Std_Logic_Vector</font> <font color=blue>is</font>
+      <font color=blue>variable</font> M: <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font>   Input'Length-1) := MISR;
+      <font color=blue>variable</font> T: <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 4*Input'Length-1) := To01(Input);
+   <font color=blue>begin</font>
+      <font color=blue>for</font> i <font color=blue>in</font> 0 <font color=blue>to</font> 3 <font color=blue>loop</font>                             <font color=green><i>-- Four MISR shifts
+</font></i>         M := ('0'&M(0 <font color=blue>to</font> Input'Length-2))               <font color=blue>xor</font>
+               T(Input'Length*i <font color=blue>to</font> Input'Length*(i+1)-1) <font color=blue>xor</font>
+               (M(Input'Length-1) <font color=blue>and</font> Poly);           <font color=green><i>-- Scalar and vector
+</font></i>      <font color=blue>end</font> <font color=blue>loop</font>;
+      <font color=blue>return</font> M;                                        <font color=green><i>-- Return resulting MISR
+</font></i>   <font color=blue>end</font> Shift;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Returns a Std_Logic_Vector of length L (1 to 100) containing a primitive
+</font></i>   <font color=green><i>-- polynomial with up to five terms (always including x+1).
+</font></i>   <font color=green><i>-- Input:  L, the length of the resulting polynomial Std_Logic_Vector
+</font></i>   <font color=green><i>-- Output: polynomial Std_Logic_Vector (0 to L-1)
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font> Polynomial(L:         <font color=red>Natural</font>;
+                       HeaderMsg: <font color=red>String</font>:=<font color=black>"MISR:"</font>) <font color=blue>return</font> <font color=red>Std_Logic_Vector</font> <font color=blue>is</font>
+      <font color=blue>variable</font> P:        <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> L-1) := ('1', <font color=blue>others</font> => '0');
+      <font color=blue>subtype</font>  Degree <font color=blue>is</font> <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> MaxLen;    <font color=green><i>-- Exponent range
+</font></i>      <font color=blue>type</font>     Terms  <font color=blue>is</font> <font color=blue>array</font> (1 <font color=blue>to</font> 3) <font color=blue>of</font> Degree;     <font color=green><i>-- Triplet
+</font></i>      <font color=blue>type</font>     TTable <font color=blue>is</font> <font color=blue>array</font> (1 <font color=blue>to</font> MaxLen) <font color=blue>of</font> Terms; <font color=green><i>-- Triplets
+</font></i>      <font color=blue>constant</font> Table:    TTable := (                   <font color=green><i>-- Look-up table
+</font></i>         (0,0,0),   (1,0,0),   (1,0,0),   (1,0,0),   (2,0,0),   (1,0,0),   <font color=green><i>--  1
+</font></i>         (1,0,0),   (6,5,1),   (4,0,0),   (3,0,0),   (2,0,0),   (7,4,3),   <font color=green><i>--  7
+</font></i>         (4,3,1),   (12,11,1), (1,0,0),   (5,3,2),   (3,0,0),   (7,0,0),   <font color=green><i>-- 13
+</font></i>         (6,5,1),   (3,0,0),   (2,0,0),   (1,0,0),   (5,0,0),   (4,3,1),   <font color=green><i>-- 19
+</font></i>         (3,0,0),   (8,7,1),   (8,7,1),   (3,0,0),   (2,0,0),   (16,15,1), <font color=green><i>-- 25
+</font></i>         (3,0,0),   (28,27,1), (13,0,0),  (15,14,1), (2,0,0),   (11,0,0),  <font color=green><i>-- 31
+</font></i>         (12,10,2), (6,5,1),   (4,0,0),   (21,19,2), (3,0,0),   (23,22,1), <font color=green><i>-- 37
+</font></i>         (6,5,1),   (27,26,1), (4,3,1),   (21,20,1), (5,0,0),   (28,27,1), <font color=green><i>-- 43
+</font></i>         (9,0,0),   (27,26,1), (16,15,1), (3,0,0),   (16,15,1), (37,36,1), <font color=green><i>-- 49
+</font></i>         (24,0,0),  (22,21,1), (7,0,0),   (19,0,0),  (22,21,1), (1,0,0),   <font color=green><i>-- 55
+</font></i>         (16,15,0), (57,56,1), (1,0,0),   (4,3,1),   (18,0,0),  (10,9,1),  <font color=green><i>-- 61
+</font></i>         (10,9,1),  (9,0,0),   (29,27,2), (16,15,1), (6,0,0),   (53,47,6), <font color=green><i>-- 67
+</font></i>         (25,0,0),  (16,15,1), (11,10,1), (36,35,1), (31,30,1), (20,19,1), <font color=green><i>-- 73
+</font></i>         (9,0,0),   (38,37,1), (4,0,0),   (38,35,3), (46,45,1), (13,0,0),  <font color=green><i>-- 79
+</font></i>         (28,27,1), (13,12,1), (13,0,0),  (72,71,1), (38,0,0),  (19,18,1), <font color=green><i>-- 85
+</font></i>         (84,83,1), (13,12,1), (2,0,0),   (12,0,0),  (11,0,0),  (49,47,2), <font color=green><i>-- 91
+</font></i>         (6,0,0),   (11,0,0),  (47,45,2), (37,0,0));                       <font color=green><i>-- 97
+</font></i>   <font color=blue>begin</font>
+      <font color=blue>assert</font> (L <= MaxLen) <font color=blue>and</font> (L > 0)                 <font color=green><i>-- Check length
+</font></i>         <font color=blue>report</font> HeaderMsg&<font color=black>" Only polynomial degree of 1 to 100 is supported."</font>
+         <font color=blue>severity</font> <font color=red>Failure</font>;
+      <font color=blue>for</font> i <font color=blue>in</font> 1 <font color=blue>to</font> 3 <font color=blue>loop</font>
+         P(Table(L)(i)) := '1';                        <font color=green><i>-- Insert terms
+</font></i>      <font color=blue>end</font> <font color=blue>loop</font>;
+      <font color=blue>return</font> P;                                        <font color=green><i>-- Return polynomial
+</font></i>   <font color=blue>end</font> Polynomial;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- See definition in the package header.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> MISR(
+      <font color=blue>signal</font>   Clk:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;            <font color=green><i>-- Sample clock
+</font></i>      <font color=blue>signal</font>   Reset:     <font color=blue>in</font>    <font color=red>Boolean</font>;               <font color=green><i>-- Reset of MISR
+</font></i>      <font color=blue>signal</font>   Input:     <font color=blue>in</font>    <font color=red>Std_Logic_Vector</font>;      <font color=green><i>-- Input vector
+</font></i>      <font color=blue>signal</font>   MISR:      <font color=blue>inout</font> <font color=red>Std_Logic_Vector</font>;      <font color=green><i>-- MISR
+</font></i>      <font color=blue>constant</font> Rising:    <font color=blue>in</font>    <font color=red>Boolean</font> := <font color=red>True</font>;       <font color=green><i>-- See above
+</font></i>      <font color=blue>constant</font> Falling:   <font color=blue>in</font>    <font color=red>Boolean</font> := <font color=red>False</font>;      <font color=green><i>-- See above
+</font></i>      <font color=blue>constant</font> HeaderMsg: <font color=blue>in</font>    <font color=red>String</font>  := <font color=black>"MISR:"</font>;    <font color=green><i>-- Message header
+</font></i>      <font color=blue>constant</font> Sense:     <font color=blue>in</font>    <font color=red>Time</font>    := 0 ns) <font color=blue>is</font>    <font color=green><i>-- Sense time after clock
+</font></i>
+      <font color=blue>constant</font> Poly: <font color=red>Std_Logic_Vector</font>              := Polynomial(Input'Length);
+      <font color=blue>constant</font> Ones: <font color=red>Std_Logic_Vector</font>(Input'<font color=blue>range</font>) := (<font color=blue>others</font> => '1');
+      <font color=blue>variable</font> Temp: <font color=red>Std_Logic_Vector</font>(Input'<font color=blue>range</font>) := Input; <font color=green><i>-- Last Input
+</font></i>      <font color=blue>variable</font> Last: <font color=red>Time</font>                          := 0 ns;  <font color=green><i>-- Last sim cycle
+</font></i>   <font color=blue>begin</font>
+      <font color=blue>assert</font> (Input'Length <= MaxLen) <font color=blue>and</font> (Input'Length >= MinLen)
+         <font color=blue>report</font> HeaderMsg&<font color=black>" Only MISRs of length 4 to 100 are supported."</font>
+         <font color=blue>severity</font> <font color=red>Failure</font>;
+      <font color=blue>assert</font> Input'Length = MISR'Length
+         <font color=blue>report</font> HeaderMsg&<font color=black>" The length of the Input and the MISR differs."</font>
+         <font color=blue>severity</font> <font color=red>Failure</font>;
+      <font color=blue>assert</font> Input'Left   = MISR'Left
+         <font color=blue>report</font> HeaderMsg&<font color=black>" The left index of the Input and the MISR differs."</font>
+         <font color=blue>severity</font> <font color=red>Failure</font>;
+      <font color=blue>assert</font> Input'Right = MISR'Right
+         <font color=blue>report</font> HeaderMsg&<font color=black>" The right index of the Input and the MISR differs."</font>
+         <font color=blue>severity</font> <font color=red>Failure</font>;
+
+      <font color=blue>while</font> <font color=red>True</font> <font color=blue>loop</font>                                  <font color=green><i>-- Loop never exited
+</font></i>         <font color=blue>if</font> <font color=blue>not</font> Rising <font color=blue>and</font> <font color=blue>not</font> Falling <font color=blue>then</font>
+            <font color=green><i>-- Clk input has no influence on the MISR in asynchronous mode.
+</font></i>            <font color=green><i>-- Sampling only the final input vector in each simulation cycle.
+</font></i>            <font color=blue>wait</font> <font color=blue>on</font> Input, Reset;                      <font color=green><i>-- Asynchronous sample
+</font></i>            <font color=blue>if</font> <font color=blue>not</font> (Reset'Event <font color=blue>and</font> Reset) <font color=blue>and</font>         <font color=green><i>-- Check not reset
+</font></i>               Input'Event <font color=blue>then</font>                        <font color=green><i>-- Check for Input event
+</font></i>               <font color=blue>if</font> Now = Last <font color=blue>then</font>                      <font color=green><i>-- New delta cycle
+</font></i>                  Temp := Input;                       <font color=green><i>-- Store until next event
+</font></i>               <font color=blue>else</font>                                    <font color=green><i>-- New sim cycle
+</font></i>                  MISR <= Shift(MISR, Temp, Poly, HeaderMsg);
+                  Temp := Input;                       <font color=green><i>-- Store until next event
+</font></i>                  Last := Now;                         <font color=green><i>-- Store sim time
+</font></i>               <font color=blue>end</font> <font color=blue>if</font>;
+            <font color=blue>end</font> <font color=blue>if</font>;
+         <font color=blue>else</font>
+            <font color=blue>wait</font> <font color=blue>on</font> Clk, Reset;                        <font color=green><i>-- Synchronous sample
+</font></i>            <font color=blue>if</font> <font color=blue>not</font> (Reset'Event <font color=blue>and</font> Reset) <font color=blue>and</font>         <font color=green><i>-- Check not reset
+</font></i>               ((Rising <font color=blue>and</font> Rising_Edge(Clk)) <font color=blue>or</font>       <font color=green><i>-- Check rising edge
+</font></i>                (Falling <font color=blue>and</font> Falling_Edge(Clk))) <font color=blue>then</font>  <font color=green><i>-- Check falling edge
+</font></i>               <font color=blue>wait</font> <font color=blue>on</font> Reset <font color=blue>until</font> Reset <font color=blue>for</font> Sense;    <font color=green><i>-- Delay until sample
+</font></i>               MISR <= Shift(MISR, Input, Poly, HeaderMsg);
+            <font color=blue>end</font> <font color=blue>if</font>;
+         <font color=blue>end</font> <font color=blue>if</font>;
+         <font color=blue>if</font> Reset'Event <font color=blue>and</font> Reset <font color=blue>then</font>
+            MISR <= Ones;                              <font color=green><i>-- Reset MISR
+</font></i>            Temp := Ones;                              <font color=green><i>-- Reset Temp
+</font></i>         <font color=blue>end</font> <font color=blue>if</font>;
+      <font color=blue>end</font> <font color=blue>loop</font>;
+   <font color=blue>end</font> MISR;
+<font color=blue>end</font> MISR_Definition;  <font color=green><i>--================ End of package body =================--
+</font></i></pre>
+</body>
+</html>

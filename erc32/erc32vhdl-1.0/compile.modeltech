@@ -1,0 +1,10 @@
+#!/bin/sh
+# Compile basic models
+#
+set -x
+vlib work
+vcom -explicit mms.vhd sparc_lib.vhd iurt_lib.vhd fpurt_lib.vhd meclibrary.vhd
+#
+# Compile board design
+#
+vcom factlib.vhd memory.vhd board.vhd

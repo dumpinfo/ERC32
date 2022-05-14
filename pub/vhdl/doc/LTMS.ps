@@ -1,0 +1,4956 @@
+%!PS-Adobe-3.0
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%PageOrder: (atend)
+%%DocumentFonts: (atend)
+%%Creator: Frame 5.0
+%%DocumentData: Clean7Bit
+%%EndComments
+%%BeginProlog
+%
+% Frame ps_prolog 5.0, for use with Frame 5.0 products
+% This ps_prolog file is Copyright (c) 1986-1995 Frame Technology
+% Corporation.  All rights reserved.  This ps_prolog file may be
+% freely copied and distributed in conjunction with documents created
+% using FrameMaker, FrameMaker/SGML and FrameViewer as long as this 
+% copyright notice is preserved.
+%
+% FrameMaker users specify the proper paper size for each print job in the
+% "Print" dialog's "Printer Paper Size" "Width" and "Height~ fields.  If the
+% printer that the PS file is sent to does not support the requested paper
+% size, or if there is no paper tray of the proper size currently installed, 
+% then the job will not be printed.  The following flag, if set to true, will
+% cause the job to print on the default paper in such cases.
+/FMAllowPaperSizeMismatch            false def
+%
+% Frame products normally print colors as their true color on a color printer
+% or as shades of gray, based on luminance, on a black-and white printer. The
+% following flag, if set to true, forces all non-white colors to print as pure
+% black. This has no effect on bitmap images.
+/FMPrintAllColorsAsBlack             false def
+%
+% Frame products can either set their own line screens or use a printer's 
+% default settings. Three flags below control this separately for no 
+% separations, spot separations and process separations. If a flag
+% is true, then the default printer settings will not be changed. If it is
+% false, Frame products will use their own settings from a table based on
+% the printer's resolution.
+/FMUseDefaultNoSeparationScreen      true  def
+/FMUseDefaultSpotSeparationScreen    true  def
+/FMUseDefaultProcessSeparationScreen false def
+%
+% For any given PostScript printer resolution, Frame products have two sets of 
+% screen angles and frequencies for printing process separations, which are 
+% recomended by Adobe. The following variable chooses the higher frequencies
+% when set to true or the lower frequencies when set to false. This is only
+% effective if the appropriate FMUseDefault...SeparationScreen flag is false.
+/FMUseHighFrequencyScreens true def
+%
+% The following is a set of predefined optimal frequencies and angles for various
+% common dpi settings. This is taken from "Advances in Color Separation Using
+% PostScript Software Technology," from Adobe Systems (3/13/89 P.N. LPS 0043)
+% and corrolated with information which is in various PPD (4.0) files.
+%
+% The "dpiranges" figure is the minimum dots per inch device resolution which
+% can support this setting. The "low" and "high" values are controlled by the
+% setting of the FMUseHighFrequencyScreens flag above. The "TDot" flags control
+% the use of the "Yellow Triple Dot" feature whereby the frequency id divided by
+% three, but the dot function is "trippled" giving a block of 3x3 dots per cell.
+%
+% PatFreq is a compromise pattern frequency for ps Level 2 printers which is close
+% to the ideal WYSIWYG pattern frequency of 9 repetitions/inch but does not beat
+% (too badly) against the screen frequencies of any separations for that DPI.
+/dpiranges   [  2540    2400    1693     1270    1200     635      600      0      ] def
+/CMLowFreqs  [ 100.402  94.8683 89.2289 100.402  94.8683  66.9349  63.2456 47.4342 ] def
+/YLowFreqs   [  95.25   90.0    84.65    95.25   90.0     70.5556  66.6667 50.0    ] def
+/KLowFreqs   [  89.8026 84.8528 79.8088  89.8026 84.8528  74.8355  70.7107 53.033  ] def
+/CLowAngles  [  71.5651 71.5651 71.5651 71.5651  71.5651  71.5651  71.5651 71.5651 ] def
+/MLowAngles  [  18.4349 18.4349 18.4349 18.4349  18.4349  18.4349  18.4349 18.4349 ] def
+/YLowTDot    [  true    true    false    true    true     false    false   false   ] def
+/CMHighFreqs [ 133.87  126.491 133.843  108.503 102.523  100.402   94.8683 63.2456 ] def
+/YHighFreqs  [ 127.0   120.0   126.975  115.455 109.091   95.25    90.0    60.0    ] def
+/KHighFreqs  [ 119.737 113.137 119.713  128.289 121.218   89.8026  84.8528 63.6395 ] def
+/CHighAngles [  71.5651 71.5651 71.5651  70.0169 70.0169  71.5651  71.5651 71.5651 ] def
+/MHighAngles [  18.4349 18.4349 18.4349  19.9831 19.9831  18.4349  18.4349 18.4349 ] def
+/YHighTDot   [  false   false   true     false   false    true     true    false   ] def
+/PatFreq     [	10.5833 10.0     9.4055  10.5833 10.0	  10.5833  10.0	   9.375   ] def
+%
+% PostScript Level 2 printers contain an "Accurate Screens" feature which can
+% improve process separation rendering at the expense of compute time. This 
+% flag is ignored by PostScript Level 1 printers.
+/FMUseAcccurateScreens true def
+%
+% The following PostScript procedure defines the spot function that Frame
+% products will use for process separations. You may un-comment-out one of
+% the alternative functions below, or use your own.
+%
+% Dot function
+/FMSpotFunction {abs exch abs 2 copy add 1 gt 
+		{1 sub dup mul exch 1 sub dup mul add 1 sub }
+		{dup mul exch dup mul add 1 exch sub }ifelse } def
+%
+% Line function
+% /FMSpotFunction { pop } def
+%
+% Elipse function
+% /FMSpotFunction { dup 5 mul 8 div mul exch dup mul exch add 
+%		sqrt 1 exch sub } def
+%
+%
+/FMversion (5.0) def 
+/fMLevel1 /languagelevel where {pop languagelevel} {1} ifelse 2 lt def
+/FMPColor
+	fMLevel1 {
+		false
+		/colorimage where {pop pop true} if
+	} {
+		true
+	} ifelse
+def
+/FrameDict 400 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in PS 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} bind def
+	} if
+/FMshowpage /showpage load def
+/FMquit /quit load def
+/FMFAILURE { 
+	dup = flush 
+	FMshowpage 
+	/Helvetica findfont 12 scalefont setfont
+	72 200 moveto show
+	72 220 moveto show
+	FMshowpage 
+	FMquit 
+	} def 
+/FMVERSION {
+	FMversion ne {
+		(Frame product version does not match ps_prolog!  Check installation;)
+		(also check ~/fminit and ./fminit for old versions) FMFAILURE
+		} if
+	} def 
+/FMBADEPSF { 
+	(Adobe's PostScript Language Reference Manual, 2nd Edition, section H.2.4)
+	(says your EPS file is not valid, as it calls X              )
+	dup dup (X) search pop exch pop exch pop length 
+	5 -1 roll 
+	putinterval 
+	FMFAILURE
+	} def
+/fmConcatProcs
+	{
+	/proc2 exch cvlit def/proc1 exch cvlit def/newproc proc1 length proc2 length add array def
+	newproc 0 proc1 putinterval newproc proc1 length proc2 putinterval newproc cvx
+}def
+FrameDict begin [
+	/ALDsave
+	/FMdicttop
+	/FMoptop
+	/FMpointsize
+	/FMsaveobject
+	/b
+	/bitmapsave
+	/blut
+	/bpside
+	/bs
+	/bstring
+	/bwidth
+	/c
+	/cf
+	/cs
+	/cynu
+	/depth
+	/edown
+	/fh
+	/fillvals
+	/fw
+	/fx
+	/fy
+	/g
+	/gfile
+	/gindex
+	/grnt
+	/gryt
+	/gstring
+	/height
+	/hh
+	/i
+	/im
+	/indx
+	/is
+	/k
+	/kk
+	/landscape
+	/lb
+	/len
+	/llx
+	/lly
+	/m
+	/magu
+	/manualfeed
+	/n
+	/offbits
+	/onbits
+	/organgle
+	/orgbangle
+	/orgbfreq
+	/orgbproc
+	/orgbxfer
+	/orgfreq
+	/orggangle
+	/orggfreq
+	/orggproc
+	/orggxfer
+	/orgmatrix
+	/orgproc
+	/orgrangle
+	/orgrfreq
+	/orgrproc
+	/orgrxfer
+	/orgxfer
+	/pagesave
+	/paperheight
+	/papersizedict
+	/paperwidth
+	/pos
+	/pwid
+	/r
+	/rad
+	/redt
+	/sl
+	/str
+	/tran
+	/u
+	/urx
+	/ury
+	/val
+	/width
+	/width
+	/ws
+	/ww
+	/x
+	/x1
+	/x2
+	/xindex
+	/xpoint
+	/xscale
+	/xx
+	/y
+	/y1
+	/y2
+	/yelu
+	/yindex
+	/ypoint
+	/yscale
+	/yy
+] { 0 def } forall
+/FmBD {bind def} bind def
+systemdict /pdfmark known {
+	/fMAcrobat true def
+	
+	/FmPD /pdfmark load def
+	
+	
+	/FmPT /show load def
+	
+	
+	currentdistillerparams /CoreDistVersion get 2000 ge {
+	
+		
+		/FmPD2 /pdfmark load def
+		
+		
+		
+		
+		
+		/FmPA { mark exch /Dest exch 5 3 roll 
+				/View [ /XYZ null 6 -2 roll FmDC exch pop null] /DEST FmPD 
+		}FmBD
+	} {
+		
+		/FmPD2 /cleartomark load def
+		/FmPA {pop pop pop}FmBD
+	} ifelse
+} {
+	
+	/fMAcrobat false def
+	/FmPD /cleartomark load def
+	/FmPD2 /cleartomark load def
+	/FmPT /pop load def
+	/FmPA {pop pop pop}FmBD
+} ifelse
+/FmDC {
+	transform fMDefaultMatrix itransform cvi exch cvi exch
+}FmBD
+/FmBx {
+	dup 3 index lt {3 1 roll exch} if 
+	1 index 4 index lt {4 -1 roll 3 1 roll exch 4 1 roll} if
+}FmBD
+/FMnone 0 def
+/FMcyan 1 def
+/FMmagenta 2 def
+/FMyellow 3 def
+/FMblack 4 def
+/FMcustom 5 def
+/fMNegative false def 
+/FrameSepIs FMnone def 
+/FrameSepBlack 0 def
+/FrameSepYellow 0 def
+/FrameSepMagenta 0 def
+/FrameSepCyan 0 def
+/FrameSepRed 1 def
+/FrameSepGreen 1 def
+/FrameSepBlue 1 def
+/FrameCurGray 1 def
+/FrameCurPat null def
+/FrameCurColors [ 0 0 0 1 0 0 0 ] def 
+/FrameColorEpsilon .001 def	
+/eqepsilon {		
+	sub dup 0 lt {neg} if
+	FrameColorEpsilon le
+} bind def
+/FrameCmpColorsCMYK { 
+	2 copy 0 get exch 0 get eqepsilon {
+		2 copy 1 get exch 1 get eqepsilon {
+			2 copy 2 get exch 2 get eqepsilon {
+				3 get exch 3 get eqepsilon
+			} {pop pop false} ifelse
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/FrameCmpColorsRGB { 
+	2 copy 4 get exch 0 get eqepsilon {
+		2 copy 5 get exch 1 get eqepsilon {
+			6 get exch 2 get eqepsilon
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/RGBtoCMYK { 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	3 copy 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	dup dup dup 
+	6 1 roll 
+	4 1 roll 
+	7 1 roll 
+	sub 
+	6 1 roll 
+	sub 
+	5 1 roll 
+	sub 
+	4 1 roll 
+} bind def
+/CMYKtoRGB { 
+	dup dup 4 -1 roll add 						  
+	5 1 roll 3 -1 roll add 						  
+	4 1 roll add 								  
+	1 exch sub dup 0 lt {pop 0} if 3 1 roll 	  
+	1 exch sub dup 0 lt {pop 0} if exch 	      
+	1 exch sub dup 0 lt {pop 0} if exch	  		  
+} bind def
+/FrameSepInit {
+	1.0 RealSetgray
+} bind def
+/FrameSetSepColor { 
+	/FrameSepBlue exch def
+	/FrameSepGreen exch def
+	/FrameSepRed exch def
+	/FrameSepBlack exch def
+	/FrameSepYellow exch def
+	/FrameSepMagenta exch def
+	/FrameSepCyan exch def
+	/FrameSepIs FMcustom def
+	setCurrentScreen	
+} bind def
+/FrameSetCyan {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 1.0 def
+	/FrameSepIs FMcyan def
+	setCurrentScreen	
+} bind def
+ 
+/FrameSetMagenta {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 1.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMmagenta def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetYellow {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 1.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMyellow def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetBlack {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 1.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMblack def
+	setCurrentScreen
+} bind def
+ 
+/FrameNoSep { 
+	/FrameSepIs FMnone def
+	setCurrentScreen
+} bind def
+/FrameSetSepColors { 
+	FrameDict begin
+	[ exch 1 add 1 roll ]
+	/FrameSepColors  
+	exch def end
+	} bind def
+/FrameColorInSepListCMYK { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsCMYK 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/FrameColorInSepListRGB { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsRGB 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/RealSetgray /setgray load def
+/RealSetrgbcolor /setrgbcolor load def
+/RealSethsbcolor /sethsbcolor load def
+end 
+/setgray { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+		{ RealSetgray } 
+		{ 
+		FrameSepIs FMblack eq 
+			{ RealSetgray } 
+			{ FrameSepIs FMcustom eq 
+			  FrameSepRed 0 eq and
+			  FrameSepGreen 0 eq and
+			  FrameSepBlue 0 eq and {
+			  	RealSetgray
+			  } {
+				1 RealSetgray pop 
+			  } ifelse
+			} ifelse
+		} ifelse
+	end
+} bind def
+/setrgbcolor { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+	{  RealSetrgbcolor }
+	{
+		3 copy [ 4 1 roll ] 
+		FrameColorInSepListRGB
+		{
+				FrameSepBlue eq exch 
+			 	FrameSepGreen eq and exch 
+			 	FrameSepRed eq and
+			 	{ 0 } { 1 } ifelse
+		}
+		{
+			FMPColor {
+				RealSetrgbcolor
+				currentcmykcolor
+			} {
+				RGBtoCMYK
+			} ifelse
+			FrameSepIs FMblack eq
+			{1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		RealSetgray
+	} 
+	ifelse
+	end
+} bind def
+/sethsbcolor {
+	FrameDict begin
+	FrameSepIs FMnone eq 
+	{ RealSethsbcolor } 
+	{
+		RealSethsbcolor 
+		currentrgbcolor  
+		setrgbcolor 
+	} 
+	ifelse
+	end
+} bind def
+FrameDict begin
+/setcmykcolor where {
+	pop /RealSetcmykcolor /setcmykcolor load def
+} {
+	/RealSetcmykcolor {
+		4 1 roll
+		3 { 3 index add 0 max 1 min 1 exch sub 3 1 roll} repeat 
+		RealSetrgbcolor pop
+	} bind def
+} ifelse
+userdict /setcmykcolor { 
+		FrameDict begin
+		FrameSepIs FMnone eq
+		{ RealSetcmykcolor } 
+		{
+			4 copy [ 5 1 roll ]
+			FrameColorInSepListCMYK
+			{
+				FrameSepBlack eq exch 
+				FrameSepYellow eq and exch 
+				FrameSepMagenta eq and exch 
+				FrameSepCyan eq and 
+				{ 0 } { 1 } ifelse
+			}
+			{
+				FrameSepIs FMblack eq
+				{1.0 exch sub 4 1 roll pop pop pop} {
+				FrameSepIs FMyellow eq
+				{pop 1.0 exch sub 3 1 roll pop pop} {
+				FrameSepIs FMmagenta eq
+				{pop pop 1.0 exch sub exch pop } {
+				FrameSepIs FMcyan eq
+				{pop pop pop 1.0 exch sub } 
+				{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+			} ifelse
+			RealSetgray
+		}
+		ifelse
+		end
+	} bind put
+fMLevel1 { 
+	
+	
+	
+	/patScreenDict 7 dict dup begin
+		<0f1e3c78f0e1c387> [ 45  { pop } {exch pop} 		.5   2 sqrt] FmBD
+		<0f87c3e1f0783c1e> [ 135 { pop } {exch pop}			.5   2 sqrt] FmBD
+		<cccccccccccccccc> [ 0   { pop } dup				.5   2	   ] FmBD
+		<ffff0000ffff0000> [ 90  { pop } dup				.5   2	   ] FmBD
+		<8142241818244281> [ 45  { 2 copy lt {exch} if pop}	dup .75  2 sqrt] FmBD
+		<03060c183060c081> [ 45  { pop } {exch pop}			.875 2 sqrt] FmBD
+		<8040201008040201> [ 135 { pop } {exch pop}			.875 2 sqrt] FmBD
+	end def
+} { 
+	
+	/patProcDict 5 dict dup begin
+		<0f1e3c78f0e1c387> { 3 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<0f87c3e1f0783c1e> { 3 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+		<8142241818244281> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke
+											-1 -1 moveto 9 9 lineto stroke } bind def
+		<03060c183060c081> { 1 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<8040201008040201> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+	end def
+	/patDict 15 dict dup begin
+		/PatternType 1 def		
+		/PaintType 2 def		
+		/TilingType 3 def		
+		/BBox [ 0 0 8 8 ] def 	
+		/XStep 8 def			
+		/YStep 8 def			
+		/PaintProc {
+			begin
+			patProcDict bstring known {
+				patProcDict bstring get exec
+			} {
+				8 8 true [1 0 0 -1 0 8] bstring imagemask
+			} ifelse
+			end
+		} bind def
+	end def
+} ifelse
+/combineColor {
+    FrameSepIs FMnone eq
+	{
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceCMYK]] setcolorspace
+			FrameCurColors 0 4 getinterval aload pop FrameCurPat setcolor
+		} {
+			FrameCurColors 3 get 1.0 ge {
+				FrameCurGray RealSetgray
+			} {
+				fMAcrobat not FMPColor graymode and and {
+					0 1 3 { 
+						FrameCurColors exch get
+						1 FrameCurGray sub mul
+					} for
+					RealSetcmykcolor
+				} {
+					4 1 6 {
+						FrameCurColors exch get
+						graymode {
+							1 exch sub 1 FrameCurGray sub mul 1 exch sub
+						} {
+							1.0 lt {FrameCurGray} {1} ifelse
+						} ifelse
+					} for
+					RealSetrgbcolor
+				} ifelse
+			} ifelse
+		} ifelse
+	} { 
+		FrameCurColors 0 4 getinterval aload
+		FrameColorInSepListCMYK {
+			FrameSepBlack eq exch 
+			FrameSepYellow eq and exch 
+			FrameSepMagenta eq and exch 
+			FrameSepCyan eq and
+			FrameSepIs FMcustom eq and
+			{ FrameCurGray } { 1 } ifelse
+		} {
+			FrameSepIs FMblack eq
+			{FrameCurGray 1.0 exch sub mul 1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop FrameCurGray 1.0 exch sub mul 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceGray]] setcolorspace
+			FrameCurPat setcolor
+		} { 
+			graymode not fMLevel1 and {
+				
+				dup 1 lt {pop FrameCurGray} if
+			} if
+			RealSetgray
+		} ifelse
+	} ifelse
+} bind def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/fMDefaultMatrix matrix defaultmatrix def
+/fMatrix2 matrix def
+/dpi    72 0 fMDefaultMatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+	
+/freq dpi dup 72 div round dup 0 eq {pop 1} if 8 mul div def
+/sangle 1 0 fMDefaultMatrix dtransform exch atan def
+	sangle fMatrix2 rotate 
+	fMDefaultMatrix fMatrix2 concatmatrix 
+	dup 0 get /sflipx exch def
+	    3 get /sflipy exch def
+/screenIndex {
+	0 1 dpiranges length 1 sub { dup dpiranges exch get 1 sub dpi le {exit} {pop} ifelse } for
+} bind def
+/getCyanScreen {
+	FMUseHighFrequencyScreens { CHighAngles CMHighFreqs} {CLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getMagentaScreen {
+	FMUseHighFrequencyScreens { MHighAngles CMHighFreqs } {MLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getYellowScreen {
+	FMUseHighFrequencyScreens { YHighTDot YHighFreqs} { YLowTDot YLowFreqs } ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get { 3 div
+			{2 { 1 add 2 div 3 mul dup floor sub 2 mul 1 sub exch} repeat
+			FMSpotFunction } } {/FMSpotFunction load } ifelse
+			0.0 exch
+} bind def
+/getBlackScreen  {
+	FMUseHighFrequencyScreens { KHighFreqs } { KLowFreqs } ifelse
+		screenIndex get 45.0 /FMSpotFunction load 
+} bind def
+/getSpotScreen {
+	getBlackScreen
+} bind def
+/getCompositeScreen {
+	getBlackScreen
+} bind def
+/FMSetScreen 
+	fMLevel1 { /setscreen load 
+	}{ {
+		8 dict begin
+		/HalftoneType 1 def
+		/SpotFunction exch def
+		/Angle exch def
+		/Frequency exch def
+		/AccurateScreens FMUseAcccurateScreens def
+		currentdict end sethalftone
+	} bind } ifelse
+def
+/setDefaultScreen {
+	FMPColor {
+		orgrxfer cvx orggxfer cvx orgbxfer cvx orgxfer cvx setcolortransfer
+	}
+	{
+		orgxfer cvx settransfer
+	} ifelse
+	orgfreq organgle orgproc cvx setscreen
+} bind def
+/setCurrentScreen {
+	FrameSepIs FMnone eq {
+		FMUseDefaultNoSeparationScreen {
+			setDefaultScreen
+		} {
+			getCompositeScreen FMSetScreen
+		} ifelse
+	} {
+		FrameSepIs FMcustom eq {
+			FMUseDefaultSpotSeparationScreen {
+				setDefaultScreen
+			} {
+				getSpotScreen FMSetScreen
+			} ifelse
+		} {
+			FMUseDefaultProcessSeparationScreen {
+				setDefaultScreen
+			} {
+				FrameSepIs FMcyan eq {
+					getCyanScreen FMSetScreen
+				} {
+					FrameSepIs FMmagenta eq {
+						getMagentaScreen FMSetScreen
+					} {
+						FrameSepIs FMyellow eq {
+							getYellowScreen FMSetScreen
+						} {
+							getBlackScreen FMSetScreen
+						} ifelse
+					} ifelse
+				} ifelse
+			} ifelse
+		} ifelse
+	} ifelse 
+} bind def
+end
+	
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne /manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	0 ne /fMNegative exch def 
+	0 ne /edown exch def 
+	/yscale exch def
+	/xscale exch def
+	fMLevel1 {
+		manualfeed {setmanualfeed} if
+		/FMdicttop countdictstack 1 add def 
+		/FMoptop count def 
+		setpapername 
+		manualfeed {true} {papersize} ifelse 
+		{manualpapersize} {false} ifelse 
+		{desperatepapersize} {false} ifelse 
+		{papersizefailure} if
+		count -1 FMoptop {pop pop} for
+		countdictstack -1 FMdicttop {pop end} for 
+		}
+		{2 dict
+		 dup /PageSize [paperwidth paperheight] put
+		 manualfeed {dup /ManualFeed manualfeed put} if
+		 {setpagedevice} stopped {papersizefailure} if
+		}
+	ifelse 
+	
+	FMPColor {
+		currentcolorscreen
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+			cvlit /orgbproc exch def
+				  /orgbangle exch def 
+				  /orgbfreq exch def
+			cvlit /orggproc exch def
+				  /orggangle exch def 
+				  /orggfreq exch def
+			cvlit /orgrproc exch def
+				  /orgrangle exch def 
+				  /orgrfreq exch def
+			currentcolortransfer 
+			fMNegative {
+				1 1 4 { 
+					pop { 1 exch sub } fmConcatProcs 4 1 roll
+				} for
+				4 copy
+				setcolortransfer
+			} if
+			cvlit /orgxfer exch def
+			cvlit /orgbxfer exch def
+			cvlit /orggxfer exch def
+			cvlit /orgrxfer exch def
+	} {
+		currentscreen 
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+				  
+		currenttransfer 
+		fMNegative {
+			{ 1 exch sub } fmConcatProcs
+			dup settransfer
+		} if 
+		cvlit /orgxfer exch def
+	} ifelse
+	end 
+} def 
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch dup /pwid exch def neg translate pop 
+	}{
+		pop /pwid exch def
+	} ifelse
+	edown { [-1 0 0 1 pwid 0] concat } if
+	0 0 moveto paperwidth 0 lineto paperwidth paperheight lineto 
+	0 paperheight lineto 0 0 lineto 1 setgray fill
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin dup
+	array /fillvals exch def
+	dict /patCache exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+% See Adobe's "PostScript Language Reference Manual, 2nd Edition", page 714.
+% "...the following operators MUST NOT be used in an EPS file:" (emphasis ours)
+	/banddevice {(banddevice) FMBADEPSF} def
+	/clear {(clear) FMBADEPSF} def
+	/cleardictstack {(cleardictstack) FMBADEPSF} def 
+	/copypage {(copypage) FMBADEPSF} def
+	/erasepage {(erasepage) FMBADEPSF} def
+	/exitserver {(exitserver) FMBADEPSF} def
+	/framedevice {(framedevice) FMBADEPSF} def
+	/grestoreall {(grestoreall) FMBADEPSF} def
+	/initclip {(initclip) FMBADEPSF} def
+	/initgraphics {(initgraphics) FMBADEPSF} def
+	/quit {(quit) FMBADEPSF} def
+	/renderbands {(renderbands) FMBADEPSF} def
+	/setglobal {(setglobal) FMBADEPSF} def
+	/setpagedevice {(setpagedevice) FMBADEPSF} def
+	/setshared {(setshared) FMBADEPSF} def
+	/startjob {(startjob) FMBADEPSF} def
+	/lettertray {(lettertray) FMBADEPSF} def
+	/letter {(letter) FMBADEPSF} def
+	/lettersmall {(lettersmall) FMBADEPSF} def
+	/11x17tray {(11x17tray) FMBADEPSF} def
+	/11x17 {(11x17) FMBADEPSF} def
+	/ledgertray {(ledgertray) FMBADEPSF} def
+	/ledger {(ledger) FMBADEPSF} def
+	/legaltray {(legaltray) FMBADEPSF} def
+	/legal {(legal) FMBADEPSF} def
+	/statementtray {(statementtray) FMBADEPSF} def
+	/statement {(statement) FMBADEPSF} def
+	/executivetray {(executivetray) FMBADEPSF} def
+	/executive {(executive) FMBADEPSF} def
+	/a3tray {(a3tray) FMBADEPSF} def
+	/a3 {(a3) FMBADEPSF} def
+	/a4tray {(a4tray) FMBADEPSF} def
+	/a4 {(a4) FMBADEPSF} def
+	/a4small {(a4small) FMBADEPSF} def
+	/b4tray {(b4tray) FMBADEPSF} def
+	/b4 {(b4) FMBADEPSF} def
+	/b5tray {(b5tray) FMBADEPSF} def
+	/b5 {(b5) FMBADEPSF} def
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fw 2 div add fy fh 2 div add  translate
+	rotate
+	fw 2 div neg fh 2 div neg translate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count def 
+	} bind def
+/FMENDEPSF {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} bind def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/pagedimen { 
+	paperheight sub abs 16 lt exch 
+	paperwidth sub abs 16 lt and
+	{/papername exch def} {pop} ifelse
+	} bind def
+/setpapername { 
+	/papersizedict 14 dict def 
+	papersizedict begin
+	/papername /unknown def 
+		/Letter 8.5 inch 11.0 inch pagedimen
+		/LetterSmall 7.68 inch 10.16 inch pagedimen
+		/Tabloid 11.0 inch 17.0 inch pagedimen
+		/Ledger 17.0 inch 11.0 inch pagedimen
+		/Legal 8.5 inch 14.0 inch pagedimen
+		/Statement 5.5 inch 8.5 inch pagedimen
+		/Executive 7.5 inch 10.0 inch pagedimen
+		/A3 11.69 inch 16.5 inch pagedimen
+		/A4 8.26 inch 11.69 inch pagedimen
+		/A4Small 7.47 inch 10.85 inch pagedimen
+		/B4 10.125 inch 14.33 inch pagedimen
+		/B5 7.16 inch 10.125 inch pagedimen
+	end
+	} bind def
+/papersize {
+	papersizedict begin
+		/Letter {lettertray letter} def
+		/LetterSmall {lettertray lettersmall} def
+		/Tabloid {11x17tray 11x17} def
+		/Ledger {ledgertray ledger} def
+		/Legal {legaltray legal} def
+		/Statement {statementtray statement} def
+		/Executive {executivetray executive} def
+		/A3 {a3tray a3} def
+		/A4 {a4tray a4} def
+		/A4Small {a4tray a4small} def
+		/B4 {b4tray b4} def
+		/B5 {b5tray b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	statusdict begin stopped end 
+	} bind def
+/manualpapersize {
+	papersizedict begin
+		/Letter {letter} def
+		/LetterSmall {lettersmall} def
+		/Tabloid {11x17} def
+		/Ledger {ledger} def
+		/Legal {legal} def
+		/Statement {statement} def
+		/Executive {executive} def
+		/A3 {a3} def
+		/A4 {a4} def
+		/A4Small {a4small} def
+		/B4 {b4} def
+		/B5 {b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	stopped 
+	} bind def
+/desperatepapersize {
+	statusdict /setpageparams known
+		{
+		paperwidth paperheight 0 1 
+		statusdict begin
+		{setpageparams} stopped 
+		end
+		} {true} ifelse 
+	} bind def
+/papersizefailure {
+	FMAllowPaperSizeMismatch not
+		{
+(The requested paper size is not available in any currently-installed tray)
+(Edit the PS file to "FMAllowPaperSizeMismatch true" to use default tray)
+		 FMFAILURE } if
+	} def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+FMPColor 
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUECOLORc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYK } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKc } def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYKGRAY } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKGRAYc } def
+	}
+ifelse
+/K { 
+	FMPrintAllColorsAsBlack {
+		dup 1 eq 2 index 1 eq and 3 index 1 eq and not
+			{7 {pop} repeat 0 0 0 1 0 0 0} if
+	} if 
+	FrameCurColors astore 
+	pop combineColor
+} bind def
+/graymode true def
+fMLevel1 {
+	/fmGetFlip {
+		fMatrix2 exch get mul 0 lt { -1 } { 1 } ifelse
+	} FmBD
+} if
+/setPatternMode {
+	fMLevel1 {
+		2 index patScreenDict exch known {
+			pop pop
+			patScreenDict exch get aload pop 
+			freq 								
+			mul									
+			5 2 roll							
+			fMatrix2 currentmatrix 1 get 0 ne {
+				3 -1 roll 90 add 3 1 roll 		
+				sflipx 1 fmGetFlip sflipy 2 fmGetFlip neg mul
+			} {  								
+				sflipx 0 fmGetFlip sflipy 3 fmGetFlip mul 
+			} ifelse
+			0 lt {exch pop} {pop} ifelse 		
+			fMNegative { 
+				{neg} fmConcatProcs 			
+			} if
+			bind
+			
+			
+			
+			systemdict /setscreen get exec		
+			/FrameCurGray exch def
+		} {
+			/bwidth  exch def
+			/bpside  exch def
+			/bstring exch def
+			/onbits 0 def  /offbits 0 def
+			freq sangle landscape {90 add} if 
+				{/ypoint exch def
+				 /xpoint exch def
+				 /xindex xpoint 1 add 2 div bpside mul cvi def
+				 /yindex ypoint 1 add 2 div bpside mul cvi def
+				 bstring yindex bwidth mul xindex 8 idiv add get
+				 1 7 xindex 8 mod sub bitshift and 0 ne fMNegative {not} if
+				 {/onbits  onbits  1 add def 1}
+				 {/offbits offbits 1 add def 0}
+				 ifelse
+				}
+				setscreen
+			offbits offbits onbits add div fMNegative {1.0 exch sub} if
+			/FrameCurGray exch def
+		} ifelse
+	} { 
+		pop pop
+		dup patCache exch known {
+			patCache exch get
+		} { 
+			dup
+			patDict /bstring 3 -1 roll put
+			patDict 
+			9 PatFreq screenIndex get div dup matrix scale
+			makepattern
+			dup 
+			patCache 4 -1 roll 3 -1 roll put
+		} ifelse
+		/FrameCurGray 0 def
+		/FrameCurPat exch def
+	} ifelse
+	/graymode false def
+	combineColor
+} bind def
+/setGrayScaleMode {
+	graymode not {
+		/graymode true def
+		fMLevel1 {
+			setCurrentScreen
+		} if
+	} if
+	/FrameCurGray exch def
+	combineColor
+} bind def
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	
+/PFill {
+	graymode fMLevel1 or not {
+		gsave 1 setgray eofill grestore
+	} if
+} bind def
+/PStroke {
+	graymode fMLevel1 or not {
+		gsave 1 setgray stroke grestore
+	} if
+	stroke
+} bind def
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setPatternMode} 
+	{setGrayScaleMode}
+	ifelse
+	} bind def
+/V { 
+	PFill gsave eofill grestore
+	} bind def
+/Vclip {
+	clip
+	} bind def
+/Vstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/N { 
+	PStroke
+	} bind def
+/Nclip {
+	strokepath clip newpath
+	} bind def
+/Nstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+/rarc 
+	{rad 
+	 arcto
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	mark
+	newpath
+	{
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rarc
+	x2 y2 x2 y1 rarc
+	x2 y1 x1 y1 rarc
+	x1 y1 x1 y2 rarc
+	closepath
+	} stopped {x1 y1 x2 y2 R} if 
+	cleartomark
+	} bind def
+/RRR { 
+	/rad exch def
+	normalize /y4 exch def /x4 exch def
+	normalize /y3 exch def /x3 exch def
+	normalize /y2 exch def /x2 exch def
+	normalize /y1 exch def /x1 exch def
+	newpath
+	normalize moveto 
+	mark
+	{
+	x2 y2 x3 y3 rarc
+	x3 y3 x4 y4 rarc
+	x4 y4 x1 y1 rarc
+	x1 y1 x2 y2 rarc
+	closepath
+	} stopped
+	 {x1 y1 x2 y2 x3 y3 x4 y4 newpath moveto lineto lineto lineto closepath} if
+	cleartomark
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	setCurrentScreen
+} bind def
+/CP { 
+	grestore
+	gsave
+	Y 
+	clip
+	setCurrentScreen
+} bind def
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	PFill fill
+	grestore
+	} bind def
+/Gstrk {
+	savematrix
+    newpath
+    2 index 2 div add exch 3 index 2 div sub exch 
+    normalize 2 index 2 div sub exch 3 index 2 div add exch 
+    translate
+    scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+    } bind def
+/Gclip { 
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	clip newpath
+	restorematrix
+	} bind def
+/GG { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	rotate 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath
+	PFill
+	fill
+	grestore
+	} bind def
+/GGclip { 
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	clip newpath
+	restorematrix
+	} bind def
+/GGstrk { 
+	savematrix
+    newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath 
+	restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/Aclip {
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	strokepath clip newpath
+	restorematrix
+} bind def
+/Astrk {
+	Gstrk
+} bind def
+/AA { 
+	gsave
+	savematrix
+	newpath
+	
+	3 index 2 div add exch 4 index 2 div sub exch 
+	
+	normalize 3 index 2 div sub exch 4 index 2 div add exch
+	translate 
+	rotate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/AAclip {
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	strokepath clip newpath
+	restorematrix
+} bind def
+/AAstrk {
+	GGstrk
+} bind def
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 7 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/rip { 
+	   
+	  
+	  bis ris copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  ris gis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  gis bis copy pop 
+	  dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/rip4 { 
+	   
+	  
+	  kis cis copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  cis mis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  mis yis copy pop 
+	  dup dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  yis kis copy pop 
+	  3 mul is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+/wbytes { 
+      dup dup
+      8 gt { pop 8 idiv mul }
+      { 8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse } ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+		 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	cvtProc                
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def 
+	cvtProc              
+	/is width depth wbytes string def
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+fMLevel1 {
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/kk cynu magu min yelu min def
+		/u kk currentundercolorremoval exec def
+%		/u 0 def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 kk currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+}
+{
+/colorSetup2 {
+	[ /Indexed /DeviceRGB 255 
+		{dup red exch get 255 div 
+		 exch dup green exch get 255 div 
+		 exch blue exch get 255 div}
+	] setcolorspace
+} bind def
+} ifelse
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch fmConcatProcs settransfer
+} bind def
+/BITMAPCOLOR { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def
+	fMLevel1 {	
+		colorsetup
+		/is width depth wbytes string def
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	} {
+		colorSetup2
+		/is width depth wbytes string def
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {cf is readhexstring pop} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	fMLevel1 {	
+		colorsetup
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{ip} {is} {is} true 3 colorimage
+	} {
+		colorSetup2
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {ip} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+	/depth 24 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip pop ris} {gis} {bis} true 3 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCMYKc { 
+	/depth 32 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip4 pop cis} {mis} {yis} {kis} true 4 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLOR { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYK { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /mis width string def
+        /yis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf mis readhexstring pop } 
+        { cf yis readhexstring pop } 
+        { cf kis readhexstring pop } 
+        true 4 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+	/depth 24 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop ris gis bis width gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAYc { 
+	/depth 32 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop cis mis yis kis width cgray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/cgray { 
+        /ww exch def
+        /k exch def
+        /y exch def
+        /m exch def
+        /c exch def
+        0 1 ww 1 sub { /i exch def c i get m i get y i get k i get CMYKtoRGB
+				.144 mul 3 1 roll .587 mul 3 1 roll .299 mul add add
+				c i 3 -1 roll floor cvi put } for
+        c
+ 		} bind def
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop width gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /yis width string def
+        /mis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf mis readhexstring pop 
+          cf yis readhexstring pop 
+          cf kis readhexstring pop width cgray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+/I { setdash } bind def
+/J { [] 0 setdash } bind def
+%%EndProlog
+%%BeginSetup
+(5.0) FMVERSION
+1 1 0 0 595.3 841.89 0 1 11 FMDOCUMENT
+0 0 /Times-Bold FMFONTDEFINE
+1 0 /Times-Italic FMFONTDEFINE
+2 0 /Times-Roman FMFONTDEFINE
+3 1 /Symbol FMFONTDEFINE
+4 0 /Courier FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 0.1 FMFILL
+2 0.3 FMFILL
+3 0.5 FMFILL
+4 0.7 FMFILL
+5 0.9 FMFILL
+6 0.97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 0.9 FMFILL
+18 0.7 FMFILL
+19 0.5 FMFILL
+20 0.3 FMFILL
+21 0.1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "1" 1
+%%BeginPaperSize: A4
+%%EndPaperSize
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+[ 1 1 1 0 0 0 0]
+[ 0 0 0 0 1 1 1]
+ 9 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+J
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(Abstract) 160.42 677.15 T
+1 F
+4.45 (Pr) 70.87 655.15 P
+4.45 (e) 79.54 655.15 P
+4.45 (viously ther) 83.4 655.15 P
+4.45 (e have been dif) 129.77 655.15 P
+4.45 (\336culties in accur) 197.2 655.15 P
+4.45 (ately) 265.97 655.15 P
+1.07 (establishing the time corr) 70.87 644.15 P
+1.07 (elation between e) 165.99 644.15 P
+1.07 (vents r) 230.99 644.15 P
+1.07 (eported) 255.97 644.15 P
+-0.37 (on gr) 70.87 633.15 P
+-0.37 (ound via pac) 89.35 633.15 P
+-0.37 (k) 134.92 633.15 P
+-0.37 (et telemetry data and their actual time of) 138.82 633.15 P
+2.25 (occurr) 70.87 622.15 P
+2.25 (ence in an onboar) 94.53 622.15 P
+2.25 (d application. The Local T) 166.2 622.15 P
+2.25 (ime) 270.47 622.15 P
+4.54 (Mana) 70.87 611.15 P
+4.54 (g) 91.78 611.15 P
+4.54 (ement System is a r) 96.19 611.15 P
+4.54 (adiation har) 183.71 611.15 P
+4.54 (d component) 232.68 611.15 P
+0.38 (enabling user) 70.87 600.15 P
+0.38 (s to o) 120.41 600.15 P
+0.38 (ver) 140.58 600.15 P
+0.38 (come this pr) 151.74 600.15 P
+0.38 (oblem by time stamping) 196.59 600.15 P
+1.47 (data at sour) 70.87 589.15 P
+1.47 (ce) 116.98 589.15 P
+1.47 (. The high r) 124.84 589.15 P
+1.47 (esolution and pr) 170.92 589.15 P
+1.47 (ecision of the) 232.53 589.15 P
+-0.08 (local time r) 70.87 578.15 P
+-0.08 (efer) 111.87 578.15 P
+-0.08 (ence) 125.53 578.15 P
+-0.08 (, with whic) 141.93 578.15 P
+-0.08 (h data may be time stamped,) 180.89 578.15 P
+(is maintained automatically by this ne) 70.87 567.15 T
+(w component.) 207.98 567.15 T
+0 F
+(1) 70.87 545.15 T
+(INTR) 99.22 545.15 T
+(ODUCTION) 121.45 545.15 T
+2 F
+1.2 (W) 70.87 523.15 P
+1.2 (ith the adv) 79.01 523.15 P
+1.2 (ent of pack) 119.26 523.15 P
+1.2 (et telemetry) 161.54 523.15 P
+1.2 (, the time correlation) 204.9 523.15 P
+-0.29 (between the generation of onboard data and its reception on) 70.87 512.15 P
+1.25 (ground has become more comple) 70.87 501.15 P
+1.25 (x compared to pre) 195.21 501.15 P
+1.25 (vious) 263.96 501.15 P
+3.1 (use of \336x) 70.87 490.15 P
+3.1 (ed frame protocols. P) 110.44 490.15 P
+3.1 (ack) 196.6 490.15 P
+3.1 (et telemetry allo) 209 490.15 P
+3.1 (ws) 273.47 490.15 P
+3.21 (dynamic bandwidth allocation schemes, b) 70.87 479.15 P
+3.21 (uf) 234.25 479.15 P
+3.21 (fering etc.,) 241.52 479.15 P
+0.37 (making it \337e) 70.87 468.15 P
+0.37 (xible and adaptable. This ho) 116.98 468.15 P
+0.37 (we) 219.98 468.15 P
+0.37 (v) 230.25 468.15 P
+0.37 (er leads to an) 234.62 468.15 P
+2.32 (asynchronous deli) 70.87 457.15 P
+2.32 (v) 138.2 457.15 P
+2.32 (ery system which is no longer fully) 142.57 457.15 P
+0.16 (deterministic in that the sampling instant is not related to a) 70.87 446.15 P
+0.46 (position in the transfer frame. The task of determining the) 70.87 435.15 P
+2.33 (time when data were sampled or generated onboard is) 70.87 424.15 P
+1.97 (therefore not simple an) 70.87 413.15 P
+1.97 (ymore. Hence, ne) 159.86 413.15 P
+1.97 (w methods are) 227.05 413.15 P
+2.5 (required for pro) 70.87 402.15 P
+2.5 (viding the users with time information) 132.71 402.15 P
+(related to the telemetry data stream.) 70.87 391.15 T
+3.31 (The purpose of the Local T) 70.87 369.15 P
+3.31 (ime Management System) 185.35 369.15 P
+6.18 (\050L) 70.87 358.15 P
+6.18 (TMS\051 component is to pro) 78.54 358.15 P
+6.18 (vide time coherence) 198.63 358.15 P
+3.08 (throughout the spacecraft without requiring processing) 70.87 347.15 P
+1.66 (po) 70.87 336.15 P
+1.66 (wer from the applications using it. It pro) 79.64 336.15 P
+1.66 (vides a time) 236.64 336.15 P
+-0.24 (stamp f) 70.87 325.15 P
+-0.24 (acility for datation of e) 97.29 325.15 P
+-0.24 (v) 178.58 325.15 P
+-0.24 (ents, an alarm clock, a pulse) 182.95 325.15 P
+(generator) 70.87 314.15 T
+(, a w) 104.49 314.15 T
+(a) 121.65 314.15 T
+(v) 125.46 314.15 T
+(eform generator and a stopw) 129.83 314.15 T
+(atch.) 232.71 314.15 T
+1.95 (The L) 70.87 292.15 P
+1.95 (TMS is being de) 93.74 292.15 P
+1.95 (v) 159.12 292.15 P
+1.95 (eloped by IMEC \050B\051 under the) 163.48 292.15 P
+0.05 (prime contractor Dornier Satellitensysteme \050D\051 and will be) 70.87 281.15 P
+3.45 (manuf) 70.87 270.15 P
+3.45 (actured by MITEL Semiconductors \050S\051 in their) 93.78 270.15 P
+1.9 (radiation hard SOS5 process. The capability assessment) 70.87 259.15 P
+2.08 (programme for the SOS5 process will be completed in) 70.87 248.15 P
+-0.47 (2Q97 and it is e) 70.87 237.15 P
+-0.47 (xpected to recei) 125.84 237.15 P
+-0.47 (v) 181.64 237.15 P
+-0.47 (e ESA Capability Appro) 186.01 237.15 P
+-0.47 (v) 272.7 237.15 P
+-0.47 (al) 276.97 237.15 P
+0.18 (in 2Q98. The foundry \050former ABB Hafo\051 will support the) 70.87 226.15 P
+-0.51 (L) 70.87 215.15 P
+-0.51 (TMS as an Application Speci\336c Standard Product \050ASSP\051,) 75.54 215.15 P
+1.55 (with a complete data sheet \050Ref.) 70.87 204.15 P
+1.55 (1\051. First prototypes are) 196.83 204.15 P
+(e) 70.87 193.15 T
+(xpected in 2Q97.) 74.73 193.15 T
+-0.05 (The de) 70.87 171.15 P
+-0.05 (v) 95.34 171.15 P
+-0.05 (elopment is funded by the European Space Agenc) 99.71 171.15 P
+-0.05 (y) 278.97 171.15 P
+1.29 (and is managed by the Microelectronics and T) 70.87 160.15 P
+1.29 (echnology) 245.97 160.15 P
+1.36 (section at the European Space Research and T) 70.87 149.15 P
+1.36 (echnology) 245.97 149.15 P
+(Centre.) 70.87 138.15 T
+1.63 (The concept of decentralised onboard time references is) 70.87 116.15 P
+0.5 (discussed in the ne) 70.87 105.15 P
+0.5 (xt section, follo) 139.97 105.15 P
+0.5 (wed by a description of) 196.99 105.15 P
+0.7 (ho) 70.87 94.15 P
+0.7 (w time coherence is achie) 79.64 94.15 P
+0.7 (v) 175.19 94.15 P
+0.7 (ed with the L) 179.55 94.15 P
+0.7 (TMS and what) 228.57 94.15 P
+1.65 (kind of time f) 311.81 677.15 P
+1.65 (acilities it of) 365.94 677.15 P
+1.65 (fers. An e) 414.02 677.15 P
+1.65 (xample of ho) 452.43 677.15 P
+1.65 (w the) 503.01 677.15 P
+3.06 (L) 311.81 666.15 P
+3.06 (TMS can be used together with the On-Board Data) 316.48 666.15 P
+2.54 (Handling \050OBDH\051 b) 311.81 655.15 P
+2.54 (us is pro) 390.7 655.15 P
+2.54 (vided. Finally) 426.14 655.15 P
+2.54 (, the design) 478.09 655.15 P
+0.08 (methodology applied during the de) 311.81 644.15 P
+0.08 (v) 437.89 644.15 P
+0.08 (elopment of the L) 442.26 644.15 P
+0.08 (TMS) 505.91 644.15 P
+(component is presented.) 311.81 633.15 T
+0 F
+(2) 311.81 611.15 T
+(DECENTRALISED ONBO) 340.16 611.15 T
+(ARD TIME) 446.06 611.15 T
+(DISTRIB) 340.16 600.15 T
+(UTION) 377.08 600.15 T
+2 F
+0.34 (The general approach to accurately maintain onboard time) 311.81 578.15 P
+1.02 (is to ha) 311.81 567.15 P
+1.02 (v) 339.68 567.15 P
+1.02 (e a central time reference measuring the elapsed) 344.05 567.15 P
+-0.14 (time from an arbitrary epoch and to distrib) 311.81 556.15 P
+-0.14 (ute re) 463.84 556.15 P
+-0.14 (gularly this) 483.8 556.15 P
+2.69 (time information to onboard applications by means of) 311.81 545.15 P
+2.92 (messages and synchronisation pulses. Each application) 311.81 534.15 P
+1.04 (maintains its local reference of the elapsed time which it) 311.81 523.15 P
+2.7 (synchronises with the central time reference using the) 311.81 512.15 P
+(aforementioned means.) 311.81 501.15 T
+2.32 (Another approach w) 311.81 479.15 P
+2.32 (ould be to ha) 389.84 479.15 P
+2.32 (v) 443.36 479.15 P
+2.32 (e a centralised time) 447.72 479.15 P
+1.3 (system, where each application that needs to time stamp) 311.81 468.15 P
+1.76 (data could request the unit maintaining the central time) 311.81 457.15 P
+-0 (reference to pro) 311.81 446.15 P
+-0 (vide the rele) 368.64 446.15 P
+-0 (v) 412.9 446.15 P
+-0 (ant time information. Such an) 417.18 446.15 P
+1.37 (approach w) 311.81 435.15 P
+1.37 (ould ha) 354.82 435.15 P
+1.37 (v) 382.76 435.15 P
+1.37 (e se) 387.12 435.15 P
+1.37 (v) 402.01 435.15 P
+1.37 (eral inherent dra) 406.37 435.15 P
+1.37 (wbacks, e.g. in) 467.94 435.15 P
+1.71 (systems with man) 311.81 424.15 P
+1.71 (y users, the accurac) 379.6 424.15 P
+1.71 (y of a time stamp) 455.07 424.15 P
+3.03 (could be jeopardised due to long service latenc) 311.81 413.15 P
+3.03 (y and) 501.63 413.15 P
+-0.04 (e) 311.81 402.15 P
+-0.04 (xcessi) 315.67 402.15 P
+-0.04 (v) 337.45 402.15 P
+-0.04 (e b) 341.81 402.15 P
+-0.04 (us traf) 352.34 402.15 P
+-0.04 (\336c could de) 374.82 402.15 P
+-0.04 (grade the o) 416.6 402.15 P
+-0.04 (v) 456.37 402.15 P
+-0.04 (erall performance) 460.73 402.15 P
+3.46 (of the OBDH system. These reasons ha) 311.81 391.15 P
+3.46 (v) 474.13 391.15 P
+3.46 (e made the) 478.5 391.15 P
+2.42 (distrib) 311.81 380.15 P
+2.42 (uted approach the preferred one and it has been) 334.64 380.15 P
+-0.24 (selected for a standard that will go) 311.81 369.15 P
+-0.24 (v) 434.2 369.15 P
+-0.24 (ern the time distrib) 438.57 369.15 P
+-0.24 (ution) 505.91 369.15 P
+(on future spacecraft.) 311.81 358.15 T
+0.94 (Pre) 311.81 336.15 P
+0.94 (vious implementations ha) 323.59 336.15 P
+0.94 (v) 417.8 336.15 P
+0.94 (e required support from the) 422.16 336.15 P
+0.28 (application processor to maintain synchronisation between) 311.81 325.15 P
+1.92 (the central and the local time references. Protocols and) 311.81 314.15 P
+2.72 (formats for distrib) 311.81 303.15 P
+2.72 (uting time information ha) 382.58 303.15 P
+2.72 (v) 482.82 303.15 P
+2.72 (e dif) 487.18 303.15 P
+2.72 (fered) 505.93 303.15 P
+0.15 (between spacecraft and ha) 311.81 292.15 P
+0.15 (v) 406.8 292.15 P
+0.15 (e sometimes only pro) 411.17 292.15 P
+0.15 (vided lo) 488.74 292.15 P
+0.15 (w) 517.91 292.15 P
+(resolution or poor accurac) 311.81 281.15 T
+(y) 405.9 281.15 T
+(.) 409.82 281.15 T
+1.11 (The purpose of the L) 311.81 259.15 P
+1.11 (TMS is to pro) 390.91 259.15 P
+1.11 (vide an accurate time) 444.36 259.15 P
+0.38 (coherence throughout the spacecraft without requiring an) 311.81 248.15 P
+0.38 (y) 519.91 248.15 P
+-0.26 (processing po) 311.81 237.15 P
+-0.26 (wer from the applications using it. The L) 361.07 237.15 P
+-0.26 (TMS) 505.91 237.15 P
+-0.48 (does not only pro) 311.81 226.15 P
+-0.48 (vide local time information to its users, b) 372.98 226.15 P
+-0.48 (ut) 517.41 226.15 P
+-0.02 (also implements adv) 311.81 215.15 P
+-0.02 (anced checks in order to determine the) 385.55 215.15 P
+0.49 (quality and v) 311.81 204.15 P
+0.49 (alidity of the recei) 359.58 204.15 P
+0.49 (v) 426.57 204.15 P
+0.49 (ed time information. This) 430.93 204.15 P
+-0.39 (point has v) 311.81 193.15 P
+-0.39 (ery often been ne) 350.4 193.15 P
+-0.39 (glected in past implementations) 411.33 193.15 P
+0.86 (where the loop w) 311.81 182.15 P
+0.86 (as left open, e.g. users were not w) 376.54 182.15 P
+0.86 (arned) 504.42 182.15 P
+1.95 (when f) 311.81 171.15 P
+1.95 (aulty time information had been recei) 338.41 171.15 P
+1.95 (v) 483.16 171.15 P
+1.95 (ed due to) 487.52 171.15 P
+3.22 (transmission errors, synchronisation problems or other) 311.81 160.15 P
+(error sources.) 311.81 149.15 T
+4.57 (The L) 311.81 127.15 P
+4.57 (TMS implements the incoming ESA standard) 337.3 127.15 P
+-0.25 (specifying a time distrib) 311.81 116.15 P
+-0.25 (ution protocol as sho) 398.13 116.15 P
+-0.25 (wn in \336gure) 472.41 116.15 P
+-0.25 (1.) 517.66 116.15 P
+2.96 (This mak) 311.81 105.15 P
+2.96 (es the component suitable for use on future) 348.44 105.15 P
+1.64 (spacecraft. The protocol has been de\336ned in a w) 311.81 94.15 P
+1.64 (ay that) 498.53 94.15 P
+0 12 Q
+(A LOCAL TIME MAN) 164.25 763.03 T
+(A) 285.01 763.03 T
+(GEMENT SYSTEM ASSP) 293.01 763.03 T
+2 9 Q
+(Ste) 144.14 740.03 T
+(v) 155.42 740.03 T
+(en Redant) 159.78 740.03 T
+-1.12 (Sandi Habinc) 386.65 740.03 P
+1 F
+-0.56 (IMEC, Kapeldr) 115.88 724.03 P
+-0.56 (eef 75, B-3001) 170.98 724.03 P
+(ESA/ESTEC WSM, P) 328.76 724.03 T
+(ostb) 404.29 724.03 T
+(us 299, NL-2200 A) 419.11 724.03 T
+(G) 486.8 724.03 T
+(Leuven, Belgium) 139.84 713.03 T
+-0.75 (Noor) 360.06 713.03 P
+-0.75 (dwijk, The Netherlands) 378.23 713.03 P
+-2.25 (r) 140.49 702.03 P
+-2.25 (edant@imec.be) 143.66 702.03 P
+(sandi@ws.estec.esa.nl) 370.51 702.03 T
+FMENDPAGE
+%%EndPage: "1" 1
+%%Page: "2" 2
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+[ 1 1 1 0 0 0 0]
+[ 0 0 0 0 1 1 1]
+ 9 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 9 Q
+0 X
+0 0 0 1 0 0 0 K
+2.24 (e) 72 439.04 P
+2.24 (xploits the synchronous distrib) 75.86 439.04 P
+2.24 (ution capabilities of the) 193.15 439.04 P
+1.74 (OBDH b) 72 428.04 P
+1.74 (us to eliminate an) 105.81 428.04 P
+1.74 (y requirements for additional) 174.64 428.04 P
+7.66 (harness or dedicated interrog) 72 417.04 P
+7.66 (ation/response traf) 199.17 417.04 P
+7.66 (\336c,) 273.35 417.04 P
+-0.5 (although being suitable for other types of data b) 72 406.04 P
+-0.5 (uses as well.) 240.34 406.04 P
+2.48 (The protocol does not disrupt other users \050in dif) 72 395.04 P
+2.48 (ferent) 263.61 395.04 P
+2.4 (terminals\051 in case one user is out of synchronism. By) 72 384.04 P
+1.35 (contrast, e.g. in the ERS spacecraft, all users ha) 72 373.04 P
+1.35 (v) 253.55 373.04 P
+1.35 (e to be) 257.91 373.04 P
+(disrupted in case a single local time counter f) 72 362.04 T
+(ails.) 234.88 362.04 T
+2.27 (The correlation between the central time reference and) 72 340.04 P
+-0.55 (ground has already been foreseen by pro) 72 329.04 P
+-0.55 (viding a time strobe) 214.51 329.04 P
+2.03 (from the V) 72 318.04 P
+2.03 (irtual Channel Assembler \050VCA\051 component) 115.01 318.04 P
+1.78 (situated in the telemetry encoder \050also manuf) 72 307.04 P
+1.78 (actured by) 245.08 307.04 P
+2.73 (MITEL Semiconductors\051. The VCA time strobe has a) 72 296.04 P
+4.26 (deterministic relationship to the bit structure of the) 72 285.04 P
+-0.42 (telemetry frame. This mak) 72 274.04 P
+-0.42 (es it possible to establish the time) 166.13 274.04 P
+0.77 (relation between the assertion of this time strobe onboard) 72 263.04 P
+0.84 (and the reception of the rele) 72 252.04 P
+0.84 (v) 176.71 252.04 P
+0.84 (ant frame on ground, taking) 180.99 252.04 P
+-0.26 (into account the do) 72 241.04 P
+-0.26 (wn link propag) 139.73 241.04 P
+-0.26 (ation delay) 193.65 241.04 P
+-0.26 (. This in) 232.55 241.04 P
+-0.26 (v) 261.41 241.04 P
+-0.26 (olv) 265.73 241.04 P
+-0.26 (es) 277.1 241.04 P
+0.71 (sampling the central time reference at the assertion of the) 72 230.04 P
+2.04 (time strobe and sending do) 72 219.04 P
+2.04 (wn the v) 176.91 219.04 P
+2.04 (alue in a telemetry) 211.76 219.04 P
+0.12 (pack) 72 208.04 P
+0.12 (et. The relation between the elapsed onboard time and) 88.9 208.04 P
+0.79 (the local time of the recei) 72 197.04 P
+0.79 (ving ground station can then be) 167.43 197.04 P
+(determined.) 72 186.04 T
+0.42 (As will be e) 72 164.04 P
+0.42 (xplained, each L) 116.38 164.04 P
+0.42 (TMS maintains its o) 176.13 164.04 P
+0.42 (wn phase) 250.43 164.04 P
+2.23 (lock) 72 153.04 P
+2.23 (ed cop) 87.41 153.04 P
+2.23 (y of the central elapsed time reference with) 113.29 153.04 P
+-0.02 (which onboard applications can time stamp their data. This) 72 142.04 P
+-0.11 (unbrok) 72 131.04 P
+-0.11 (en chain of time relationships onboard, and between) 97.41 131.04 P
+3.06 (the spacecraft and ground, pro) 72 120.04 P
+3.06 (vides a solution to the) 193.34 120.04 P
+0.88 (problem of kno) 72 109.04 P
+0.88 (wing when an e) 129.04 109.04 P
+0.88 (v) 188.21 109.04 P
+0.88 (ent took place onboard a) 192.58 109.04 P
+(spacecraft in an) 72 98.04 T
+(y gi) 128.34 98.04 T
+(v) 141.87 98.04 T
+(en space-time frame.) 146.24 98.04 T
+0 F
+(3) 312.95 439.04 T
+(TIME COHERENCE WITH THE L) 341.3 439.04 T
+(TMS) 482 439.04 T
+2 F
+1.25 (The L) 312.95 417.04 P
+1.25 (TMS maintains a local cop) 335.12 417.04 P
+1.25 (y of the central elapsed) 437.05 417.04 P
+0.6 (time \050ET\051 reference and is typically embedded in the host) 312.95 406.04 P
+0.26 (application. The format of the ET is sho) 312.95 395.04 P
+0.26 (wn in \336gure) 458.52 395.04 P
+0.26 (2. All) 504.79 395.04 P
+2.64 (time information sent to or pro) 312.95 384.04 P
+2.64 (vided by the L) 436.79 384.04 P
+2.64 (TMS is) 496.14 384.04 P
+-0.43 (compliant to the CUC format described in the CCSDS T) 312.95 373.04 P
+-0.43 (ime) 512.05 373.04 P
+-0.23 (Code Standards \050Ref.) 312.95 362.04 P
+-0.23 (2\051. The L) 391.99 362.04 P
+-0.23 (TMS ET counter is the local) 424.44 362.04 P
+1.26 (time reference consisting of the \336ne ET counter \05022 bits) 312.95 351.04 P
+1.27 (with sub-second weights\051 and the coarse ET counter \05032) 312.95 340.04 P
+1.95 (bits, with the least signi\336cant bit ha) 312.95 329.04 P
+1.95 (ving a weight of 1) 452.24 329.04 P
+-0.5 (second\051. The full ET counter pro) 312.95 318.04 P
+-0.5 (vides a wrap-around period) 428.31 318.04 P
+-0.12 (of 136 years, which should be more than suf) 312.95 307.04 P
+-0.12 (\336cient. The ET) 471.53 307.04 P
+0.2 (counter resolution depends on the selected operating mode) 312.95 296.04 P
+0.24 (of the L) 312.95 285.04 P
+0.24 (TMS. As a result of this, the least signi\336cant bit of) 341.11 285.04 P
+0.21 (the ET counter can ha) 312.95 274.04 P
+0.21 (v) 392.59 274.04 P
+0.21 (e the weights 2) 396.95 274.04 P
+2 7.2 Q
+0.17 (-22) 451.82 277.64 P
+2 9 Q
+0.21 (, 2) 461.42 274.04 P
+2 7.2 Q
+0.17 (-21) 470.63 277.64 P
+2 9 Q
+0.21 (, 2) 480.23 274.04 P
+2 7.2 Q
+0.17 (-20) 489.43 277.64 P
+2 9 Q
+0.21 ( or 2) 499.03 274.04 P
+2 7.2 Q
+0.17 (-19) 515.95 277.64 P
+2 9 Q
+4.23 (of a second, corresponding to a resolution between) 312.95 263.04 P
+(approximately 240 ns to 2) 312.95 252.04 T
+3 F
+(m) 409.2 252.04 T
+2 F
+(s.) 414.38 252.04 T
+0.22 (The central ET reference is assumed to be managed by the) 312.95 230.04 P
+2.29 (Central T) 312.95 219.04 P
+2.29 (ime Management System \050CTMS\051. Coherence) 349.17 219.04 P
+4.21 (between the central and the local ET references is) 312.95 208.04 P
+4.47 (maintained by means of synchronisation information) 312.95 197.04 P
+1.18 (distrib) 312.95 186.04 P
+1.18 (uted from the CTMS. The L) 335.78 186.04 P
+1.18 (TMS performs re) 442.34 186.04 P
+1.18 (gular) 507.05 186.04 P
+1.13 (synchronisations with respect to the central ET reference) 312.95 175.04 P
+1.61 (using this information. The information pro) 312.95 164.04 P
+1.61 (vided by the) 477.84 164.04 P
+0.95 (CTMS to the L) 312.95 153.04 P
+0.95 (TMS comprises messages containing time) 369.74 153.04 P
+(codes, synchronisation pulses and phase references.) 312.95 142.04 T
+0 (Ev) 312.95 120.04 P
+0 (ery second a message including a time code is broadcast) 322.82 120.04 P
+1.27 (from the CTMS to all L) 312.95 109.04 P
+1.27 (TMS components in the system.) 404.22 109.04 P
+-0.33 (Each message is follo) 312.95 98.04 P
+-0.33 (wed by a synchronisation pulse which) 389.97 98.04 P
+1 1 1 0 0 0 0 K
+128.69 724.43 444.81 724.43 2 L
+0.56 H
+2 Z
+1 1 1 0 0 0 0 K
+N
+0 0 0 0 1 1 1 K
+449.31 724.43 444.81 722.74 444.81 726.11 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+449.31 724.43 444.81 722.74 444.81 726.11 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+156.81 741.3 218.69 741.3 218.69 724.43 156.81 724.43 4 Y
+0.56 H
+N
+156.81 746.93 156.81 717.68 2 L
+2 Z
+N
+0 0 0 0 1 1 1 K
+156.81 713.18 155.12 717.68 158.5 717.68 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+2 5.62 Q
+1 1 1 0 0 0 0 K
+(T) 139.94 758.18 T
+(ime = i  seconds) 143.18 758.18 T
+(Synchronisation Pulse) 139.94 750.86 T
+(L) 156.81 707.55 T
+(TMS uses CTMS Message i-1) 159.73 707.55 T
+156.81 713.18 155.12 717.68 158.5 717.68 3 Y
+V
+N
+319.94 746.93 319.94 717.68 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+319.94 713.18 318.25 717.68 321.62 717.68 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(T) 297.44 758.18 T
+(ime = i+1  seconds) 300.68 758.18 T
+(Synchronisation Pulse) 297.44 750.86 T
+(L) 319.94 707.55 T
+(TMS uses CTMS Message i) 322.86 707.55 T
+(T) 454.94 724.43 T
+(ime) 458.18 724.43 T
+(CTMS Message to be) 162.44 735.68 T
+( used at i+1 seconds) 162.44 728.36 T
+319.94 713.18 318.25 717.68 321.62 717.68 3 Y
+V
+N
+(Synch.) 137.12 735.68 T
+(P) 137.12 728.36 T
+(attern) 140.17 728.36 T
+134.31 741.3 156.81 741.3 156.81 724.43 134.31 724.43 4 Y
+0.56 H
+N
+(Optional Mission) 224.31 735.68 T
+(P) 224.31 728.36 T
+(arameters) 227.36 728.36 T
+218.69 741.3 269.31 741.3 269.31 724.43 218.69 724.43 4 Y
+N
+(CTMS Message to be) 325.56 735.68 T
+( used at i+2 seconds) 325.56 728.36 T
+319.94 741.3 381.81 741.3 381.81 724.43 319.94 724.43 4 Y
+N
+(Synch.) 300.25 735.68 T
+(P) 300.25 728.36 T
+(attern) 303.29 728.36 T
+297.44 741.3 319.94 741.3 319.94 724.43 297.44 724.43 4 Y
+N
+(Optional Mission) 387.44 735.68 T
+(P) 387.44 728.36 T
+(arameters) 390.48 728.36 T
+(All-Zero) 272.12 730.05 T
+(All-Zero) 435.25 730.05 T
+2 6.75 Q
+(* Synchronisation P) 134.31 695.18 T
+(attern) 188.59 695.18 T
+381.81 741.3 432.44 741.3 432.44 724.43 381.81 724.43 4 Y
+N
+2 5.62 Q
+(Synch.) 139.94 685.05 T
+(Pulse) 139.94 677.74 T
+134.31 690.68 156.81 690.68 156.81 673.8 134.31 673.8 4 Y
+N
+134.31 656.93 151.19 656.93 151.19 628.8 134.31 628.8 4 Y
+N
+(P) 0 -270 160.75 634.43 TF
+(arity) 0 -270 160.75 637.47 TF
+(CTMS) 0 -270 141.06 632.4 TF
+(Status) 0 -270 148.38 633.18 TF
+151.19 656.93 162.44 656.93 162.44 628.8 151.19 628.8 4 Y
+N
+162.44 656.93 179.31 656.93 179.31 628.8 162.44 628.8 4 Y
+N
+(P) 0 -270 188.88 634.43 TF
+(arity) 0 -270 188.88 637.47 TF
+(CTMS) 0 -270 169.19 632.4 TF
+(Status) 0 -270 176.5 633.18 TF
+179.31 656.93 190.56 656.93 190.56 628.8 179.31 628.8 4 Y
+N
+190.56 656.93 207.44 656.93 207.44 628.8 190.56 628.8 4 Y
+N
+(P) 0 -270 217 634.43 TF
+(arity) 0 -270 217 637.47 TF
+(ET) 0 -270 197.31 636.62 TF
+(Coarse) 0 -270 204.62 632.24 TF
+207.44 656.93 218.69 656.93 218.69 628.8 207.44 628.8 4 Y
+N
+218.69 656.93 235.56 656.93 235.56 628.8 218.69 628.8 4 Y
+N
+(P) 0 -270 245.12 634.43 TF
+(arity) 0 -270 245.12 637.47 TF
+(ET) 0 -270 225.44 636.62 TF
+(Coarse) 0 -270 232.75 632.24 TF
+235.56 656.93 246.81 656.93 246.81 628.8 235.56 628.8 4 Y
+N
+246.81 656.93 263.69 656.93 263.69 628.8 246.81 628.8 4 Y
+N
+(P) 0 -270 273.25 634.43 TF
+(arity) 0 -270 273.25 637.47 TF
+(ET) 0 -270 253.56 636.62 TF
+(Coarse) 0 -270 260.88 632.24 TF
+263.69 656.93 274.94 656.93 274.94 628.8 263.69 628.8 4 Y
+N
+274.94 656.93 291.81 656.93 291.81 628.8 274.94 628.8 4 Y
+N
+(P) 0 -270 301.38 634.43 TF
+(arity) 0 -270 301.38 637.47 TF
+(ET) 0 -270 281.69 636.62 TF
+(Coarse) 0 -270 289 632.24 TF
+291.81 656.93 303.06 656.93 303.06 628.8 291.81 628.8 4 Y
+N
+162.44 623.18 179.31 623.18 179.31 595.05 162.44 595.05 4 Y
+N
+(P) 0 -270 188.88 600.68 TF
+(arity) 0 -270 188.88 603.72 TF
+(Pulse) 0 -270 172 600.21 TF
+179.31 623.18 190.56 623.18 190.56 595.05 179.31 595.05 4 Y
+N
+190.56 623.18 207.44 623.18 207.44 595.05 190.56 595.05 4 Y
+N
+(P) 0 -270 217 600.68 TF
+(arity) 0 -270 217 603.72 TF
+(Pulse) 0 -270 200.12 600.21 TF
+207.44 623.18 218.69 623.18 218.69 595.05 207.44 595.05 4 Y
+N
+218.69 623.18 235.56 623.18 235.56 595.05 218.69 595.05 4 Y
+N
+(P) 0 -270 245.12 600.68 TF
+(arity) 0 -270 245.12 603.72 TF
+(Pulse) 0 -270 228.25 600.21 TF
+235.56 623.18 246.81 623.18 246.81 595.05 235.56 595.05 4 Y
+N
+162.44 589.43 179.31 589.43 179.31 561.3 162.44 561.3 4 Y
+N
+(P) 0 -270 188.88 566.93 TF
+(arity) 0 -270 188.88 569.97 TF
+(W) 0 -270 169.19 563.34 TF
+(a) 0 -270 169.19 568.2 TF
+(v) 0 -270 169.19 570.59 TF
+(eform) 0 -270 169.19 573.31 TF
+(Coarse) 0 -270 176.5 567.56 TF
+179.31 589.43 190.56 589.43 190.56 561.3 179.31 561.3 4 Y
+N
+190.56 589.43 207.44 589.43 207.44 561.3 190.56 561.3 4 Y
+N
+(P) 0 -270 217 566.93 TF
+(arity) 0 -270 217 569.97 TF
+(W) 0 -270 197.31 563.34 TF
+(a) 0 -270 197.31 568.2 TF
+(v) 0 -270 197.31 570.59 TF
+(eform) 0 -270 197.31 573.31 TF
+(Coarse) 0 -270 204.62 567.56 TF
+207.44 589.43 218.69 589.43 218.69 561.3 207.44 561.3 4 Y
+N
+218.69 589.43 235.56 589.43 235.56 561.3 218.69 561.3 4 Y
+N
+(P) 0 -270 245.12 566.93 TF
+(arity) 0 -270 245.12 569.97 TF
+(W) 0 -270 225.44 563.34 TF
+(a) 0 -270 225.44 568.2 TF
+(v) 0 -270 225.44 570.59 TF
+(eform) 0 -270 225.44 573.31 TF
+(Fine) 0 -270 232.75 570.36 TF
+235.56 589.43 246.81 589.43 246.81 561.3 235.56 561.3 4 Y
+N
+246.81 589.43 263.69 589.43 263.69 561.3 246.81 561.3 4 Y
+N
+(P) 0 -270 273.25 566.93 TF
+(arity) 0 -270 273.25 569.97 TF
+(W) 0 -270 253.56 563.34 TF
+(a) 0 -270 253.56 568.2 TF
+(v) 0 -270 253.56 570.59 TF
+(eform) 0 -270 253.56 573.31 TF
+(Fine) 0 -270 260.88 570.36 TF
+263.69 589.43 274.94 589.43 274.94 561.3 263.69 561.3 4 Y
+N
+274.94 589.43 291.81 589.43 291.81 561.3 274.94 561.3 4 Y
+N
+(P) 0 -270 301.38 566.93 TF
+(arity) 0 -270 301.38 569.97 TF
+(W) 0 -270 281.69 563.34 TF
+(a) 0 -270 281.69 568.2 TF
+(v) 0 -270 281.69 570.59 TF
+(eform) 0 -270 281.69 573.31 TF
+(Fine) 0 -270 289 570.36 TF
+291.81 589.43 303.06 589.43 303.06 561.3 291.81 561.3 4 Y
+N
+303.06 589.43 319.94 589.43 319.94 561.3 303.06 561.3 4 Y
+N
+(P) 0 -270 329.5 566.93 TF
+(arity) 0 -270 329.5 569.97 TF
+(Polarity &) 0 -270 309.81 563.57 TF
+(Ratio) 0 -270 317.12 569.27 TF
+319.94 589.43 331.19 589.43 331.19 561.3 319.94 561.3 4 Y
+N
+331.19 589.43 348.06 589.43 348.06 561.3 331.19 561.3 4 Y
+N
+(P) 0 -270 357.62 566.93 TF
+(arity) 0 -270 357.62 569.97 TF
+(Ratio) 0 -270 340.75 566.46 TF
+2 6.75 Q
+(* CTMS Message) 134.31 661.43 T
+2 5.62 Q
+(Length: 54, 81, 117 or 144 bits) 218.69 662.55 T
+(Length: 3 bits) 218.69 696.3 T
+4 19.12 Q
+(+) 139.94 602.93 T
+(+) 139.94 569.18 T
+2 5.62 Q
+(ET Coarse = i+1 seconds when the CTMS Message is sent) 314.31 662.55 T
+(between i and i+1 seconds.) 314.31 655.24 T
+(CTMS Status \337ag v) 314.31 645.68 T
+(alues de\336ne if the follo) 358.71 645.68 T
+(wing \336elds are) 410.44 645.68 T
+(present.) 314.31 638.36 T
+(if CTMS Status Pulse Flag is 1) 258.06 611.93 T
+(If CTMS Status W) 370.56 578.18 T
+(a) 412.46 578.18 T
+(v) 414.84 578.18 T
+(eform Flag is 1) 417.57 578.18 T
+(Each information octet of the CTMS Message is follo) 139.94 550.05 T
+(wed by an e) 260.72 550.05 T
+(v) 287.61 550.05 T
+(en parity bit.) 290.33 550.05 T
+2 6.75 Q
+(* Mission P) 137.12 537.68 T
+(arameters) 169.28 537.68 T
+2 5.62 Q
+(Length: mission dependent) 221.5 538.8 T
+(The contents and length of this optional \336eld are mission dependent and he) 134.31 527.55 T
+(v) 302.9 527.55 T
+(e to guarantee a correct Synchronisation P) 305.63 527.55 T
+(attern and CTMS) 400.53 527.55 T
+(Message timing. Each information octet is follo) 134.31 520.24 T
+(wed by an e) 241.51 520.24 T
+(v) 268.39 520.24 T
+(en parity bit.) 271.12 520.24 T
+2 6.75 Q
+(* All-Zero) 134.31 509.55 T
+2 5.62 Q
+(Length: v) 218.69 510.68 T
+(ariable) 240.26 510.68 T
+(This is a sequence of zeros with v) 134.31 499.43 T
+(ariable length \050not octet based\051 to ensure the correct timing for the Synchronisation P) 210.25 499.43 T
+(atterns and CTMS) 401.85 499.43 T
+(Messages. Its length depends on the length of the CTMS Message and of the Mission P) 134.31 492.12 T
+(arameters.) 330.78 492.12 T
+(Used by Pulse Generator) 258.06 600.68 T
+(Used by W) 370.56 566.93 T
+(a) 395.42 566.93 T
+(v) 397.8 566.93 T
+(eform  Generator) 400.53 566.93 T
+(Used for L) 314.31 628.8 T
+(TMS Synchronisation) 338.16 628.8 T
+348.06 589.43 359.31 589.43 359.31 561.3 348.06 561.3 4 Y
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 0 0 1 0 0 0 K
+(Figure 1:) 70.87 467.39 T
+1 F
+(Serial messa) 127.56 467.39 T
+(g) 173.22 467.39 T
+(e format and sync) 177.63 467.39 T
+(hr) 241.74 467.39 T
+(onisation pulse timing) 249.33 467.39 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "2" 2
+%%Page: "3" 3
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+[ 1 1 1 0 0 0 0]
+[ 0 0 0 0 1 1 1]
+ 9 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 9 Q
+0 X
+0 0 0 1 0 0 0 K
+2.71 (acts as a `mark\325 to establish the instant at which the) 70.87 651.64 P
+0.35 (deli) 70.87 640.64 P
+0.35 (v) 84.14 640.64 P
+0.35 (ered time code is applied. The synchronisation pulses) 88.51 640.64 P
+3.61 (occur at one second interv) 70.87 629.64 P
+3.61 (als and coincide with the) 179.55 629.64 P
+-0.17 (increments of the units of seconds bit in the ET counter) 70.87 618.64 P
+-0.17 (. No) 268.14 618.64 P
+0.84 (sub-second information needs to be included in messages) 70.87 607.64 P
+(sent by the CTMS.) 70.87 596.64 T
+-0.48 (The messages accepted by the L) 70.87 574.64 P
+-0.48 (TMS are compliant with the) 183.88 574.64 P
+0.76 (Serial T) 70.87 563.64 P
+0.76 (ime Distrib) 100.06 563.64 P
+0.76 (ution Protocol as de\336ned by the 4-255) 141.4 563.64 P
+-0.34 (Data Bus Protocol Extensions \050Ref.) 70.87 552.64 P
+-0.34 (3\051. These messages can) 200.01 552.64 P
+0.87 (be acquired through a bit serial interf) 70.87 541.64 P
+0.87 (ace or via a parallel) 209.49 541.64 P
+-0.16 (microprocessor interf) 70.87 530.64 P
+-0.16 (ace. In the serial protocol, as has been) 147.85 530.64 P
+0.2 (depicted in \336gure) 70.87 519.64 P
+0.2 (1, the messages are Manchester encoded) 136.51 519.64 P
+3.84 (and also carry the synchronisation pulses and phase) 70.87 508.64 P
+-0.43 (references. T) 70.87 497.64 P
+-0.43 (o get the best accurac) 116.69 497.64 P
+-0.43 (y) 192.32 497.64 P
+-0.43 (, this information should) 196.24 497.64 P
+-0.43 (be deli) 70.87 486.64 P
+-0.43 (v) 94.46 486.64 P
+-0.43 (ered by a system which is coherent with the clock of) 98.82 486.64 P
+(the central time counter) 70.87 475.64 T
+(.) 155.6 475.64 T
+-0.41 (The parallel protocol, not sho) 70.87 453.64 P
+-0.41 (wn here, is similar to the serial) 175.22 453.64 P
+3.44 (one, b) 70.87 442.64 P
+3.44 (ut does not include parity or optional mission) 96.13 442.64 P
+1.39 (parameters. The parallel interf) 70.87 431.64 P
+1.39 (ace is compatible with the) 183.91 431.64 P
+5.61 (ERC32 and MA31750 \050both Mark-I and Mark-II\051) 70.87 420.64 P
+1.17 (microprocessors, requiring little or no additional e) 70.87 409.64 P
+1.17 (xternal) 258.47 409.64 P
+1.75 (hardw) 70.87 398.64 P
+1.75 (are for connecting them together) 93.27 398.64 P
+1.75 (. The input clock) 217.23 398.64 P
+0.24 (dri) 70.87 387.64 P
+0.24 (ving the microprocessor interf) 80.64 387.64 P
+0.24 (ace is decoupled from the) 190.01 387.64 P
+-0.01 (rest of the L) 70.87 376.64 P
+-0.01 (TMS allo) 113.76 376.64 P
+-0.01 (wing the microprocessor to operate at) 147.78 376.64 P
+(an arbitrary frequenc) 70.87 365.64 T
+(y) 146.2 365.64 T
+(.) 150.11 365.64 T
+0.45 (The L) 70.87 343.64 P
+0.45 (TMS checks the format and contents of the recei) 92.24 343.64 P
+0.45 (v) 270.6 343.64 P
+0.45 (ed) 274.97 343.64 P
+-0.2 (messages and also the timing of the synchronisation pulses.) 70.87 332.64 P
+0.06 (If all this is found to be correct, a re-synchronisation of the) 70.87 321.64 P
+1.8 (L) 70.87 310.64 P
+1.8 (TMS ET counter is performed on the detection of the) 75.54 310.64 P
+0.12 (synchronisation pulse when required. This synchronisation) 70.87 299.64 P
+0.8 (consists of loading the recei) 70.87 288.64 P
+0.8 (v) 174.35 288.64 P
+0.8 (ed time code into the coarse) 178.71 288.64 P
+0.26 (part of the ET counter and resetting the \336ne part of the ET) 70.87 277.64 P
+0.26 (counter to zero. The size of the time windo) 70.87 266.64 P
+0.26 (w in which this) 227.43 266.64 P
+0.19 (synchronisation instant is allo) 70.87 255.64 P
+0.19 (wed to occur is con\336gurable.) 178.47 255.64 P
+1.55 (Monotonic ET count with resolutions do) 70.87 244.64 P
+1.55 (wn to 2) 224.66 244.64 P
+2 7.2 Q
+1.24 (-20) 254.77 248.24 P
+2 9 Q
+1.55 ( of a) 264.36 244.64 P
+0.06 (second can be maintained, corresponding to approximately) 70.87 233.64 P
+2.67 (1) 70.87 222.64 P
+3 F
+2.67 (m) 80.29 222.64 P
+2 F
+2.67 (s. Note the dif) 85.47 222.64 P
+2.67 (ference between the synchronisation) 144.25 222.64 P
+1.91 (process in the L) 70.87 211.64 P
+1.91 (TMS and pre) 133.03 211.64 P
+1.91 (vious implementations: no) 184.12 211.64 P
+-0.12 (time discontinuities need to occur in the L) 70.87 200.64 P
+-0.12 (TMS ET counter) 220.95 200.64 P
+-0.12 (.) 281.21 200.64 P
+-0.37 (When errors are detected in messages or in the timing of the) 70.87 178.64 P
+1.33 (synchronisation, the b) 70.87 167.64 P
+1.33 (uilt-in error handling will limit the) 152.58 167.64 P
+0.98 (consequences thereof not to unnecessarily upset the local) 70.87 156.64 P
+-0.5 (ET) 70.87 145.64 P
+-0.5 (. A dedicated output pin continuously informs about time) 81.2 145.64 P
+-0.13 (v) 70.87 134.64 P
+-0.13 (alidity) 75.14 134.64 P
+-0.13 (. The time v) 97.56 134.64 P
+-0.13 (alidity of the ET counter and the o) 140.44 134.64 P
+-0.13 (v) 263.1 134.64 P
+-0.13 (erall) 267.47 134.64 P
+4.22 (results of the internal error check) 70.87 123.64 P
+4.22 (ers related to the) 211.08 123.64 P
+-0.23 (synchronisation process can also be monitored by reading a) 70.87 112.64 P
+(status re) 70.87 101.64 T
+(gister) 100.48 101.64 T
+(.) 119.98 101.64 T
+1.32 (The CTMS pro) 311.82 651.64 P
+1.32 (vides the L) 369.33 651.64 P
+1.32 (TMS with phase references to) 411.14 651.64 P
+-0.44 (which the clock dri) 311.82 640.64 P
+-0.44 (ving the ET counter can be adjusted. The) 379.52 640.64 P
+2.55 (clock dri) 311.82 629.64 P
+2.55 (ving the L) 345.88 629.64 P
+2.55 (TMS ET counter does not need to) 387.15 629.64 P
+2.83 (originate from the CTMS and may thus be generated) 311.82 618.64 P
+-0.18 (locally) 311.82 607.64 P
+-0.18 (. This clock may be pro) 335.73 607.64 P
+-0.18 (vided from e) 419.69 607.64 P
+-0.18 (xternal circuitry) 465.19 607.64 P
+-0.18 (,) 522.16 607.64 P
+1.31 (e.g. the OBDH b) 311.82 596.64 P
+1.31 (us clock, and should then be consistent) 376.31 596.64 P
+0.76 (with the desired ET resolution and be acting as the phase) 311.82 585.64 P
+1.47 (reference. Alternati) 311.82 574.64 P
+1.47 (v) 383.03 574.64 P
+1.47 (ely) 387.4 574.64 P
+1.47 (, the L) 397.81 574.64 P
+1.47 (TMS may deri) 423.17 574.64 P
+1.47 (v) 478.39 574.64 P
+1.47 (e it from a) 482.75 574.64 P
+-0.06 (supplied 224 Hz \050) 311.82 563.64 P
+3 F
+-0.06 (\273) 375.87 563.64 P
+2 F
+-0.06 (16.77 MHz\051 crystal or clock signal. The) 380.82 563.64 P
+3.48 (b) 311.82 552.64 P
+3.48 (uilt-in crystal oscillator requires only a crystal, tw) 316.14 552.64 P
+3.48 (o) 519.91 552.64 P
+-0.3 (capacitors and a resistor to operate, and can also be used for) 311.82 541.64 P
+-0.07 (dri) 311.82 530.64 P
+-0.07 (ving e) 321.59 530.64 P
+-0.07 (xternal components such as a microprocessor) 343.63 530.64 P
+-0.07 (. The) 505.99 530.64 P
+-0.49 (internally deri) 311.82 519.64 P
+-0.49 (v) 361.84 519.64 P
+-0.49 (ed clock can be sla) 366.21 519.64 P
+-0.49 (v) 432.03 519.64 P
+-0.49 (ed to the incoming phase) 436.4 519.64 P
+-0.09 (references by either using the b) 311.82 508.64 P
+-0.09 (uilt-in or an e) 423.91 508.64 P
+-0.09 (xternal Digital) 472.26 508.64 P
+(Phase Lock) 311.82 497.64 T
+(ed Loop \050DPLL\051.) 353.47 497.64 T
+0.16 (When the L) 311.82 475.64 P
+0.16 (TMS is operated with such a deri) 353.79 475.64 P
+0.16 (v) 473.99 475.64 P
+0.16 (ed clock, the) 478.36 475.64 P
+0.9 (phase references do not ha) 311.82 464.64 P
+0.9 (v) 410.7 464.64 P
+0.9 (e to occur at re) 415.06 464.64 P
+0.9 (gular interv) 472 464.64 P
+0.9 (als) 514.41 464.64 P
+-0.26 (since the use of a DPLL of) 311.82 453.64 P
+-0.26 (fers a free-wheeling capability in) 406.5 453.64 P
+-0.26 (case of phase reference drop out. Note that this also enables) 311.82 442.64 P
+3.35 (the L) 311.82 431.64 P
+3.35 (TMS to maintain an ET counter with a higher) 333.09 431.64 P
+1.25 (resolution than the pro) 311.82 420.64 P
+1.25 (vided phase references. In case of) 396.69 420.64 P
+2.87 (requiring maximum resolution coupled with infrequent) 311.82 409.64 P
+2.56 (phase references, an e) 311.82 398.64 P
+2.56 (xternal DPLL w) 398.31 398.64 P
+2.56 (ould ha) 461.82 398.64 P
+2.56 (v) 490.94 398.64 P
+2.56 (e to be) 495.31 398.64 P
+-0.35 (emplo) 311.82 387.64 P
+-0.35 (yed if crystal stability does not meet the requirements) 334.23 387.64 P
+1.42 (posed by the b) 311.82 376.64 P
+1.42 (uilt-in DPLL. The L) 368.15 376.64 P
+1.42 (TMS phase reference) 444.6 376.64 P
+4.03 (frequenc) 311.82 365.64 P
+4.03 (y is con\336gurable to match v) 343.17 365.64 P
+4.03 (arious types of) 463.35 365.64 P
+1.29 (surrounding equipment, such as the OBDH and the Mil-) 311.82 354.64 P
+(1553B b) 311.82 343.64 T
+(uses.) 342.39 343.64 T
+0.25 (The L) 311.82 321.64 P
+0.25 (TMS can also operate in stand alone mode without a) 332.98 321.64 P
+2.83 (central time reference. It then maintains its o) 311.82 310.64 P
+2.83 (wn time) 492.34 310.64 P
+0.25 (reference and no synchronisation is required. It is ho) 311.82 299.64 P
+0.25 (we) 502.79 299.64 P
+0.25 (v) 513.05 299.64 P
+0.25 (er) 517.42 299.64 P
+0.99 (possible to initialise the L) 311.82 288.64 P
+0.99 (TMS from time to time via the) 407.96 288.64 P
+5.47 (parallel microprocessor interf) 311.82 277.64 P
+5.47 (ace. This pro) 429.14 277.64 P
+5.47 (vides the) 486.69 277.64 P
+3.12 (capability to use the L) 311.82 266.64 P
+3.12 (TMS e) 403.45 266.64 P
+3.12 (v) 431.09 266.64 P
+3.12 (en when no CTMS is) 435.45 266.64 P
+1.8 (a) 311.82 255.64 P
+1.8 (v) 315.64 255.64 P
+1.8 (ailable in the system, making it backw) 319.91 255.64 P
+1.8 (ard compatible) 468.87 255.64 P
+(with some earlier equipment.) 311.82 244.64 T
+0 F
+(4) 311.82 222.64 T
+(THE L) 340.17 222.64 T
+(TMS TIME F) 366.6 222.64 T
+(A) 419.29 222.64 T
+(CILITIES) 425.3 222.64 T
+2 F
+1.21 (The L) 311.82 200.64 P
+1.21 (TMS pro) 333.94 200.64 P
+1.21 (vides its users with more than just a high) 367.76 200.64 P
+0.45 (quality local time reference. It pro) 311.82 189.64 P
+0.45 (vides time f) 436.9 189.64 P
+0.45 (acilities that) 480.21 189.64 P
+0.86 (are accessible via the parallel microprocessor interf) 311.82 178.64 P
+0.86 (ace as) 501.82 178.64 P
+0.71 (can be seen in the L) 311.82 167.64 P
+0.71 (TMS block diagram in \336gure) 386.27 167.64 P
+0.71 (3. The) 496.34 167.64 P
+0.71 (y) 519.91 167.64 P
+-0.36 (can be controlled and observ) 311.82 156.64 P
+-0.36 (ed via dedicated inputs/outputs) 413.73 156.64 P
+(as well as via control re) 311.82 145.64 T
+(gisters.) 396.91 145.64 T
+1.76 (The T) 311.82 123.64 P
+1.76 (ime Stamp f) 335.01 123.64 P
+1.76 (acility allo) 382.43 123.64 P
+1.76 (ws the L) 422.21 123.64 P
+1.76 (TMS user to time) 455.89 123.64 P
+1.01 (stamp data. An e) 311.82 112.64 P
+1.01 (xternal e) 375.22 112.64 P
+1.01 (v) 407.24 112.64 P
+1.01 (ent on a dedicated time strobe) 411.61 112.64 P
+0.97 (input is used to latch the ET counter v) 311.82 101.64 P
+0.97 (alue into a f) 456.35 101.64 P
+0.97 (acility) 501.91 101.64 P
+1 1 1 0 0 0 0 K
+153.65 740.18 189.65 740.18 189.65 726.68 153.65 726.68 4 Y
+0.56 H
+0 Z
+1 1 1 0 0 0 0 K
+N
+189.65 740.18 225.65 740.18 225.65 726.68 189.65 726.68 4 Y
+N
+225.65 740.18 261.65 740.18 261.65 726.68 225.65 726.68 4 Y
+N
+261.65 740.18 297.65 740.18 297.65 726.68 261.65 726.68 4 Y
+N
+297.65 740.18 333.65 740.18 333.65 726.68 297.65 726.68 4 Y
+N
+333.65 740.18 369.65 740.18 369.65 726.68 333.65 726.68 4 Y
+N
+369.65 740.18 405.65 740.18 405.65 726.68 369.65 726.68 4 Y
+N
+153.65 717.68 153.65 708.68 2 L
+2 Z
+N
+153.65 713.18 225.65 713.18 2 L
+N
+225.65 717.68 225.65 708.68 2 L
+N
+225.65 713.18 297.65 713.18 2 L
+N
+297.65 717.68 297.65 708.68 2 L
+N
+297.65 713.18 369.65 713.18 2 L
+N
+369.65 717.68 369.65 708.68 2 L
+N
+369.65 713.18 441.65 713.18 2 L
+N
+2 5.62 Q
+(16 bit w) 171.65 716.55 T
+(ord) 190.03 716.55 T
+(16 bit w) 243.65 716.55 T
+(ord) 262.03 716.55 T
+(16 bit w) 315.65 716.55 T
+(ord) 334.03 716.55 T
+(16 bit w) 387.65 716.55 T
+(ord) 406.03 716.55 T
+(2) 153.65 743.55 T
+(31) 155.9 748.05 T
+(00) 398.9 730.05 T
+441.65 717.68 441.65 708.68 2 L
+N
+(2) 185.15 743.55 T
+(24) 187.4 748.05 T
+(2) 194.15 743.55 T
+(23) 196.4 748.05 T
+(2) 221.15 743.55 T
+(16) 223.4 748.05 T
+(2) 230.15 743.55 T
+(15) 232.4 748.05 T
+(2) 257.15 743.55 T
+(8) 259.4 748.05 T
+(2) 266.15 743.55 T
+(7) 268.4 748.05 T
+(2) 293.15 743.55 T
+(0) 295.4 748.05 T
+(2) 302.15 743.55 T
+(-1) 304.4 748.05 T
+(2) 329.15 743.55 T
+(-8) 331.4 748.05 T
+(2) 338.15 743.55 T
+(-9) 340.4 748.05 T
+(2) 360.65 743.55 T
+(-16) 362.9 748.05 T
+(2) 371.9 743.55 T
+(-17) 374.15 748.05 T
+(2) 392.15 743.55 T
+(-22) 394.4 748.05 T
+(2) 405.65 743.55 T
+(-24) 407.9 748.05 T
+396.65 740.18 396.65 722.18 2 L
+N
+153.65 767.18 153.65 758.18 2 L
+N
+153.65 758.18 225.65 758.18 2 L
+N
+225.65 762.68 225.65 758.18 2 L
+N
+225.65 758.18 297.65 758.18 2 L
+N
+297.65 767.18 297.65 758.18 2 L
+N
+297.65 758.18 405.65 758.18 2 L
+N
+189.65 762.68 189.65 758.18 2 L
+N
+261.65 762.68 261.65 758.18 2 L
+N
+333.65 762.68 333.65 758.18 2 L
+N
+405.65 767.18 405.65 758.18 2 L
+N
+(ET Coarse \0504 octets\051) 203.15 766.05 T
+(ET Fine  \0503 octets\051) 331.4 766.05 T
+369.65 762.68 369.65 758.18 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 0 0 1 0 0 0 K
+(Figure 2:) 70.87 679.99 T
+1 F
+(L) 127.56 679.99 T
+(TMS elapsed time format) 132.39 679.99 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "3" 3
+%%Page: "4" 4
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+[ 1 1 1 0 0 0 0]
+[ 0 0 0 0 1 1 1]
+ 9 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 9 Q
+0 X
+0 0 0 1 0 0 0 K
+-0.33 (re) 70.87 467.39 P
+-0.33 (gister) 77.73 467.39 P
+-0.33 (. Additionally) 97.23 467.39 P
+-0.33 (, the status of the L) 146.32 467.39 P
+-0.33 (TMS and the rest of) 212.81 467.39 P
+1.9 (the time distrib) 70.87 456.39 P
+1.9 (ution chain is latched on the e) 129 456.39 P
+1.9 (v) 247.7 456.39 P
+1.9 (ent. The) 252.06 456.39 P
+1.04 (re) 70.87 445.39 P
+1.04 (gister contents can then be read via the microprocessor) 77.73 445.39 P
+1.89 (interf) 70.87 434.39 P
+1.89 (ace and associated with the corresponding data. A) 90.27 434.39 P
+-0.43 (time strobe e) 70.87 423.39 P
+-0.43 (v) 116.27 423.39 P
+-0.43 (ent can also be induced by writing to a control) 120.64 423.39 P
+1.54 (re) 70.87 412.39 P
+1.54 (gister) 77.73 412.39 P
+1.54 (. Ev) 97.23 412.39 P
+1.54 (ents on the time strobe that occur before the) 113.14 412.39 P
+1.61 (re) 70.87 401.39 P
+1.61 (gisters ha) 77.73 401.39 P
+1.61 (v) 113.4 401.39 P
+1.61 (e been fully read after a pre) 117.76 401.39 P
+1.61 (vious e) 226.13 401.39 P
+1.61 (v) 253.26 401.39 P
+1.61 (ent are) 257.62 401.39 P
+3.44 (\337agged in a status re) 70.87 390.39 P
+3.44 (gister) 158.47 390.39 P
+3.44 (, pro) 178.11 390.39 P
+3.44 (viding the users with) 197.9 390.39 P
+1.76 (information about the v) 70.87 379.39 P
+1.76 (alidity of the datation. The time) 160.67 379.39 P
+(resolution of this service is the same as for the ET counter) 70.87 368.39 T
+(.) 279.59 368.39 T
+1.71 (The Alarm Clock allo) 70.87 346.39 P
+1.71 (ws the L) 154.53 346.39 P
+1.71 (TMS user to generate an) 188.13 346.39 P
+0.39 (alarm occurring at desired ET v) 70.87 335.39 P
+0.39 (alues, programmed via the) 186.81 335.39 P
+0.15 (parallel microprocessor interf) 70.87 324.39 P
+0.15 (ace. The alarm will be set of) 177.55 324.39 P
+0.15 (f) 280.46 324.39 P
+0.24 (immediately if a time that already has been past is written,) 70.87 313.39 P
+1.21 (thus pre) 70.87 302.39 P
+1.21 (v) 100.6 302.39 P
+1.21 (enting potential system deadlocks. At the alarm) 104.97 302.39 P
+0.19 (time, a dedicated output pin is asserted and stays so until a) 70.87 291.39 P
+0.01 (ne) 70.87 280.39 P
+0.01 (w alarm time has been programmed. The time resolution) 79.14 280.39 P
+(of this service is also the same as for the ET counter) 70.87 269.39 T
+(.) 258.09 269.39 T
+-0.03 (The Pulse Generator f) 70.87 247.39 P
+-0.03 (acility enables the CTMS to generate) 149.9 247.39 P
+0.6 (pulses on a L) 70.87 236.39 P
+0.6 (TMS output pin at a maximum rate of 1 Hz.) 119.58 236.39 P
+0.71 (The pulses are controlled by the phase \336eld in the CTMS) 70.87 225.39 P
+-0.46 (message and are generated at the instant the monotonic \336eld) 70.87 214.39 P
+0.91 (of the L) 70.87 203.39 P
+0.91 (TMS counter becomes equal to the supplied time) 100.36 203.39 P
+-0.38 (information. A prerequisite for generating a pulse is that the) 70.87 192.39 P
+0.05 (corresponding CTMS message has been quali\336ed and used) 70.87 181.39 P
+5.28 (for the synchronisation of the L) 70.87 170.39 P
+5.28 (TMS ET counter) 210.16 170.39 P
+5.28 (.) 281.21 170.39 P
+-0.29 (Consequently pulses are generated in phase with the central) 70.87 159.39 P
+(time reference.) 70.87 148.39 T
+0.56 (The W) 70.87 126.39 P
+0.56 (a) 95.45 126.39 P
+0.56 (v) 99.27 126.39 P
+0.56 (eform Generator f) 103.63 126.39 P
+0.56 (acility allo) 169.63 126.39 P
+0.56 (ws the CTMS or the) 208.22 126.39 P
+1.19 (L) 70.87 115.39 P
+1.19 (TMS user to generate a periodic pattern on a dedicated) 75.54 115.39 P
+1.29 (L) 70.87 104.39 P
+1.29 (TMS output pin. The pattern period and duty c) 75.54 104.39 P
+1.29 (ycle are) 253.94 104.39 P
+3.97 (programmable via the w) 311.82 467.39 P
+3.97 (a) 411.36 467.39 P
+3.97 (v) 415.18 467.39 P
+3.97 (eform \336eld in the CTMS) 419.54 467.39 P
+0.96 (message or via the parallel microprocessor interf) 311.82 456.39 P
+0.96 (ace. The) 492.97 456.39 P
+0.26 (time resolution for this generator is the same as for the ET) 311.82 445.39 P
+(counter) 311.82 434.39 T
+(.) 338.32 434.39 T
+3.7 (The pulse- and w) 311.82 412.39 P
+3.7 (a) 385.06 412.39 P
+3.7 (v) 388.88 412.39 P
+3.7 (eform generator f) 393.24 412.39 P
+3.7 (acilities can be) 463.53 412.39 P
+0.22 (combined to form a programmable frequenc) 311.82 401.39 P
+0.22 (y generator by) 471.99 401.39 P
+1.71 (simply connecting some L) 311.82 390.39 P
+1.71 (TMS pins to each other) 411.37 390.39 P
+1.71 (. This) 502.2 390.39 P
+5.44 (combined generator can create periodic and phase) 311.82 379.39 P
+(controlled patterns and is under the control of the CTMS.) 311.82 368.39 T
+0.98 (The Stopw) 311.82 346.39 P
+0.98 (atch f) 351.96 346.39 P
+0.98 (acility allo) 373.09 346.39 P
+0.98 (ws the L) 412.1 346.39 P
+0.98 (TMS user to measure) 444.23 346.39 P
+-0.02 (elapsed time between e) 311.82 335.39 P
+-0.02 (v) 395.27 335.39 P
+-0.02 (ents with a resolution do) 399.64 335.39 P
+-0.02 (wn to 2) 487.85 335.39 P
+2 7.2 Q
+-0.01 (-24) 514.82 338.99 P
+2 9 Q
+0.65 (of a second, corresponding to approximately 60 ns. It can) 311.82 324.39 P
+3.31 (also count the number of e) 311.82 313.39 P
+3.31 (v) 423.88 313.39 P
+3.31 (ents within a prede\336ned) 428.24 313.39 P
+2.18 (interv) 311.82 302.39 P
+2.18 (al. The interv) 332.59 302.39 P
+2.18 (als can be as long as 18 hours and) 384.97 302.39 P
+3.07 (approximately a billion e) 311.82 291.39 P
+3.07 (v) 411.05 291.39 P
+3.07 (ents can be counted. These) 415.41 291.39 P
+-0.22 (measurements are unaf) 311.82 280.39 P
+-0.22 (fected by the L) 394.13 280.39 P
+-0.22 (TMS synchronisation) 446.88 280.39 P
+-0.33 (process. A measurement can be suspended and continued at) 311.82 269.39 P
+1.8 (an) 311.82 258.39 P
+1.8 (y time. The end of a measurement or saturation of a) 320.18 258.39 P
+5.32 (counter are \337agged in a status re) 311.82 247.39 P
+5.32 (gister) 460.09 247.39 P
+5.32 (, pro) 479.72 247.39 P
+5.32 (viding) 501.41 247.39 P
+(information re) 311.82 236.39 T
+(g) 363.42 236.39 T
+(arding the v) 367.88 236.39 T
+(alidity of the measurement.) 410.65 236.39 T
+3.33 (W) 311.82 214.39 P
+3.33 (ith its e) 319.95 214.39 P
+3.33 (xtension interf) 352.98 214.39 P
+3.33 (ace the L) 408.46 214.39 P
+3.33 (TMS enables board) 447.27 214.39 P
+0.1 (designers to e) 311.82 203.39 P
+0.1 (xtend or customise the on-chip time f) 361.39 203.39 P
+0.1 (acilities) 496.41 203.39 P
+2.26 (with a minimum of e) 311.82 192.39 P
+2.26 (xternal hardw) 396.24 192.39 P
+2.26 (are. All information) 448.15 192.39 P
+-0.04 (\336elds of the CTMS message are serially shifted out via this) 311.82 181.39 P
+1.41 (interf) 311.82 170.39 P
+1.41 (ace. The L) 331.22 170.39 P
+1.41 (TMS component relie) 371.45 170.39 P
+1.41 (v) 453.05 170.39 P
+1.41 (es its host system) 457.42 170.39 P
+0.61 (from an) 311.82 159.39 P
+0.61 (y processing load associated with the pro) 340.54 159.39 P
+0.61 (vision of) 492.05 159.39 P
+4.34 (ET at local le) 311.82 148.39 P
+4.34 (v) 372.85 148.39 P
+4.34 (el when implementing e) 377.21 148.39 P
+4.34 (xternal time) 476.83 148.39 P
+(f) 311.82 137.39 T
+(acilities.) 314.73 137.39 T
+1 1 1 0 0 0 0 K
+103.26 733.33 468.89 733.33 468.89 536.45 103.26 536.45 4 Y
+0.56 H
+0 Z
+1 1 1 0 0 0 0 K
+N
+153.88 693.95 457.64 693.95 457.64 677.08 153.88 677.08 4 Y
+N
+120.14 722.08 176.38 722.08 176.38 705.2 120.14 705.2 4 Y
+N
+153.88 660.2 440.76 660.2 440.76 643.33 153.88 643.33 4 Y
+N
+243.88 626.45 356.39 626.45 356.39 609.58 243.88 609.58 4 Y
+N
+2 5.62 Q
+(Control Re) 114.51 581.45 T
+(g.) 139.27 581.45 T
+108.89 592.7 148.26 592.7 148.26 575.83 108.89 575.83 4 Y
+N
+(Status Re) 159.51 581.45 T
+(g.) 180.83 581.45 T
+153.88 592.7 193.26 592.7 193.26 575.83 153.88 575.83 4 Y
+N
+(Stopw) 204.51 581.45 T
+(atch) 218.83 581.45 T
+198.88 592.7 238.26 592.7 238.26 575.83 198.88 575.83 4 Y
+N
+(T) 249.51 581.45 T
+(ime Stamp) 252.75 581.45 T
+243.88 592.7 283.26 592.7 283.26 575.83 243.88 575.83 4 Y
+N
+(Alarm Clock) 294.51 581.45 T
+288.89 592.7 328.26 592.7 328.26 575.83 288.89 575.83 4 Y
+N
+(Pulse Generator) 339.51 581.45 T
+333.89 592.7 378.89 592.7 378.89 575.83 333.89 575.83 4 Y
+N
+(W) 386.76 581.45 T
+(a) 391.62 581.45 T
+(v) 394.01 581.45 T
+(eform Gen.) 396.73 581.45 T
+384.51 592.7 423.89 592.7 423.89 575.83 384.51 575.83 4 Y
+N
+255.13 609.58 255.13 598.33 249.51 598.33 255.13 592.7 272.01 592.7 277.64 598.33 272.01 598.33
+ 272.01 609.58 255.13 609.58 9 L
+2 Z
+N
+165.13 643.33 165.13 598.33 159.51 598.33 165.13 592.7 182.01 592.7 187.63 598.33 182.01 598.33
+ 182.01 643.33 165.13 643.33 9 L
+N
+300.14 609.58 300.14 598.33 294.51 598.33 300.14 592.7 317.01 592.7 322.64 598.33 317.01 598.33
+ 317.01 609.58 300.14 609.58 9 L
+N
+339.51 609.58 339.51 598.33 333.89 598.33 339.51 592.7 350.76 592.7 356.39 598.33 350.76 598.33
+ 350.76 609.58 339.51 609.58 9 L
+N
+362.01 643.33 362.01 598.33 356.39 598.33 362.01 592.7 373.26 592.7 378.89 598.33 373.26 598.33
+ 373.26 643.33 362.01 643.33 9 L
+N
+395.76 643.33 395.76 598.33 390.14 598.33 395.76 592.7 412.64 592.7 418.26 598.33 412.64 598.33
+ 412.64 643.33 395.76 643.33 9 L
+N
+(ET Counter \050local ET reference\051) 269.2 615.2 T
+(CTMS Message Re) 252.32 648.95 T
+(gister \050temporarily stores CTMS message\051) 296.3 648.95 T
+300.14 643.33 300.14 632.08 294.51 632.08 300.14 626.45 317.01 626.45 322.64 632.08 317.01 632.08
+ 317.01 643.33 300.14 643.33 9 L
+N
+187.63 592.7 193.26 603.95 243.88 603.95 247.5 596.73 4 L
+N
+0 0 0 0 1 1 1 K
+249.51 592.7 245.99 595.97 249.01 597.48 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+249.51 592.7 245.99 595.97 249.01 597.48 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+350.76 575.83 350.76 570.2 345.14 570.2 350.76 564.58 356.39 564.58 362.01 570.2 356.39 570.2
+ 356.39 575.83 350.76 575.83 9 L
+0.56 H
+2 Z
+N
+367.64 564.58 367.64 570.2 362.01 570.2 367.64 575.83 373.26 575.83 378.89 570.2 373.26 570.2
+ 373.26 564.58 8 Y
+0 Z
+N
+395.76 575.83 395.76 570.2 390.14 570.2 395.76 564.58 401.39 564.58 407.01 570.2 401.39 570.2
+ 401.39 575.83 395.76 575.83 9 L
+2 Z
+N
+412.64 564.58 412.64 570.2 407.01 570.2 412.64 575.83 418.26 575.83 423.89 570.2 418.26 570.2
+ 418.26 564.58 8 Y
+0 Z
+N
+300.14 575.83 300.14 570.2 294.51 570.2 300.14 564.58 305.76 564.58 311.39 570.2 305.76 570.2
+ 305.76 575.83 300.14 575.83 9 L
+2 Z
+N
+317.01 564.58 317.01 570.2 311.39 570.2 317.01 575.83 322.64 575.83 328.26 570.2 322.64 570.2
+ 322.64 564.58 8 Y
+0 Z
+N
+260.76 575.83 260.76 570.2 255.13 570.2 260.76 564.58 266.39 564.58 272.01 570.2 266.39 570.2
+ 266.39 575.83 260.76 575.83 9 L
+2 Z
+N
+210.13 575.83 210.13 570.2 204.51 570.2 210.13 564.58 215.76 564.58 221.38 570.2 215.76 570.2
+ 215.76 575.83 210.13 575.83 9 L
+N
+227.01 564.58 227.01 570.2 221.38 570.2 227.01 575.83 232.63 575.83 238.26 570.2 232.63 570.2
+ 232.63 564.58 8 Y
+0 Z
+N
+120.14 575.83 120.14 570.2 114.51 570.2 120.14 564.58 125.76 564.58 131.38 570.2 125.76 570.2
+ 125.76 575.83 120.14 575.83 9 L
+2 Z
+N
+137.01 564.58 137.01 570.2 131.38 570.2 137.01 575.83 142.63 575.83 148.26 570.2 142.63 570.2
+ 142.63 564.58 8 Y
+0 Z
+N
+170.76 575.83 170.76 570.2 165.13 570.2 170.76 564.58 176.38 564.58 182.01 570.2 176.38 570.2
+ 176.38 575.83 170.76 575.83 9 L
+2 Z
+N
+(Extension Interf) 224.2 682.7 T
+(ace \050temporarily stores CTMS message and shifts it out\051) 260.54 682.7 T
+300.14 677.08 300.14 665.83 294.51 665.83 300.14 660.2 317.01 660.2 322.64 665.83 317.01 665.83
+ 317.01 677.08 300.14 677.08 9 L
+N
+429.51 643.33 429.51 570.2 423.89 570.2 429.51 564.58 435.14 564.58 440.76 570.2 435.14 570.2
+ 435.14 643.33 429.51 643.33 9 L
+N
+446.39 564.58 446.39 671.45 440.76 671.45 446.39 677.08 452.01 677.08 457.64 671.45 452.01 671.45
+ 452.01 564.58 8 Y
+0 Z
+N
+(P) 390.14 553.33 T
+(arallel microprocessor I/F) 393.18 553.33 T
+(Manchester Decoder) 125.76 710.83 T
+108.89 564.58 457.64 564.58 457.64 547.7 108.89 547.7 4 Y
+N
+(DPLL) 221.38 710.83 T
+198.88 722.08 277.64 722.08 277.64 705.2 198.88 705.2 4 Y
+N
+137.01 705.2 137.01 654.58 149.38 654.58 3 L
+2 Z
+N
+0 0 0 0 1 1 1 K
+153.88 654.58 149.38 652.89 149.38 656.27 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+153.88 654.58 149.38 652.89 149.38 656.27 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+137.01 688.33 149.38 688.33 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+153.88 688.33 149.38 686.64 149.38 690.02 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+153.88 688.33 149.38 686.64 149.38 690.02 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+176.38 716.45 194.38 716.45 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+198.88 716.45 194.38 714.77 194.38 718.14 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+198.88 716.45 194.38 714.77 194.38 718.14 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+204.51 736.7 204.51 729.95 2 L
+2.25 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+204.51 744.58 207.88 736.7 201.13 736.7 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+204.51 744.58 207.88 736.7 201.13 736.7 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+0 0 0 0 1 1 1 K
+204.51 722.08 201.13 729.95 207.88 729.95 3 Y
+0 0 0 0 1 1 1 K
+V
+N
+1 1 1 0 0 0 0 K
+204.51 722.08 201.13 729.95 207.88 729.95 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+463.82 688.33 473.95 688.33 2 L
+2.25 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+457.64 688.33 465.51 691.7 465.51 684.95 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+457.64 688.33 465.51 691.7 465.51 684.95 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+0 0 0 0 1 1 1 K
+480.14 688.33 472.26 684.95 472.26 691.7 3 Y
+0 0 0 0 1 1 1 K
+V
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(to and from microprocessor \050MA31750 or ERC32\051) 0 -270 490.82 508.9 TF
+480.14 688.33 472.26 684.95 472.26 691.7 3 Y
+V
+N
+291.7 575.83 291.7 529.7 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+291.7 525.2 290.01 529.7 293.39 529.7 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+291.7 525.2 290.01 529.7 293.39 529.7 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+201.7 570.2 201.7 525.2 2 L
+1.12 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+201.7 575.83 203.95 570.2 199.45 570.2 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+201.7 575.83 203.95 570.2 199.45 570.2 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+339.51 575.83 339.51 529.7 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+339.51 525.2 337.82 529.7 341.2 529.7 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+339.51 525.2 337.82 529.7 341.2 529.7 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+159.51 575.83 159.51 529.7 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+159.51 525.2 157.82 529.7 161.2 529.7 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(time v) 142.63 519.58 T
+(alidity) 156.71 519.58 T
+(stopw) 182.01 519.58 T
+(atch control) 195.39 519.58 T
+(time stamp strobe) 238.26 519.58 T
+(alarm) 288.89 519.58 T
+(pulse) 328.26 519.58 T
+159.51 525.2 157.82 529.7 161.2 529.7 3 Y
+V
+N
+249.51 571.33 249.51 525.2 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+249.51 575.83 251.2 571.33 247.82 571.33 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+249.51 575.83 251.2 571.33 247.82 571.33 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+463.82 558.95 473.95 558.95 2 L
+2.25 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+457.64 558.95 465.51 562.33 465.51 555.58 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+457.64 558.95 465.51 562.33 465.51 555.58 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+0 0 0 0 1 1 1 K
+480.14 558.95 472.26 555.58 472.26 562.33 3 Y
+0 0 0 0 1 1 1 K
+V
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(to and from additional time f) 0 -270 490.82 643.9 TF
+(acilities) 0 -270 490.69 708.68 TF
+(e) 187.72 755.83 T
+(xternal DPLL) 190.13 755.83 T
+(interf) 194.67 748.52 T
+(ace) 206.8 748.52 T
+480.14 558.95 472.26 555.58 472.26 562.33 3 Y
+V
+N
+418.26 744.58 418.26 741.2 2 L
+2.25 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+418.26 733.33 414.89 741.2 421.64 741.2 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(con\336guration) 402.4 761.45 T
+(and) 414.2 754.14 T
+(system control) 401.78 746.83 T
+418.26 733.33 414.89 741.2 421.64 741.2 3 Y
+V
+N
+137.01 744.58 137.01 726.58 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+137.01 722.08 135.32 726.58 138.7 726.58 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(serial data in) 120.14 750.2 T
+137.01 722.08 135.32 726.58 138.7 726.58 3 Y
+V
+N
+243.88 744.58 243.88 722.08 2 L
+0.56 H
+2 Z
+N
+260.76 744.58 260.76 722.08 2 L
+N
+246.7 750.2 246.7 738.95 2 L
+N
+257.95 750.2 257.95 738.95 2 L
+N
+249.51 750.2 255.13 750.2 255.13 738.95 249.51 738.95 4 Y
+V
+0 H
+0 Z
+N
+(optional 16.77 MHz e) 238.26 755.83 T
+(xternal clock/crystal) 287.55 755.83 T
+249.51 750.2 255.13 750.2 255.13 738.95 249.51 738.95 4 Y
+0.56 H
+N
+387.32 575.83 387.32 529.7 2 L
+2 Z
+N
+0 0 0 0 1 1 1 K
+387.32 525.2 385.64 529.7 389.01 529.7 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(w) 378.89 519.58 T
+(a) 382.89 519.58 T
+(v) 385.27 519.58 T
+(eform) 388 519.58 T
+387.32 525.2 385.64 529.7 389.01 529.7 3 Y
+V
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 0 0 1 0 0 0 K
+(Figure 3:) 70.87 495.74 T
+1 F
+(L) 127.56 495.74 T
+(TMS bloc) 132.39 495.74 T
+(k dia) 166.96 495.74 T
+(gr) 184.61 495.74 T
+(am) 192.48 495.74 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "4" 4
+%%Page: "5" 5
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+[ 1 1 1 0 0 0 0]
+[ 0 0 0 0 1 1 1]
+ 9 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(5) 70.87 481.56 T
+(USING THE L) 99.22 481.56 T
+(TMS IN AN OBDH) 156.4 481.56 T
+(APPLICA) 99.22 470.56 T
+(TION) 138.36 470.56 T
+2 F
+-0.41 (Most L) 70.87 448.56 P
+-0.41 (TMS applications are e) 95.89 448.56 P
+-0.41 (xpected to in) 178.27 448.56 P
+-0.41 (v) 223.6 448.56 P
+-0.41 (olv) 227.92 448.56 P
+-0.41 (e the OBDH) 239.28 448.56 P
+2.9 (b) 70.87 437.56 P
+2.9 (us. Figure) 75.19 437.56 P
+2.9 (4 sho) 116.34 437.56 P
+2.9 (ws a typical con\336guration where the) 138.26 437.56 P
+0.56 (L) 70.87 426.56 P
+0.56 (TMS is connected to the OBDH b) 75.54 426.56 P
+0.56 (us through a Data Bus) 201.22 426.56 P
+(Unit \050DB) 70.87 415.56 T
+(U\051 and a Remote Bus Interf) 104.53 415.56 T
+(ace \050RBI\051.) 204.17 415.56 T
+5.34 (The CTMS is assumed to be inte) 70.87 393.56 P
+5.34 (grated into the) 220.79 393.56 P
+5.2 (interrog) 70.87 382.56 P
+5.2 (ation generator of the OBDH Central Data) 99.32 382.56 P
+-0.23 (Management Unit \050CDMU\051. T) 70.87 371.56 P
+-0.23 (o broadcast time information) 179.93 371.56 P
+0.44 (to all the L) 70.87 360.56 P
+0.44 (TMS components in the spacecraft, the CDMU) 110.61 360.56 P
+4.98 (modulates one of the BroadCast Pulse \050BCP\051 bits) 70.87 349.56 P
+1.45 (transmitted in each 32 bit b) 70.87 338.56 P
+1.45 (us interrog) 176.17 338.56 P
+1.45 (ation. This virtual) 216.32 338.56 P
+0.93 (serial line is coherent with the central elapsed time clock) 70.87 327.56 P
+0.94 (and has an ef) 70.87 316.56 P
+0.94 (fecti) 120.7 316.56 P
+0.94 (v) 136.47 316.56 P
+0.94 (e bandwidth of one sixty-fourth of the) 140.83 316.56 P
+0.85 (b) 70.87 305.56 P
+0.85 (us bit rate, which is more than enough to carry the time) 75.19 305.56 P
+4.64 (messages, the synchronisation pulses and the phase) 70.87 294.56 P
+(references.) 70.87 283.56 T
+1.49 (In the con\336guration sho) 70.87 261.56 P
+1.49 (wn, the L) 160.86 261.56 P
+1.49 (TMS operates in serial) 197.26 261.56 P
+0.27 (mode. T) 70.87 250.56 P
+0.27 (o get the v) 100.42 250.56 P
+0.27 (ery highest resolution, the clock dri) 138.84 250.56 P
+0.27 (ving) 267.46 250.56 P
+-0.06 (its ET counter is generated by a 16.77 MHz crystal directly) 70.87 239.56 P
+-0.06 (connected to the b) 70.87 228.56 P
+-0.06 (uilt-in crystal oscillator cell. The internal) 136.26 228.56 P
+0.71 (DPLL adjusts this clock to the phase reference carried on) 70.87 217.56 P
+1.23 (the BCP output of the RBI. The synchronisation process) 70.87 206.56 P
+-0.51 (between the L) 70.87 195.56 P
+-0.51 (TMS and the CTMS is completely transparent) 120.01 195.56 P
+2.75 (to the application. Ev) 70.87 184.56 P
+2.75 (en after a complete reset of the) 155.99 184.56 P
+-0.14 (application, no support from the processor is required since) 70.87 173.56 P
+0.12 (the L) 70.87 162.56 P
+0.12 (TMS will automatically synchronise its ET counter to) 88.9 162.56 P
+(the central time reference.) 70.87 151.56 T
+5.71 (Pre) 70.87 129.56 P
+5.71 (vious implementations of time distrib) 82.64 129.56 P
+5.71 (ution ha) 240.32 129.56 P
+5.71 (v) 275.1 129.56 P
+5.71 (e) 279.47 129.56 P
+0.65 (required e) 70.87 118.56 P
+0.65 (xtensi) 107.61 118.56 P
+0.65 (v) 128.89 118.56 P
+0.65 (e support from the application processor) 133.26 118.56 P
+0.65 (.) 281.21 118.56 P
+1.2 (One particular protocol required that the CDMU ordered) 70.87 107.56 P
+-0.28 (each user to enable the time counter to be reset on reception) 70.87 96.56 P
+0.75 (of a broadcast pulse. This w) 311.82 481.56 P
+0.75 (as performed by means of an) 416.45 481.56 P
+-0.34 (OBDH b) 311.82 470.56 P
+-0.34 (us interrog) 343.55 470.56 P
+-0.34 (ation. Ne) 381.91 470.56 P
+-0.34 (xt, the v) 414.43 470.56 P
+-0.34 (alue of the central time) 442.78 470.56 P
+0.82 (reference at the reset instant w) 311.82 459.56 P
+0.82 (as broadcast and had to be) 425.56 459.56 P
+3.89 (added to the local time counters by the application) 311.82 448.56 P
+1.86 (processor) 311.82 437.56 P
+1.86 (. As a last step, the users were ordered by an) 345.81 437.56 P
+2.27 (interrog) 311.82 426.56 P
+2.27 (ation to disable further resets of the counter in) 340.27 426.56 P
+-0.08 (question. It is clear that this protocol caused discontinuities) 311.82 415.56 P
+1.43 (in local time counters that could result in incorrect time) 311.82 404.56 P
+0.03 (information being pro) 311.82 393.56 P
+0.03 (vided to users. It also required a high) 390.73 393.56 P
+2.06 (le) 311.82 382.56 P
+2.06 (v) 318.09 382.56 P
+2.06 (el of in) 322.46 382.56 P
+2.06 (v) 351.71 382.56 P
+2.06 (olv) 356.03 382.56 P
+2.06 (ement from the application processors to) 367.4 382.56 P
+-0.11 (achie) 311.82 371.56 P
+-0.11 (v) 330.58 371.56 P
+-0.11 (e time coherence throughout the spacecraft. The ne) 334.95 371.56 P
+-0.11 (w) 517.91 371.56 P
+1.08 (standard protocol implemented by the L) 311.82 360.56 P
+1.08 (TMS relie) 460.62 360.56 P
+1.08 (v) 498.22 360.56 P
+1.08 (es the) 502.59 360.56 P
+3.07 (application processor from such duties. It also a) 311.82 349.56 P
+3.07 (v) 505.09 349.56 P
+3.07 (oids) 509.41 349.56 P
+0.03 (discontinuities in the local time counters and pro) 311.82 338.56 P
+0.03 (vides high) 487.13 338.56 P
+(resolution.) 311.82 327.56 T
+0 F
+(6) 311.82 305.56 T
+(APPLIED DESIGN METHODOLOGY) 340.17 305.56 T
+2 F
+1.73 (The L) 311.82 283.56 P
+1.73 (TMS component has been de) 334.46 283.56 P
+1.73 (v) 446.13 283.56 P
+1.73 (eloped using a top-) 450.49 283.56 P
+4.39 (do) 311.82 272.56 P
+4.39 (wn methodology based on VHDL simulation and) 320.59 272.56 P
+1.96 (synthesis. The L) 311.82 261.56 P
+1.96 (TMS w) 374.16 261.56 P
+1.96 (as described on the beha) 403.28 261.56 P
+1.96 (vioural) 498.92 261.56 P
+2.09 (le) 311.82 250.56 P
+2.09 (v) 318.09 250.56 P
+2.09 (el in VHDL and w) 322.46 250.56 P
+2.09 (as v) 397.71 250.56 P
+2.09 (eri\336ed e) 413.92 250.56 P
+2.09 (xtensi) 445.11 250.56 P
+2.09 (v) 466.39 250.56 P
+2.09 (ely before the) 470.75 250.56 P
+(VHDL code w) 311.82 239.56 T
+(as re\336ned to allo) 364.71 239.56 T
+(w synthesis.) 424.23 239.56 T
+0.15 (The strict requirements on accurate timing lead to a design) 311.82 217.56 P
+0.6 (with se) 311.82 206.56 P
+0.6 (v) 337.94 206.56 P
+0.6 (eral clock re) 342.3 206.56 P
+0.6 (gions. Between each such re) 387.84 206.56 P
+0.6 (gion, the) 492.32 206.56 P
+-0.3 (circuitry had to be carefully designed to minimise problems) 311.82 195.56 P
+6.6 (due to metastability) 311.82 184.56 P
+6.6 (. A detailed analysis of the) 395.43 184.56 P
+0.51 (synchronisation process and the related time f) 311.82 173.56 P
+0.51 (acilities w) 479.75 173.56 P
+0.51 (as) 516.91 173.56 P
+0.46 (performed. All delays that were identi\336ed to be caused by) 311.82 162.56 P
+1.22 (the circuitry introduced for metastability pre) 311.82 151.56 P
+1.22 (v) 477.4 151.56 P
+1.22 (ention ha) 481.77 151.56 P
+1.22 (v) 516.05 151.56 P
+1.22 (e) 520.42 151.56 P
+(been compensated for) 311.82 140.56 T
+(.) 390.3 140.56 T
+2.26 (A crystal oscillator cell w) 311.82 118.56 P
+2.26 (as de) 413.26 118.56 P
+2.26 (v) 433.53 118.56 P
+2.26 (eloped for the MITEL) 437.9 118.56 P
+1.36 (1.25) 311.82 107.56 P
+3 F
+1.36 (m) 329.82 107.56 P
+2 F
+1.36 (m CMOS/SOS5 standard cell library) 335 107.56 P
+1.36 (. The cell has) 472.35 107.56 P
+0.05 (been optimised for the nominal L) 311.82 96.56 P
+0.05 (TMS operating frequenc) 431.47 96.56 P
+0.05 (y) 519.91 96.56 P
+1 1 1 0 0 0 0 K
+189.95 705.34 228.94 705.34 228.94 678.04 189.95 678.04 4 Y
+0.56 H
+0 Z
+1 1 1 0 0 0 0 K
+N
+228.94 752.12 244.53 752.12 2 L
+2 Z
+N
+228.94 744.33 244.53 744.33 2 L
+N
+228.94 736.53 244.53 736.53 2 L
+N
+244.53 759.92 275.72 759.92 275.72 728.73 244.53 728.73 4 Y
+0 Z
+N
+189.95 759.92 228.94 759.92 228.94 728.73 189.95 728.73 4 Y
+N
+275.72 752.12 417.65 752.12 2 L
+2 Z
+N
+0 0 0 0 1 1 1 K
+423.88 752.12 417.65 749.79 417.65 754.46 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+423.88 752.12 417.65 749.79 417.65 754.46 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+281.96 744.33 423.88 744.33 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+275.72 744.33 281.96 746.67 281.96 741.99 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+275.72 744.33 281.96 746.67 281.96 741.99 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+275.72 736.53 423.88 736.53 2 L
+0.56 H
+2 Z
+N
+306.92 720.93 306.92 736.53 2 L
+N
+314.71 720.93 314.71 744.33 2 L
+N
+322.51 720.93 322.51 752.12 2 L
+N
+2 5.62 Q
+(OBDH Bus) 306.92 760.43 T
+(Interrog) 431.68 752.63 T
+(ation) 449.77 752.63 T
+(Response) 431.68 744.83 T
+(Block T) 431.68 737.04 T
+(ransfer) 449.77 737.04 T
+299.12 720.93 330.31 720.93 330.31 689.74 299.12 689.74 4 Y
+0 Z
+N
+306.92 674.15 306.92 689.74 2 L
+2 Z
+N
+314.71 674.15 314.71 689.74 2 L
+N
+(DB) 252.33 740.93 T
+(U) 260.09 740.93 T
+(DB) 306.92 701.94 T
+(U) 314.67 701.94 T
+(CDMU) 197.74 740.93 T
+2 6.75 Q
+(CTMS) 197.74 688.79 T
+322.51 674.15 322.51 689.74 2 L
+N
+2 5.62 Q
+(RBI) 306.92 659.06 T
+299.12 674.15 330.31 674.15 330.31 650.75 299.12 650.75 4 Y
+0 Z
+N
+306.92 533.78 306.92 650.75 2 L
+2 Z
+N
+314.71 533.78 314.71 650.75 2 L
+N
+322.51 533.78 322.51 650.75 2 L
+N
+(Memory) 244.53 627.86 T
+236.73 642.95 275.72 642.95 275.72 611.76 236.73 611.76 4 Y
+0 Z
+N
+275.72 635.16 306.92 635.16 2 L
+2 Z
+N
+275.72 627.36 314.71 627.36 2 L
+N
+275.72 619.56 322.51 619.56 2 L
+N
+(Microprocessor) 213.34 581.08 T
+(MA31750/ERC32) 213.34 570.94 T
+205.54 596.17 275.72 596.17 275.72 564.97 205.54 564.97 4 Y
+0 Z
+N
+275.72 588.37 345.9 588.37 2 L
+2 Z
+N
+275.72 580.57 345.9 580.57 2 L
+N
+275.72 572.77 345.9 572.77 2 L
+N
+2 7.88 Q
+(L) 349.8 578.16 T
+(TMS) 353.89 578.16 T
+345.9 596.17 384.89 596.17 384.89 564.97 345.9 564.97 4 Y
+1.12 H
+0 Z
+N
+330.31 666.35 378.66 666.35 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+384.89 666.35 378.66 664.01 378.66 668.69 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+384.89 666.35 378.66 664.01 378.66 668.69 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+361.5 666.35 361.5 602.41 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+361.5 596.17 359.16 602.41 363.84 602.41 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+2 5.62 Q
+1 1 1 0 0 0 0 K
+(1 of 3 BCP outputs) 338.11 674.65 T
+361.5 596.17 359.16 602.41 363.84 602.41 3 Y
+V
+N
+384.89 592.27 396.59 592.27 2 L
+0.56 H
+2 Z
+N
+384.89 572.77 396.59 572.77 2 L
+N
+388.79 588.37 400.49 588.37 2 L
+N
+388.79 584.47 400.49 584.47 400.49 580.57 388.79 580.57 4 Y
+V
+0 H
+0 Z
+N
+388.79 584.47 400.49 584.47 400.49 580.57 388.79 580.57 4 Y
+0.56 H
+N
+388.79 580.57 400.49 580.57 2 L
+2 Z
+N
+388.79 576.67 400.49 576.67 2 L
+N
+396.59 592.27 396.59 588.37 2 L
+N
+396.59 576.67 396.59 572.77 2 L
+N
+228.94 701.44 240.63 701.44 2 L
+N
+228.94 681.94 240.63 681.94 2 L
+N
+232.83 697.54 244.53 697.54 2 L
+N
+232.83 693.64 244.53 693.64 244.53 689.74 232.83 689.74 4 Y
+V
+0 H
+0 Z
+N
+232.83 693.64 244.53 693.64 244.53 689.74 232.83 689.74 4 Y
+0.56 H
+N
+232.83 689.74 244.53 689.74 2 L
+2 Z
+N
+232.83 685.84 244.53 685.84 2 L
+N
+240.63 701.44 240.63 697.54 2 L
+N
+240.63 685.84 240.63 681.94 2 L
+N
+174.35 752.12 183.71 752.12 2 L
+N
+0 0 0 0 1 1 1 K
+189.95 752.12 183.71 749.79 183.71 754.46 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(T) 127.56 752.63 T
+(elecommand) 130.61 752.63 T
+189.95 752.12 183.71 749.79 183.71 754.46 3 Y
+V
+N
+267.92 549.38 349.8 549.38 2 L
+0.56 H
+2 Z
+N
+267.92 549.38 267.92 558.74 2 L
+N
+0 0 0 0 1 1 1 K
+267.92 564.97 270.26 558.74 265.59 558.74 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+267.92 564.97 270.26 558.74 265.59 558.74 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+349.8 564.97 349.8 549.38 2 L
+0.56 H
+2 Z
+N
+357.6 564.97 357.6 555.62 2 L
+N
+0 0 0 0 1 1 1 K
+357.6 549.38 355.26 555.62 359.94 555.62 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+357.6 549.38 355.26 555.62 359.94 555.62 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+365.4 564.97 365.4 543.92 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+365.4 537.68 363.06 543.92 367.74 543.92 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+365.4 537.68 363.06 543.92 367.74 543.92 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+373.2 558.74 373.2 541.58 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+373.2 564.97 375.54 558.74 370.86 558.74 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+373.2 564.97 375.54 558.74 370.86 558.74 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+381 558.74 381 549.38 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+381 564.97 383.33 558.74 378.66 558.74 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+2 4.5 Q
+1 1 1 0 0 0 0 K
+(alarm) 330.31 555.24 T
+(pulse) 345.9 543.55 T
+(w) 342.01 531.85 T
+(a) 345.21 531.85 T
+(v) 347.12 531.85 T
+(eform) 349.3 531.85 T
+(time stamp strobe) 377.1 535.75 T
+(stopw) 384.89 547.44 T
+(atch control) 395.6 547.44 T
+(interrupt) 271.83 555.24 T
+381 564.97 383.33 558.74 378.66 558.74 3 Y
+V
+N
+201.64 705.34 201.64 724.05 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+201.64 728.73 203.98 722.49 199.3 722.49 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+2 5.62 Q
+1 1 1 0 0 0 0 K
+(BCP) 0 -270 196.18 709.74 TF
+201.64 728.73 203.98 722.49 199.3 722.49 3 Y
+V
+N
+217.24 705.34 217.24 724.05 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+217.24 728.73 219.58 722.49 214.9 722.49 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+217.24 728.73 219.58 722.49 214.9 722.49 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+225.04 710.02 225.04 724.05 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+225.04 705.34 222.7 711.58 227.38 711.58 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+225.04 705.34 222.7 711.58 227.38 711.58 3 Y
+1 1 1 0 0 0 0 K
+V
+N
+0 0 0 0 1 1 1 K
+225.04 728.73 227.38 722.49 222.7 722.49 3 Y
+0 0 0 0 1 1 1 K
+V
+N
+1 1 1 0 0 0 0 K
+2 4.5 Q
+1 1 1 0 0 0 0 K
+(data) 283.52 590.33 T
+(address) 283.52 582.54 T
+(control) 283.52 574.74 T
+2 5.62 Q
+(16.77 MHz) 408.29 581.08 T
+225.04 728.73 227.38 722.49 222.7 722.49 3 Y
+V
+N
+180.59 736.53 189.95 736.53 2 L
+0.56 H
+2 Z
+N
+0 0 0 0 1 1 1 K
+174.35 736.53 180.59 738.87 180.59 734.19 3 Y
+0 0 0 0 1 1 1 K
+V
+0 H
+0 Z
+N
+1 1 1 0 0 0 0 K
+1 1 1 0 0 0 0 K
+(T) 127.56 737.04 T
+(elemetry) 130.61 737.04 T
+174.35 736.53 180.59 738.87 180.59 734.19 3 Y
+V
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 0 0 1 0 0 0 K
+(Figure 4:) 70.87 509.91 T
+1 F
+(The L) 127.56 509.91 T
+(TMS in a typical OBDH system con\336gur) 148.14 509.91 T
+(ation) 293.49 509.91 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "5" 5
+%%Page: "6" 6
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+[ 1 1 1 0 0 0 0]
+[ 0 0 0 0 1 1 1]
+ 9 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 9 Q
+0 X
+0 0 0 1 0 0 0 K
+0.09 (of 16.77 MHz. This cell has been made generally a) 70.23 765.03 P
+0.09 (v) 254.56 765.03 P
+0.09 (ailable) 258.83 765.03 P
+0.49 (by the foundry to other users and is no) 70.23 754.03 P
+0.49 (w part of the ASIC) 212.39 754.03 P
+(design kit.) 70.23 743.03 T
+-0.05 (Due to ET counter synchronisations only happening once a) 70.23 721.03 P
+-0.24 (second and with clocking frequencies up to 16.77 MHz, the) 70.23 710.03 P
+-0.37 (VHDL simulations had to use time skips to be able to v) 70.23 699.03 P
+-0.37 (erify) 265.83 699.03 P
+1.71 (the L) 70.23 688.03 P
+1.71 (TMS functionality within a reasonable time frame.) 89.86 688.03 P
+-0.41 (These time skips had to be de) 70.23 677.03 P
+-0.41 (vised in such w) 174.03 677.03 P
+-0.41 (ay that the) 228.45 677.03 P
+-0.41 (y did) 264.98 677.03 P
+1.69 (not upset the internal status of the L) 70.23 666.03 P
+1.69 (TMS or introduced) 210.46 666.03 P
+0.04 (timing violations. The serial nature of the CTMS messages) 70.23 655.03 P
+1.09 (resulted in long simulation runs. The programmability of) 70.23 644.03 P
+2.19 (the L) 70.23 633.03 P
+2.19 (TMS required se) 90.35 633.03 P
+2.19 (v) 155 633.03 P
+2.19 (eral dif) 159.36 633.03 P
+2.19 (ferent test benches to be) 187.07 633.03 P
+2.31 (de) 70.23 622.03 P
+2.31 (v) 78.5 622.03 P
+2.31 (eloped for complete v) 82.87 622.03 P
+2.31 (eri\336cation. All simulation test) 168.39 622.03 P
+0.02 (benches had to be self-checking because a component with) 70.23 611.03 P
+1.76 (the comple) 70.23 600.03 P
+1.76 (xity of the L) 111.6 600.03 P
+1.76 (TMS is impossible to check for) 160.79 600.03 P
+1.1 (functional correctness e) 70.23 589.03 P
+1.1 (xclusi) 157.78 589.03 P
+1.1 (v) 179.05 589.03 P
+1.1 (ely by visual inspection of) 183.42 589.03 P
+2 (the simulation results. The re) 70.23 578.03 P
+2 (gression testing performed) 182.84 578.03 P
+1.02 (throughout the de) 70.23 567.03 P
+1.02 (v) 135.54 567.03 P
+1.02 (elopment also required the v) 139.9 567.03 P
+1.02 (eri\336cation) 246.33 567.03 P
+(process to be automated.) 70.23 556.03 T
+0.5 (Post-synthesis simulations were performed on a g) 70.23 534.03 P
+0.5 (ate-le) 252.2 534.03 P
+0.5 (v) 271.96 534.03 P
+0.5 (el) 276.33 534.03 P
+3.98 (netlist e) 70.23 523.03 P
+3.98 (xpressed in the V) 102.32 523.03 P
+3.98 (erilog hardw) 175.99 523.03 P
+3.98 (are description) 225.61 523.03 P
+1.51 (language. The VHDL test benches had to be adapted to) 70.23 512.03 P
+(generate the necessary V) 70.23 501.03 T
+(erilog stimuli.) 158.95 501.03 T
+1.75 (Static timing v) 70.23 479.03 P
+1.75 (eri\336cation after synthesis pro) 126.61 479.03 P
+1.75 (v) 236.47 479.03 P
+1.75 (ed intricate) 240.83 479.03 P
+0.44 (because of the man) 70.23 468.03 P
+0.44 (y clock re) 140.65 468.03 P
+0.44 (gions and reset signals in the) 176.88 468.03 P
+-0.19 (highly con) 70.23 457.03 P
+-0.19 (v) 107.93 457.03 P
+-0.19 (oluted design. It w) 112.25 457.03 P
+-0.19 (as further complicated by the) 178.6 457.03 P
+-0.25 (ongoing de) 70.23 446.03 P
+-0.25 (v) 110.01 446.03 P
+-0.25 (elopment of the MITEL 1.25) 114.37 446.03 P
+3 F
+-0.25 (m) 219.62 446.03 P
+2 F
+-0.25 (m CMOS/SOS5) 224.81 446.03 P
+-0.05 (process which required the corresponding ASIC design kit,) 70.23 435.03 P
+0.25 (including the standard cell library) 70.23 424.03 P
+0.25 (, to be upgraded while in) 192.11 424.03 P
+(use.) 70.23 413.03 T
+1.04 (A f) 70.23 391.03 P
+1.04 (ault co) 82.93 391.03 P
+1.04 (v) 108.08 391.03 P
+1.04 (erage greater than 98% for stuck-at f) 112.44 391.03 P
+1.04 (aults has) 250.54 391.03 P
+1.15 (been reached by emplo) 70.23 380.03 P
+1.15 (ying partial scan together with ad) 156.83 380.03 P
+2.23 (hoc methods and automatic scantest pattern generation.) 70.23 369.03 P
+3.44 (Functional test v) 70.23 358.03 P
+3.44 (ectors ha) 136.99 358.03 P
+3.44 (v) 172.49 358.03 P
+3.44 (e been de) 176.85 358.03 P
+3.44 (v) 217.5 358.03 P
+3.44 (eloped allo) 221.86 358.03 P
+3.44 (wing) 264.83 358.03 P
+1.91 (production testing of the L) 70.23 347.03 P
+1.91 (TMS to be performed at the) 173.04 347.03 P
+2.32 (nominal operating frequenc) 70.23 336.03 P
+2.32 (y of 16.77 MHz \050and some) 174.22 336.03 P
+(additional mar) 70.23 325.03 T
+(gin\051.) 122.32 325.03 T
+0.36 (The L) 70.23 303.03 P
+0.36 (TMS has a g) 91.51 303.03 P
+0.36 (ate count of approximately 25 thousand) 138.29 303.03 P
+-0.14 (equi) 70.23 292.03 P
+-0.14 (v) 85.5 292.03 P
+-0.14 (alent g) 89.78 292.03 P
+-0.14 (ates and a die area of about 120 mm) 113.84 292.03 P
+2 7.2 Q
+-0.12 (2) 242.66 295.63 P
+2 9 Q
+-0.14 (. It will be) 246.26 292.03 P
+-0.28 (supplied in an 84 pin ceramic quad \337at package. The L) 70.23 281.03 P
+-0.28 (TMS) 264.32 281.03 P
+0.16 (will be guaranteed to withstand radiation up to a total dose) 70.23 270.03 P
+0.99 (of 100 kRad. It will be latch-up immune and will ha) 70.23 259.03 P
+0.99 (v) 267.22 259.03 P
+0.99 (e a) 271.59 259.03 P
+0.84 (v) 70.23 248.03 P
+0.84 (ery lo) 74.6 248.03 P
+0.84 (w Single Ev) 95.96 248.03 P
+0.84 (ent Upset \050SEU\051 sensiti) 141.51 248.03 P
+0.84 (vity due to the) 228.55 248.03 P
+(Silicon On Sapphire \050SOS\051 technology) 70.23 237.03 T
+(.) 209.64 237.03 T
+0 F
+(7) 70.23 215.03 T
+(CONCLUSIONS) 98.58 215.03 T
+2 F
+3.6 (A component which implements current and planned) 70.23 193.03 P
+1.57 (standards go) 70.23 182.03 P
+1.57 (v) 116.9 182.03 P
+1.57 (erning time distrib) 121.27 182.03 P
+1.57 (ution onboard spacecraft) 190.72 182.03 P
+1.77 (has been presented together with a potential application) 70.23 171.03 P
+1.56 (scenario. The L) 70.23 160.03 P
+1.56 (TMS components will supply their users) 128.76 160.03 P
+0.61 (with correctly phased, identical local copies of the central) 70.23 149.03 P
+1.57 (elapsed time reference onboard a spacecraft. The L) 70.23 138.03 P
+1.57 (TMS) 264.32 138.03 P
+-0.25 (will detect and manage errors in the time distrib) 70.23 127.03 P
+-0.25 (ution chain,) 240.57 127.03 P
+1.62 (and will pro) 70.23 116.03 P
+1.62 (vide its user with information re) 116.83 116.03 P
+1.62 (g) 240.51 116.03 P
+1.62 (arding the) 244.97 116.03 P
+1.61 (v) 70.23 105.03 P
+1.61 (alidity of the local time reference. It will pro) 74.51 105.03 P
+1.61 (vide time) 247.46 105.03 P
+-0.03 (stamping of e) 311.18 765.03 P
+-0.03 (v) 359.89 765.03 P
+-0.03 (ents, an alarm clock, a stopw) 364.25 765.03 P
+-0.03 (atch, w) 468.23 765.03 P
+-0.03 (a) 494.1 765.03 P
+-0.03 (v) 497.92 765.03 P
+-0.03 (eform) 502.28 765.03 P
+(and pulse generators.) 311.18 754.03 T
+5.82 (The de) 311.18 732.03 P
+5.82 (v) 341.52 732.03 P
+5.82 (elopment of the L) 345.89 732.03 P
+5.82 (TMS follo) 426.78 732.03 P
+5.82 (ws a design) 470.13 732.03 P
+2.79 (methodology using the hardw) 311.18 721.03 P
+2.79 (are description languages) 426.71 721.03 P
+0.23 (VHDL and V) 311.18 710.03 P
+0.23 (erilog, together with automatic scan insertion) 359.63 710.03 P
+(and test pattern generation.) 311.18 699.03 T
+4.8 (W) 311.18 677.03 P
+4.8 (ith the L) 319.32 677.03 P
+4.8 (TMS component, a no) 358.59 677.03 P
+4.8 (v) 453.36 677.03 P
+4.8 (el w) 457.72 677.03 P
+4.8 (ay of time) 477.68 677.03 P
+1.96 (distrib) 311.18 666.03 P
+1.96 (ution with high resolution and accurac) 334.01 666.03 P
+1.96 (y has been) 481.88 666.03 P
+4.94 (introduced, requiring little or no support from the) 311.18 655.03 P
+0.78 (application incorporating it. The L) 311.18 644.03 P
+0.78 (TMS is currently being) 437.7 644.03 P
+3.61 (de) 311.18 633.03 P
+3.61 (v) 319.45 633.03 P
+3.61 (eloped for the radiation hard SOS5 process from) 323.82 633.03 P
+1.17 (MITEL Semiconductors. First prototypes are e) 311.18 622.03 P
+1.17 (xpected in) 485.36 622.03 P
+(2Q97.) 311.18 611.03 T
+2.35 (Direct questions re) 311.18 589.03 P
+2.35 (g) 383.74 589.03 P
+2.35 (arding price and a) 388.19 589.03 P
+2.35 (v) 459.8 589.03 P
+2.35 (ailability of the) 464.07 589.03 P
+-0.34 (L) 311.18 578.03 P
+-0.34 (TMS to Mr G\232ran W) 315.85 578.03 P
+-0.34 (enner) 390.25 578.03 P
+-0.34 (gren at MITEL Semiconductors) 410.08 578.03 P
+(\050T) 311.18 567.03 T
+(el: +46 8 58024635\051.) 319.05 567.03 T
+0 F
+(8) 311.18 545.03 T
+(A) 339.53 545.03 T
+(CKNO) 345.53 545.03 T
+(WLEDGEMENTS) 372.08 545.03 T
+2 F
+2.4 (W) 311.18 523.03 P
+2.4 (e gratefully ackno) 318.96 523.03 P
+2.4 (wledge Mr Damien Maeusli at the) 388.52 523.03 P
+1 (European Space Research and T) 311.18 512.03 P
+1 (echnology Centre for the) 431.03 512.03 P
+-0.52 (speci\336cation of the L) 311.18 501.03 P
+-0.52 (TMS and for his v) 385.04 501.03 P
+-0.52 (aluable contrib) 448.73 501.03 P
+-0.52 (utions) 501.77 501.03 P
+(to this paper) 311.18 490.03 T
+(.) 355.18 490.03 T
+0 F
+(9) 311.18 468.03 T
+(A) 339.53 468.03 T
+(CR) 345.53 468.03 T
+(ONYMS AND ABBREVIA) 358.26 468.03 T
+(TIONS) 462.4 468.03 T
+2 F
+(ASIC) 311.18 446.03 T
+(Application Speci\336c Inte) 339.53 446.03 T
+(grated Circuit) 429.38 446.03 T
+(ASSP) 311.18 435.03 T
+(Application Speci\336c Standard Product) 339.53 435.03 T
+(BCP) 311.18 424.03 T
+(BroadCast Pulse) 339.53 424.03 T
+(CCSDS) 311.18 413.03 T
+(Consultati) 339.69 413.03 T
+(v) 376.48 413.03 T
+(e Committee for Space Data Systems) 380.84 413.03 T
+(CDMU) 311.18 402.03 T
+(Central Data Management Unit) 339.53 402.03 T
+(CMOS) 311.18 391.03 T
+(Complementary Metal Oxide Semiconductor) 339.53 391.03 T
+(CTMS) 311.18 380.03 T
+(Central T) 339.53 380.03 T
+(ime Management System) 373.46 380.03 T
+(CUC) 311.18 369.03 T
+(CCSDS Unse) 339.53 369.03 T
+(gmented Code) 388.65 369.03 T
+(DB) 311.18 358.03 T
+(U) 323.59 358.03 T
+( Data Bus Unit) 339.53 358.03 T
+(DPLL) 311.18 347.03 T
+(Digital Phase Lock) 339.53 347.03 T
+(ed Loop) 408.43 347.03 T
+(ERC32) 311.18 336.03 T
+(Embedded Real-time Computer) 339.53 336.03 T
+(ERS) 311.18 325.03 T
+(European Remote Sensing satellite) 339.53 325.03 T
+(ESA) 311.18 314.03 T
+(European Space Agenc) 339.53 314.03 T
+(y) 423.36 314.03 T
+(ESTEC) 311.18 303.03 T
+(European Space Research and T) 339.53 303.03 T
+(echnology Centre) 455.36 303.03 T
+(ET) 311.18 292.03 T
+(Elapsed T) 339.53 292.03 T
+(ime) 375.46 292.03 T
+(IEEE) 311.18 281.03 T
+(Institute of Electrical and Electronics Engineers) 339.53 281.03 T
+(L) 311.18 270.03 T
+(TMS) 315.85 270.03 T
+(Local T) 339.53 270.03 T
+(ime Management System) 367.45 270.03 T
+(OBDH) 311.18 259.03 T
+( On-Board Data Handling) 339.53 259.03 T
+(RBI) 311.18 248.03 T
+(Remote Bus Interf) 339.53 248.03 T
+(ace) 405.93 248.03 T
+(SEU) 311.18 237.03 T
+(Single Ev) 339.53 237.03 T
+(ent Upset) 374.65 237.03 T
+(SOS) 311.18 226.03 T
+(Silicon On Sapphire) 339.53 226.03 T
+(VCA) 311.18 215.03 T
+(V) 339.53 215.03 T
+(irtual Channel Assembler) 345.49 215.03 T
+(VHDL) 311.18 204.03 T
+(VHSIC Hardw) 339.53 204.03 T
+(are Description Language) 393.18 204.03 T
+(VHSIC) 311.18 193.03 T
+(V) 339.53 193.03 T
+(ery High Speed Inte) 345.03 193.03 T
+(grated Circuit) 417.13 193.03 T
+0 F
+(10) 311.18 171.03 T
+(REFERENCES) 339.53 171.03 T
+2 F
+(1) 311.18 149.03 T
+-0.4 (L) 325.36 149.03 P
+-0.4 (TMS Preliminary Data Sheet, S. Redant et al.,) 330.03 149.03 P
+-0.4 ( IMEC,) 497.17 149.03 P
+(October 1996.) 325.36 138.03 T
+(2) 311.18 127.03 T
+3.22 (T) 325.36 127.03 P
+3.22 (ime Code Standards, Consultati) 330.54 127.03 P
+3.22 (v) 453.98 127.03 P
+3.22 (e Committee for) 458.34 127.03 P
+(Space Data Systems,) 325.36 116.03 T
+1.42 ( CCSDS 301.0-B-2, Blue Book,) 402.85 116.03 P
+(Issue 2,) 325.36 105.03 T
+( April 1990.) 355.1 105.03 T
+(3) 311.18 94.03 T
+(4-255 Data Bus Protocol Extensions,) 325.36 94.03 T
+( PSS-04-256.) 460.85 94.03 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "6" 6
+%%Trailer
+%%BoundingBox: 0 0 595.3 841.89
+%%PageOrder: Ascend
+%%Pages: 6
+%%DocumentFonts: Times-Bold
+%%+ Times-Italic
+%%+ Times-Roman
+%%+ Symbol
+%%+ Courier
+%%EOF

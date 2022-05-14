@@ -1,0 +1,15 @@
+
+The linux version of erc32ccs is compiled on slakware linux using libc5
+libraries. Unfortunately, RedHat linux and some versions of Debian
+might contain outdated libc5 libraries which causes the compiler to
+fail. The file libc5.tar.gz contains libc5 libraries that should
+work with erc32ccs. To install them on a Redhat system, do as follows:
+
+cd /usr/i486-linux-libc5/lib
+tar xzvf redhat-libc5.tar.gz
+/sbin/ldconfig -v
+
+
+Report problems to jgais@ws.estec.esa.nl
+
+Jiri Gaisler - ESA/ESTEC

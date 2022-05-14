@@ -1,0 +1,40 @@
+
+README file for ERC32 cross-compilation system (erc32ccs-1.3.2)
+-------------------------------------------------------------
+
+1. Introduction
+
+The erc32ccs is a cross-compilation system that consists of the following:
+
+- GNU c/c++ compiler (egcs-1.00)
+- GNAT Ada95 compiler (gnat-3.10p)
+- Linker, assembler, archiver etc. (binutils-2.8.1)
+- RTEMS real-time kernel (rtems-4.0)
+- Standalone C-library (newlib-1.8.0 from Cygnus)
+- Standalone ERC32 simulator (sis-3.0)
+- GNU debugger with ERC32 simulator (gdb-4.17 + sis-3.0 + gnat patch)
+- Graphic user interace for gdb (ddd-3.0)
+
+With erc32ccs, is possible compile and link ERC32 programs, and to
+run them on the ERC32 simulator or a remote target. Using the debugger, 
+it is also possible to perform source-level symbolic debugging.
+
+2. Installation
+
+Refer to the release notes in erc32ccs-1.3.2.pdf for how
+to install and use.
+
+3. Additional info
+
+Additional information on the various tools can be found at:
+
+http://www.cs.tu-bs.de/softech/ddd/	(ddd home page)
+http://www.ns.utk.edu/gnu/		(GNU online documentation)
+http://www.estec.esa.nl/wsmwww/erc32	(ERC32 home page)
+http://www.oarcorp.com/			(RTEMS)
+
+In case of problems, you can also mail me at jgais@ws.estec.esa.nl
+
+Good Luck!
+
+Jiri Gaisler - ESA/ESTEC

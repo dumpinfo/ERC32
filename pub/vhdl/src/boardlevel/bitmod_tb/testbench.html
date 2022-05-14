@@ -1,0 +1,142 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : TestBench(Structural) (Entity and architecture)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : testbench.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : This is the structural test bench binding the Bit Modulator
+</font></i><font color=green><i>--                and the Test Generator together.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : No generics have been declared for the component, the
+</font></i><font color=green><i>--                association of values to the generics will be done in the
+</font></i><font color=green><i>--                configuration declarations of the test bench.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_TB_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New model
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Naming convention: Active low signals are indicated by _N.
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=blue>entity</font> TestBench <font color=blue>is</font>
+<font color=blue>end</font> TestBench; <font color=green><i>--=================== End of entity ===========================--
+</font></i>
+<font color=green><i>--=============================== Architecture ===============================--
+</font></i><font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;
+
+<font color=blue>architecture</font> Structural <font color=blue>of</font> TestBench <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Component declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>component</font> BitMod
+      <font color=blue>port</font>(
+         <font color=green><i>-- System signals (4)
+</font></i>         Test:    <font color=blue>in</font>     <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);     <font color=green><i>-- Test mode
+</font></i>         Clk:     <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Master Clock
+</font></i>         Reset_N: <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Master Reset
+</font></i>
+         <font color=green><i>-- Interface to internal registers (12)
+</font></i>         A:       <font color=blue>in</font>     <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);     <font color=green><i>-- Address bus
+</font></i>         CS_N:    <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Chip select
+</font></i>         RW_N:    <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Read/write
+</font></i>         D:       <font color=blue>inout</font>  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);     <font color=green><i>-- Bidir. bus
+</font></i>
+         <font color=green><i>-- Serial Interface (3)
+</font></i>         SClk:    <font color=blue>in</font>     <font color=red>Std_ULogic</font>;                   <font color=green><i>-- Serial clock
+</font></i>         SData:   <font color=blue>in</font>     <font color=red>Std_ULogic</font>;                   <font color=green><i>-- Serial input 
+</font></i>         MData:   <font color=blue>out</font>    <font color=red>Std_Logic</font>);                   <font color=green><i>-- Serial output 
+</font></i>   <font color=blue>end</font> <font color=blue>component</font>;
+
+   <font color=blue>component</font> TestGenerator
+      <font color=blue>port</font>(
+         <font color=green><i>-- System signals (4)
+</font></i>         Test:    <font color=blue>inout</font>  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);     <font color=green><i>-- Test mode
+</font></i>         Clk:     <font color=blue>inout</font>  <font color=red>Std_Logic</font>;                    <font color=green><i>-- Master Clock
+</font></i>         Reset_N: <font color=blue>inout</font>  <font color=red>Std_Logic</font>;                    <font color=green><i>-- Master Reset
+</font></i>
+         <font color=green><i>-- Interface to internal registers (12)
+</font></i>         A:       <font color=blue>inout</font>  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);     <font color=green><i>-- Address bus
+</font></i>         CS_N:    <font color=blue>inout</font>  <font color=red>Std_Logic</font>;                    <font color=green><i>-- Chip select
+</font></i>         RW_N:    <font color=blue>inout</font>  <font color=red>Std_Logic</font>;                    <font color=green><i>-- Read/write
+</font></i>         D:       <font color=blue>inout</font>  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);     <font color=green><i>-- Bidir. bus
+</font></i>
+         <font color=green><i>-- Serial Interface (3)
+</font></i>         SClk:    <font color=blue>inout</font>  <font color=red>Std_ULogic</font>;                   <font color=green><i>-- Serial clock
+</font></i>         SData:   <font color=blue>inout</font>  <font color=red>Std_ULogic</font>;                   <font color=green><i>-- Serial inputData
+</font></i>         MData:   <font color=blue>in</font>     <font color=red>Std_Logic</font>);                   <font color=green><i>-- Serial output 
+</font></i>   <font color=blue>end</font> <font color=blue>component</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Local signal declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>signal</font> Test:     <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);          <font color=green><i>-- Test mode
+</font></i>   <font color=blue>signal</font> Clk:      <font color=red>Std_Logic</font>;                         <font color=green><i>-- Master Clock
+</font></i>   <font color=blue>signal</font> Reset_N:  <font color=red>Std_Logic</font>;                         <font color=green><i>-- Master Reset
+</font></i>   <font color=blue>signal</font> A:        <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);          <font color=green><i>-- Address bus
+</font></i>   <font color=blue>signal</font> CS_N:     <font color=red>Std_Logic</font>;                         <font color=green><i>-- Chip select
+</font></i>   <font color=blue>signal</font> RW_N:     <font color=red>Std_Logic</font>;                         <font color=green><i>-- Read/write
+</font></i>   <font color=blue>signal</font> D:        <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);          <font color=green><i>-- Bidir. bus
+</font></i>   <font color=blue>signal</font> SClk:     <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Serial Clock
+</font></i>   <font color=blue>signal</font> SData:    <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Serial input
+</font></i>   <font color=blue>signal</font> MData:    <font color=red>Std_Logic</font>;                         <font color=green><i>-- Serial output
+</font></i>
+<font color=blue>begin</font> <font color=green><i>--========================== Architecture ==============================--
+</font></i>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Instantiation of components.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   Test_Object: BitMod
+      <font color=blue>port</font> <font color=blue>map</font>(
+         Test     => Test,
+         Clk      => Clk,
+         Reset_N  => Reset_N,
+         A        => A,
+         CS_N     => CS_N,
+         RW_N     => RW_N,
+         D        => D,
+         SClk     => SClk,
+         SData    => SData,
+         MData    => MData);
+
+   Test_Generator: TestGenerator
+      <font color=blue>port</font> <font color=blue>map</font>(
+         Test     => Test,
+         Clk      => Clk,
+         Reset_N  => Reset_N,
+         A        => A,
+         CS_N     => CS_N,
+         RW_N     => RW_N,
+         D        => D,
+         SClk     => SClk,
+         SData    => SData,
+         MData    => MData);
+
+<font color=blue>end</font> Structural; <font color=green><i>--================ End of architecture =======================--
+</font></i></pre>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BitMod_Definition (Package declaration and body)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : bitmod_definition.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : This packages defines the conversion functions used for
+</font></i><font color=green><i>--                the BitMod design which are not contained in the
+</font></i><font color=green><i>--                IEEE Std_Logic_1164 package.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : Functions are held as simple as possible.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New package
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;
+
+<font color=blue>package</font> BitMod_Definition <font color=blue>is</font>
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Integer to Std_Logic_Vector (0 to Size-1).
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_StdLogicVector(
+      <font color=blue>constant</font> Arg:                 <font color=red>Integer</font>;
+      <font color=blue>constant</font> Size:                <font color=red>Integer</font>        := 8)
+      <font color=blue>return</font>                        <font color=red>Std_Logic_Vector</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts unsigned Std_Logic_Vector to Integer, leftmost bit is MSB
+</font></i>   <font color=green><i>-- Error message for unknowns (U, X, W, Z, -), converted to 0
+</font></i>   <font color=green><i>-- Verifies whether vector is too long (> 31 bits)
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_Integer(
+      <font color=blue>constant</font> Vector:              <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> VectorName:          <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_Integer"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Integer</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the relation between two clocks
+</font></i>   <font color=green><i>-- If FasterThanRef = True,
+</font></i>   <font color=green><i>-- then the TestSignal may not have more than Period rising edges 
+</font></i>   <font color=green><i>-- between two RefSignal rising edges.
+</font></i>   <font color=green><i>-- If FasterThanRef = False,
+</font></i>   <font color=green><i>-- then the RefSignal may not have more than Period rising edges 
+</font></i>   <font color=green><i>-- between two TestSignal rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> PeriodCheck(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> FasterThanRef:   <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"PeriodCheck:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>);
+
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the TestPort stable width w.r.t. number of RefPort rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> CheckWidth(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> TestSignalLevel: <font color=blue>in</font>    <font color=red>Std_ULogic</font>     := '0';
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"CheckWidth:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>);
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_ULogic to X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur 
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package 
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_Logic_Vector to Std_ULogic_Vector of X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur 
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic_Vector</font>;
+
+<font color=blue>end</font> BitMod_Definition; <font color=green><i>--============ End of package header ==================--
+</font></i>
+<font color=blue>package</font> <font color=blue>body</font> BitMod_Definition <font color=blue>is</font>
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Integer to Std_Logic_Vector (0 to Size-1).
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_StdLogicVector(
+      <font color=blue>constant</font> Arg:                 <font color=red>Integer</font>;
+      <font color=blue>constant</font> Size:                <font color=red>Integer</font>        := 8)
+      <font color=blue>return</font>                        <font color=red>Std_Logic_Vector</font> <font color=blue>is</font>
+   <font color=blue>begin</font>       
+      <font color=blue>return</font> <font color=red>Std_Logic_Vector</font>'(<font color=black>"000"</font>);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_StdLogicVector;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts unsigned Std_Logic_Vector to Integer
+</font></i>   <font color=green><i>-- Leftmost bit is most significant
+</font></i>   <font color=green><i>-- Error message for unknowns (U, X, W, Z, -), which are converted to 0
+</font></i>   <font color=green><i>-- Verifies whether vector is too long (> 31 bits)
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_Integer(
+      <font color=blue>constant</font> Vector:              <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> VectorName:          <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_Integer"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Integer</font> <font color=blue>is</font>
+   <font color=blue>begin</font>
+      <font color=blue>return</font> <font color=red>Integer</font>'(0);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_Integer;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the relation between two clocks
+</font></i>   <font color=green><i>-- If FasterThanRef = True,
+</font></i>   <font color=green><i>-- then the TestSignal may not have more than Period rising edges
+</font></i>   <font color=green><i>-- between two RefSignal rising edges.
+</font></i>   <font color=green><i>-- If FasterThanRef = False,
+</font></i>   <font color=green><i>-- then the RefSignal may not have more than Period rising edges
+</font></i>   <font color=green><i>-- between two TestSignal rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> PeriodCheck(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> FasterThanRef:   <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"PeriodCheck:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>) <font color=blue>is</font>
+   <font color=blue>begin</font> 
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> PeriodCheck;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the TestPort stable width w.r.t. number of RefPort rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> CheckWidth(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> TestSignalLevel: <font color=blue>in</font>    <font color=red>Std_ULogic</font>     := '0';
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"CheckWidth:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>) <font color=blue>is</font>
+   <font color=blue>begin</font> 
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> CheckWidth;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_ULogic to X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font> To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic</font> <font color=blue>is</font>
+   <font color=blue>begin</font> 
+      <font color=blue>return</font> To_X01(Test);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_X01;
+ 
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_Logic_Vector to Std_ULogic_Vector of X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic_Vector</font> <font color=blue>is</font>
+   <font color=blue>begin</font>
+      <font color=blue>return</font> <font color=red>Std_ULogic_Vector</font>'(<font color=black>"000"</font>);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_X01;
+
+<font color=blue>end</font> BitMod_Definition; <font color=green><i>--================ End of package body ================--
+</font></i></pre>
+</body>
+</html>

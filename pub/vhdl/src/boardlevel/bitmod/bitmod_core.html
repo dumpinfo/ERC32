@@ -1,0 +1,220 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BitMod_Core(Behavioural) (Entity and architecture)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : bitmod_core.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : This is the functional core of the BitMod implementing
+</font></i><font color=green><i>--                all the Bit Modulator functionality, except the 
+</font></i><font color=green><i>--                multiplexing of the data bus D which is performed in the 
+</font></i><font color=green><i>--                Board-level architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The Bit Modulator receives serial input data, modulates it
+</font></i><font color=green><i>--                and outputs it synchronously with the system clock. Different
+</font></i><font color=green><i>--                modes of modulation can be configured in internal registers.
+</font></i><font color=green><i>--                The registers can be read and written via a parallel
+</font></i><font color=green><i>--                interface. The Bit Modulator optionally performs BIST after
+</font></i><font color=green><i>--                reset. For further information see the data sheet for the
+</font></i><font color=green><i>--                Bit Modulator.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : This model is modelled after the design (the design was not
+</font></i><font color=green><i>--                synthesized from this model). The model has been extensively
+</font></i><font color=green><i>--                verified versus the gate-level design on clock-by-clock
+</font></i><font color=green><i>--                basis.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Unknown values on input signals are handled as follows:
+</font></i><font color=green><i>--                  'X' on Reset_N is treated as '1',
+</font></i><font color=green><i>--                  'X' on Test    is treated as '0',
+</font></i><font color=green><i>--                  'X' on A       is treated as '0',
+</font></i><font color=green><i>--                  'X' on D       is treated as '0',
+</font></i><font color=green><i>--                  'X' on CS_N    is treated as '1' during write and read
+</font></i><font color=green><i>--                  'X' on RW_N    is treated as '1' during write and
+</font></i><font color=green><i>--                                            as '0' during read
+</font></i><font color=green><i>--                  'X' on SData   is propagated to MData output.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Unknown values on the Clk input are handled using the
+</font></i><font color=green><i>--                Std_Logic_1164 Rising_Edge() and Falling_Edge() functions in
+</font></i><font color=green><i>--                the functional core. Clk is checked for unknown values when
+</font></i><font color=green><i>--                neither edge is detected, which is also done during reset.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The SClk input is sampled in the functional core with Clk,
+</font></i><font color=green><i>--                and is checked for unknown values in the Board-level
+</font></i><font color=green><i>--                architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                All conversions of logical values are performed in the
+</font></i><font color=green><i>--                functional core, except for the signals Reset_N and Test,
+</font></i><font color=green><i>--                which is performed in the Board-level architecture.
+</font></i><font color=green><i>--                The conversion of logical values and X-Checking is generally
+</font></i><font color=green><i>--                only performed when the value is needed.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                All scheduling of output delays and timing checking are
+</font></i><font color=green><i>--                performed in the Board-level architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : BIST internal function not modelled, only the resulting delay
+</font></i><font color=green><i>--                after reset. Manufacturing test is not modelled.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The modelling is not fully correct w.r.t. a typical RAM I/F, 
+</font></i><font color=green><i>--                since some relaxations have been introduced.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164,
+</font></i><font color=green><i>--                BitMod_Lib.BitMod_Definition.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New model
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i> 
+<font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Naming convention: Active low signals are indicated by _N.
+</font></i><font color=green><i>-- All external signals have been named as in the data sheet.
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;                           <font color=green><i>-- For data types
+</font></i>
+<font color=blue>entity</font> BitMod_Core <font color=blue>is</font>
+   <font color=blue>generic</font>(
+      InstancePath: <font color=red>String</font> := <font color=black>"BitMod_Core:"</font>); <font color=green><i>-- For assertions
+</font></i>   <font color=blue>port</font>(
+      <font color=green><i>-- System signals
+</font></i>      Test0:   <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Test mode
+</font></i>      Clk:     <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Master Clock
+</font></i>      Reset_N: <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Master Reset
+</font></i>
+      <font color=green><i>-- Interface to internal registers
+</font></i>      A:       <font color=blue>in</font>   <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);          <font color=green><i>-- Address bus
+</font></i>      CS_N:    <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Chip select
+</font></i>      RW_N:    <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Read/write
+</font></i>      D_In:    <font color=blue>in</font>   <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);          <font color=green><i>-- Data bus input
+</font></i>      D_Out:   <font color=blue>out</font>  <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 255;            <font color=green><i>-- Data bus output
+</font></i>      DEnable: <font color=blue>out</font>  <font color=red>Boolean</font>;                           <font color=green><i>-- Data bus enable
+</font></i>
+      <font color=green><i>-- Serial Interface
+</font></i>      SClk:    <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Serial clock
+</font></i>      SData:   <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Serial input 
+</font></i>      MData:   <font color=blue>out</font>  <font color=red>Std_ULogic</font>);                       <font color=green><i>-- Serial output 
+</font></i>
+<font color=blue>end</font> BitMod_Core; <font color=green><i>--================== End of entity ==========================--
+</font></i>
+<font color=green><i>--=============================== Architecture ===============================--
+</font></i> 
+<font color=blue>library</font> BitMod_Lib; 
+<font color=blue>use</font> BitMod_Lib.BitMod_Definition.<font color=blue>all</font>;                  <font color=green><i>-- For custom functions
+</font></i>
+<font color=blue>architecture</font> Behavioural <font color=blue>of</font> BitMod_Core <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Definitions for the internal registers
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>constant</font> RegisterSize:    <font color=red>Integer</font> := 4;
+   <font color=blue>subtype</font>  DataRange     <font color=blue>is</font> <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 255;
+   <font color=blue>subtype</font>  AddressRange  <font color=blue>is</font> <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> RegisterSize-1;
+   <font color=blue>type</font>     RegisterType  <font color=blue>is</font> <font color=blue>array</font>(AddressRange) <font color=blue>of</font> DataRange;
+   <font color=blue>constant</font> RegisterInit:    RegisterType := (0, 1, 2, 255);
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Local signal declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>signal</font>   DWrite:          DataRange;                <font color=green><i>-- Data to write
+</font></i>   <font color=blue>signal</font>   AWrite:          AddressRange;             <font color=green><i>-- Address to write
+</font></i>
+<font color=blue>begin</font> <font color=green><i>--========================== Architecture ==============================--
+</font></i>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Implementation of all functionality driven by Clk.
+</font></i>   <font color=green><i>-- Generation of synchronisation marker and header octets;
+</font></i>   <font color=green><i>-- optional generation of trailer; synchronised writing of internal 
+</font></i>   <font color=green><i>-- registers data; handling of reset and BIST delay; the SClk input is
+</font></i>   <font color=green><i>-- sampled within the process.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   ClkRegion: <font color=blue>process</font>(Reset_N, Clk, A)
+      <font color=blue>variable</font> A_Integer: <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 3;
+      <font color=blue>variable</font> Registers: RegisterType;
+   <font color=blue>begin</font>
+      <font color=blue>if</font> Reset_N = '0' <font color=blue>then</font>                            
+         <font color=green><i>-- Asynchronous reset of model
+</font></i>         <font color=green><i>-- To_X01 on Reset_N is done in Board-level
+</font></i>         Registers := RegisterInit;                    <font color=green><i>-- Initialize reg. file
+</font></i>         D_Out     <= Registers(A_Integer);
+      <font color=blue>elsif</font> Rising_Edge(Clk) <font color=blue>then</font>   
+         <font color=green><i>-- Rising Clk edge region
+</font></i>         Registers(AWrite) := DWrite;
+         D_Out <= Registers(A_Integer);
+      <font color=blue>elsif</font> Falling_Edge(Clk) <font color=blue>then</font>                    
+         <font color=green><i>-- Falling Clk edge region
+</font></i>         <font color=green><i>-- Not implemented in this VHDL code
+</font></i>      <font color=blue>else</font>
+         <font color=green><i>-- Check for unknown Clk value, since the model is not being reset,
+</font></i>         <font color=green><i>-- and neither rising nor falling Clk edge is detected.
+</font></i>         <font color=blue>assert</font> <font color=blue>not</font> (Is_X(Clk) <font color=blue>and</font> (Now /= 0 ns))      <font color=green><i>-- No assertions at start
+</font></i>           <font color=blue>report</font> InstancePath & <font color=black>" 'X' on Clk input"</font> <font color=blue>severity</font> <font color=red>Error</font>;
+      <font color=blue>end</font> <font color=blue>if</font>;
+      <font color=green><i>--------------------------------------------------------------------------
+</font></i>      <font color=green><i>-- Output register data on the internal bus whenever the address changes
+</font></i>      <font color=green><i>-- Only convert A to integer when it changes (used elsewhere)
+</font></i>      <font color=green><i>--------------------------------------------------------------------------
+</font></i>      <font color=blue>if</font> A'Event <font color=blue>then</font>
+         <font color=green><i>-- X is treated as 0
+</font></i>         A_Integer := To_Integer(A, <font color=black>"A"</font>, InstancePath, <font color=red>Error</font>);
+         D_Out      <= Registers(A_Integer);
+      <font color=blue>end</font> <font color=blue>if</font>;
+
+   <font color=blue>end</font> <font color=blue>process</font> ClkRegion;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Implementation of all asynchronous functionality.
+</font></i>   <font color=green><i>-- Latching of data to be written into the internal registers.
+</font></i>   <font color=green><i>-- Generation of external data bus enable. Checks for unknown values 
+</font></i>   <font color=green><i>-- are done for the input signals.
+</font></i>   <font color=green><i>-- The modelling is not fully correct w.r.t. a typical RAM I/F, since some
+</font></i>   <font color=green><i>-- relaxations have been introduced.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   AsynchronousRegion: <font color=blue>process</font>(CS_N, RW_N, Reset_N)
+   <font color=blue>begin</font>
+      <font color=blue>if</font> Reset_N = '0' <font color=blue>then</font>
+         <font color=green><i>-- To_X01 on Reset_N is done in Board-level
+</font></i>         <font color=green><i>-- Asynchronous reset of model
+</font></i>         DEnable <= <font color=red>False</font>;
+      <font color=blue>elsif</font> Rising_Edge(CS_N) <font color=blue>then</font> 
+         <font color=green><i>-- End of access
+</font></i>         <font color=blue>if</font> To_X01(RW_N, <font color=black>"RW_N"</font>, InstancePath, <font color=red>Error</font>)='0' <font color=blue>then</font>
+            <font color=green><i>-- Write access to internal registers
+</font></i>            <font color=green><i>-- X on CS_N is treated as no event (no access)
+</font></i>            <font color=green><i>-- X on RW_N is treated as 1 (no write access)
+</font></i>            <font color=green><i>-- X on A and D_In are treated as 0
+</font></i>            AWrite  <= To_Integer(A,    <font color=black>"A"</font>, InstancePath, <font color=red>Error</font>);
+            DWrite  <= To_Integer(D_In, <font color=black>"D"</font>, InstancePath, <font color=red>Error</font>);
+         <font color=blue>end</font> <font color=blue>if</font>;
+            DEnable <= <font color=red>False</font>;
+      <font color=blue>elsif</font> Now /= 0 ns <font color=blue>then</font>
+         <font color=green><i>-- Asynchronous behaviour
+</font></i>         <font color=green><i>-- Enabled for read cycles after Reset
+</font></i>         <font color=green><i>-- X on RW_N is treated as 0, X on CS_N is treated as 1
+</font></i>         DEnable <= (To_X01(RW_N, <font color=black>"RW_N"</font>, InstancePath, <font color=red>Error</font>)='1') <font color=blue>and</font>
+                    (To_X01(CS_N, <font color=black>"CS_N"</font>, InstancePath, <font color=red>Error</font>)='0') <font color=blue>and</font>
+                    (Reset_N='1');
+      <font color=blue>end</font> <font color=blue>if</font>;
+   <font color=blue>end</font> <font color=blue>process</font> AsynchronousRegion;
+
+<font color=blue>end</font> Behavioural; <font color=green><i>--================ End of architecture ======================--
+</font></i></pre>
+</body>
+</html>

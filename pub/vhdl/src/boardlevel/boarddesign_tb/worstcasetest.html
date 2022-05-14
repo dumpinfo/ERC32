@@ -1,0 +1,66 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : WorstCaseTest (Configuration)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : worstcasetest.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : Configuration selecting the timing test under Worst Case
+</font></i><font color=green><i>--                simulation conditions.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         :
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  :
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BoardDesign_TB_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : ESA.Simulation
+</font></i><font color=green><i>--                BoardDesign_Lib,
+</font></i><font color=green><i>--                BoardDesign_TB_Lib.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New configuration
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=blue>library</font> ESA;
+<font color=blue>use</font> ESA.Simulation.<font color=blue>all</font>;
+<font color=blue>use</font> ESA.Timing.<font color=blue>all</font>;
+
+<font color=blue>library</font> BoardDesign_Lib;
+<font color=blue>library</font> BoardDesign_TB_Lib;
+ 
+<font color=blue>configuration</font> WorstCaseTest <font color=blue>of</font> TestBench <font color=blue>is</font>
+   <font color=blue>for</font> Structural 
+      <font color=blue>for</font> Test_Object: BoardDesign
+         <font color=blue>use</font> <font color=blue>configuration</font> BoardDesign_Lib.BoardDesign_Configuration
+            <font color=blue>generic</font> <font color=blue>map</font>(
+               SimCondition   => WorstCase,
+               InstancePath   => <font color=black>":TestBench:Test_Object:"</font>,
+               TimingChecksOn => <font color=red>True</font>);
+      <font color=blue>end</font> <font color=blue>for</font>;
+      <font color=blue>for</font> Test_Generator: TestGenerator
+         <font color=blue>use</font> <font color=blue>entity</font> BoardDesign_TB_Lib.TestGenerator(Timing)
+            <font color=blue>generic</font> <font color=blue>map</font>(
+               SimCondition   => WorstCase,
+               InstancePath   => <font color=black>":TestBench:Test_Generator:"</font>);
+      <font color=blue>end</font> <font color=blue>for</font>;
+   <font color=blue>end</font> <font color=blue>for</font>;
+<font color=blue>end</font> WorstCaseTest; <font color=green><i>--================ End of configuration ===================--
+</font></i></pre>
+</body>
+</html>

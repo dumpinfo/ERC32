@@ -1,0 +1,93 @@
+
+1. MEC and ERC32 emulation
+
+This version of SIS implements the MEC rev.A, 512 K rom and 4 M ram.
+
+The following list outlines the implemented MEC registers:
+
+Register				Address		Status
+---------------------------------------------------------------
+MEC control register			0x01f80000	implemented
+Software reset register			0x01f80004	implemented
+Power-down register			0x01f80008	implemented
+Memory configuration register		0x01f80010	partly implemented
+IO configuration register		0x01f80014	implemented
+Waitstate configuration register	0x01f80018	implemented
+Access protection base register 1	0x01f80020	implemented
+Access protection end register 1	0x01f80024	implemented
+Access protection base register 2	0x01f80028	implemented
+Access protection end register 2	0x01f8002c	implemented
+Interrupt shape register 		0x01f80044	implemented
+Interrupt pending register 		0x01f80048	implemented
+Interrupt mask register 		0x01f8004c	implemented
+Interrupt clear register 		0x01f80050	implemented
+Interrupt force register 		0x01f80054	implemented
+Watchdog acknowledge register 		0x01f80060	implemented
+Watchdog trap door register 		0x01f80064	implemented
+RTC counter register			0x01f80080	implemented
+RTC counter program register		0x01f80080	implemented
+RTC scaler register			0x01f80084	implemented
+RTC scaler program  register		0x01f80084	implemented
+GPT counter register			0x01f80088	implemented
+GPT counter program register		0x01f80088	implemented
+GPT scaler register			0x01f8008c	implemented
+GPT scaler program  register		0x01f8008c	implemented
+Timer control register			0x01f80098	implemented
+System fault status register		0x01f800A0	implemented
+First failing address register		0x01f800A4	implemented
+Error and reset status register		0x01f800B0	implemented
+Test control register			0x01f800D0	implemented
+UART A RX/TX register			0x01f800E0	implemented
+UART B RX/TX register			0x01f800E4	implemented
+UART status register			0x01f800E8	implemented
+
+2. Implementation details
+
+2.1 UARTs
+
+The UARTs are connected to two pseudo-devices, /dev/ttypc and /dev/ttypd.
+To speed up simulation, the UARTs operate at approximately 115200 baud. 
+The UARTs generate interrupt 4 and 5 after each received or transmitted 
+character.  The error interrupt is generated if overflow occurs - other
+errors cannot occure.
+
+2.2 Interrupt controller
+
+Since external interrupts are not implemented, the interrupt shape 
+register has no function. The only internal interrupts that are 
+generated are the real-time clock, the general purpose timer and UARTs. 
+However, all 15 interrupts can be tested via the interrupt force register.
+
+2.3 Watchdog
+
+The watchdog clock is always the system clock regardsless of WDCS bit in MEC 
+configuration register.
+
+2.4 Power-down mode
+
+The power-down register (0x01f800008) is implemented as in the specification.
+However, if the simulator event queue is empty, power-down mode is not
+entered since no interrupt would be generated to exit from the mode. A
+Ctrl-C in the simulator window will exit the power-down mode. The simulator
+runs at least 100 times faster in power-down mode.
+
+2.5 Memory interface
+
+The following memory areas are valid for the ERC32 simulator:
+
+0x00000000 - 0x00080000		ROM (512 Kbyte, loaded at start-up)
+0x02000000 - 0x02400000		RAM (4 Mbyte, initialised to 0x0)
+0x01f80000 - 0x01f800ff		MEC registers
+
+Access to unimplemented MEC registers or non-existing memory will result
+in a memory exception trap. 
+
+The memory configuartion register is used to define available memory
+in the system. The fields RSIZ and PSIZ are used to set RAM and ROM
+size, the remaining fields are not used.  NOTE: after reset, the MEC 
+is set to decode 128 Kbyte of ROM and 256 Kbyte of RAM. The memory 
+configuration register has to be updated to reflect the available memory. 
+
+The waitstate configuration register is used to generate waitstates. 
+This register must also be updated with the correct configuration after 
+reset. 

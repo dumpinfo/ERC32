@@ -1,0 +1,9 @@
+#
+# Compile basic models
+#
+mkdir work
+vhdlan mms.vhd sparc_lib.vhd iurt_lib.vhd fpurt_lib.vhd meclibrary.vhd
+#
+# Compile board design
+#
+vhdlan factlib.vhd memory.vhd board.vhd

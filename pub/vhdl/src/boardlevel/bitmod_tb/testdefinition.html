@@ -1,0 +1,83 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : TestDefinition (Package declaration and body)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : testdefinition.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : This packages defines the MISR subprograms used by the
+</font></i><font color=green><i>--                Test Generator for the verification of the Bit Modulator.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : 
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_TB_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New package
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;
+
+<font color=blue>package</font> TestDefinition <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Reset of MISR
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> ResetMISR(<font color=blue>signal</font> MISRReset: <font color=blue>out</font> <font color=red>Boolean</font>);
+ 
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Check of MISR
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> CheckMISR(
+      <font color=blue>constant</font> InVec:      <font color=blue>in</font>    <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 15);
+      <font color=blue>constant</font> RefVec:     <font color=blue>in</font>    <font color=red>String</font>(1 <font color=blue>to</font> 4);
+      <font color=blue>variable</font> TestFailed: <font color=blue>inout</font> <font color=red>Boolean</font>;
+      <font color=blue>constant</font> HeaderMsg:  <font color=blue>in</font>    <font color=red>String</font> := <font color=black>""</font>);
+ 
+<font color=blue>end</font> TestDefinition; <font color=green><i>--=============== End of package header ==================--
+</font></i>
+<font color=blue>package</font> <font color=blue>body</font> TestDefinition <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Reset of MISR
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> ResetMISR(<font color=blue>signal</font> MISRReset: <font color=blue>out</font> <font color=red>Boolean</font>) <font color=blue>is</font>
+   <font color=blue>begin</font>
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> ResetMISR;
+ 
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Check of MISR
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> CheckMISR(
+      <font color=blue>constant</font> InVec:      <font color=blue>in</font>    <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 15);
+      <font color=blue>constant</font> RefVec:     <font color=blue>in</font>    <font color=red>String</font>(1 <font color=blue>to</font> 4);
+      <font color=blue>variable</font> TestFailed: <font color=blue>inout</font> <font color=red>Boolean</font>;
+      <font color=blue>constant</font> HeaderMsg:  <font color=blue>in</font>    <font color=red>String</font> := <font color=black>""</font>) <font color=blue>is</font>
+   <font color=blue>begin</font>
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> CheckMISR;
+ 
+<font color=blue>end</font> TestDefinition; <font color=green><i>--=============== End of package body ====================--
+</font></i></pre>
+</body>
+</html>

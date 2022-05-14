@@ -1,0 +1,389 @@
+Last updated 14 Dec 1998 by sh
+
+
+       European Space Agency VHDL Repository: document directory
+       =========================================================
+
+This directory is used for storing documents related to VHDL, ASIC
+design, FPGAs and components for designing spacecraft electronics.
+
+Contact points are:
+   S. Habinc,      e-mail sandi@ws.estec.esa.nl
+   P. Sinander,    e-mail psi@ws.estec.esa.nl
+
+
+                             COPYRIGHT
+                             ---------
+
+Unless otherwise specified, the following copyright notice applies to
+all information in this repository:
+
+    Copyright (c) 1996, 1997, 1998 European Space Agency. All rights reserved.
+
+    This information may be used and distributed without restriction
+    provided that this copyright statement is retained and that any
+    derivative work acknowledges the origin of the information.
+
+
+                             DISCLAIMER
+                             ----------
+
+All information is provided "as is", there is no warranty that the information 
+is correct or suitable for any purpose, neither implicit nor explicit.
+
+The information does not necessarily reflect the policy of the European
+Space Agency.
+
+
+                             CONTENTS
+                             --------
+
+AccVHDL.pdf      "Accelerated Verification of Digital Devices Using VHDL"
+                 This paper presents two aspects for improving the verification
+                 of microprocessors; program-less verification, and methods for
+                 handling large differences in abstraction level between a
+                 reference model and the actual design. Program-less
+                 verification is a type of pseudo random verification where the
+                 notion of a software program executing on the microprocessor
+                 has been abandoned. This paper will be presented at the VHDL
+                 Users' Forum in Europe in Lausanne (CH), September 1998.
+                 Format: Adobe PDF
+
+AGGAIntro.pdf    Obsolete - temporarily replaced by a link to AGGA2Intro.pdf
+
+AGGA2Intro.pdf   "Development of an Advanced GPS GLONASS ASIC"
+                 This paper presents the second generation radiation tolerant
+                 Advanced GPS GLONASS ASIC, the AGGA-2, implementing the core
+                 digital signal processing for combined GPS and GLONASS
+                 receivers. The AGGA-2 supports a wide range of space related
+                 applications, both for single-frequency (C/A- code) and
+                 dual-frequency (both C/A- and P-code) receivers. The paper
+                 describes the principles of GPS operation, followed by a
+                 list of applications supported by the AGGA-2, typical receiver
+                 configurations and an overview of the AGGA-2 functionality.
+                 This paper was presented at the DSP'98 conference in
+                 Noordwijk (NL), September 1998.
+                 Format: Adobe PDF
+
+BoardLevel.ps    "VHDL Models for Board-level Simulation", 
+                 ref. WSM/SH/010, February 1996
+                 This document provides recommendations for development and
+                 usage of VHDL models intended for Board-level simulation. The
+                 purpose of these recommendations is to define modelling
+                 criteria that will produce models that are highly accurate in
+                 both functionality and timing, and that will provide sufficient
+                 simulation performance to facilitate long simulation runs.
+                 Format: PostScript
+
+BoardLevel.pdf   "VHDL Models for Board-level Simulation"
+                 Format: Adobe PDF
+
+BoardSim.ps      "Using VHDL for Board-Level Simulation"
+                 Prototyping is a necessity for successful development of
+                 printed circuit boards built with complex components such as
+                 microprocessors, ASICs and ASSPs. In this paper an approach to
+                 prototyping are presented based on VHDL models for board-level
+                 simulation written for high functional accuracy and simulation
+                 performance. This paper was published in IEEE Design & Test of
+                 Computers, Fall 1996.
+                 Format: PostScript
+
+BoardSim.pdf     "Using VHDL for Board-Level Simulation"
+                 Format: Adobe PDF
+
+BoardVHDL.pdf    "Boardlevel Simulation using VHDL Models"
+                 This paper was presented at the DASIA'96 - Data Systems in
+                 Aerospace conference in Rome (I), May 1996.
+                 Format: Adobe PDF
+
+CompList.ps      "Support Component List"
+CompList.pdf     Documents obsolete due to age, have been removed
+
+CTMS.pdf	 "Local Time Management System Validation Board", 
+                 ref. WSM/SH/400, March 1998
+                 A validation board for the Local Time Management System (LTMS)
+                 component has been developed at ESTEC. The board comprises an
+                 LTMS component and a Central Time Management System (CTMS)
+                 prototype which both can be accessed through a parallel
+                 microprocessor interface. Validation boards are made available
+                 to industry for validation purposes.
+                 Format: Adobe PDF
+
+DesignReq.ps     "ASIC Design and Manufacturing Requirements", 
+                 ref. WDN/PS/700 Issue 2, October 1994
+                 This document specifies ESA ASIC design requirements to be
+                 applied in ESA contracts (when so specified). The document is
+                 focused on the development of ASSPs (Application Specific
+                 Standard Products), i.e. ASICs that are to be made commonly
+                 available.
+                 Format: PostScript
+
+DesignReq.pdf    "ASIC Design and Manufacturing Requirements"
+                 Format: Adobe PDF
+
+HAF12396.ps      "Virtual Channel Multiplexer (VCM) Data Sheet", January 1994
+                 This document is not officially supported by MITEL
+                 Semiconductor, but an official issue is being prepared
+                 by the foundry.
+                 Format: PostScript
+
+HAF12399.ps     "Virtual Channel Assembler (VCA) Data Sheet", January 1994
+                 This document is not officially supported by MITEL
+                 Semiconductor, but an official issue is being prepared
+                 by the foundry.
+                 Format: PostScript
+
+Iris.pdf         "A Single-chip CCSDS Packet Telemetry and Telecommand
+                 Based Microcamera"
+                 By applying the packet telemetry and telecommand standards
+                 endorsed by the European Space Agency (ESA) and the
+                 Consultative Committee for Space Data Systems (CCSDS) to a
+                 microcamera, the need for support from the on-board data
+                 handling system can almost be eliminated. If the microcamera is
+                 designed with interfaces that fully match those of the
+                 telemetry and the telecommand subsystem, the additional
+                 interface components will be reduced to simple transceivers.
+                 This paper was presented at the First ESA Workshop on Tracking,
+                 Telemetry and Command Systems in Noordwijk (NL), June 1998.
+                 Format: Adobe PDF
+
+LTMS.ps          "A Local Time Management System ASSP"
+                 The Local Time Management System is a radiation hard
+                 component that will enable users to accurately establish the
+                 time correlation between events reported on ground via packet
+                 telemetry data and their actual time of occurrence in an
+                 on-board application. This paper was presented at the Workshop
+                 on Microelectronics for Satellite Applications in Noordwijk
+                 (NL), December 1996.
+                 Format: PostScript
+
+LTMS.pdf         "A Local Time Management System ASSP"
+                 Format: Adobe PDF
+
+Micro8052.pdf    "A Microcontroller with Built-in Support for CCSDS Telecommand
+                 and Telemetry"
+                 A microcontroller based on the well-known Intel 8052 device is
+                 being developed with built-in support for CCSDS telecommand and
+                 telemetry. The objective is to develop a microcontroller for 
+                 applications with moderate processing requirements but needing
+                 high safety and easy accommodation of equipment interfaces.
+                 This paper was presented at the First ESA Workshop on Tracking,
+                 Telemetry and Command Systems in Noordwijk (NL), June 1998.
+                 Format: Adobe PDF
+
+ModelGuide.ps    "VHDL Modelling Guidelines", ref. ASIC/001 Issue 1, 
+                 September 1994
+                 The ESA VHDL Modelling Guidelines have been established to
+                 ensure a good coding standard for VHDL, w.r.t. to readability,
+                 portability and extensive verification. There are separate
+                 sections dealing with specific requirements for models for
+                 component simulation, board-level simulation, system-level
+                 simulation and testbenches. The document is being used for
+                 education at several universities, as a base for company
+                 specific guidelines etc.
+                 Format: PostScript
+
+ModelGuide.pdf   "VHDL Modelling Guidelines"
+                 Format: Adobe PDF
+
+MS13196.pdf      "LTMS - Local Time Management System, Data Sheet, 
+                 MS13196 Draft B, 28 July 1998"
+                 This document is officially supported by MITEL Semiconductor, 
+                 and a newer issue is being prepared by the foundry.
+                 Format: Adobe PDF
+
+MS13544.pdf      "MS13544 - Reed-Solomon and Convolutional Encoder (RESCUE), 
+		 Data Sheet, Preliminary Information, DS5084-2.0 December 1998
+                 This document is officially supported by MITEL Semiconductor.
+                 Format: Adobe PDF
+
+Petra.pdf        "An Autonomous CCSDS Packet Generating ASIC for Analogue and
+                 Digital Telemetry"
+                 The Packetised Essential Telemetry Retrieval ASIC (PETRA) is
+                 a mixed analogue/digital chip for retrieving sensor data
+                 on-board spacecraft. This paper introduces the advantages of
+                 using the PETRA in a spacecraft's Data Handling System compared
+                 to a traditional implementation. This paper was presented at
+                 the First ESA Workshop on Tracking, Telemetry and Command
+                 Systems in Noordwijk (NL), June 1998.
+                 Format: Adobe PDF
+
+PetraFlyer.pdf   "PETRA - Packetised Essential Telemetry Retrieval ASIC"
+                 (by SSL, Ireland)
+                 The PETRA is a mixed analogue/digital device demonstrating a
+                 novel concept for retrieving sensor data on-board spacecraft:
+                 each PETRA chip can connect up to 40 analogue or digital
+                 sensors which are sampled at a nominal period between 10 ms
+                 and 50 s. The sensor data is output as CCSDS compliant
+                 Telemetry packets. Several PETRA chips can be cascaded in
+                 a chain, to be able to connect as many sensors as required.
+                 Format: Adobe PDF
+
+RadHard.pdf      "Radiation Hard ASICs for On-Board Applications"
+                 This paper describes the ESA/ESTEC approach to develop Standard
+                 ASICs for on-board applications. The ASIC developments
+                 performed within the "Radiation Hard Data Handling Technology"
+                 frame contract are summarised in terms of functionality of the
+                 devices, process characteristics, current status and
+                 availability of parts to potential users. This paper was
+                 presented at the DASIA'98 - Data Systems in Aerospace
+                 conference in Athens (GR), May 1998.
+                 Format: Adobe PDF
+
+ReadOut.pdf      "Miniaturised Microcontroller based Read-out Electronics for
+                 Space Applications"
+                 The Particle Detector Front End (PDFE) ASIC together with an
+                 8052 based microcontroller forms a chip set being developed by
+                 the European Space Agency (ESA) for compact low cost scientific
+                 energetic particle instrumentation. Driving requirements of low
+                 noise and power consumption led to the selection of a single
+                 configurable analogue channel followed by an internal 8-bit
+                 ADC. Low mass and volume necessitated for space applications
+                 require on-chip integration of supporting functions such as
+                 discriminators, independent coincidence event detection and an
+                 efficient serial control interface. This paper was presented at
+                 the 8th European Symposium on Semiconductor Detectors in
+                 Schloss Elmau (G), June 1998.
+                 Format: Adobe PDF
+
+Rescue.ps        "A CCSDS Reed-Solomon Encoder Core and Radiation Hard Device"
+                 This paper is obsolete and has been replaced by RescueChip.pdf.
+                 The paper was presented at the Workshop on Microelectronics for
+                 Satellite Applications in Noordwijk (NL), December 1996.
+                 Format: PostScript
+
+Rescue.pdf       "A CCSDS Reed-Solomon Encoder Core and Radiation Hard Device"
+                 Format: Adobe PDF
+
+RescueChip.pdf   "RESCUE - A Radiation Hard CCSDS Reed-Solomon and Convolutional
+                 Encoder Device"
+                 A radiation hard CCSDS Reed-Solomon and Convolutional Encoder
+                 (RESCUE) device has been developed along this line to meet
+                 current and future demands, being based on previously developed
+                 encoder cores. This paper was presented at the First ESA
+                 Workshop on Tracking, Telemetry and Command Systems in
+                 Noordwijk (NL), June 1998.
+                 Format: Adobe PDF
+
+SmallSat.pdf     "Low cost, ASIC based Telemetry and Telecommand Systems -
+                 The TeamSat Experience"
+                 The TeamSat dual spacecraft launched by the Ariane 502 test
+                 launch was completed in record time and very low cost. The
+                 data handling system was ready to support final integration
+                 and testing in 6 months despite the fact it had to be designed
+                 and constructed from scratch. This paper will be presented at 
+                 the 4th symposium on Small Satellites Systems and Services in 
+                 Antibes - Juan Les Pins (F), September 1998.
+                 Format: Adobe PDF
+
+TeamBullet.pdf   "The TEAMSAT Experience: TEAMSAT's Data-Handling Systems"
+                 Twenty-five weeks from project approval to the delivery of two 
+                 working, flightworthy spacecraft data-handling systems did not, 
+                 during the feasibility study, seem possible to fulfil. However, 
+                 due to staff dedication combined with some calculated risk-taking 
+                 and the availability of the ESA Telemetry and Telecommand chipset, 
+                 a working data-handling system including ground segment was 
+                 already available six weeks prior to TEAMSAT's shipment to Kourou.
+                 This article was published in the ESA Bulletin Number 95, 1998.
+                 Format: Adobe PDF
+
+TeamDHS.pdf      "The TeamSat Data Handling System"
+                 TeamSat is the first ESA spacecraft to be flown with ESA/CCSDS
+                 compliant TM and TC systems and the first spacecraft anywhere
+                 to exploit the adaptive, asynchronous TM capabilities they
+                 support. The paper presents the data handling system of the
+                 TeamSat dual spacecraft. This paper was presented at the First
+                 ESA Workshop on Tracking, Telemetry and Command Systems in
+                 Noordwijk (NL), June 1998.
+                 Format: Adobe PDF
+
+TeamSat.pdf	 "TM/TC Interface Glue Logic for TeamSat Spacecraft",
+                 ref. WSM/SH/256 Issue 3, April 1998
+                 Large part of the glue logic for the TeamSat TM/TC system was
+                 implemented in two Field Programmable Gate Arrays (FPGAs).
+                 This document specifies all functional requirements. It is
+                 assumed that the reader has previous knowledge about ESA/CCSDS
+                 packet TM/TC standards and components implementing them.
+                 Format: Adobe PDF
+
+TmTc.ps          "Components for Building Telecommand and Telemetry On-board
+                 Systems"
+                 This paper is obsolete and has been replaced by TmTc98.pdf. 
+                 The paper was presented at the On-board Data Management 
+                 Symposium in Rome (I), January 1994.
+                 Format: PostScript
+
+TmTc98.pdf       "Telecommand and Telemetry Components for Today and Tomorrow"
+                 The CCSDS Telecommand and Telemetry standards are today being
+                 employed for a large number of scientific and commercial
+                 spacecraft. Using this standard allows reduced costs for
+                 on-board, ground and test equipment, as well as for spacecraft
+                 testing and in-orbit operation. This paper introduces the
+                 CCSDS/ESA standards, and presents the supporting standard
+                 components developed the Command Pulse Distribution Unit and a
+                 by ESA and a typical TM/TC system based on these components.
+                 This paper was presented at the First ESA Workshop on Tracking,
+                 Telemetry and Command Systems in Noordwijk (NL), June 1998.
+                 Format: Adobe PDF
+
+TRA.pdf          "TTC-B-01 / RS-232 Adapter (TRA) - Functional Description"
+                 The TRA converts between the on-board TTC-B-01 interface
+                 and the commercial RS-232 interface. It is supposed to be
+                 used for communication between a Visual Monitoring Camera
+                 and a personal computer.
+                 Format: Adobe PDF
+
+Turbo.pdf        "Development Plan for Turbo Encoder Core and Devices
+                 Implementing the Updated CCSDS Telemetry Channel Coding
+                 Standard"
+                 A new coding scheme known as Turbo Coding is being introduced
+                 in the telemetry channel coding recommendations from the
+                 Consultative Committee for Space Data Systems (CCSDS). As turbo
+                 coding is being considered for several European scientific
+                 spacecraft, the development of a turbo encoder core and
+                 devices, with the associated ground system, has been undertaken
+                 by the European Space Agency (ESA). This paper was presented at
+                 the First ESA Workshop on Tracking, Telemetry and Command
+                 Systems in Noordwijk (NL), June 1998.
+                 Format: Adobe PDF
+
+TurboCCSDS.pdf   "CCSDS Telemetry Channel Coding: The Turbo Codes Option"
+                 This paper was presented at the CSDS Workshop on New 
+                 Technologies, New Standards, November 1998.
+                 Format: Adobe PDF
+
+UseOfVHDL.ps     "The Usage of VHDL in the European Space Agency"
+               	 An overview of the current and envisaged (April 1995) usage
+                 of VHDL within ESA. Describes the background, scope and purpose
+                 of the ESA VHDL Modelling Guidelines, and introduces the 
+                 upcoming document "VHDL Models for Board-level Simulation". 
+                 Outlines a planned scheme for making VHDL models for 
+                 Board-level simulation available including schemes for 
+                 protecting the design information. The paper was presented at 
+                 the Workshop on Libraries, Component Modeling and Quality 
+                 Assurance in Nantes (F), April 1995.
+                 Format: PostScript (apparently some printers are not able to
+                         print the figures, HP LaserJet 4 is an example).
+
+VHDLReport.ps    "The VHDL Standard" (by E2S n.v., Belgium)
+                 An overview of the May 1994 status of the VHDL standard
+                 and associated activities within the IEEE, EIA, and ESPRIT 
+                 projects. An extensive summary of VHDL repositories is 
+                 included, together with a list of European VHDL tools.
+                 Format: PostScript
+
+VHDLReport.pdf   "The VHDL Standard"
+                 Format: Adobe PDF
+
+cenelec2.14.ps   "VHDL Modelling Guidelines - Simulation and Documentation
+                 Aspects"
+                 CENELEC TC217 Working Group 2 draft report 2.14. This document 
+                 was derived from the ESA Modelling Guidelines, updated to be 
+                 more generic and less oriented towards the typical Agency-
+                 subcontractor working relationship, and according to input from
+                 the CENELEC Working Group 2.
+                 Format: PostScript
+
+cenelec2.14.pdf  "VHDL Modelling Guidelines - Simulation and Documentation
+                 Aspects"
+                 Format: Adobe PDF

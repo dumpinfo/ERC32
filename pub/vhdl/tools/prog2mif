@@ -1,0 +1,548 @@
+#! /usr/local/bin/perl
+#
+# CHANGE THE PATH ABOVE TO MATCH PATH TO YOUR PERL BINARY
+#
+
+#
+# Preprocess program source for inclusion in FrameMaker documents
+#
+#                          Version 1.8.2 Alfa
+#
+# Based on prog2mif.c, written by Hermann Kneissel (kneissel@danetis.UUCP)
+#
+# Author: Janick Bergeron
+#         AnalySYS Inc, 25 Loiselle St Suite 201
+#         Embrun, ON, Canada, K0A 1W1
+#         janick@analysys.com
+#
+# Revision History:
+#
+# 1.7 -> 1.8
+#
+# + Changed my address/email
+# + Added '-s' option to specify default point size (Idea from
+#   ekatume@tnms1.tn.etx.ericsson.se)
+# + Added definitions for the 'M' language (Thanks to
+#   ekatume@tnms1.tn.etx.ericsson.se)
+# (.1) + Fixed problem with languages without comment markers
+# (.2) + Does not bold text within quoted text
+#        Keywords for VHDL'93 added
+#        Special treatment for 'range in VHDL which is an identifier not to
+#        be confused with the keyword range
+#        (P. Sinander ESA/ESTEC 5 Feb 1995, new code marked with PSI)
+#
+# 1.6 -> 1.7
+#
+# + Added '-n' option to number lines (Idea from rmarshall@cs.man.ac.uk)
+# (.1) + Allow multiple-word keywords (Idea from Ed.van.Leeuwen@fel.tno.nl)
+# (.2) + Added definitions for LISP (Thanks to dewi@bnr.ca)
+# (.3) + Added ':' after "while" keyword in C/C++ (Thanks to baecker@gmd.de)
+# (.4) + Added definitions for PROTEL (Thanks to Craig.Telke@bnr.ca)
+# (.5) + Fixed problem with empty line comments
+# (.6) + Can process 'non-language' files (Idea from ab@captblood.armstrong.edu)
+# (.7) + Fixed problem with multiple comment markers on the same line
+# (.8) + File extensions are no longer translated to lowercase (Thanks
+#        to vanLeeuwen@fel.tno.nl)
+#
+# 1.5 -> 1.6
+#
+# + Definitions for Verilog (Thanks to yak@bnr.ca)
+# + Changed order of languages to alphabetical order
+# + More editorial changes on long lines
+# (.1) + Added keyword "type" to ADA (Thanks to barbey@di.epfl.ch)
+# (.2) + Added definitions for Bourne shell (Thanks to
+#	 Christopher.Rath@bnr.ca)
+#
+# 1.4 -> 1.5
+#
+# + Definitions for C++
+# + (.1) Fixed small syntax error in keyword array
+# + (.1) Editorial changes to avoid long lines wrapping around when
+#        posting the shar file
+# + (.2) Fixed typo on escape sequences in comments (Thanks to
+#        david@iris.claremont.edu)
+#
+# 1.3 -> 1.4
+#
+# + Fixed problem with keywords not being emboldened when preceeded
+#   by TAB, ''' or '`' (Thanks to rlp@rust.lanl.gov)
+# + Allow input to come from stdin
+# + Argument to '-l' option is case insensitive
+# + Keywords in language can be case-sensitive
+# + Italicize line-comments (idea shamelessly stolen from bwild@fzi.de)
+# + Definitions for PERL
+# + Definitions for ObjC (Thanks to rlp@rust.lanl.gov)
+#
+# Wishlist:
+#
+# + Handling of multi-line and block comments (e.g. /* ... */)
+# + Improved handling of quoted text
+# + A 32ft sailboat
+#
+
+require "getopts.pl";
+
+#
+# Beginning of language definition section
+#
+# To define a new language, please add all the relevant information
+# in each section.
+#
+
+# Map filename extension to programming language
+#
+%language = (
+
+  "a",       "ADA",
+  "ada",     "ADA",
+  "c",       "C",
+  "h",       "C",
+  "C",       "C++",
+  "H",       "C++",
+  "cxx",     "C++",
+  "hxx",     "C++",
+  "cpp",     "C++",
+  "hpp",     "C++",
+  "l",       "LISP",
+  "el",      "LISP",
+  "m",       "OBJC",
+  "M",       "M",
+  "pl",      "PERL",
+  "perl",    "PERL",
+  "protdms", "PROTEL",
+  "sh",      "SH",
+  "v",       "VERILOG",
+  "vhd",     "VHDL",
+  "vhdl",    "VHDL");
+
+# Reserved words for certain languages
+#
+# Format:  Key   ::= Language name
+#          Value ::= keyword{:keyword}
+#
+%keywords = (
+
+  "ADA", "abort:abs:accept:access:all:and:array:at:begin:body:".
+         "case:constant:declare:delay:delta:digits:do:else:elsif:".
+         "end:entry:exception:exit:for:function:generic:goto:if:".
+         "in:is:limited:loop:mod:new:not:null:of:or:others:out:".
+         "package:pragma:private:procedure:raise:range:record:rem:".
+         "renames:return:reverse:select:separate:subtype:task:".
+         "terminate:then:type:use:when:while:with:xor",
+
+  "C", "key word:auto:break:case:char:const:continue:default:do:double:else:".
+       "enum:entry:extern:for:float:goto:if:int:long:register:".
+       "return:short:signed:sizeof:static:struct:switch:typedef:".
+       "union:unsigned:void:volatile:while:".
+       "define:else:endif:if:ifdef:ifndef:import:include:undef:",
+
+  "C++", "asm:auto:break:case:catch:char:class:const:continue:".
+         "default:delete:do:double:else:enum:extern:for:float:".
+         "friend:goto:if:inline:int:long:new:operator:private:".
+         "protected:public:register:return:short:signed:sizeof:".
+         "static:struct:switch:template:this:throw:try:typedef:".
+         "union:unsigned:virtual:void:volatile:while:".
+         "define:else:endif:if:ifdef:ifndef:import:include:undef:",
+
+ "LISP", "append:ascii:assoc:defun:setq:cond:while:foreach:t:nil:".
+         "car:cdr:caar:cadr:cdar:cddr:character-index:concat:cons:".
+         "explode:exploden:get_pname:implode:last:list:member:nth:".
+         "nthcdr:nthchar:quote:reverse:strcomp:stringp:strlen:strpad:".
+         "strtrim:subst:substring:toupper:tolower:type:remove:remq:".
+         "abs:acos:asin:atan:cos:exp:expt:fact:fix:float:log:log10:".
+         "lsh:max:min:mod:random:sin:sqrt:times:product:add:sum:plus:".
+         "diff:difference:quotient:alphalessp:arrayp:atom:and:set:".
+         "boundp:eq:equal:evenp:fixp:floatp:greaterp:hunkp:lessp:".
+         "listp:minusp:not:null:numberp:numbp:or:oddp:plusp:portp:".
+         "fileopen:close:readln:readc:read:print:princ:get:plist:".
+         "putprop:setplist",
+
+  "M", "auto:break:case:char:const:continue:default:do:double:else:".
+       "enum:entry:extern:for:float:goto:if:int:long:register:".
+       "return:short:signed:sizeof:static:struct:switch:typedef:".
+       "union:unsigned:void:volatile:while:".
+       "define:else:endif:if:ifdef:ifndef:import:include:undef:".
+       "ALLOCATE:BUILD:INITIALIZE:MEMORYEDIT:OBSERVABILITY:".
+       "PREINITIALIZE:SENSITIVITY:SIMULATE:USER_ALLOCATE:".
+       "MEMORY:".
+       "DATAFILE:".
+       "CHANGED:CHECK:CHECK2:CLASS:DRIVEN:FALL:GET_CAPACITANCE:".
+       "GET_CONDUCTANCE:GET_DVDT:GET_VOLTAGE:RISE:SIZE:STRING:".
+       "TERM_STRUCT:UNSTRING:".
+       "coprocess:FORK:JOIN:WAIT:when:".
+       "GATE:GLOBALIN:GND:GLOBALOUT:GLOBALINOUT:IN:INOUT:NODE:".
+       "OUT:SRCDRN:VDD:".
+       "ADEPT:FAULT:LOGIC:NORTON:STATE:THEVENIN:VOLTAGE:".
+       "COMMAND:DESENSITIZE:DISABLE:ERROR:HIDE:INSTANCE:MONITOR:".
+       "NET:NET_MODULES:PRINT:RESCHEDULE:SENSITIZE:SET_CAPACITANCE:".
+       "SET_CONDUCTANCE:SET_CURRENT:SET_IG:SET_RESISTANCE:".
+       "SET_VOLTAGE:SET_VOLTAGE_ADEPT:SET_VR:UNSET_VOLTAGE:".
+       "HIGH:LOW:RELEASE:UNKNOWN:EQUIV:OPTIONAL:MODULE:operator:".
+       "NULL:QUIT:RUN",
+
+ "OBJC",  "asm:auto:break:case:char:const:continue:default:do:".
+          "double:else:enum:extern:float:for:fortran:goto:if:int:".
+          "long:register:return:short:signed:sizeof:static:struct:".
+          "switch:typedef:union:unsigned:void:volatile:while".
+          "define:else:endif:if:ifdef:ifndef:import:include:undef:".
+	  "defs:encode:end:implementation:interface:public:selector:".
+	  "id:self:super",
+
+  "PERL", "accept:alarm:atan2:bind:binmode:caller:chdir:chmod:".
+          "chop:chown:chroot:close:closedir:cmp:connect:continue:".
+          "cos:crypt:dbmclose:dbmopen:defined:delete:die:do:dump:".
+          "each:else:elsif:endgrent:endhostent:endnetent:endpent:".
+          "endprotoent:endservent:eof:eq:eval:exec:exit:exp:fcntl:".
+          "fileno:flock:for:foreach:fork:format:ge:getc:getgrent:".
+          "getgrgid:getgrnam:gethostbyname:gethostent:getlogin:".
+          "getnetbyaddr:getnetbyname:getnetent:getpeername:getpgrp:".
+          "getppid:getpriority:getprotobyname:getprotobynumber:".
+          "getprotoent:getpwent:getpwnam:getpwuid:getservbyname:".
+          "getservbyport:getservent:getsockname:getsockopt:gmtime:".
+          "goto:grep:gt:hex:if:index:int:ioctl:join:keys:kill:last:".
+          "le:length:link:listen:local:localtime:log:lstat:lt:m:".
+          "mkdir:msgctl:msgget:msgrcv:msgsnd:ne:next:oct:open:".
+          "opendir:ord:pack:package:pipe:pop:print:printf:push:".
+          "rand:read:readdir:readlink:recv:redo:rename:require:".
+          "reset:return:reverse:rewinddir:rindex:rmdir:s:scalar:".
+          "seek:seekdir:select:select:semctl:semget:semop:send:".
+          "setgrent:sethostent:setnetent:setpgrp:setpriority:".
+          "setprotoent:setpwent:setservent:setsockopt:shift:shmctl:".
+          "shmget:shmread:shmwrite:shutdown:sin:sleep:socket:".
+          "socketpair:sort:splice:split:sprintf:sqrt:srand:stat:".
+          "study:sub:substr:symlink:syscall:sysread:system:syswrite:".
+          "tell:telldir:time:times:tr:truncate:umask:undef:unless:".
+          "unlink:unpack:unshift:until:utime:values:vec:wait:".
+          "waitpid:wantarray:warn:while:write:y",
+
+  "PROTEL", "abstract:any:area:as:bind:block:bool:by:byvalue:case:cast:".
+            "class:dcl:definitions:desc:do:down:else:endarea:endblock:".
+            "endcase:endclass:enddo:endif:endovly:endselect:endstruct:".
+            "entry:environment:exit:false:fast:fixed:for:forward:from:if:".
+            "in:incl:init:interface:intrinsic:is:literal:machine:method:".
+            "mod:nil:nontransparent:notincl:of:operand:operations:out:".
+            "over:ovly:pack:perprocess:private:proc:protected:ptr:quick:".
+            "ref:refines:return:returns:section:select:self:set:shared:".
+            "struct:super:table:tagfield:tagval:tdsize:then:to:true:type:".
+            "unrestricted:up:upb:updates:uses:val:variable:while:with",
+  
+  "SH", "break:case:cd:continue:do:done:echo:elif:else:esac:eval:".
+        "exec:exit:export:fi:for:hash:if:in:list:newgrp:pwd:read:".
+	"readonly:return:set:shift:test:then:times:trap:type:ulimit:".
+	"umask:unset:while:wait",
+
+  "VERILOG", "and:always:assign:begin:buf:bifif0:bufif1:case:".
+	     "cmos:deassign:default:defparam:disable:else:end:".
+             "endcase:endfunction:endmodule:endprimitive:endtable:".
+	     "endtask:event:for:force:forever:fork:function:highz0:".
+	     "highz1:if:initial:inout:input:integer:join:large:".
+	     "medium:module:nand:negedge:nor:not:notif0:notif1:".
+             "nmos:or:output:parameter:pmos:posedge:primitive:".
+             "pulldown:pullup:pull0:pull1:rcmos:reg:release:repeat:".
+             "rnmos:rpmos:rtran:rtranif0:rtranif1:scalared:small:".
+             "specify:specparam:strong0:strong1:supply0:supply1:".
+             "table:task:tran:tranif0:tranif1:time:tri:triand:trior:".
+             "trireg:tri0:tri1:vectored:wait:wand:weak0:weak1:while:".
+             "wire:wor:xnor:xor",
+
+  "VHDL", "abs:access:after:alias:all:and:architecture:array:assert:".
+          "attribute:begin:block:body:buffer:bus:case:component:".
+          "configuration:constant:disconnect:downto:else:elsif:end:".
+          "entity:exit:file:for:function:generate:generic:guarded:".
+          "if:in:inout:is:label:library:linkage:loop:map:mod:nand:".
+          "new:next:nor:not:null:of:on:open:or:others:out:package:".
+          "port:procedure:process:range:record:register:rem:report:".
+          "return:select:severity:signal:subtype:then:to:transport:".
+          "type:units:until:use:variable:wait:when:while:with:xor:".
+ 
+###################### Added by PSI
+# VHDL-93 key words
+          "group:impure:inertial:literal:postponed:pure:reject:rol:".
+          "ror:shared:sla:sll:sra:srl:unaffected:xnor");
+
+# String marker
+#
+# Only supports one type of marker per language
+# '\n' indicates that no string handling will be performed
+#
+%stringmarker = (
+    "ADA",      '"',
+    "C",        '"',
+    "C++",      '"',
+    "LISP",     '\n',
+    "M",        '"',             # Assumed, not verified
+    "OBJC",     '"',             # Assumed, not verified
+    "PERL",     '\n',
+    "PROTEL",   '\n',
+    "SH",       '\n',
+    "VERILOG",  '"',             # Assumed, not verified
+    "VHDL",     '"');
+
+# Is the stringmarker character escaped by \ ? (1 = YES)
+#
+%escapestring = (
+    "ADA",      0,
+    "C",        1,
+    "C++",      1,
+    "LISP",     0,               # No string handling
+    "M",        1,               # Assumed, not verified
+    "OBJC",     1,               # Assumed, not verified
+    "PERL",     0,               # No string handling
+    "PROTEL",   0,               # No string handling
+    "SH",       0,               # No string handling
+    "VERILOG",  1,               # Assumed, not verified
+    "VHDL",     0);
+###################### End
+
+# Are the keywords in a language case-sensitive ? (1 = YES)
+#
+%case = (
+    "ADA",      0,
+    "C",        1,
+    "C++",      1,
+    "LISP",     1,
+    "M",	1,
+    "OBJC",     1,
+    "PERL",     1,
+    "PROTEL",   0,
+    "SH",       1,
+    "VERILOG",	1,
+    "VHDL",     0);
+
+# line-comment marker
+#
+# Can only handle comments which start with a marker then end at the
+# end of line like PERL comments (e.g. ... # ...). If your language
+# does not have these type of comments (like C), do not mention it.
+# Does not handle C-style comments (e.g. /* ... */)
+#
+%comment_marker = (
+    "ADA",     "--",
+    "C++",     "//",
+    "LISP",    ";",
+    "M",       "//",
+    "OBJC",    "//",
+    "PERL",    "#",
+    "PROTEL",  "%",
+    "SH",      "#",
+    "VERILOG", "//",
+    "VHDL",    "--");
+
+#
+# End of language definition section
+#
+# Do not modify anything below this line
+#
+
+# Parse arguments
+sub usage {
+    print STDERR <<END_OF_USAGE;
+
+Usage: prog2mif [options] [fname]
+
+Options: -h               Print this blurb
+         -l language      Use keywords for specified language
+         -n digits        Number lines using specified digits
+         -s size          Specify a default point size
+
+END_OF_USAGE
+    return 1;
+}
+&Getopts("hl:n:s:");
+exit(&usage) unless !$opt_h;
+$infile = $ARGV[0];
+
+# Get language based on file extension
+#
+if ($lang = $opt_l) {
+    if ($lang ne "none") {
+	$lang =~ tr/a-z/A-Z/;
+	if (!$keywords{$lang}) {
+	    print STDERR "Unknown language \"$lang\"\n";
+	    print STDERR "Known languages are ", join(',',keys(%keywords)), "\n";
+	    exit(1);
+	}
+    }
+} elsif ($infile) {
+    $infile =~ m/\.([a-zA-Z]*)$/;
+    $fext = $1;
+    $lang = $language{$fext};
+    if (!$lang) {
+        print STDERR "Cannot infer language (Unknown file type \"$fext\").\n";
+        print STDERR "Please use the -l option.\n";
+        exit(1);
+    }
+} else {
+    print STDERR "Please use the -l option when filtering from STDIN.\n";
+    exit(1);
+}
+
+if ($opt_n) {
+	if ($opt_n =~ m/[^0-9]/) {
+	    print STDERR "Please specify an integer argument to -n.\n";
+	    exit(1);
+	}
+	$lineNumberFormat = "%0${opt_n}d";
+}
+$lineNumber = 1;
+
+if ($opt_s) {
+    if ($opt_s =~ m/[^0-9]/) {
+        print STDERR "Please specify a integer argument to -s.\n";
+        exit(1);
+    }
+    $fontSize = $opt_s;
+}
+
+@keywords = split(/:/, $keywords{$lang});
+
+# Read the file line-by-line doing:
+#   - Replace special characters by their MIF representation
+#   - Embolden keywords
+
+$infile = "-" unless $infile;
+die "Cannot open $infile" unless open(INFILE, "< $infile");
+
+# MIF file header
+print "<MIFFile 1.01>\n\n";
+print "<Para\n";
+print "  <PgfTag \`${lang}source\'>\n";
+print "  <PgfFont <FFamily Courier>"; # Fixed-spaced font!
+if ($fontSize) {
+    print " <FSize ${fontSize}.0 pt>"; 
+}
+print ">\n";
+print "  <TabStop <TSX 0.5\">>\n";
+print "  <TabStop <TSX 1.0\">>\n";
+print "  <TabStop <TSX 1.5\">>\n";
+print "  <TabStop <TSX 2.0\">>\n";
+print "  <TabStop <TSX 2.5\">>\n";
+print "  <TabStop <TSX 3.0\">>\n";
+print "  <TabStop <TSX 3.5\">>\n";
+print "  <TabStop <TSX 4.0\">>\n";
+
+# MIF constructs for special effects in a font
+$boldstart =   "\'>\n    <Font <FBold Yes>>\n    <String \`";
+$boldend =     "\'>\n    <Font <FBold No>>\n    <String \`";
+$italicstart = "\'>\n    <Font <FItalic Yes>>\n    <String \`";
+$italicend =   "\'>\n    <Font <FItalic No>>\n    <String \`";
+$hardspace =   "\'>\n    <Char HardSpace>\n    <String \`";
+
+# Process each line of the file
+while ($_ = <INFILE>) {
+    chop;
+    if ($comment_marker{$lang}) {
+        # Remove trailing line-comments
+        if (m/^(.*)$comment_marker{$lang}(.*)$/) {
+            $_ = $1; $comment = $2; $has_comment = 1;
+    	    # The regexp will match the right-most comment
+    	    # There may be preceeding comment markers!
+	    while (m/^(.*)$comment_marker{$lang}(.*)$/) {
+	        $_ = $1; $comment = $2.$comment_marker{$lang}.$comment;
+        	}
+        } else {
+            $comment = ""; $has_comment = 0;
+        }
+    }
+    # Escape characters which are meta-characters in MIF
+    $comment =~ s/\\/\\\\/g;
+    $comment =~ s/>/\\>/g;
+    $comment =~ s/\t/\\t/g;
+    $comment =~ s/\`/\\Q/g;
+    $comment =~ s/\'/\\q/g;
+    $comment =~ s/ /$hardspace/g;
+    # Replace characters which would normally be translated to escape
+    # sequences ending with a letter by non-print character so they
+    # can still work as word delimiters. The actual escape sequence
+    # will be inserted later.
+    s/\\/\\\\/g;
+    s/>/\\>/g;
+    s/\t/\201/g;
+    s/\`/\202/g;
+    s/\'/\203/g;
+    # Replace blanks by non-print character for later substitution
+    # to differentiate between original blanks in the line and blanks
+    # added during the MIF translation to produce a nice output.
+    # Embolden keywords
+
+############################# Added by PSI
+    $is_string = 0;      # Whether the current $s represents a string
+    $tmpline = "";
+    if ($escapestring{$lang}) {
+        s/\\\\$stringmarker{$lang}/\206/go;
+    }
+    # The string handling does not work on strings spanning multiple lines
+    foreach $s (split(/$stringmarker{$lang}/o)) {
+        if ($is_string) {
+            if ($escapestring{$lang}) {
+                $s =~ s/\206/\\\\$stringmarker{$lang}/go;
+            }
+            $tmpline .= $stringmarker{$lang}.$s.$stringmarker{$lang};
+            $is_string = 0;
+ 
+        } else {
+            # Patch 'Range for VHDL, make keywords bold
+            if ($lang eq "VHDL") {
+                # Differentiates between 'Range, 'range and 'RANGE casing
+                # Use non-printable characters as a temporary placeholders
+                $s =~ s/\203range/\207/go;
+                $s =~ s/\203RANGE/\208/go;
+                $s =~ s/\203range/\209/gio; # Default
+            }
+############################# End
+
+            if ($case{$lang}) {
+                foreach $kw (@keywords) {
+                    $s =~ s/\b($kw)\b/\204\1\205/g;  # PSI, work on $s
+                }
+            } else {
+                foreach $kw (@keywords) {
+                    $s =~ s/\b($kw)\b/\204\1\205/ig; # PSI, work on $s
+                }
+            }
+
+############################# Added by PSI
+            if ($lang eq "VHDL") {
+                # Change back the 'Range identifiers for VHDL
+                $s =~ s/\207/\203range/go;
+                $s =~ s/\208/\203RANGE/go;
+                $s =~ s/\209/\203Range/go;
+            }
+ 
+            $tmpline .= $s;
+            $is_string = 1;
+        }
+    }
+
+    $_ = $tmpline;    # Restore string to $_ to avoid changing original script
+############################# End
+
+    # Replace original blanks with a hard space
+    s/ /$hardspace/g;
+    # Replace bold start/end markers by the proper command sequence
+    s/\204/$boldstart/g;
+    s/\205/$boldend/g;
+    # Replace remaining non-print characters by actual escape sequence
+    s/\201/\\t/g;
+    s/\202/\\Q/g;
+    s/\203/\\q/g;
+    # Tag comment (if any) back to the end of the line
+    s/$/$comment_marker{$lang}$italicstart$comment$italicend/ if $has_comment;
+
+    # Put the line number in front the the line
+    if ($lineNumberFormat) {
+	$number = sprintf($lineNumberFormat, $lineNumber++);
+	s/^/$number. /;
+    }
+
+    # Tag house-keeping stuff at the beginning and end of line
+    s/^/  <ParaLine\n    <String \`/;
+    s/$/\'>\n    <Char HardReturn>\n  > # End of ParaLine/;
+    # Remove unnecessary directives
+    s/    <String \`\'>\n//g;
+    # Print the MIF line
+    print $_,"\n";
+}
+print "> # End of Para\n";
+exit(0);
+

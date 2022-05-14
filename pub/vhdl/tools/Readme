@@ -1,0 +1,36 @@
+Last updated 20 February 1995 by psi.
+
+
+       European Space Agency VHDL Repository: tools directory
+       ======================================================
+
+This directory contains various public domain tools related to VHDL 
+and/or ASIC design. All information is provided "as is", there is no 
+warranty that the information is correct or suitable for any purpose, 
+neither implicit nor explicit.
+
+
+                             CONTENTS
+                             --------
+
+prog2mif         "Program to MIF (FrameMaker Interchange Format)" translator:
+                 Pretty printer for several languages, converts an ASCII
+                 source file to a FrameMaker MIF file. Italicizes comments,
+                 boldens key words. Does NOT reformat the text for indentation.
+                 Supports ADA, C, C++, LISP, OBJC, M, PERL, PROTEL, SH, Verilog 
+                 and VHDL. Requires the perl utility to run (available from 
+                 e.g. ftp.uu.net in /languages/perl).
+                 Author: janick@analysys.com (Janick Bergeron)
+
+s2m-v8.2.tar     "Synopsys to Mentor" translator:
+                 The script converts a Synopsys generated EDIF netlist into 
+                 the Mentor Eddm format using the Mentor Netlist Processor
+                 (np, bundled with AutoLogic). The schematics are recreated 
+                 using the schematic generator (sg). The translator works
+                 with libraries from ABB Hafo, GPS, MHS and Actel. Adding 
+                 additional libraries is straightforward.
+                 For version 8.2.
+                 Author: jgais@wd.estec.esa.nl (J. Gaisler)
+
+s2m-v8.4.tar     "Synopsys to Mentor" translator:
+                 Same as above, but for version 8.4.

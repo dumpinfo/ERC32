@@ -1,0 +1,145 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=blue>entity</font> MISR_Verification <font color=blue>is</font>
+<font color=blue>end</font> MISR_Verification;
+
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;
+
+<font color=blue>use</font> Work.MISR_Definition.MISR;
+<font color=blue>use</font> Work.MISR_Definition1.MISR;
+ 
+<font color=blue>architecture</font> Behavioural <font color=blue>of</font> MISR_Verification <font color=blue>is</font>
+   <font color=blue>signal</font> Clk:    <font color=red>Std_Logic</font> := '0';
+   <font color=blue>signal</font> Reset:  <font color=red>Boolean</font>   := <font color=red>False</font>;
+
+   <font color=blue>signal</font> Input:  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 39) := (4=>'1', <font color=blue>others</font>=>'0');
+   <font color=blue>signal</font> MISR0:  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 39);
+   <font color=blue>signal</font> MISR1:  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 3);
+   <font color=blue>signal</font> MISR2:  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 4);
+   <font color=blue>signal</font> Input2: <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 4) := <font color=black>"UX01X"</font>;
+   <font color=blue>signal</font> Input3: <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 9) := (1=>'1', 7=>'1', <font color=blue>others</font>=>'0');
+   <font color=blue>signal</font> MISR3:  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 9);
+
+   <font color=blue>signal</font> Input4:  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 9);
+   <font color=blue>signal</font> Input4r: <font color=red>Std_Logic_Vector</font>(9 <font color=blue>downto</font> 0);
+   <font color=blue>signal</font> MISR4:   <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 9);
+   <font color=blue>signal</font> MISR4r:  <font color=red>Std_Logic_Vector</font>(9 <font color=blue>downto</font> 0);
+   <font color=blue>signal</font> MISR41:  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 9);
+ 
+<font color=blue>begin</font>
+   Reset <= <font color=red>True</font>    <font color=blue>after</font> 250 ns,
+            <font color=red>False</font>   <font color=blue>after</font> 251 ns,
+            <font color=red>True</font>    <font color=blue>after</font> 449 ns,
+            <font color=red>False</font>   <font color=blue>after</font> 451 ns,
+            <font color=red>True</font>    <font color=blue>after</font> 652 ns,
+            <font color=red>False</font>   <font color=blue>after</font> 653 ns,
+            <font color=red>True</font>    <font color=blue>after</font> 849 ns,
+            <font color=red>False</font>   <font color=blue>after</font> 850 ns;
+
+   Clk   <= <font color=blue>not</font> Clk <font color=blue>after</font> 50 ns;
+ 
+   <font color=blue>process</font>(Clk)
+   <font color=blue>begin</font> 
+      <font color=blue>if</font> Rising_Edge(Clk) <font color=blue>then</font>
+         Input <= Input(1 <font color=blue>to</font> 39)&Input(0) <font color=blue>after</font> 20 ns;
+      <font color=blue>end</font> <font color=blue>if</font>;
+   <font color=blue>end</font> <font color=blue>process</font>;
+
+   <font color=blue>process</font>(Clk)
+   <font color=blue>begin</font>
+      <font color=blue>if</font> Rising_Edge(Clk) <font color=blue>then</font>
+         Input3(0 <font color=blue>to</font> 3) <= Input3(1 <font color=blue>to</font> 3)&Input3(0) <font color=blue>after</font> 15 ns;
+      <font color=blue>end</font> <font color=blue>if</font>;
+   <font color=blue>end</font> <font color=blue>process</font>;
+
+   <font color=blue>process</font>(Clk)
+   <font color=blue>begin</font>
+      <font color=blue>if</font> Rising_Edge(Clk) <font color=blue>then</font>
+         Input3(6 <font color=blue>to</font> 9) <= Input3(7 <font color=blue>to</font> 9)&Input3(6) <font color=blue>after</font> 15 ns;
+      <font color=blue>end</font> <font color=blue>if</font>;
+   <font color=blue>end</font> <font color=blue>process</font>;
+
+   Input3(5) <= <font color=blue>not</font> Input3(6);
+   Input3(4) <= <font color=blue>not</font> Input3(5);
+
+   Input4    <= Input(0 <font color=blue>to</font> 9);
+   Input4r   <= Input(0 <font color=blue>to</font> 9);
+
+
+   <font color=blue>process</font> (Clk)
+   <font color=blue>begin</font>
+      <font color=blue>assert</font> Input4 = Input4r <font color=blue>report</font> <font color=black>"INPUT"</font>;
+      <font color=blue>assert</font> MISR4  = MISR4r  <font color=blue>report</font> <font color=black>"MISR4 and MISR4r"</font>;
+      <font color=blue>assert</font> MISR4  = MISR41  <font color=blue>report</font> <font color=black>"MISR4 and MISR41"</font>;
+   <font color=blue>end</font> <font color=blue>process</font>;
+
+   Work.MISR_Definition.MISR(
+      Clk     => Clk,
+      Reset   => Reset,
+      Input   => Input,
+      MISR    => MISR0,
+      Sense   => 10 ns);
+
+   Work.MISR_Definition.MISR(
+      Clk     => Clk,
+      Reset   => Reset,
+      Input   => Input(0 <font color=blue>to</font> 3),
+      MISR    => MISR1,
+      Rising  => <font color=red>True</font>,
+      Falling => <font color=red>True</font>,
+      Sense   => 10 ns);
+
+   Work.MISR_Definition.MISR(
+      Clk     => Clk,
+      Reset   => Reset,
+      Input   => Input2,
+      MISR    => MISR2,
+      Rising  => <font color=red>False</font>,
+      Falling => <font color=red>True</font>,
+      Sense   => 10 ns);
+
+   AsynchronousMISR: Work.MISR_Definition.MISR(
+      Clk     => Clk,
+      Reset   => Reset,
+      Input   => Input3,
+      MISR    => MISR3,
+      Rising  => <font color=red>False</font>,
+      Falling => <font color=red>False</font>,
+      Sense   => 10 ns);
+
+   MISR_4:  Work.MISR_Definition.MISR(
+      Clk     => Clk,
+      Reset   => Reset,
+      Input   => Input4,
+      MISR    => MISR4,
+      Rising  => <font color=red>False</font>,
+      Falling => <font color=red>True</font>,
+      Sense   => 10 ns,
+      HeaderMsg => <font color=black>"MISR_4"</font>);
+ 
+   MISR_4r:  Work.MISR_Definition.MISR(
+      Clk     => Clk,
+      Reset   => Reset,
+      Input   => Input4r,
+      MISR    => MISR4r,
+      Rising  => <font color=red>False</font>,
+      Falling => <font color=red>True</font>,
+      Sense   => 10 ns,
+      HeaderMsg => <font color=black>"MISR_4r"</font>);
+ 
+   MISR_41:  Work.MISR_Definition1.MISR(
+      Clk     => Clk,
+      Reset   => Reset,
+      Input   => Input4,
+      MISR    => MISR41,
+      Rising  => <font color=red>False</font>,
+      Falling => <font color=red>True</font>,
+      Sense   => 10 ns,
+      HeaderMsg => <font color=black>"MISR_41"</font>);
+
+<font color=blue>end</font> Behavioural; 
+</pre>
+</body>
+</html>

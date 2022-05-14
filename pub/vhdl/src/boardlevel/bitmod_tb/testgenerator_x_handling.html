@@ -1,0 +1,70 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : TestGenerator(X_Handling) (Architecture)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : testgenerator_x_handling.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      :
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         :
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  :
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_TB_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164,
+</font></i><font color=green><i>--                ESA.Simulation,
+</font></i><font color=green><i>--                BitMod_TB_Lib.MISR_Definition,
+</font></i><font color=green><i>--                BitMod_TB_Lib.TestDefinition.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New model
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i> 
+<font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Naming convention: Active low signals are indicated by _N.
+</font></i><font color=green><i>-- All external signals have been named as in the data sheet.
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i> 
+<font color=green><i>--=============================== Architecture ===============================--
+</font></i><font color=blue>library</font> BitMod_TB_Lib;
+<font color=blue>use</font> BitMod_TB_Lib.MISR_Definition.<font color=blue>all</font>;
+<font color=blue>use</font> BitMod_TB_Lib.TestDefinition.<font color=blue>all</font>;
+ 
+<font color=blue>architecture</font> X_Handling <font color=blue>of</font> TestGenerator <font color=blue>is</font>
+<font color=blue>begin</font> <font color=green><i>--========================== Architecture ==============================--
+</font></i>   <font color=green><i>-- This test suite will test the following:
+</font></i>   <font color=green><i>--   all inputs will be applied all nine Std_Logic values;
+</font></i>   <font color=green><i>--   all checkers for unknown values on inputs;
+</font></i>   <font color=green><i>--   the handling of each unknown input value will be checked;
+</font></i>   <font color=green><i>--   the propagation of each unknown input value will be checked.
+</font></i>   <font color=green><i>--
+</font></i>   <font color=green><i>-- This test suite will also test the BIST functionality of the mode, 
+</font></i>   <font color=green><i>-- and should not be evaluated using fault simulation since it would activate
+</font></i>   <font color=green><i>-- portions of the component not modelled for Board-level simulation.
+</font></i>   <font color=green><i>--
+</font></i>   <font color=green><i>-- The ouputs are sampled and compressed using a MISR, which is compared to 
+</font></i>   <font color=green><i>-- the expected signature at the end of each sub-test.
+</font></i>   <font color=green><i>-- The ouputs are sampled and compressed using a MISR, which is compared to 
+</font></i>   <font color=green><i>-- an expected signature at the end of each sub-test.
+</font></i><font color=blue>end</font> X_Handling; <font color=green><i>--================ End of architecture =======================--
+</font></i></pre>
+</body>
+</html>

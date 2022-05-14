@@ -1,0 +1,7483 @@
+%!PS-Adobe-3.0
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%PageOrder: (atend)
+%%DocumentFonts: (atend)
+%%Creator: Frame 5.0
+%%DocumentData: Clean7Bit
+%%EndComments
+%%BeginProlog
+%
+% Frame ps_prolog 5.0, for use with Frame 5.0 products
+% This ps_prolog file is Copyright (c) 1986-1995 Frame Technology
+% Corporation.  All rights reserved.  This ps_prolog file may be
+% freely copied and distributed in conjunction with documents created
+% using FrameMaker, FrameMaker/SGML and FrameViewer as long as this 
+% copyright notice is preserved.
+%
+% FrameMaker users specify the proper paper size for each print job in the
+% "Print" dialog's "Printer Paper Size" "Width" and "Height~ fields.  If the
+% printer that the PS file is sent to does not support the requested paper
+% size, or if there is no paper tray of the proper size currently installed, 
+% then the job will not be printed.  The following flag, if set to true, will
+% cause the job to print on the default paper in such cases.
+/FMAllowPaperSizeMismatch            false def
+%
+% Frame products normally print colors as their true color on a color printer
+% or as shades of gray, based on luminance, on a black-and white printer. The
+% following flag, if set to true, forces all non-white colors to print as pure
+% black. This has no effect on bitmap images.
+/FMPrintAllColorsAsBlack             false def
+%
+% Frame products can either set their own line screens or use a printer's 
+% default settings. Three flags below control this separately for no 
+% separations, spot separations and process separations. If a flag
+% is true, then the default printer settings will not be changed. If it is
+% false, Frame products will use their own settings from a table based on
+% the printer's resolution.
+/FMUseDefaultNoSeparationScreen      true  def
+/FMUseDefaultSpotSeparationScreen    true  def
+/FMUseDefaultProcessSeparationScreen false def
+%
+% For any given PostScript printer resolution, Frame products have two sets of 
+% screen angles and frequencies for printing process separations, which are 
+% recomended by Adobe. The following variable chooses the higher frequencies
+% when set to true or the lower frequencies when set to false. This is only
+% effective if the appropriate FMUseDefault...SeparationScreen flag is false.
+/FMUseHighFrequencyScreens true def
+%
+% The following is a set of predefined optimal frequencies and angles for various
+% common dpi settings. This is taken from "Advances in Color Separation Using
+% PostScript Software Technology," from Adobe Systems (3/13/89 P.N. LPS 0043)
+% and corrolated with information which is in various PPD (4.0) files.
+%
+% The "dpiranges" figure is the minimum dots per inch device resolution which
+% can support this setting. The "low" and "high" values are controlled by the
+% setting of the FMUseHighFrequencyScreens flag above. The "TDot" flags control
+% the use of the "Yellow Triple Dot" feature whereby the frequency id divided by
+% three, but the dot function is "trippled" giving a block of 3x3 dots per cell.
+%
+% PatFreq is a compromise pattern frequency for ps Level 2 printers which is close
+% to the ideal WYSIWYG pattern frequency of 9 repetitions/inch but does not beat
+% (too badly) against the screen frequencies of any separations for that DPI.
+/dpiranges   [  2540    2400    1693     1270    1200     635      600      0      ] def
+/CMLowFreqs  [ 100.402  94.8683 89.2289 100.402  94.8683  66.9349  63.2456 47.4342 ] def
+/YLowFreqs   [  95.25   90.0    84.65    95.25   90.0     70.5556  66.6667 50.0    ] def
+/KLowFreqs   [  89.8026 84.8528 79.8088  89.8026 84.8528  74.8355  70.7107 53.033  ] def
+/CLowAngles  [  71.5651 71.5651 71.5651 71.5651  71.5651  71.5651  71.5651 71.5651 ] def
+/MLowAngles  [  18.4349 18.4349 18.4349 18.4349  18.4349  18.4349  18.4349 18.4349 ] def
+/YLowTDot    [  true    true    false    true    true     false    false   false   ] def
+/CMHighFreqs [ 133.87  126.491 133.843  108.503 102.523  100.402   94.8683 63.2456 ] def
+/YHighFreqs  [ 127.0   120.0   126.975  115.455 109.091   95.25    90.0    60.0    ] def
+/KHighFreqs  [ 119.737 113.137 119.713  128.289 121.218   89.8026  84.8528 63.6395 ] def
+/CHighAngles [  71.5651 71.5651 71.5651  70.0169 70.0169  71.5651  71.5651 71.5651 ] def
+/MHighAngles [  18.4349 18.4349 18.4349  19.9831 19.9831  18.4349  18.4349 18.4349 ] def
+/YHighTDot   [  false   false   true     false   false    true     true    false   ] def
+/PatFreq     [	10.5833 10.0     9.4055  10.5833 10.0	  10.5833  10.0	   9.375   ] def
+%
+% PostScript Level 2 printers contain an "Accurate Screens" feature which can
+% improve process separation rendering at the expense of compute time. This 
+% flag is ignored by PostScript Level 1 printers.
+/FMUseAcccurateScreens true def
+%
+% The following PostScript procedure defines the spot function that Frame
+% products will use for process separations. You may un-comment-out one of
+% the alternative functions below, or use your own.
+%
+% Dot function
+/FMSpotFunction {abs exch abs 2 copy add 1 gt 
+		{1 sub dup mul exch 1 sub dup mul add 1 sub }
+		{dup mul exch dup mul add 1 exch sub }ifelse } def
+%
+% Line function
+% /FMSpotFunction { pop } def
+%
+% Elipse function
+% /FMSpotFunction { dup 5 mul 8 div mul exch dup mul exch add 
+%		sqrt 1 exch sub } def
+%
+%
+/FMversion (5.0) def 
+/fMLevel1 /languagelevel where {pop languagelevel} {1} ifelse 2 lt def
+/FMPColor
+	fMLevel1 {
+		false
+		/colorimage where {pop pop true} if
+	} {
+		true
+	} ifelse
+def
+/FrameDict 400 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in PS 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} bind def
+	} if
+/FMshowpage /showpage load def
+/FMquit /quit load def
+/FMFAILURE { 
+	dup = flush 
+	FMshowpage 
+	/Helvetica findfont 12 scalefont setfont
+	72 200 moveto show
+	72 220 moveto show
+	FMshowpage 
+	FMquit 
+	} def 
+/FMVERSION {
+	FMversion ne {
+		(Frame product version does not match ps_prolog!  Check installation;)
+		(also check ~/fminit and ./fminit for old versions) FMFAILURE
+		} if
+	} def 
+/FMBADEPSF { 
+	(Adobe's PostScript Language Reference Manual, 2nd Edition, section H.2.4)
+	(says your EPS file is not valid, as it calls X              )
+	dup dup (X) search pop exch pop exch pop length 
+	5 -1 roll 
+	putinterval 
+	FMFAILURE
+	} def
+/fmConcatProcs
+	{
+	/proc2 exch cvlit def/proc1 exch cvlit def/newproc proc1 length proc2 length add array def
+	newproc 0 proc1 putinterval newproc proc1 length proc2 putinterval newproc cvx
+}def
+FrameDict begin [
+	/ALDsave
+	/FMdicttop
+	/FMoptop
+	/FMpointsize
+	/FMsaveobject
+	/b
+	/bitmapsave
+	/blut
+	/bpside
+	/bs
+	/bstring
+	/bwidth
+	/c
+	/cf
+	/cs
+	/cynu
+	/depth
+	/edown
+	/fh
+	/fillvals
+	/fw
+	/fx
+	/fy
+	/g
+	/gfile
+	/gindex
+	/grnt
+	/gryt
+	/gstring
+	/height
+	/hh
+	/i
+	/im
+	/indx
+	/is
+	/k
+	/kk
+	/landscape
+	/lb
+	/len
+	/llx
+	/lly
+	/m
+	/magu
+	/manualfeed
+	/n
+	/offbits
+	/onbits
+	/organgle
+	/orgbangle
+	/orgbfreq
+	/orgbproc
+	/orgbxfer
+	/orgfreq
+	/orggangle
+	/orggfreq
+	/orggproc
+	/orggxfer
+	/orgmatrix
+	/orgproc
+	/orgrangle
+	/orgrfreq
+	/orgrproc
+	/orgrxfer
+	/orgxfer
+	/pagesave
+	/paperheight
+	/papersizedict
+	/paperwidth
+	/pos
+	/pwid
+	/r
+	/rad
+	/redt
+	/sl
+	/str
+	/tran
+	/u
+	/urx
+	/ury
+	/val
+	/width
+	/width
+	/ws
+	/ww
+	/x
+	/x1
+	/x2
+	/xindex
+	/xpoint
+	/xscale
+	/xx
+	/y
+	/y1
+	/y2
+	/yelu
+	/yindex
+	/ypoint
+	/yscale
+	/yy
+] { 0 def } forall
+/FmBD {bind def} bind def
+systemdict /pdfmark known {
+	/fMAcrobat true def
+	
+	/FmPD /pdfmark load def
+	
+	
+	/FmPT /show load def
+	
+	
+	currentdistillerparams /CoreDistVersion get 2000 ge {
+	
+		
+		/FmPD2 /pdfmark load def
+		
+		
+		
+		
+		
+		/FmPA { mark exch /Dest exch 5 3 roll 
+				/View [ /XYZ null 6 -2 roll FmDC exch pop null] /DEST FmPD 
+		}FmBD
+	} {
+		
+		/FmPD2 /cleartomark load def
+		/FmPA {pop pop pop}FmBD
+	} ifelse
+} {
+	
+	/fMAcrobat false def
+	/FmPD /cleartomark load def
+	/FmPD2 /cleartomark load def
+	/FmPT /pop load def
+	/FmPA {pop pop pop}FmBD
+} ifelse
+/FmDC {
+	transform fMDefaultMatrix itransform cvi exch cvi exch
+}FmBD
+/FmBx {
+	dup 3 index lt {3 1 roll exch} if 
+	1 index 4 index lt {4 -1 roll 3 1 roll exch 4 1 roll} if
+}FmBD
+/FMnone 0 def
+/FMcyan 1 def
+/FMmagenta 2 def
+/FMyellow 3 def
+/FMblack 4 def
+/FMcustom 5 def
+/fMNegative false def 
+/FrameSepIs FMnone def 
+/FrameSepBlack 0 def
+/FrameSepYellow 0 def
+/FrameSepMagenta 0 def
+/FrameSepCyan 0 def
+/FrameSepRed 1 def
+/FrameSepGreen 1 def
+/FrameSepBlue 1 def
+/FrameCurGray 1 def
+/FrameCurPat null def
+/FrameCurColors [ 0 0 0 1 0 0 0 ] def 
+/FrameColorEpsilon .001 def	
+/eqepsilon {		
+	sub dup 0 lt {neg} if
+	FrameColorEpsilon le
+} bind def
+/FrameCmpColorsCMYK { 
+	2 copy 0 get exch 0 get eqepsilon {
+		2 copy 1 get exch 1 get eqepsilon {
+			2 copy 2 get exch 2 get eqepsilon {
+				3 get exch 3 get eqepsilon
+			} {pop pop false} ifelse
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/FrameCmpColorsRGB { 
+	2 copy 4 get exch 0 get eqepsilon {
+		2 copy 5 get exch 1 get eqepsilon {
+			6 get exch 2 get eqepsilon
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/RGBtoCMYK { 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	3 copy 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	dup dup dup 
+	6 1 roll 
+	4 1 roll 
+	7 1 roll 
+	sub 
+	6 1 roll 
+	sub 
+	5 1 roll 
+	sub 
+	4 1 roll 
+} bind def
+/CMYKtoRGB { 
+	dup dup 4 -1 roll add 						  
+	5 1 roll 3 -1 roll add 						  
+	4 1 roll add 								  
+	1 exch sub dup 0 lt {pop 0} if 3 1 roll 	  
+	1 exch sub dup 0 lt {pop 0} if exch 	      
+	1 exch sub dup 0 lt {pop 0} if exch	  		  
+} bind def
+/FrameSepInit {
+	1.0 RealSetgray
+} bind def
+/FrameSetSepColor { 
+	/FrameSepBlue exch def
+	/FrameSepGreen exch def
+	/FrameSepRed exch def
+	/FrameSepBlack exch def
+	/FrameSepYellow exch def
+	/FrameSepMagenta exch def
+	/FrameSepCyan exch def
+	/FrameSepIs FMcustom def
+	setCurrentScreen	
+} bind def
+/FrameSetCyan {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 1.0 def
+	/FrameSepIs FMcyan def
+	setCurrentScreen	
+} bind def
+ 
+/FrameSetMagenta {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 1.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMmagenta def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetYellow {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 1.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMyellow def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetBlack {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 1.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMblack def
+	setCurrentScreen
+} bind def
+ 
+/FrameNoSep { 
+	/FrameSepIs FMnone def
+	setCurrentScreen
+} bind def
+/FrameSetSepColors { 
+	FrameDict begin
+	[ exch 1 add 1 roll ]
+	/FrameSepColors  
+	exch def end
+	} bind def
+/FrameColorInSepListCMYK { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsCMYK 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/FrameColorInSepListRGB { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsRGB 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/RealSetgray /setgray load def
+/RealSetrgbcolor /setrgbcolor load def
+/RealSethsbcolor /sethsbcolor load def
+end 
+/setgray { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+		{ RealSetgray } 
+		{ 
+		FrameSepIs FMblack eq 
+			{ RealSetgray } 
+			{ FrameSepIs FMcustom eq 
+			  FrameSepRed 0 eq and
+			  FrameSepGreen 0 eq and
+			  FrameSepBlue 0 eq and {
+			  	RealSetgray
+			  } {
+				1 RealSetgray pop 
+			  } ifelse
+			} ifelse
+		} ifelse
+	end
+} bind def
+/setrgbcolor { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+	{  RealSetrgbcolor }
+	{
+		3 copy [ 4 1 roll ] 
+		FrameColorInSepListRGB
+		{
+				FrameSepBlue eq exch 
+			 	FrameSepGreen eq and exch 
+			 	FrameSepRed eq and
+			 	{ 0 } { 1 } ifelse
+		}
+		{
+			FMPColor {
+				RealSetrgbcolor
+				currentcmykcolor
+			} {
+				RGBtoCMYK
+			} ifelse
+			FrameSepIs FMblack eq
+			{1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		RealSetgray
+	} 
+	ifelse
+	end
+} bind def
+/sethsbcolor {
+	FrameDict begin
+	FrameSepIs FMnone eq 
+	{ RealSethsbcolor } 
+	{
+		RealSethsbcolor 
+		currentrgbcolor  
+		setrgbcolor 
+	} 
+	ifelse
+	end
+} bind def
+FrameDict begin
+/setcmykcolor where {
+	pop /RealSetcmykcolor /setcmykcolor load def
+} {
+	/RealSetcmykcolor {
+		4 1 roll
+		3 { 3 index add 0 max 1 min 1 exch sub 3 1 roll} repeat 
+		RealSetrgbcolor pop
+	} bind def
+} ifelse
+userdict /setcmykcolor { 
+		FrameDict begin
+		FrameSepIs FMnone eq
+		{ RealSetcmykcolor } 
+		{
+			4 copy [ 5 1 roll ]
+			FrameColorInSepListCMYK
+			{
+				FrameSepBlack eq exch 
+				FrameSepYellow eq and exch 
+				FrameSepMagenta eq and exch 
+				FrameSepCyan eq and 
+				{ 0 } { 1 } ifelse
+			}
+			{
+				FrameSepIs FMblack eq
+				{1.0 exch sub 4 1 roll pop pop pop} {
+				FrameSepIs FMyellow eq
+				{pop 1.0 exch sub 3 1 roll pop pop} {
+				FrameSepIs FMmagenta eq
+				{pop pop 1.0 exch sub exch pop } {
+				FrameSepIs FMcyan eq
+				{pop pop pop 1.0 exch sub } 
+				{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+			} ifelse
+			RealSetgray
+		}
+		ifelse
+		end
+	} bind put
+fMLevel1 { 
+	
+	
+	
+	/patScreenDict 7 dict dup begin
+		<0f1e3c78f0e1c387> [ 45  { pop } {exch pop} 		.5   2 sqrt] FmBD
+		<0f87c3e1f0783c1e> [ 135 { pop } {exch pop}			.5   2 sqrt] FmBD
+		<cccccccccccccccc> [ 0   { pop } dup				.5   2	   ] FmBD
+		<ffff0000ffff0000> [ 90  { pop } dup				.5   2	   ] FmBD
+		<8142241818244281> [ 45  { 2 copy lt {exch} if pop}	dup .75  2 sqrt] FmBD
+		<03060c183060c081> [ 45  { pop } {exch pop}			.875 2 sqrt] FmBD
+		<8040201008040201> [ 135 { pop } {exch pop}			.875 2 sqrt] FmBD
+	end def
+} { 
+	
+	/patProcDict 5 dict dup begin
+		<0f1e3c78f0e1c387> { 3 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<0f87c3e1f0783c1e> { 3 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+		<8142241818244281> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke
+											-1 -1 moveto 9 9 lineto stroke } bind def
+		<03060c183060c081> { 1 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<8040201008040201> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+	end def
+	/patDict 15 dict dup begin
+		/PatternType 1 def		
+		/PaintType 2 def		
+		/TilingType 3 def		
+		/BBox [ 0 0 8 8 ] def 	
+		/XStep 8 def			
+		/YStep 8 def			
+		/PaintProc {
+			begin
+			patProcDict bstring known {
+				patProcDict bstring get exec
+			} {
+				8 8 true [1 0 0 -1 0 8] bstring imagemask
+			} ifelse
+			end
+		} bind def
+	end def
+} ifelse
+/combineColor {
+    FrameSepIs FMnone eq
+	{
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceCMYK]] setcolorspace
+			FrameCurColors 0 4 getinterval aload pop FrameCurPat setcolor
+		} {
+			FrameCurColors 3 get 1.0 ge {
+				FrameCurGray RealSetgray
+			} {
+				fMAcrobat not FMPColor graymode and and {
+					0 1 3 { 
+						FrameCurColors exch get
+						1 FrameCurGray sub mul
+					} for
+					RealSetcmykcolor
+				} {
+					4 1 6 {
+						FrameCurColors exch get
+						graymode {
+							1 exch sub 1 FrameCurGray sub mul 1 exch sub
+						} {
+							1.0 lt {FrameCurGray} {1} ifelse
+						} ifelse
+					} for
+					RealSetrgbcolor
+				} ifelse
+			} ifelse
+		} ifelse
+	} { 
+		FrameCurColors 0 4 getinterval aload
+		FrameColorInSepListCMYK {
+			FrameSepBlack eq exch 
+			FrameSepYellow eq and exch 
+			FrameSepMagenta eq and exch 
+			FrameSepCyan eq and
+			FrameSepIs FMcustom eq and
+			{ FrameCurGray } { 1 } ifelse
+		} {
+			FrameSepIs FMblack eq
+			{FrameCurGray 1.0 exch sub mul 1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop FrameCurGray 1.0 exch sub mul 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceGray]] setcolorspace
+			FrameCurPat setcolor
+		} { 
+			graymode not fMLevel1 and {
+				
+				dup 1 lt {pop FrameCurGray} if
+			} if
+			RealSetgray
+		} ifelse
+	} ifelse
+} bind def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/fMDefaultMatrix matrix defaultmatrix def
+/fMatrix2 matrix def
+/dpi    72 0 fMDefaultMatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+	
+/freq dpi dup 72 div round dup 0 eq {pop 1} if 8 mul div def
+/sangle 1 0 fMDefaultMatrix dtransform exch atan def
+	sangle fMatrix2 rotate 
+	fMDefaultMatrix fMatrix2 concatmatrix 
+	dup 0 get /sflipx exch def
+	    3 get /sflipy exch def
+/screenIndex {
+	0 1 dpiranges length 1 sub { dup dpiranges exch get 1 sub dpi le {exit} {pop} ifelse } for
+} bind def
+/getCyanScreen {
+	FMUseHighFrequencyScreens { CHighAngles CMHighFreqs} {CLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getMagentaScreen {
+	FMUseHighFrequencyScreens { MHighAngles CMHighFreqs } {MLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getYellowScreen {
+	FMUseHighFrequencyScreens { YHighTDot YHighFreqs} { YLowTDot YLowFreqs } ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get { 3 div
+			{2 { 1 add 2 div 3 mul dup floor sub 2 mul 1 sub exch} repeat
+			FMSpotFunction } } {/FMSpotFunction load } ifelse
+			0.0 exch
+} bind def
+/getBlackScreen  {
+	FMUseHighFrequencyScreens { KHighFreqs } { KLowFreqs } ifelse
+		screenIndex get 45.0 /FMSpotFunction load 
+} bind def
+/getSpotScreen {
+	getBlackScreen
+} bind def
+/getCompositeScreen {
+	getBlackScreen
+} bind def
+/FMSetScreen 
+	fMLevel1 { /setscreen load 
+	}{ {
+		8 dict begin
+		/HalftoneType 1 def
+		/SpotFunction exch def
+		/Angle exch def
+		/Frequency exch def
+		/AccurateScreens FMUseAcccurateScreens def
+		currentdict end sethalftone
+	} bind } ifelse
+def
+/setDefaultScreen {
+	FMPColor {
+		orgrxfer cvx orggxfer cvx orgbxfer cvx orgxfer cvx setcolortransfer
+	}
+	{
+		orgxfer cvx settransfer
+	} ifelse
+	orgfreq organgle orgproc cvx setscreen
+} bind def
+/setCurrentScreen {
+	FrameSepIs FMnone eq {
+		FMUseDefaultNoSeparationScreen {
+			setDefaultScreen
+		} {
+			getCompositeScreen FMSetScreen
+		} ifelse
+	} {
+		FrameSepIs FMcustom eq {
+			FMUseDefaultSpotSeparationScreen {
+				setDefaultScreen
+			} {
+				getSpotScreen FMSetScreen
+			} ifelse
+		} {
+			FMUseDefaultProcessSeparationScreen {
+				setDefaultScreen
+			} {
+				FrameSepIs FMcyan eq {
+					getCyanScreen FMSetScreen
+				} {
+					FrameSepIs FMmagenta eq {
+						getMagentaScreen FMSetScreen
+					} {
+						FrameSepIs FMyellow eq {
+							getYellowScreen FMSetScreen
+						} {
+							getBlackScreen FMSetScreen
+						} ifelse
+					} ifelse
+				} ifelse
+			} ifelse
+		} ifelse
+	} ifelse 
+} bind def
+end
+	
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne /manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	0 ne /fMNegative exch def 
+	0 ne /edown exch def 
+	/yscale exch def
+	/xscale exch def
+	fMLevel1 {
+		manualfeed {setmanualfeed} if
+		/FMdicttop countdictstack 1 add def 
+		/FMoptop count def 
+		setpapername 
+		manualfeed {true} {papersize} ifelse 
+		{manualpapersize} {false} ifelse 
+		{desperatepapersize} {false} ifelse 
+		{papersizefailure} if
+		count -1 FMoptop {pop pop} for
+		countdictstack -1 FMdicttop {pop end} for 
+		}
+		{2 dict
+		 dup /PageSize [paperwidth paperheight] put
+		 manualfeed {dup /ManualFeed manualfeed put} if
+		 {setpagedevice} stopped {papersizefailure} if
+		}
+	ifelse 
+	
+	FMPColor {
+		currentcolorscreen
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+			cvlit /orgbproc exch def
+				  /orgbangle exch def 
+				  /orgbfreq exch def
+			cvlit /orggproc exch def
+				  /orggangle exch def 
+				  /orggfreq exch def
+			cvlit /orgrproc exch def
+				  /orgrangle exch def 
+				  /orgrfreq exch def
+			currentcolortransfer 
+			fMNegative {
+				1 1 4 { 
+					pop { 1 exch sub } fmConcatProcs 4 1 roll
+				} for
+				4 copy
+				setcolortransfer
+			} if
+			cvlit /orgxfer exch def
+			cvlit /orgbxfer exch def
+			cvlit /orggxfer exch def
+			cvlit /orgrxfer exch def
+	} {
+		currentscreen 
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+				  
+		currenttransfer 
+		fMNegative {
+			{ 1 exch sub } fmConcatProcs
+			dup settransfer
+		} if 
+		cvlit /orgxfer exch def
+	} ifelse
+	end 
+} def 
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch dup /pwid exch def neg translate pop 
+	}{
+		pop /pwid exch def
+	} ifelse
+	edown { [-1 0 0 1 pwid 0] concat } if
+	0 0 moveto paperwidth 0 lineto paperwidth paperheight lineto 
+	0 paperheight lineto 0 0 lineto 1 setgray fill
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin dup
+	array /fillvals exch def
+	dict /patCache exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+% See Adobe's "PostScript Language Reference Manual, 2nd Edition", page 714.
+% "...the following operators MUST NOT be used in an EPS file:" (emphasis ours)
+	/banddevice {(banddevice) FMBADEPSF} def
+	/clear {(clear) FMBADEPSF} def
+	/cleardictstack {(cleardictstack) FMBADEPSF} def 
+	/copypage {(copypage) FMBADEPSF} def
+	/erasepage {(erasepage) FMBADEPSF} def
+	/exitserver {(exitserver) FMBADEPSF} def
+	/framedevice {(framedevice) FMBADEPSF} def
+	/grestoreall {(grestoreall) FMBADEPSF} def
+	/initclip {(initclip) FMBADEPSF} def
+	/initgraphics {(initgraphics) FMBADEPSF} def
+	/quit {(quit) FMBADEPSF} def
+	/renderbands {(renderbands) FMBADEPSF} def
+	/setglobal {(setglobal) FMBADEPSF} def
+	/setpagedevice {(setpagedevice) FMBADEPSF} def
+	/setshared {(setshared) FMBADEPSF} def
+	/startjob {(startjob) FMBADEPSF} def
+	/lettertray {(lettertray) FMBADEPSF} def
+	/letter {(letter) FMBADEPSF} def
+	/lettersmall {(lettersmall) FMBADEPSF} def
+	/11x17tray {(11x17tray) FMBADEPSF} def
+	/11x17 {(11x17) FMBADEPSF} def
+	/ledgertray {(ledgertray) FMBADEPSF} def
+	/ledger {(ledger) FMBADEPSF} def
+	/legaltray {(legaltray) FMBADEPSF} def
+	/legal {(legal) FMBADEPSF} def
+	/statementtray {(statementtray) FMBADEPSF} def
+	/statement {(statement) FMBADEPSF} def
+	/executivetray {(executivetray) FMBADEPSF} def
+	/executive {(executive) FMBADEPSF} def
+	/a3tray {(a3tray) FMBADEPSF} def
+	/a3 {(a3) FMBADEPSF} def
+	/a4tray {(a4tray) FMBADEPSF} def
+	/a4 {(a4) FMBADEPSF} def
+	/a4small {(a4small) FMBADEPSF} def
+	/b4tray {(b4tray) FMBADEPSF} def
+	/b4 {(b4) FMBADEPSF} def
+	/b5tray {(b5tray) FMBADEPSF} def
+	/b5 {(b5) FMBADEPSF} def
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fw 2 div add fy fh 2 div add  translate
+	rotate
+	fw 2 div neg fh 2 div neg translate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count def 
+	} bind def
+/FMENDEPSF {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} bind def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/pagedimen { 
+	paperheight sub abs 16 lt exch 
+	paperwidth sub abs 16 lt and
+	{/papername exch def} {pop} ifelse
+	} bind def
+/setpapername { 
+	/papersizedict 14 dict def 
+	papersizedict begin
+	/papername /unknown def 
+		/Letter 8.5 inch 11.0 inch pagedimen
+		/LetterSmall 7.68 inch 10.16 inch pagedimen
+		/Tabloid 11.0 inch 17.0 inch pagedimen
+		/Ledger 17.0 inch 11.0 inch pagedimen
+		/Legal 8.5 inch 14.0 inch pagedimen
+		/Statement 5.5 inch 8.5 inch pagedimen
+		/Executive 7.5 inch 10.0 inch pagedimen
+		/A3 11.69 inch 16.5 inch pagedimen
+		/A4 8.26 inch 11.69 inch pagedimen
+		/A4Small 7.47 inch 10.85 inch pagedimen
+		/B4 10.125 inch 14.33 inch pagedimen
+		/B5 7.16 inch 10.125 inch pagedimen
+	end
+	} bind def
+/papersize {
+	papersizedict begin
+		/Letter {lettertray letter} def
+		/LetterSmall {lettertray lettersmall} def
+		/Tabloid {11x17tray 11x17} def
+		/Ledger {ledgertray ledger} def
+		/Legal {legaltray legal} def
+		/Statement {statementtray statement} def
+		/Executive {executivetray executive} def
+		/A3 {a3tray a3} def
+		/A4 {a4tray a4} def
+		/A4Small {a4tray a4small} def
+		/B4 {b4tray b4} def
+		/B5 {b5tray b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	statusdict begin stopped end 
+	} bind def
+/manualpapersize {
+	papersizedict begin
+		/Letter {letter} def
+		/LetterSmall {lettersmall} def
+		/Tabloid {11x17} def
+		/Ledger {ledger} def
+		/Legal {legal} def
+		/Statement {statement} def
+		/Executive {executive} def
+		/A3 {a3} def
+		/A4 {a4} def
+		/A4Small {a4small} def
+		/B4 {b4} def
+		/B5 {b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	stopped 
+	} bind def
+/desperatepapersize {
+	statusdict /setpageparams known
+		{
+		paperwidth paperheight 0 1 
+		statusdict begin
+		{setpageparams} stopped 
+		end
+		} {true} ifelse 
+	} bind def
+/papersizefailure {
+	FMAllowPaperSizeMismatch not
+		{
+(The requested paper size is not available in any currently-installed tray)
+(Edit the PS file to "FMAllowPaperSizeMismatch true" to use default tray)
+		 FMFAILURE } if
+	} def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+FMPColor 
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUECOLORc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYK } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKc } def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYKGRAY } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKGRAYc } def
+	}
+ifelse
+/K { 
+	FMPrintAllColorsAsBlack {
+		dup 1 eq 2 index 1 eq and 3 index 1 eq and not
+			{7 {pop} repeat 0 0 0 1 0 0 0} if
+	} if 
+	FrameCurColors astore 
+	pop combineColor
+} bind def
+/graymode true def
+fMLevel1 {
+	/fmGetFlip {
+		fMatrix2 exch get mul 0 lt { -1 } { 1 } ifelse
+	} FmBD
+} if
+/setPatternMode {
+	fMLevel1 {
+		2 index patScreenDict exch known {
+			pop pop
+			patScreenDict exch get aload pop 
+			freq 								
+			mul									
+			5 2 roll							
+			fMatrix2 currentmatrix 1 get 0 ne {
+				3 -1 roll 90 add 3 1 roll 		
+				sflipx 1 fmGetFlip sflipy 2 fmGetFlip neg mul
+			} {  								
+				sflipx 0 fmGetFlip sflipy 3 fmGetFlip mul 
+			} ifelse
+			0 lt {exch pop} {pop} ifelse 		
+			fMNegative { 
+				{neg} fmConcatProcs 			
+			} if
+			bind
+			
+			
+			
+			systemdict /setscreen get exec		
+			/FrameCurGray exch def
+		} {
+			/bwidth  exch def
+			/bpside  exch def
+			/bstring exch def
+			/onbits 0 def  /offbits 0 def
+			freq sangle landscape {90 add} if 
+				{/ypoint exch def
+				 /xpoint exch def
+				 /xindex xpoint 1 add 2 div bpside mul cvi def
+				 /yindex ypoint 1 add 2 div bpside mul cvi def
+				 bstring yindex bwidth mul xindex 8 idiv add get
+				 1 7 xindex 8 mod sub bitshift and 0 ne fMNegative {not} if
+				 {/onbits  onbits  1 add def 1}
+				 {/offbits offbits 1 add def 0}
+				 ifelse
+				}
+				setscreen
+			offbits offbits onbits add div fMNegative {1.0 exch sub} if
+			/FrameCurGray exch def
+		} ifelse
+	} { 
+		pop pop
+		dup patCache exch known {
+			patCache exch get
+		} { 
+			dup
+			patDict /bstring 3 -1 roll put
+			patDict 
+			9 PatFreq screenIndex get div dup matrix scale
+			makepattern
+			dup 
+			patCache 4 -1 roll 3 -1 roll put
+		} ifelse
+		/FrameCurGray 0 def
+		/FrameCurPat exch def
+	} ifelse
+	/graymode false def
+	combineColor
+} bind def
+/setGrayScaleMode {
+	graymode not {
+		/graymode true def
+		fMLevel1 {
+			setCurrentScreen
+		} if
+	} if
+	/FrameCurGray exch def
+	combineColor
+} bind def
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	
+/PFill {
+	graymode fMLevel1 or not {
+		gsave 1 setgray eofill grestore
+	} if
+} bind def
+/PStroke {
+	graymode fMLevel1 or not {
+		gsave 1 setgray stroke grestore
+	} if
+	stroke
+} bind def
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setPatternMode} 
+	{setGrayScaleMode}
+	ifelse
+	} bind def
+/V { 
+	PFill gsave eofill grestore
+	} bind def
+/Vclip {
+	clip
+	} bind def
+/Vstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/N { 
+	PStroke
+	} bind def
+/Nclip {
+	strokepath clip newpath
+	} bind def
+/Nstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+/rarc 
+	{rad 
+	 arcto
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	mark
+	newpath
+	{
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rarc
+	x2 y2 x2 y1 rarc
+	x2 y1 x1 y1 rarc
+	x1 y1 x1 y2 rarc
+	closepath
+	} stopped {x1 y1 x2 y2 R} if 
+	cleartomark
+	} bind def
+/RRR { 
+	/rad exch def
+	normalize /y4 exch def /x4 exch def
+	normalize /y3 exch def /x3 exch def
+	normalize /y2 exch def /x2 exch def
+	normalize /y1 exch def /x1 exch def
+	newpath
+	normalize moveto 
+	mark
+	{
+	x2 y2 x3 y3 rarc
+	x3 y3 x4 y4 rarc
+	x4 y4 x1 y1 rarc
+	x1 y1 x2 y2 rarc
+	closepath
+	} stopped
+	 {x1 y1 x2 y2 x3 y3 x4 y4 newpath moveto lineto lineto lineto closepath} if
+	cleartomark
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	setCurrentScreen
+} bind def
+/CP { 
+	grestore
+	gsave
+	Y 
+	clip
+	setCurrentScreen
+} bind def
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	PFill fill
+	grestore
+	} bind def
+/Gstrk {
+	savematrix
+    newpath
+    2 index 2 div add exch 3 index 2 div sub exch 
+    normalize 2 index 2 div sub exch 3 index 2 div add exch 
+    translate
+    scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+    } bind def
+/Gclip { 
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	clip newpath
+	restorematrix
+	} bind def
+/GG { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	rotate 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath
+	PFill
+	fill
+	grestore
+	} bind def
+/GGclip { 
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	clip newpath
+	restorematrix
+	} bind def
+/GGstrk { 
+	savematrix
+    newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath 
+	restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/Aclip {
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	strokepath clip newpath
+	restorematrix
+} bind def
+/Astrk {
+	Gstrk
+} bind def
+/AA { 
+	gsave
+	savematrix
+	newpath
+	
+	3 index 2 div add exch 4 index 2 div sub exch 
+	
+	normalize 3 index 2 div sub exch 4 index 2 div add exch
+	translate 
+	rotate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/AAclip {
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	strokepath clip newpath
+	restorematrix
+} bind def
+/AAstrk {
+	GGstrk
+} bind def
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 7 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/rip { 
+	   
+	  
+	  bis ris copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  ris gis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  gis bis copy pop 
+	  dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/rip4 { 
+	   
+	  
+	  kis cis copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  cis mis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  mis yis copy pop 
+	  dup dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  yis kis copy pop 
+	  3 mul is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+/wbytes { 
+      dup dup
+      8 gt { pop 8 idiv mul }
+      { 8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse } ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+		 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	cvtProc                
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def 
+	cvtProc              
+	/is width depth wbytes string def
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+fMLevel1 {
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/kk cynu magu min yelu min def
+		/u kk currentundercolorremoval exec def
+%		/u 0 def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 kk currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+}
+{
+/colorSetup2 {
+	[ /Indexed /DeviceRGB 255 
+		{dup red exch get 255 div 
+		 exch dup green exch get 255 div 
+		 exch blue exch get 255 div}
+	] setcolorspace
+} bind def
+} ifelse
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch fmConcatProcs settransfer
+} bind def
+/BITMAPCOLOR { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def
+	fMLevel1 {	
+		colorsetup
+		/is width depth wbytes string def
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	} {
+		colorSetup2
+		/is width depth wbytes string def
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {cf is readhexstring pop} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	fMLevel1 {	
+		colorsetup
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{ip} {is} {is} true 3 colorimage
+	} {
+		colorSetup2
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {ip} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+	/depth 24 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip pop ris} {gis} {bis} true 3 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCMYKc { 
+	/depth 32 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip4 pop cis} {mis} {yis} {kis} true 4 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLOR { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYK { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /mis width string def
+        /yis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf mis readhexstring pop } 
+        { cf yis readhexstring pop } 
+        { cf kis readhexstring pop } 
+        true 4 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+	/depth 24 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop ris gis bis width gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAYc { 
+	/depth 32 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop cis mis yis kis width cgray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/cgray { 
+        /ww exch def
+        /k exch def
+        /y exch def
+        /m exch def
+        /c exch def
+        0 1 ww 1 sub { /i exch def c i get m i get y i get k i get CMYKtoRGB
+				.144 mul 3 1 roll .587 mul 3 1 roll .299 mul add add
+				c i 3 -1 roll floor cvi put } for
+        c
+ 		} bind def
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop width gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /yis width string def
+        /mis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf mis readhexstring pop 
+          cf yis readhexstring pop 
+          cf kis readhexstring pop width cgray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+/I { setdash } bind def
+/J { [] 0 setdash } bind def
+%%EndProlog
+%%BeginSetup
+(5.0) FMVERSION
+1 1 0 0 595.3 841.89 0 1 13 FMDOCUMENT
+0 0 /Times-Bold FMFONTDEFINE
+1 0 /Times-Italic FMFONTDEFINE
+2 0 /Times-Roman FMFONTDEFINE
+3 1 /Symbol FMFONTDEFINE
+4 0 /Helvetica FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 0.1 FMFILL
+2 0.3 FMFILL
+3 0.5 FMFILL
+4 0.7 FMFILL
+5 0.9 FMFILL
+6 0.97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 0.9 FMFILL
+18 0.7 FMFILL
+19 0.5 FMFILL
+20 0.3 FMFILL
+21 0.1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "1" 1
+%%BeginPaperSize: A4
+%%EndPaperSize
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+J
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(Abstract) 160.43 677.15 T
+1 F
+1.38 (W) 70.87 655.15 P
+1.38 (ith incr) 77.87 655.15 P
+1.38 (easing telemetry data r) 105.17 655.15 P
+1.38 (ates, ther) 192.41 655.15 P
+1.38 (e is a need for) 226.96 655.15 P
+-0.37 (faster Reed-Solomon and Con) 70.87 644.15 P
+-0.37 (volutional on-boar) 177.64 644.15 P
+-0.37 (d encoder) 244.69 644.15 P
+-0.37 (s) 279.97 644.15 P
+0.42 (than curr) 70.87 633.15 P
+0.42 (ently e) 104.71 633.15 P
+0.42 (xist, both as self standing components and) 128.69 633.15 P
+1.65 (as inte) 70.87 622.15 P
+1.65 (gr) 95.92 622.15 P
+1.65 (ated parts of single c) 103.78 622.15 P
+1.65 (hip telemetry systems and) 185.77 622.15 P
+5.23 (custom designs. An ongoing ESA activity aims at) 70.87 611.15 P
+3.64 (de) 70.87 600.15 P
+3.64 (veloping suc) 79.23 600.15 P
+3.64 (h r) 127.98 600.15 P
+3.64 (eusable and tec) 141.54 600.15 P
+3.64 (hnolo) 204.68 600.15 P
+3.64 (gy independent) 225.09 600.15 P
+1.73 (encoder cor) 70.87 589.15 P
+1.73 (es in VHDL, to) 115.5 589.15 P
+1.73 (g) 174.6 589.15 P
+1.73 (ether with a r) 179.01 589.15 P
+1.73 (adiation har) 232.82 589.15 P
+1.73 (d) 278.97 589.15 P
+(component r) 70.87 578.15 T
+(eplacing the discontinued MA1916 encoder) 115.78 578.15 T
+(.) 271.76 578.15 T
+0 F
+(1) 70.87 556.15 T
+(INTR) 99.22 556.15 T
+(ODUCTION) 121.45 556.15 T
+2 F
+2.6 (A telemetry channel is encoded to g) 70.87 534.15 P
+2.6 (ain a higher data) 215.92 534.15 P
+3.1 (throughput at the same bit error rate as for uncoded) 70.87 523.15 P
+6.72 (transmission, b) 70.87 512.15 P
+6.72 (ut with less ener) 131.92 512.15 P
+6.72 (gy e) 210.67 512.15 P
+6.72 (xpended per) 232.51 512.15 P
+-0.41 (information bit. The encoding allo) 70.87 501.15 P
+-0.41 (ws the ground se) 192.75 501.15 P
+-0.41 (gment to) 252.13 501.15 P
+0.7 (perform error detection and correction on do) 70.87 490.15 P
+0.7 (wn-link data.) 235.28 490.15 P
+-0.34 (Reed-Solomon and Con) 70.87 479.15 P
+-0.34 (v) 156.33 479.15 P
+-0.34 (olutional encoding ha) 160.65 479.15 P
+-0.34 (v) 237.79 479.15 P
+-0.34 (e been used) 242.16 479.15 P
+3.84 (widely on European spacecraft and are endorsed by) 70.87 468.15 P
+7.28 (European Space Agenc) 70.87 457.15 P
+7.28 (y \050ESA\051 and Consultati) 169.26 457.15 P
+7.28 (v) 275.11 457.15 P
+7.28 (e) 279.47 457.15 P
+1.56 (Committee for Space Data) 70.87 446.15 P
+1.56 ( Systems \050CCSDS\051 standards.) 171.28 446.15 P
+2.58 (The encoding is normally carried out in the telemetry) 70.87 435.15 P
+2.11 (encoder of the spacecraft, just after the virtual channel) 70.87 424.15 P
+(multiple) 70.87 413.15 T
+(x) 100.74 413.15 T
+(er in systems using pack) 105.11 413.15 T
+(et telemetry) 193.01 413.15 T
+(.) 235.16 413.15 T
+1.53 (The MA1916 Reed Solomon and Con) 70.87 391.15 P
+1.53 (v) 214.88 391.15 P
+1.53 (olutional encoder) 219.2 391.15 P
+-0.25 (de) 70.87 380.15 P
+-0.25 (vice \050Ref.) 79.14 380.15 P
+-0.25 (6\051 from GEC Plesse) 116.63 380.15 P
+-0.25 (y Semiconductor \050GB\051 has) 187.98 380.15 P
+2.03 (been \337o) 70.87 369.15 P
+2.03 (wn on se) 101.42 369.15 P
+2.03 (v) 137.25 369.15 P
+2.03 (eral spacecraft \050e.g. SOHO\051 and will) 141.62 369.15 P
+5.24 (further be used on XMM and Inte) 70.87 358.15 P
+5.24 (gral. W) 223.62 358.15 P
+5.24 (ith the) 255.48 358.15 P
+0.7 (manuf) 70.87 347.15 P
+0.7 (acturing of the MA1916 de) 93.78 347.15 P
+0.7 (vice being discontinued,) 194.33 347.15 P
+2.12 (se) 70.87 336.15 P
+2.12 (v) 78.14 336.15 P
+2.12 (eral ongoing spacecraft de) 82.51 336.15 P
+2.12 (v) 183.34 336.15 P
+2.12 (elopments ha) 187.71 336.15 P
+2.12 (v) 237.39 336.15 P
+2.12 (e been left) 241.75 336.15 P
+0.77 (without an alternati) 70.87 325.15 P
+0.77 (v) 142.17 325.15 P
+0.77 (e replacement. The de) 146.54 325.15 P
+0.77 (v) 228.08 325.15 P
+0.77 (elopment of a) 232.45 325.15 P
+0.27 (ne) 70.87 314.15 P
+0.27 (w encoder named RESCUE has therefore been initiated.) 79.14 314.15 P
+1.98 (This ne) 70.87 303.15 P
+1.98 (w encoder could be utilised on commercial and) 99.38 303.15 P
+(scienti\336c spacecraft such as Cobras/Samba and Rosetta.) 70.87 292.15 T
+2.4 (Instead of directly de) 70.87 270.15 P
+2.4 (v) 154.09 270.15 P
+2.4 (eloping an encoder de) 158.46 270.15 P
+2.4 (vice for a) 244.67 270.15 P
+1.79 (speci\336c technology) 70.87 259.15 P
+1.79 (, it has been decided \336rst to de) 141.82 259.15 P
+1.79 (v) 263.61 259.15 P
+1.79 (elop) 267.97 259.15 P
+-0.21 (reusable encoder cores. As a second step, a de) 70.87 248.15 P
+-0.21 (vice based on) 234.9 248.15 P
+0.65 (these cores will be de) 70.87 237.15 P
+0.65 (v) 150.73 237.15 P
+0.65 (eloped and will be supported as an) 155.09 237.15 P
+3.35 (Application Speci\336c Standard Product \050ASSP\051 by the) 70.87 226.15 P
+2.01 (foundry) 70.87 215.15 P
+2.01 (. This approach has se) 98.78 215.15 P
+2.01 (v) 186.34 215.15 P
+2.01 (eral adv) 190.7 215.15 P
+2.01 (antages o) 221.23 215.15 P
+2.01 (v) 256.85 215.15 P
+2.01 (er the) 261.21 215.15 P
+2.75 (more classical w) 70.87 204.15 P
+2.75 (ay of designing, e.g. the intermediate) 136.26 204.15 P
+0.69 (output from the core de) 70.87 193.15 P
+0.69 (v) 157.91 193.15 P
+0.69 (elopment can be reused in future) 162.27 193.15 P
+4.07 (designs. There is ho) 70.87 182.15 P
+4.07 (we) 154.84 182.15 P
+4.07 (v) 165.1 182.15 P
+4.07 (er an increased ef) 169.47 182.15 P
+4.07 (fort when) 244.66 182.15 P
+0.73 (compared with classical design methods, since with cores) 70.87 171.15 P
+0.61 (being intended for reuse, requirements on v) 70.87 160.15 P
+0.61 (eri\336cation and) 231.12 160.15 P
+3.31 (documentation tend to become tighter) 70.87 149.15 P
+3.31 (. Specifying the) 220.1 149.15 P
+0.82 (encoder core functionality in) 70.87 138.15 P
+0.82 (v) 176.71 138.15 P
+0.82 (olv) 181.03 138.15 P
+0.82 (ed little ef) 192.39 138.15 P
+0.82 (fort, since fe) 230.31 138.15 P
+0.82 (w) 276.97 138.15 P
+0.38 (system requirements co) 70.87 127.15 P
+0.38 (v) 156.48 127.15 P
+0.38 (ering aspects such as suitable and) 160.85 127.15 P
+-0.32 (\337e) 70.87 116.15 P
+-0.32 (xible interf) 79.74 116.15 P
+-0.32 (aces etc. needed to be considered at that stage.) 119.07 116.15 P
+1.31 (The more dif) 70.87 105.15 P
+1.31 (\336cult task of specifying the ASSP can no) 120.26 105.15 P
+1.31 (w) 276.97 105.15 P
+(commence while the encoder cores are being de) 70.87 94.15 T
+(v) 243.34 94.15 T
+(eloped.) 247.7 94.15 T
+4.17 (The objecti) 311.82 677.15 P
+4.17 (v) 356.5 677.15 P
+4.17 (e of the core de) 360.87 677.15 P
+4.17 (v) 432.8 677.15 P
+4.17 (elopment is to create) 437.17 677.15 P
+0.41 (technology independent Reed-Solomon and Con) 311.82 666.15 P
+0.41 (v) 488.09 666.15 P
+0.41 (olutional) 492.41 666.15 P
+-0.39 (encoders adhering to the ESA and CCSDS standards. These) 311.82 655.15 P
+0.39 (cores will be modelled in synthesizable VHDL \050V) 311.82 644.15 P
+0.39 (ery high) 494.28 644.15 P
+0.78 (speed inte) 311.82 633.15 P
+0.78 (grated circuit Hardw) 348.7 633.15 P
+0.78 (are Description Language\051.) 424.64 633.15 P
+1.43 (Each core will be fully synchronous with a single clock) 311.82 622.15 P
+-0.38 (re) 311.82 611.15 P
+-0.38 (gion and without g) 318.67 611.15 P
+-0.38 (ated clocks, featuring no combinatorial) 385.23 611.15 P
+-0.48 (or feedback loops. The radiation hard MITEL CMOS/SOS5) 311.82 600.15 P
+8.52 (process will be used when demonstrating the) 311.82 589.15 P
+0.57 (implementability of the cores. This core de) 311.82 578.15 P
+0.57 (v) 469.73 578.15 P
+0.57 (elopment will) 474.09 578.15 P
+(be \336nalised during 1Q97 with the main output being:) 311.82 567.15 T
+(\245) 311.82 556.15 T
+(synthesizable VHDL models \050also for simulation\051;) 325.99 556.15 T
+(\245) 311.82 545.15 T
+(test benches with 100% code co) 325.99 545.15 T
+(v) 441.08 545.15 T
+(erage;) 445.45 545.15 T
+(\245) 311.82 534.15 T
+(production test v) 325.99 534.15 T
+(ectors with 98% f) 386.35 534.15 T
+(ault co) 450 534.15 T
+(v) 474.11 534.15 T
+(erage;) 478.48 534.15 T
+(\245) 311.82 523.15 T
+(functional speci\336cations and user manuals.) 325.99 523.15 T
+-0.15 (The intention is to use the encoder cores as a virtual second) 311.82 501.15 P
+1.04 (source for the RESCUE de) 311.82 490.15 P
+1.04 (vice or other de) 412.72 490.15 P
+1.04 (vices that will) 471.84 490.15 P
+0.21 (incorporate them, allo) 311.82 479.15 P
+0.21 (wing f) 391.24 479.15 P
+0.21 (ast transfer to another foundry) 414.61 479.15 P
+1.76 (if necessary) 311.82 468.15 P
+1.76 (. The) 355.72 468.15 P
+1.76 (y are not intended for general use, b) 375.83 468.15 P
+1.76 (ut) 517.41 468.15 P
+1.21 (could be included in products where the agenc) 311.82 457.15 P
+1.21 (y belie) 487.33 457.15 P
+1.21 (v) 512.55 457.15 P
+1.21 (es) 516.92 457.15 P
+(the) 311.82 446.15 T
+(y \336t, e.g. in a single chip telemetry encoder) 322.68 446.15 T
+(.) 477.91 446.15 T
+0.25 (Initial VHDL models of the encoder cores were de) 311.82 424.15 P
+0.25 (v) 496.05 424.15 P
+0.25 (eloped) 500.42 424.15 P
+1.36 (by ESA. Further de) 311.82 413.15 P
+1.36 (v) 385.65 413.15 P
+1.36 (elopment is performed by Smartech) 390.01 413.15 P
+0.52 (\050SF\051 under the prime contractor Dornier Satellitensysteme) 311.82 402.15 P
+0.19 (\050D\051. Dornier will also perform e) 311.82 391.15 P
+0.19 (xtensi) 428.1 391.15 P
+0.19 (v) 449.38 391.15 P
+0.19 (e v) 453.74 391.15 P
+0.19 (eri\336cation of the) 464.54 391.15 P
+0.59 (VHDL models v) 311.82 380.15 P
+0.59 (ersus the e) 372.85 380.15 P
+0.59 (xisting MA1916 de) 411.88 380.15 P
+0.59 (vice. These) 482.84 380.15 P
+(encoder cores are further discussed in sections 3 and 4.) 311.82 369.15 T
+0.1 (This consortium together with MITEL Semiconductors \050S\051) 311.82 347.15 P
+0.41 (is also en) 311.82 336.15 P
+0.41 (visaged for the RESCUE de) 345.78 336.15 P
+0.41 (vice de) 448.21 336.15 P
+0.41 (v) 474.14 336.15 P
+0.41 (elopment, as) 478.5 336.15 P
+(further discussed in sections 5 through 7.) 311.82 325.15 T
+0 F
+(2) 311.82 303.15 T
+(APPLICABLE ST) 340.16 303.15 T
+(AND) 410.61 303.15 T
+(ARDS) 429.79 303.15 T
+2 F
+0.07 (T) 311.82 281.15 P
+0.07 (o ensure that the Reed-Solomon encoder being de) 316.59 281.15 P
+0.07 (v) 496.05 281.15 P
+0.07 (eloped) 500.42 281.15 P
+0.75 (will be compliant with the e) 311.82 270.15 P
+0.75 (xisting standards, a re) 416.15 270.15 P
+0.75 (vie) 496.65 270.15 P
+0.75 (w of) 507.42 270.15 P
+0.45 (the rele) 311.82 259.15 P
+0.45 (v) 338.78 259.15 P
+0.45 (ant ESA and CCSDS documents has been carried) 343.05 259.15 P
+-0.16 (out. The encoder shall generate code) 311.82 248.15 P
+-0.16 (w) 442.75 248.15 P
+-0.16 (ords according to the) 449.16 248.15 P
+2.08 (ESA T) 311.82 237.15 P
+2.08 (elemetry Channel Coding standard \050Ref.) 338.02 237.15 P
+2.08 (1\051. This) 494.33 237.15 P
+0.04 (standard speci\336es a block code with 8 bits per symbol, 255) 311.82 226.15 P
+4.17 (symbols per code) 311.82 215.15 P
+4.17 (w) 382.92 215.15 P
+4.17 (ord: \336rst 223 symbols being the) 389.32 215.15 P
+-0.42 (information symbols and last 32 symbols forming the check) 311.82 204.15 P
+1.78 (symbols. Shortened code) 311.82 193.15 P
+1.78 (w) 405.39 193.15 P
+1.78 (ords lengths may be obtained) 411.8 193.15 P
+-0.21 (using virtual \336ll. Implicitly) 311.82 182.15 P
+-0.21 (, the CCSDS T) 408.12 182.15 P
+-0.21 (elemetry Channel) 460.88 182.15 P
+0.44 (Coding standard \050Ref.) 311.82 171.15 P
+0.44 (2\051 will also be supported. Although) 394.69 171.15 P
+3.21 (the description of the encoding algorithm in the tw) 311.82 160.15 P
+3.21 (o) 519.91 160.15 P
+0.12 (standards dif) 311.82 149.15 P
+0.12 (fers, the same code is speci\336ed. This has been) 357.96 149.15 P
+6.78 (recon\336rmed both analytically and through VHDL) 311.82 138.15 P
+1.29 (simulation. There are ho) 311.82 127.15 P
+1.29 (we) 403.43 127.15 P
+1.29 (v) 413.7 127.15 P
+1.29 (er some dif) 418.07 127.15 P
+1.29 (ferences between) 460.91 127.15 P
+-0.25 (the tw) 311.82 116.15 P
+-0.25 (o standards concerning the allo) 333.73 116.15 P
+-0.25 (wed interlea) 444.49 116.15 P
+-0.25 (v) 488.3 116.15 P
+-0.25 (e depths.) 492.67 116.15 P
+0.8 (The ESA standard permits interlea) 311.82 105.15 P
+0.8 (v) 439.31 105.15 P
+0.8 (e depths 1) 443.67 105.15 P
+0.8 (to 5 and 8,) 484.02 105.15 P
+(whereas the CCSDS standard only allo) 311.82 94.15 T
+(ws 1 to) 451.83 94.15 T
+(5.) 480.08 94.15 T
+0 12 Q
+(A CCSDS REED-SOLOMON ENCODER CORE AND RADIA) 75.88 763.03 T
+(TION HARD DEVICE) 400.73 763.03 T
+2 9 Q
+(Sandi Habinc) 273.27 740.03 T
+1 F
+(Eur) 133.54 718.03 T
+(opean Space Ag) 146.64 718.03 T
+(ency) 204.54 718.03 T
+(, ESTEC WSM, P) 220.53 718.03 T
+(ostb) 282.56 718.03 T
+(us 299, 2200 A) 297.38 718.03 T
+(G Noor) 351.07 718.03 T
+(dwijk, The Netherlands) 377.98 718.03 T
+(sandi@ws.estec.esa.nl) 257.13 707.03 T
+FMENDPAGE
+%%EndPage: "1" 1
+%%Page: "2" 2
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 9 Q
+0 X
+0 0 0 1 0 0 0 K
+0.62 (Furthermore, the ESA P) 70.87 765.03 P
+0.62 (ack) 159.6 765.03 P
+0.62 (et T) 172 765.03 P
+0.62 (elemetry Standard \050Ref.) 186.24 765.03 P
+0.62 (3\051) 275.97 765.03 P
+0.7 (allo) 70.87 754.03 P
+0.7 (ws the standard transfer frame lengths with 892, 1115) 84.14 754.03 P
+3.14 (and 1784 octets when using Reed-Solomon encoding,) 70.87 743.03 P
+0.19 (corresponding to interlea) 70.87 732.03 P
+0.19 (v) 161.04 732.03 P
+0.19 (e depths 4, 5 and 8. The CCSDS) 165.41 732.03 P
+4.62 (P) 70.87 721.03 P
+4.62 (ack) 75.74 721.03 P
+4.62 (et T) 88.14 721.03 P
+4.62 (elemetry standard \050Ref.) 106.38 721.03 P
+4.62 (4\051 allo) 202.59 721.03 P
+4.62 (ws the same) 230.23 721.03 P
+1.19 (interlea) 70.87 710.03 P
+1.19 (v) 97.68 710.03 P
+1.19 (e depths 1 to 5 as in \050Ref.) 102.05 710.03 P
+1.19 (2\051. Also, the CCSDS) 204.63 710.03 P
+4.56 (Adv) 70.87 699.03 P
+4.56 (anced Orbiting Systems standard \050Ref.) 86.14 699.03 P
+4.56 (5\051 allo) 245.88 699.03 P
+4.56 (ws) 273.46 699.03 P
+-0.33 (interlea) 70.87 688.03 P
+-0.33 (v) 97.68 688.03 P
+-0.33 (e depths 1 to 5. It allo) 102.05 688.03 P
+-0.33 (ws shortening of code) 178.1 688.03 P
+-0.33 (w) 256.13 688.03 P
+-0.33 (ord to) 262.54 688.03 P
+2.67 (accommodate compatibility with 32) 70.87 677.03 P
+2.67 ( bit microprocessor) 208.63 677.03 P
+0.05 (systems, where the allo) 70.87 666.03 P
+0.05 (wed number of suppressed symbols) 154.78 666.03 P
+(must be a multiple of the selected interlea) 70.87 655.03 T
+(v) 220.92 655.03 T
+(e depth.) 225.28 655.03 T
+5.42 (Moreo) 70.87 633.03 P
+5.42 (v) 94.73 633.03 P
+5.42 (er) 99.09 633.03 P
+5.42 (, the e) 105.73 633.03 P
+5.42 (xisting MA1916 de) 138.18 633.03 P
+5.42 (vice implements) 218.8 633.03 P
+0.37 (interlea) 70.87 622.03 P
+0.37 (v) 97.68 622.03 P
+0.37 (e depths 1, 4 and 5, according to \050Ref.) 102.05 622.03 P
+0.37 (6\051, and the) 244.48 622.03 P
+4.78 (V) 70.87 611.03 P
+4.78 (irtual Channel Multiple) 76.83 611.03 P
+4.78 (x) 170.75 611.03 P
+4.78 (er \050VCM\051 de) 175.12 611.03 P
+4.78 (vice supports) 230.94 611.03 P
+(interlea) 70.87 600.03 T
+(v) 97.68 600.03 T
+(e depths 1, 2, 4 and 5, according to \050Ref.) 102.05 600.03 T
+(7\051.) 250.52 600.03 T
+0.39 (By supporting interlea) 70.87 578.03 P
+0.39 (v) 151.97 578.03 P
+0.39 (e depths 1 to 8 and virtual \336ll with) 156.33 578.03 P
+0.48 (the number of suppressed symbols being a multiple of the) 70.87 567.03 P
+-0.12 (interlea) 70.87 556.03 P
+-0.12 (v) 97.68 556.03 P
+-0.12 (e depth, the abo) 102.05 556.03 P
+-0.12 (v) 158.55 556.03 P
+-0.12 (e standards and de) 162.92 556.03 P
+-0.12 (vices can all be) 228.58 556.03 P
+(co) 70.87 545.03 T
+(v) 79.23 545.03 T
+(ered by a single encoder core.) 83.6 545.03 T
+0 F
+(3) 70.87 512.03 T
+(REED-SOLOMON ENCODER CORE) 99.22 512.03 T
+2 F
+4.08 (The Reed-Solomon encoder core being de) 70.87 490.03 P
+4.08 (v) 242.77 490.03 P
+4.08 (eloped is) 247.13 490.03 P
+0.15 (tar) 70.87 479.03 P
+0.15 (geted to) 80.2 479.03 P
+0.15 (w) 108.87 479.03 P
+0.15 (ards systems with lo) 115.28 479.03 P
+0.15 (w to medium data rates. It) 188.74 479.03 P
+1.22 (is a ph) 70.87 468.03 P
+1.22 (ysically small core that will be suitable for future) 96.76 468.03 P
+0.26 (single chip telemetry systems where a small silicon area is) 70.87 457.03 P
+0.52 (a major requirement. The encoder core is also suitable for) 70.87 446.03 P
+1.23 (deep-space missions since the chosen architecture allo) 70.87 435.03 P
+1.23 (ws) 273.46 435.03 P
+1.68 (implementations with lo) 70.87 424.03 P
+1.68 (w po) 161.5 424.03 P
+1.68 (wer consumption and great) 180.7 424.03 P
+(interlea) 70.87 413.03 T
+(v) 97.68 413.03 T
+(e depths.) 102.05 413.03 T
+-0.38 (The encoder core implements a coding algorithm compliant) 70.87 391.03 P
+(with \050Ref.) 70.87 380.03 T
+(1\051:) 109.61 380.03 T
+(\245) 70.87 357.03 T
+(there are 8 bits per symbol;) 85.04 357.03 T
+(\245) 70.87 334.03 T
+(there are 255 symbols per code) 85.04 334.03 T
+(w) 197.04 334.03 T
+(ord;) 203.45 334.03 T
+(\245) 70.87 311.03 T
+3.38 (the encoding is systematic: the \336rst 223 symbols) 85.04 311.03 P
+1.56 (transmitted are information symbols, and the last 32) 85.04 300.03 P
+(symbols transmitted are check symbols;) 85.04 289.03 T
+(\245) 70.87 266.03 T
+0.35 (the code can correct up to 16 symbol errors and detect) 85.04 266.03 P
+(up to 16 symbol errors;) 85.04 255.03 T
+(\245) 70.87 232.03 T
+(the \336eld polynomial is) 85.04 232.03 T
+(\245) 70.87 176.15 T
+(the code generator polynomial is) 85.04 176.15 T
+(with the highest po) 85.04 110.15 T
+(wer of) 153.57 110.15 T
+1 F
+(x) 179.06 110.15 T
+2 F
+(being transmitted \336rst;) 185.3 110.15 T
+(\245) 311.82 765.03 T
+1.29 (interlea) 325.99 765.03 P
+1.29 (ving is supported for depth) 352.8 765.03 P
+1 F
+1.29 (I) 458.48 765.03 P
+2 F
+1.29 ( in range 1 to 8,) 461.48 765.03 P
+-0.28 (where information symbols are encoded as) 325.99 754.03 P
+1 F
+-0.28 (I) 480.77 754.03 P
+2 F
+-0.28 ( code) 483.77 754.03 P
+-0.28 (w) 502.51 754.03 P
+-0.28 (ords) 508.92 754.03 P
+0.71 (with symbol numbers) 325.99 743.03 P
+1 F
+0.71 (i) 408.38 743.03 P
+2 F
+0.71 ( +) 410.89 743.03 P
+1 F
+0.71 (j) 421.89 743.03 P
+2 F
+0.71 (*) 424.39 743.03 P
+1 F
+0.71 (I) 428.89 743.03 P
+2 F
+0.71 ( belonging to code) 431.89 743.03 P
+0.71 (w) 500.54 743.03 P
+0.71 (ord) 506.95 743.03 P
+1 F
+0.71 (i) 521.91 743.03 P
+2 F
+({where 0) 325.99 732.03 T
+3 F
+(\243) 361.3 732.03 T
+1 F
+( i) 366.24 732.03 T
+3 F
+(<) 373.24 732.03 T
+1 F
+( I) 378.18 732.03 T
+2 F
+( and 0) 383.43 732.03 T
+3 F
+(\243) 407.68 732.03 T
+1 F
+( j) 412.62 732.03 T
+2 F
+( < 255};) 417.37 732.03 T
+(\245) 311.82 709.03 T
+2.2 (shortened code) 325.99 709.03 P
+2.2 (w) 382.2 709.03 P
+2.2 (ord lengths are supported, allo) 388.61 709.03 P
+2.2 (wing) 506.41 709.03 P
+3.91 (suppression of a number of information symbols) 325.99 698.03 P
+2.38 (equalling to an) 325.99 687.03 P
+2.38 (y multiple of the selected interlea) 384.11 687.03 P
+2.38 (v) 516.05 687.03 P
+2.38 (e) 520.42 687.03 P
+0.49 (depth, where such suppressed symbols are assumed to) 325.99 676.03 P
+(be in the be) 325.99 665.03 T
+(ginning of the code) 367.6 665.03 T
+(w) 437.12 665.03 T
+(ords;) 443.52 665.03 T
+(\245) 311.82 642.03 T
+-0.42 (the encoder input and output data are in a representation) 325.99 642.03 P
+(speci\336ed by the follo) 325.99 631.03 T
+(wing transformation matrix) 401.51 631.03 T
+0.48 (where) 311.82 520.08 P
+3 F
+0.48 (i) 336.53 520.08 P
+2 7.2 Q
+0.38 (0) 339.49 517.83 P
+2 9 Q
+0.48 ( is transferred \336rst, and with the follo) 343.09 520.08 P
+0.48 (wing matrix) 480.19 520.08 P
+(specifying the re) 311.82 509.08 T
+(v) 371.58 509.08 T
+(erse transformation) 375.95 509.08 T
+0.91 (The encoder core generates Reed-Solomon code) 311.82 399.1 P
+0.91 (w) 490.35 399.1 P
+0.91 (ords by) 496.75 399.1 P
+6.12 (recei) 311.82 388.1 P
+6.12 (ving information symbols that are transmitted) 329.08 388.1 P
+3.47 (unmodi\336ed while calculating the corresponding check) 311.82 377.1 P
+4.26 (symbols that in their turn are transmitted after the) 311.82 366.1 P
+1.92 (information symbols. A diagram of the encoder core is) 311.82 355.1 P
+3.67 (sho) 311.82 344.1 P
+3.67 (wn in \336gure) 324.1 344.1 P
+3.67 (2, which is directly mapping to the) 377.17 344.1 P
+4.22 (functional blocks of a linear feedback shift re) 311.82 333.1 P
+4.22 (gister) 504.42 333.1 P
+(implementing the encoding algorithm as sho) 311.82 322.1 T
+(wn in \336gure) 471.84 322.1 T
+(1.) 517.59 322.1 T
+0 F
+(Figure 1:) 311.82 113.1 T
+1 F
+(Reed-Solomon encoder lo) 368.51 113.1 T
+(gic) 461.4 113.1 T
+70.87 90.71 283.46 771.03 C
+0 0 0 1 0 0 0 K
+76.87 196.15 277.46 229.03 C
+0 0 0 1 0 0 0 K
+1 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(f) 106.49 208.43 T
+(x) 114.72 208.43 T
+3 F
+(\050) 110.84 208.43 T
+(\051) 119.38 208.43 T
+1 F
+(x) 136.68 208.43 T
+2 F
+(8) 141.05 214.06 T
+1 F
+(x) 155.36 208.43 T
+2 F
+(6) 159.73 214.06 T
+1 F
+(x) 174.04 208.43 T
+2 F
+(4) 178.4 214.06 T
+1 F
+(x) 192.71 208.43 T
+2 F
+(3) 197.08 214.06 T
+1 F
+(x) 211.39 208.43 T
+2 F
+(2) 215.76 214.06 T
+1 F
+(x) 230.07 208.43 T
+2 F
+(1) 243.66 208.43 T
+(+) 147.79 208.43 T
+(+) 166.47 208.43 T
+(+) 185.15 208.43 T
+(+) 203.83 208.43 T
+(+) 222.5 208.43 T
+(+) 236.34 208.43 T
+(=) 126.87 208.43 T
+0 0 0 1 0 0 0 K
+70.87 90.71 283.46 771.03 C
+0 -0 595.3 841.89 C
+70.87 90.71 283.46 771.03 C
+84.77 120.67 269.56 173.15 C
+0 0 0 1 0 0 0 K
+1 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(g) 103.74 139.23 T
+(x) 112.65 139.23 T
+3 F
+(\050) 108.77 139.23 T
+(\051) 117.31 139.23 T
+1 F
+(x) 166.51 139.23 T
+3 F
+(a) 180.1 139.23 T
+1 F
+(i) 186.12 144.96 T
+2 F
+(+) 172.78 139.23 T
+3 F
+(\050) 162.63 139.23 T
+(\051) 189.26 139.23 T
+1 F
+(i) 134.37 123.8 T
+2 F
+(112) 147.93 123.8 T
+(=) 139.86 123.8 T
+(143) 141.15 154.73 T
+3 18 Q
+(\325) 140.49 135.97 T
+1 9 Q
+(g) 226.7 139.23 T
+(j) 232.66 134.73 T
+(x) 242.15 139.23 T
+(j) 247.63 144.96 T
+3 F
+(\327) 237.41 139.23 T
+1 F
+(j) 207.44 123.73 T
+2 F
+(0) 221 123.73 T
+(=) 212.93 123.73 T
+(32) 211.41 154.81 T
+3 18 Q
+(\345) 209.5 136.02 T
+2 9 Q
+(=) 124.8 139.23 T
+(=) 196.75 139.23 T
+0 0 0 1 0 0 0 K
+70.87 90.71 283.46 771.03 C
+0 -0 595.3 841.89 C
+311.82 90.71 524.41 771.03 C
+311.82 540.08 524.41 617.03 C
+0 0 0 1 0 0 0 K
+3 6 Q
+0 X
+0 0 0 1 0 0 0 K
+(i) 319.2 574.94 T
+2 F
+(0) 321.4 571.89 T
+3 F
+(i) 326.8 574.94 T
+2 F
+(1) 329.01 571.89 T
+3 F
+(i) 334.4 574.94 T
+2 F
+(2) 336.61 571.89 T
+3 F
+(i) 342.01 574.94 T
+2 F
+(3) 344.21 571.89 T
+3 F
+(i) 349.61 574.94 T
+2 F
+(4) 351.81 571.89 T
+3 F
+(i) 357.21 574.94 T
+2 F
+(5) 359.41 571.89 T
+3 F
+(i) 364.81 574.94 T
+2 F
+(6) 367.01 571.89 T
+3 F
+(i) 372.41 574.94 T
+2 F
+(7) 374.61 571.89 T
+3 F
+(a) 391.79 574.94 T
+2 F
+(7) 395.8 571.89 T
+3 F
+(a) 401.2 574.94 T
+2 F
+(6) 405.21 571.89 T
+3 F
+(a) 410.61 574.94 T
+2 F
+(5) 414.63 571.89 T
+3 F
+(a) 420.02 574.94 T
+2 F
+(4) 424.04 571.89 T
+3 F
+(a) 429.44 574.94 T
+2 F
+(3) 433.45 571.89 T
+3 F
+(a) 438.85 574.94 T
+2 F
+(2) 442.86 571.89 T
+3 F
+(a) 448.26 574.94 T
+2 F
+(1) 452.28 571.89 T
+3 F
+(a) 457.67 574.94 T
+2 F
+(0) 461.69 571.89 T
+(0) 475.78 602.81 T
+(1) 481.18 602.81 T
+(1) 486.58 602.81 T
+(1) 491.98 602.81 T
+(1) 497.37 602.81 T
+(0) 502.77 602.81 T
+(1) 508.17 602.81 T
+(1) 513.57 602.81 T
+(0) 475.78 594.41 T
+(1) 481.18 594.41 T
+(1) 486.58 594.41 T
+(1) 491.98 594.41 T
+(1) 497.37 594.41 T
+(0) 502.77 594.41 T
+(0) 508.17 594.41 T
+(1) 513.57 594.41 T
+(0) 475.78 586.01 T
+(0) 481.18 586.01 T
+(1) 486.58 586.01 T
+(0) 491.98 586.01 T
+(1) 497.37 586.01 T
+(0) 502.77 586.01 T
+(1) 508.17 586.01 T
+(1) 513.57 586.01 T
+(0) 475.78 577.61 T
+(0) 481.18 577.61 T
+(1) 486.58 577.61 T
+(1) 491.98 577.61 T
+(1) 497.37 577.61 T
+(1) 502.77 577.61 T
+(1) 508.17 577.61 T
+(1) 513.57 577.61 T
+(0) 475.78 569.21 T
+(0) 481.18 569.21 T
+(0) 486.58 569.21 T
+(0) 491.98 569.21 T
+(1) 497.37 569.21 T
+(0) 502.77 569.21 T
+(0) 508.17 569.21 T
+(1) 513.57 569.21 T
+(1) 475.78 560.81 T
+(0) 481.18 560.81 T
+(0) 486.58 560.81 T
+(0) 491.98 560.81 T
+(0) 497.37 560.81 T
+(1) 502.77 560.81 T
+(1) 508.17 560.81 T
+(1) 513.57 560.81 T
+(0) 475.78 552.41 T
+(1) 481.18 552.41 T
+(0) 486.58 552.41 T
+(1) 491.98 552.41 T
+(1) 497.37 552.41 T
+(1) 502.77 552.41 T
+(1) 508.17 552.41 T
+(1) 513.57 552.41 T
+(0) 475.78 544.02 T
+(0) 481.18 544.02 T
+(1) 486.58 544.02 T
+(1) 491.98 544.02 T
+(0) 497.37 544.02 T
+(1) 502.77 544.02 T
+(1) 508.17 544.02 T
+(1) 513.57 544.02 T
+3 F
+(\264) 468.32 574.81 T
+2 F
+(=) 382.74 574.81 T
+319.53 570.39 317.73 570.39 317.73 581.83 3 L
+0.27 H
+2 Z
+N
+317.73 581.83 319.53 581.83 2 L
+N
+376.74 570.39 378.54 570.39 378.54 581.83 3 L
+N
+378.54 581.83 376.74 581.83 2 L
+N
+392.12 570.39 390.32 570.39 390.32 581.83 3 L
+N
+390.32 581.83 392.12 581.83 2 L
+N
+463.82 570.39 465.62 570.39 465.62 581.83 3 L
+N
+465.62 581.83 463.82 581.83 2 L
+N
+476.11 542.52 474.31 542.52 474.31 609.7 3 L
+N
+474.31 609.7 476.11 609.7 2 L
+N
+515.7 542.52 517.5 542.52 517.5 609.7 3 L
+N
+517.5 609.7 515.7 609.7 2 L
+N
+0 0 0 1 0 0 0 K
+311.82 90.71 524.41 771.03 C
+0 -0 595.3 841.89 C
+311.82 90.71 524.41 771.03 C
+311.82 418.1 524.41 495.08 C
+0 0 0 1 0 0 0 K
+3 6 Q
+0 X
+0 0 0 1 0 0 0 K
+(a) 320.2 454.76 T
+2 F
+(7) 324.22 451.71 T
+3 F
+(a) 329.62 454.76 T
+2 F
+(6) 333.63 451.71 T
+3 F
+(a) 339.03 454.76 T
+2 F
+(5) 343.04 451.71 T
+3 F
+(a) 348.44 454.76 T
+2 F
+(4) 352.46 451.71 T
+3 F
+(a) 357.86 454.76 T
+2 F
+(3) 361.87 451.71 T
+3 F
+(a) 367.27 454.76 T
+2 F
+(2) 371.28 451.71 T
+3 F
+(a) 376.68 454.76 T
+2 F
+(1) 380.69 451.71 T
+3 F
+(a) 386.09 454.76 T
+2 F
+(0) 390.11 451.71 T
+3 F
+(i) 405.28 454.76 T
+2 F
+(0) 407.48 451.71 T
+3 F
+(i) 412.88 454.76 T
+2 F
+(1) 415.08 451.71 T
+3 F
+(i) 420.48 454.76 T
+2 F
+(2) 422.68 451.71 T
+3 F
+(i) 428.08 454.76 T
+2 F
+(3) 430.29 451.71 T
+3 F
+(i) 435.68 454.76 T
+2 F
+(4) 437.89 451.71 T
+3 F
+(i) 443.29 454.76 T
+2 F
+(5) 445.49 451.71 T
+3 F
+(i) 450.89 454.76 T
+2 F
+(6) 453.09 451.71 T
+3 F
+(i) 458.49 454.76 T
+2 F
+(7) 460.69 451.71 T
+(=) 397.23 454.63 T
+(1) 474.78 482.63 T
+(1) 480.18 482.63 T
+(1) 485.58 482.63 T
+(0) 490.97 482.63 T
+(1) 496.37 482.63 T
+(1) 501.77 482.63 T
+(0) 507.17 482.63 T
+(1) 512.57 482.63 T
+(0) 474.78 474.23 T
+(1) 480.18 474.23 T
+(0) 485.58 474.23 T
+(1) 490.97 474.23 T
+(1) 496.37 474.23 T
+(1) 501.77 474.23 T
+(1) 507.17 474.23 T
+(1) 512.57 474.23 T
+(0) 474.78 465.83 T
+(0) 480.18 465.83 T
+(0) 485.58 465.83 T
+(1) 490.97 465.83 T
+(0) 496.37 465.83 T
+(1) 501.77 465.83 T
+(1) 507.17 465.83 T
+(1) 512.57 465.83 T
+(0) 474.78 457.43 T
+(1) 480.18 457.43 T
+(0) 485.58 457.43 T
+(1) 490.97 457.43 T
+(1) 496.37 457.43 T
+(0) 501.77 457.43 T
+(1) 507.17 457.43 T
+(0) 512.57 457.43 T
+(1) 474.78 449.03 T
+(0) 480.18 449.03 T
+(0) 485.58 449.03 T
+(0) 490.97 449.03 T
+(1) 496.37 449.03 T
+(0) 501.77 449.03 T
+(0) 507.17 449.03 T
+(0) 512.57 449.03 T
+(0) 474.78 440.63 T
+(1) 480.18 440.63 T
+(0) 485.58 440.63 T
+(1) 490.97 440.63 T
+(0) 496.37 440.63 T
+(1) 501.77 440.63 T
+(1) 507.17 440.63 T
+(0) 512.57 440.63 T
+(0) 474.78 432.23 T
+(0) 480.18 432.23 T
+(0) 485.58 432.23 T
+(0) 490.97 432.23 T
+(0) 496.37 432.23 T
+(0) 501.77 432.23 T
+(1) 507.17 432.23 T
+(1) 512.57 432.23 T
+(1) 474.78 423.84 T
+(0) 480.18 423.84 T
+(0) 485.58 423.84 T
+(1) 490.97 423.84 T
+(1) 496.37 423.84 T
+(0) 501.77 423.84 T
+(0) 507.17 423.84 T
+(0) 512.57 423.84 T
+3 F
+(\264) 467.32 454.63 T
+320.54 450.21 318.74 450.21 318.74 461.65 3 L
+0.27 H
+2 Z
+N
+318.74 461.65 320.54 461.65 2 L
+N
+392.24 450.21 394.04 450.21 394.04 461.65 3 L
+N
+394.04 461.65 392.24 461.65 2 L
+N
+405.61 450.21 403.81 450.21 403.81 461.65 3 L
+N
+403.81 461.65 405.61 461.65 2 L
+N
+462.82 450.21 464.62 450.21 464.62 461.65 3 L
+N
+464.62 461.65 462.82 461.65 2 L
+N
+475.11 422.34 473.31 422.34 473.31 489.53 3 L
+N
+473.31 489.53 475.11 489.53 2 L
+N
+514.7 422.34 516.5 422.34 516.5 489.53 3 L
+N
+516.5 489.53 514.7 489.53 2 L
+N
+0 0 0 1 0 0 0 K
+311.82 90.71 524.41 771.03 C
+0 -0 595.3 841.89 C
+311.82 90.71 524.41 771.03 C
+312.06 143.12 524.17 308.1 C
+0 0 0 1 0 0 0 K
+491.68 171.35 491.68 172.92 494.39 171.35 491.68 169.78 4 Y
+0.5 H
+0 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+491.68 171.35 491.68 172.92 494.39 171.35 491.68 169.78 4 Y
+V
+480.72 171.35 491.43 171.35 2 L
+2 Z
+N
+332.23 188.47 346.4 202.64 R
+0 Z
+N
+388.92 188.47 403.1 202.64 R
+N
+357.36 195.55 357.36 197.12 360.08 195.55 357.36 193.98 4 Y
+N
+357.36 195.55 357.36 197.12 360.08 195.55 357.36 193.98 4 Y
+V
+346.4 195.55 357.11 195.55 2 L
+2 Z
+N
+385.71 195.55 385.71 197.12 388.42 195.55 385.71 193.98 4 Y
+0 Z
+N
+385.71 195.55 385.71 197.12 388.42 195.55 385.71 193.98 4 Y
+V
+374.75 195.55 385.46 195.55 2 L
+2 Z
+N
+403.1 195.55 410.18 195.55 2 L
+0 Z
+N
+90 450 7.09 7.09 367.66 195.55 A
+367.66 198.39 367.66 192.72 2 L
+N
+364.83 195.55 370.5 195.55 2 L
+N
+90 450 7.09 7.09 367.66 223.9 A
+365.66 225.9 369.67 221.89 2 L
+N
+365.66 221.89 369.67 225.9 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+90 450 7.09 7.09 438.53 195.55 A
+438.53 198.39 438.53 192.72 2 L
+N
+435.7 195.55 441.36 195.55 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+90 450 7.09 7.09 325.14 223.9 A
+323.14 225.9 327.15 221.89 2 L
+N
+323.14 221.89 327.15 225.9 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+367.66 205.85 369.23 205.85 367.66 203.14 366.1 205.85 4 Y
+N
+367.66 205.85 369.23 205.85 367.66 203.14 366.1 205.85 4 Y
+V
+367.66 216.81 367.66 206.1 2 L
+2 Z
+N
+329.02 195.55 329.02 197.12 331.73 195.55 329.02 193.98 4 Y
+0 Z
+N
+329.02 195.55 329.02 197.12 331.73 195.55 329.02 193.98 4 Y
+V
+325.14 216.81 325.14 195.55 328.77 195.55 3 L
+2 Z
+N
+428.23 195.55 428.23 197.12 430.94 195.55 428.23 193.98 4 Y
+0 Z
+N
+428.23 195.55 428.23 197.12 430.94 195.55 428.23 193.98 4 Y
+V
+417.27 195.55 427.98 195.55 2 L
+2 Z
+N
+456.58 195.55 456.58 197.12 459.29 195.55 456.58 193.98 4 Y
+0 Z
+N
+456.58 195.55 456.58 197.12 459.29 195.55 456.58 193.98 4 Y
+V
+445.62 195.55 456.33 195.55 2 L
+2 Z
+N
+459.79 188.47 473.96 202.64 R
+0 Z
+N
+367.66 234.2 369.23 234.2 367.66 231.48 366.1 234.2 4 Y
+N
+367.66 234.2 369.23 234.2 367.66 231.48 366.1 234.2 4 Y
+V
+367.66 245.16 367.66 234.45 2 L
+2 Z
+N
+0 Z
+90 450 7.09 7.09 438.53 223.9 A
+436.53 225.9 440.54 221.89 2 L
+N
+436.53 221.89 440.54 225.9 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+438.53 205.85 440.1 205.85 438.53 203.14 436.96 205.85 4 Y
+N
+438.53 205.85 440.1 205.85 438.53 203.14 436.96 205.85 4 Y
+V
+438.53 216.81 438.53 206.1 2 L
+2 Z
+N
+438.53 234.2 440.1 234.2 438.53 231.48 436.96 234.2 4 Y
+0 Z
+N
+438.53 234.2 440.1 234.2 438.53 231.48 436.96 234.2 4 Y
+V
+438.53 245.16 438.53 234.45 2 L
+2 Z
+N
+325.14 234.2 326.71 234.2 325.14 231.48 323.58 234.2 4 Y
+0 Z
+N
+325.14 234.2 326.71 234.2 325.14 231.48 323.58 234.2 4 Y
+V
+325.14 245.16 325.14 234.45 2 L
+2 Z
+N
+325.14 245.16 410.18 245.16 2 L
+N
+420.48 245.16 420.48 243.59 417.77 245.16 420.48 246.73 4 Y
+0 Z
+N
+420.48 245.16 420.48 243.59 417.77 245.16 420.48 246.73 4 Y
+V
+459.79 245.16 420.73 245.16 2 L
+2 Z
+N
+0 Z
+90 450 7.09 7.09 495.22 252.25 A
+495.22 255.08 495.22 249.41 2 L
+N
+492.39 252.24 498.06 252.24 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+477.18 252.24 477.18 250.68 474.46 252.24 477.18 253.81 4 Y
+N
+477.18 252.24 477.18 250.68 474.46 252.24 477.18 253.81 4 Y
+V
+488.14 252.24 477.43 252.24 2 L
+2 Z
+N
+495.22 262.55 496.79 262.55 495.22 259.83 493.66 262.55 4 Y
+0 Z
+N
+495.22 262.55 496.79 262.55 495.22 259.83 493.66 262.55 4 Y
+V
+495.22 273.51 495.22 262.8 2 L
+2 Z
+N
+473.96 195.55 495.22 195.55 2 L
+0 Z
+N
+495.22 241.95 493.66 241.95 495.22 244.66 496.79 241.95 4 Y
+N
+495.22 241.95 493.66 241.95 495.22 244.66 496.79 241.95 4 Y
+V
+495.22 195.55 495.22 241.7 2 L
+2 Z
+N
+509.4 280.59 509.4 210.27 2 L
+0 Z
+N
+495.22 184.59 496.79 184.59 495.22 181.88 493.66 184.59 4 Y
+N
+495.22 184.59 496.79 184.59 495.22 181.88 493.66 184.59 4 Y
+V
+495.22 195.55 495.22 184.84 2 L
+2 Z
+N
+509.4 184.59 510.96 184.59 509.4 181.88 507.83 184.59 4 Y
+0 Z
+N
+509.4 184.59 510.96 184.59 509.4 181.88 507.83 184.59 4 Y
+V
+509.4 209.73 509.4 184.84 2 L
+2 Z
+N
+502.31 156.25 503.88 156.25 502.31 153.53 500.74 156.25 4 Y
+0 Z
+N
+502.31 156.25 503.88 156.25 502.31 153.53 500.74 156.25 4 Y
+V
+502.31 167.21 502.31 156.5 2 L
+2 Z
+N
+4 7 Q
+(1) 337.37 193.04 T
+(x) 394.26 193.04 T
+(x) 461.7 192.02 T
+4 5.6 Q
+(r-1) 465.2 194.82 T
+477.18 238.07 477.18 236.51 474.46 238.07 477.18 239.64 4 Y
+0 Z
+N
+477.18 238.07 477.18 236.51 474.46 238.07 477.18 239.64 4 Y
+V
+477.43 238.07 488.14 238.07 2 L
+2 Z
+N
+488.14 238.07 488.14 223.9 2 L
+0 Z
+N
+4 7 Q
+(s) 476.47 168.66 T
+(s\325) 483.08 218.26 T
+(a) 497.34 288.22 T
+2 F
+(\050) 501.23 288.22 T
+4 F
+(x) 503.57 288.22 T
+2 F
+(\051) 507.07 288.22 T
+4 F
+(c) 452.7 146.21 T
+2 F
+(\050) 456.2 146.21 T
+4 F
+(x) 458.54 146.21 T
+2 F
+(\051) 462.04 146.21 T
+4 F
+( = a) 464.37 146.21 T
+2 F
+(\050) 476.24 146.21 T
+4 F
+(x) 478.57 146.21 T
+2 F
+(\051) 482.07 146.21 T
+4 F
+(x) 484.4 146.21 T
+4 5.6 Q
+(n-k) 487.9 149.01 T
+4 7 Q
+(+r) 495.68 146.21 T
+2 F
+(\050) 502.1 146.21 T
+4 F
+(x) 504.43 146.21 T
+2 F
+(\051) 507.93 146.21 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+4 F
+(g) 346.49 218.26 T
+4 5.6 Q
+(0) 350.38 216.51 T
+335.45 223.9 335.45 222.33 332.73 223.9 335.45 225.47 4 Y
+N
+335.45 223.9 335.45 222.33 332.73 223.9 335.45 225.47 4 Y
+V
+346.4 223.9 335.7 223.9 2 L
+2 Z
+N
+4 7 Q
+(g) 388.92 218.26 T
+4 5.6 Q
+(1) 392.82 216.51 T
+377.96 223.9 377.96 222.33 375.25 223.9 377.96 225.47 4 Y
+0 Z
+N
+377.96 223.9 377.96 222.33 375.25 223.9 377.96 225.47 4 Y
+V
+388.92 223.9 378.21 223.9 2 L
+2 Z
+N
+448.83 223.9 448.83 222.33 446.12 223.9 448.83 225.47 4 Y
+0 Z
+N
+448.83 223.9 448.83 222.33 446.12 223.9 448.83 225.47 4 Y
+V
+459.79 223.9 449.08 223.9 2 L
+2 Z
+N
+4 7 Q
+(g) 459.79 218.26 T
+4 5.6 Q
+(r-1) 463.63 216.51 T
+495.22 273.51 509.4 273.51 2 L
+0 Z
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+459.79 230.99 473.96 259.33 R
+N
+4 7 Q
+(&) 464.54 241.92 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+516.48 181.38 488.14 181.38 497.59 167.21 507.04 167.21 4 Y
+N
+(Inf) 388.25 288.22 T
+(or) 395.83 288.22 T
+(mation symbol input stream) 402.22 288.22 T
+(Code) 338.99 146.21 T
+(w) 355.58 146.21 T
+(ord symbol output stream) 360.56 146.21 T
+(0) 507.65 175.61 T
+(1) 493.83 175.64 T
+507.65 272 510.48 274.83 R
+V
+2 Z
+N
+493.47 194.04 496.31 196.88 R
+V
+N
+436.78 243.65 439.62 246.49 R
+V
+N
+365.92 243.65 368.75 246.49 R
+V
+N
+0 0 0 1 0 0 0 K
+311.82 90.71 524.41 771.03 C
+0 -0 595.3 841.89 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "2" 2
+%%Page: "3" 3
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 9 Q
+0 X
+0 0 0 1 0 0 0 K
+0.96 (Check symbol calculation is independent of an) 70.87 765.03 P
+0.96 (y pre) 244.98 765.03 P
+0.96 (vious) 263.96 765.03 P
+0.47 (code) 70.87 754.03 P
+0.47 (w) 87.64 754.03 P
+0.47 (ords and correct code) 94.04 754.03 P
+0.47 (w) 172.44 754.03 P
+0.47 (ord calculation can therefore) 178.85 754.03 P
+0.47 (be) 70.87 743.03 P
+0.47 (gin immediately at the reception of the \336rst information) 79.23 743.03 P
+1.2 (symbol after po) 70.87 732.03 P
+1.2 (wer) 129.54 732.03 P
+1.2 (-up. No e) 142.85 732.03 P
+1.2 (xplicit initialisation, such as) 178.86 732.03 P
+1.02 (resetting the check symbol memory elements, is required) 70.87 721.03 P
+-0.47 (before correct operation can commence. This is achie) 70.87 710.03 P
+-0.47 (v) 259.82 710.03 P
+-0.47 (ed by) 264.18 710.03 P
+0.7 (suppressing the feedback from the check symbol memory) 70.87 699.03 P
+(or the multiplier when data are assumed to be zero.) 70.87 688.03 T
+2.49 (T) 70.87 666.03 P
+2.49 (o circumv) 75.65 666.03 P
+2.49 (ent the ef) 114.25 666.03 P
+2.49 (fects of hea) 152.49 666.03 P
+2.49 (vy particles when not) 198.76 666.03 P
+0.31 (manuf) 70.87 655.03 P
+0.31 (actured in a radiation hard process, the control logic) 93.78 655.03 P
+2.5 (is reset and re-synchronised for each code) 70.87 644.03 P
+2.5 (w) 236.57 644.03 P
+2.5 (ord. These) 242.98 644.03 P
+-0.53 (implementation features will con\336ne an) 70.87 633.03 P
+-0.53 (y error due to Single) 211.6 633.03 P
+-0.42 (Ev) 70.87 622.03 P
+-0.42 (ent Upsets \050SEU\051 to the af) 80.73 622.03 P
+-0.42 (fected code) 173.15 622.03 P
+-0.42 (w) 213.74 622.03 P
+-0.42 (ord. Furthermore,) 220.14 622.03 P
+0.33 (the core does not require the v) 70.87 611.03 P
+0.33 (alue of the input symbols to) 181.58 611.03 P
+-0.32 (be zero while check symbols are transmitted, being the case) 70.87 600.03 P
+(with some pre) 70.87 589.03 T
+(vious encoder designs.) 121.64 589.03 T
+5.27 (The encoder core does not generate the Attached) 70.87 567.03 P
+-0.36 (Synchronisation Mark) 70.87 556.03 P
+-0.36 (er speci\336ed in \050Ref.) 150.66 556.03 P
+-0.36 (1\051. Instead, it has) 222.81 556.03 P
+1.27 (a means for bypassing the check symbol calculation and) 70.87 545.03 P
+(recei) 70.87 534.03 T
+(ving and transmitting symbols without modi\336cations.) 88.13 534.03 T
+0.86 (The core does not include a Pseudo Randomiser \050Ref.) 70.87 512.03 P
+0.86 (1\051,) 273.72 512.03 P
+1.84 (since the necessary circuitry can be easily implemented) 70.87 501.03 P
+(outside the core if required in a speci\336c de) 70.87 490.03 T
+(vice.) 223.61 490.03 T
+0 F
+(Figure 2:) 70.87 303.73 T
+1 F
+(Reed-Solomon encoder cor) 127.56 303.73 T
+(e) 225.2 303.73 T
+2 F
+0.22 (The interf) 70.87 270.73 P
+0.22 (ace of the encoder core for data input and output) 106.74 270.73 P
+0.94 (is serial. Data and control signals of the core are directly) 70.87 259.73 P
+-0.33 (compatible with the VCM output interf) 70.87 248.73 P
+-0.33 (ace, reducing design) 210.39 248.73 P
+1.63 (ef) 70.87 237.73 P
+1.63 (fort and g) 77.64 237.73 P
+1.63 (ate count for additional interf) 115.84 237.73 P
+1.63 (ace circuitry if) 227.73 237.73 P
+-0.35 (inte) 70.87 226.73 P
+-0.35 (grating both on a single chip. All operations are made in) 84.24 226.73 P
+0.76 (the Galois \336eld de\336ned by the \336eld polynomial described) 70.87 215.73 P
+2.58 (abo) 70.87 204.73 P
+2.58 (v) 83.73 204.73 P
+2.58 (e. By emplo) 88.1 204.73 P
+2.58 (ying the chosen architecture, resource) 136.92 204.73 P
+1.38 (sharing can be maximised which leads to a smaller g) 70.87 193.73 P
+1.38 (ate) 272.97 193.73 P
+(count and area.) 70.87 182.73 T
+5.05 (T) 70.87 160.73 P
+5.05 (ranslation between the tw) 76.05 160.73 P
+5.05 (o symbol representations) 183.36 160.73 P
+0.23 (speci\336ed pre) 70.87 149.73 P
+0.23 (viously is implemented directly in the parallel) 116.61 149.73 P
+0.79 (multiplier) 70.87 138.73 P
+0.79 (, which further reduces the silicon area required) 106.01 138.73 P
+(for the encoder core.) 70.87 127.73 T
+2.16 (The encoder core can be con\336gured for an) 70.87 105.73 P
+2.16 (y maximum) 238.05 105.73 P
+1.56 (interlea) 70.87 94.73 P
+1.56 (v) 97.68 94.73 P
+1.56 (e depth I) 102.05 94.73 P
+2 7.2 Q
+1.25 (max) 136.66 92.48 P
+2 9 Q
+1.56 ( ranging from 1 to 8, selectable by) 149.06 94.73 P
+-0.5 (means of a VHDL generic. F) 311.82 765.03 P
+-0.5 (or a speci\336c instantiation of the) 413.67 765.03 P
+1.18 (encoder core, an) 311.82 754.03 P
+1.18 (y interlea) 373.26 754.03 P
+1.18 (v) 408 754.03 P
+1.18 (e depth ranging from 1 to the) 412.36 754.03 P
+1.13 (chosen I) 311.82 743.03 P
+2 7.2 Q
+0.91 (max) 343.2 740.78 P
+2 9 Q
+1.13 ( is supported. Also, for an) 355.59 743.03 P
+1.13 (y selected I) 454.38 743.03 P
+2 7.2 Q
+0.91 (max) 497.63 740.78 P
+2 9 Q
+1.13 ( the) 510.03 743.03 P
+-0.31 (area of the encoder core is minimised, i.e. logic required for) 311.82 732.03 P
+2.11 (implementing interlea) 311.82 721.03 P
+2.11 (v) 393 721.03 P
+2.11 (e depths greater than I) 397.36 721.03 P
+2 7.2 Q
+1.69 (max) 485.79 718.78 P
+2 9 Q
+2.11 ( is not) 498.18 721.03 P
+(unnecessarily included in the synthesised core.) 311.82 710.03 T
+0.31 (Potentially) 311.82 688.03 P
+0.31 (, it will be possible to select between tw) 350.24 688.03 P
+0.31 (o check) 496.36 688.03 P
+1.65 (symbol memory or) 311.82 677.03 P
+1.65 (g) 383.47 677.03 P
+1.65 (anisations for the encoder core; one) 387.92 677.03 P
+-0.14 (based on latches or memory that are addressed by means of) 311.82 666.03 P
+0.34 (a bit and an interlea) 311.82 655.03 P
+0.34 (v) 383.97 655.03 P
+0.34 (e counter; and a second one based on) 388.34 655.03 P
+1.78 (\337ip-\337ops or) 311.82 644.03 P
+1.78 (g) 355.7 644.03 P
+1.78 (anised as synchronous serial shift re) 360.15 644.03 P
+1.78 (gisters.) 498.66 644.03 P
+1.73 (The \336rst v) 311.82 633.03 P
+1.73 (ariant should be suitable to use with foundry) 352.06 633.03 P
+0.14 (speci\336c memory macro-cells that could pro) 311.82 622.03 P
+0.14 (vide lo) 468.6 622.03 P
+0.14 (w po) 493.26 622.03 P
+0.14 (wer) 510.92 622.03 P
+(consumption and further reduce the silicon area needed.) 311.82 611.03 T
+0.08 (The tar) 311.82 589.03 P
+0.08 (geted performance of the encoder core is a data rate) 337.48 589.03 P
+1.71 (of 20) 311.82 578.03 P
+1.71 (Mbits/s. Only a single phase clock with the same) 334.52 578.03 P
+0.74 (frequenc) 311.82 567.03 P
+0.74 (y as the bit rate is required. The core will ha) 343.17 567.03 P
+0.74 (v) 509.07 567.03 P
+0.74 (e a) 513.43 567.03 P
+1.49 (g) 311.82 556.03 P
+1.49 (ate and routing area of less than 5000 equi) 316.27 556.03 P
+1.49 (v) 480.45 556.03 P
+1.49 (alent g) 484.73 556.03 P
+1.49 (ates) 510.42 556.03 P
+(when implemented in MITEL CMOS/SOS5 technology) 311.82 545.03 T
+(.) 512.48 545.03 T
+0 F
+(4) 311.82 512.03 T
+(CONV) 340.17 512.03 T
+(OLUTION) 366.26 512.03 T
+(AL ENCODER CORE) 408.58 512.03 T
+2 F
+0.76 (The Con) 311.82 490.03 P
+0.76 (v) 343.46 490.03 P
+0.76 (olutional encoder core being de) 347.79 490.03 P
+0.76 (v) 464.06 490.03 P
+0.76 (eloped encodes) 468.42 490.03 P
+1.85 (data according to \050Ref.) 311.82 479.03 P
+1.85 (1\051 and \050Ref.) 402.1 479.03 P
+1.85 (2\051. The code has a) 451.28 479.03 P
+1.26 (constraint length of 7 bits and a code rate of 1/2 bit per) 311.82 468.03 P
+2.58 (symbol. It is generated by the tw) 311.82 457.03 P
+2.58 (o connection v) 444.92 457.03 P
+2.58 (ectors) 502.92 457.03 P
+0.7 (G1=1111001 and G2=1011011, with symbol in) 311.82 446.03 P
+0.7 (v) 486.1 446.03 P
+0.7 (ersion on) 490.47 446.03 P
+0.17 (the output path of G2 and with G1 associated with the \336rst) 311.82 435.03 P
+-0.38 (symbol. A diagram of such an encoder is sho) 311.82 424.03 P
+-0.38 (wn in \336gure) 470.8 424.03 P
+-0.38 (3.) 515.79 424.03 P
+-0.39 (The encoder core is dri) 311.82 402.03 P
+-0.39 (v) 393.02 402.03 P
+-0.39 (en by a symbol clock with twice the) 397.38 402.03 P
+6.98 (input bit frequenc) 311.82 391.03 P
+6.98 (y) 389.63 391.03 P
+6.98 (. Data are input and output) 393.54 391.03 P
+0.68 (synchronously with this clock, and a second clock acts as) 311.82 380.03 P
+0.75 (input bit delimiter) 311.82 369.03 P
+0.75 (. F) 377.84 369.03 P
+0.75 (or each input bit tw) 387.97 369.03 P
+0.75 (o output symbols) 460.89 369.03 P
+(are generated.) 311.82 358.03 T
+-0.35 (The tar) 311.82 336.03 P
+-0.35 (geted performance of the encoder core is a 20) 337.04 336.03 P
+-0.35 (Mbits/) 500.9 336.03 P
+0.44 (s data input rate, corresponding to a symbol output rate of) 311.82 325.03 P
+(40 Mbits/s.) 311.82 314.03 T
+0 F
+(Figure 3:) 311.82 160.17 T
+1 F
+(Con) 368.51 160.17 T
+(volutional encoder cor) 383.16 160.17 T
+(e) 464.81 160.17 T
+70.87 90.71 283.46 771.03 C
+0 0 0 1 0 0 0 K
+70.87 322.73 283.46 465.03 C
+0 0 0 1 0 0 0 K
+189.08 398.99 274.12 427.34 R
+7 X
+0 0 0 1 0 0 0 K
+V
+0.5 H
+2 Z
+0 X
+N
+139.48 398.99 174.91 462.77 R
+7 X
+V
+0 X
+N
+189.08 370.65 274.12 384.82 R
+7 X
+V
+0 X
+N
+139.48 335.22 174.91 384.82 R
+7 X
+V
+0 X
+N
+238.69 335.21 274.12 356.47 R
+7 X
+V
+0 X
+N
+4 7 Q
+(Chec) 195.39 410.12 T
+(k Symbol Memor) 211.59 410.12 T
+(y) 264.31 410.12 T
+(Adder) 222.26 375 T
+(P) 244.91 347.56 T
+(ar) 249.3 347.56 T
+(allel) 255.45 347.56 T
+(Control) 145.91 427.95 T
+189.08 335.21 224.52 356.47 R
+7 X
+V
+0 X
+N
+(P) 195.31 347.56 T
+(ar) 199.7 347.56 T
+(allel) 205.85 347.56 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Ser) 148.2 364.36 T
+(ial) 159.19 364.36 T
+136.26 427.34 136.26 428.91 138.98 427.34 136.26 425.77 4 Y
+0 Z
+N
+136.26 427.34 136.26 428.91 138.98 427.34 136.26 425.77 4 Y
+V
+126.68 427.34 136.01 427.34 2 L
+2 Z
+N
+136.26 420.25 136.26 421.82 138.98 420.25 136.26 418.69 4 Y
+0 Z
+N
+136.26 420.25 136.26 421.82 138.98 420.25 136.26 418.69 4 Y
+V
+126.68 420.25 136.01 420.25 2 L
+2 Z
+N
+136.26 413.17 136.26 414.73 138.98 413.17 136.26 411.6 4 Y
+0 Z
+N
+136.26 413.17 136.26 414.73 138.98 413.17 136.26 411.6 4 Y
+V
+126.68 413.17 136.01 413.17 2 L
+2 Z
+N
+136.26 448.6 136.26 450.17 138.98 448.6 136.26 447.03 4 Y
+0 Z
+N
+136.26 448.6 136.26 450.17 138.98 448.6 136.26 447.03 4 Y
+V
+126.68 448.6 136.01 448.6 2 L
+2 Z
+N
+136.26 441.51 136.26 443.08 138.98 441.51 136.26 439.95 4 Y
+0 Z
+N
+136.26 441.51 136.26 443.08 138.98 441.51 136.26 439.95 4 Y
+V
+126.68 441.51 136.01 441.51 2 L
+2 Z
+N
+136.26 455.69 136.26 457.25 138.98 455.69 136.26 454.12 4 Y
+0 Z
+N
+136.26 455.69 136.26 457.25 138.98 455.69 136.26 454.12 4 Y
+V
+126.68 455.69 136.01 455.69 2 L
+2 Z
+N
+221.3 455.69 221.3 457.25 224.02 455.69 221.3 454.12 4 Y
+0 Z
+N
+221.3 455.69 221.3 457.25 224.02 455.69 221.3 454.12 4 Y
+V
+174.91 455.69 221.05 455.69 2 L
+2 Z
+N
+(Ser) 75.7 455.72 T
+(ialIn) 86.69 455.72 T
+(F) 75.7 447.22 T
+(r) 79.66 447.22 T
+(ame) 81.92 447.22 T
+(SyncMar) 75.7 438.71 T
+(k) 103.42 438.71 T
+(InterLea) 75.7 426.57 T
+(v) 101.24 426.57 T
+(e0) 104.57 426.57 T
+217.43 395.78 215.86 395.78 217.43 398.49 219 395.78 4 Y
+0 Z
+N
+217.43 395.78 215.86 395.78 217.43 398.49 219 395.78 4 Y
+V
+217.43 395.53 217.43 384.82 2 L
+2 Z
+N
+196.17 395.78 194.6 395.78 196.17 398.49 197.74 395.78 4 Y
+0 Z
+N
+196.17 395.78 194.6 395.78 196.17 398.49 197.74 395.78 4 Y
+V
+196.17 395.53 196.17 384.82 2 L
+2 Z
+N
+267.04 388.04 268.6 388.04 267.04 385.32 265.47 388.04 4 Y
+0 Z
+N
+267.04 388.04 268.6 388.04 267.04 385.32 265.47 388.04 4 Y
+V
+267.04 398.99 267.04 388.29 2 L
+2 Z
+N
+245.78 388.04 247.34 388.04 245.78 385.32 244.21 388.04 4 Y
+0 Z
+N
+245.78 388.04 247.34 388.04 245.78 385.32 244.21 388.04 4 Y
+V
+245.78 398.99 245.78 388.29 2 L
+2 Z
+N
+178.12 377.73 178.12 376.17 175.41 377.73 178.12 379.3 4 Y
+0 Z
+N
+178.12 377.73 178.12 376.17 175.41 377.73 178.12 379.3 4 Y
+V
+189.08 377.73 178.38 377.73 2 L
+2 Z
+N
+167.82 395.78 166.26 395.78 167.82 398.49 169.39 395.78 4 Y
+0 Z
+N
+167.82 395.78 166.26 395.78 167.82 398.49 169.39 395.78 4 Y
+V
+167.82 395.53 167.82 384.82 2 L
+2 Z
+N
+146.56 388.04 148.13 388.04 146.56 385.32 145 388.04 4 Y
+0 Z
+N
+146.56 388.04 148.13 388.04 146.56 385.32 145 388.04 4 Y
+V
+146.56 398.99 146.56 388.29 2 L
+2 Z
+N
+235.48 349.39 235.48 350.96 238.19 349.39 235.48 347.82 4 Y
+0 Z
+N
+235.48 349.39 235.48 350.96 238.19 349.39 235.48 347.82 4 Y
+V
+235.23 349.39 224.52 349.39 2 L
+2 Z
+N
+185.87 349.39 185.87 350.96 188.58 349.39 185.87 347.82 4 Y
+0 Z
+N
+185.87 349.39 185.87 350.96 188.58 349.39 185.87 347.82 4 Y
+V
+185.62 349.39 174.91 349.39 2 L
+2 Z
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Ser) 231.6 457.75 T
+(ialOut) 242.6 457.75 T
+(F) 231.6 449.24 T
+(r) 235.57 449.24 T
+(ameOut) 237.83 449.24 T
+136.26 391.91 136.26 393.47 138.98 391.91 136.26 390.34 4 Y
+0 Z
+N
+136.26 391.91 136.26 393.47 138.98 391.91 136.26 390.34 4 Y
+V
+126.68 391.91 136.01 391.91 2 L
+2 Z
+N
+(Ser) 75.7 389.72 T
+(ialClk) 86.69 389.72 T
+(InterLea) 75.7 418.06 T
+(v) 101.24 418.06 T
+(e1) 104.57 418.06 T
+(InterLea) 75.7 410.36 T
+(v) 101.24 410.36 T
+(e2) 104.57 410.36 T
+(SyncMar) 231.6 440.74 T
+(kOut) 259.32 440.74 T
+(Symbol) 231.6 432.24 T
+(Multiplier) 242.41 340.56 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Hold) 199.6 340.56 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Shift) 150.19 358.23 T
+(Register) 144.16 352.11 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+267.04 367.43 265.47 367.43 267.04 370.15 268.6 367.43 4 Y
+0 Z
+N
+267.04 367.43 265.47 367.43 267.04 370.15 268.6 367.43 4 Y
+V
+267.04 367.18 267.04 356.47 2 L
+2 Z
+N
+245.78 367.43 244.21 367.43 245.78 370.15 247.34 367.43 4 Y
+0 Z
+N
+245.78 367.43 244.21 367.43 245.78 370.15 247.34 367.43 4 Y
+V
+245.78 367.18 245.78 356.47 2 L
+2 Z
+N
+235.48 342.3 235.48 343.87 238.19 342.3 235.48 340.73 4 Y
+0 Z
+N
+235.48 342.3 235.48 343.87 238.19 342.3 235.48 340.73 4 Y
+V
+235.23 342.3 224.52 342.3 2 L
+2 Z
+N
+185.87 342.3 185.87 343.87 188.58 342.3 185.87 340.73 4 Y
+0 Z
+N
+185.87 342.3 185.87 343.87 188.58 342.3 185.87 340.73 4 Y
+V
+185.62 342.3 174.91 342.3 2 L
+2 Z
+N
+221.3 448.6 221.3 450.17 224.02 448.6 221.3 447.03 4 Y
+0 Z
+N
+221.3 448.6 221.3 450.17 224.02 448.6 221.3 447.03 4 Y
+V
+174.91 448.6 221.05 448.6 2 L
+2 Z
+N
+221.3 441.51 221.3 443.08 224.02 441.51 221.3 439.95 4 Y
+0 Z
+N
+221.3 441.51 221.3 443.08 224.02 441.51 221.3 439.95 4 Y
+V
+174.91 441.51 221.05 441.51 2 L
+2 Z
+N
+221.3 434.43 221.3 435.99 224.02 434.43 221.3 432.86 4 Y
+0 Z
+N
+221.3 434.43 221.3 435.99 224.02 434.43 221.3 432.86 4 Y
+V
+174.91 434.43 221.05 434.43 2 L
+2 Z
+N
+J
+198.33 391.76 215.33 391.76 2 L
+J
+198.33 391.76 199.08 391.76 2 L
+N
+[1.41 4.229] 1.41 I
+199.08 391.76 214.58 391.76 2 L
+N
+J
+214.58 391.76 215.33 391.76 2 L
+N
+J
+247.93 391.76 264.94 391.76 2 L
+J
+247.93 391.76 248.68 391.76 2 L
+N
+[1.41 4.229] 1.41 I
+248.68 391.76 264.19 391.76 2 L
+N
+J
+264.19 391.76 264.94 391.76 2 L
+N
+J
+247.93 363.41 264.94 363.41 2 L
+J
+247.93 363.41 248.68 363.41 2 L
+N
+[1.41 4.229] 1.41 I
+248.68 363.41 264.19 363.41 2 L
+N
+J
+264.19 363.41 264.94 363.41 2 L
+N
+J
+179.9 347.82 179.9 343.57 2 L
+J
+179.9 347.82 179.9 347.07 2 L
+N
+[0.917 2.752] 0.917 I
+179.9 347.07 179.9 344.32 2 L
+N
+J
+179.9 344.32 179.9 343.57 2 L
+N
+J
+229.51 347.82 229.51 343.57 2 L
+J
+229.51 347.82 229.51 347.07 2 L
+N
+[0.917 2.752] 0.917 I
+229.51 347.07 229.51 344.32 2 L
+N
+J
+229.51 344.32 229.51 343.57 2 L
+N
+0 0 0 1 0 0 0 K
+J
+70.87 90.71 283.46 771.03 C
+0 -0 595.3 841.89 C
+311.82 90.71 524.41 771.03 C
+311.82 179.17 524.41 300.03 C
+0 0 0 1 0 0 0 K
+7 X
+0 0 0 1 0 0 0 K
+90 450 7.09 7.09 375.64 261.95 G
+0.5 H
+2 Z
+0 X
+90 450 7.09 7.09 375.64 261.95 A
+375.64 265.49 375.64 258.4 2 L
+N
+372.09 261.95 379.18 261.95 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+368.55 226.51 382.72 240.69 R
+N
+389.81 226.51 403.98 240.69 R
+N
+411.07 226.51 425.24 240.69 R
+N
+432.33 226.51 446.5 240.69 R
+N
+453.59 226.51 467.76 240.69 R
+N
+347.29 226.51 361.46 240.69 R
+N
+4 7 Q
+(1) 352.43 230.53 T
+(2) 373.69 230.53 T
+(3) 394.95 230.53 T
+(4) 416.21 230.53 T
+(5) 437.47 230.53 T
+(6) 458.73 230.53 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+7 X
+90 450 7.09 7.09 396.9 261.95 G
+0 X
+90 450 7.09 7.09 396.9 261.95 A
+396.9 265.49 396.9 258.4 2 L
+N
+393.35 261.95 400.44 261.95 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+7 X
+90 450 7.09 7.09 439.42 261.95 G
+0 X
+90 450 7.09 7.09 439.42 261.95 A
+439.42 265.49 439.42 258.4 2 L
+N
+435.87 261.95 442.96 261.95 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+7 X
+90 450 7.09 7.09 460.68 261.95 G
+0 X
+90 450 7.09 7.09 460.68 261.95 A
+460.67 265.49 460.67 258.4 2 L
+N
+457.13 261.95 464.22 261.95 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+7 X
+90 450 7.09 7.09 354.38 205.25 G
+0 X
+90 450 7.09 7.09 354.38 205.25 A
+354.38 208.8 354.38 201.71 2 L
+N
+350.83 205.25 357.92 205.25 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+7 X
+90 450 7.09 7.09 375.64 205.25 G
+0 X
+90 450 7.09 7.09 375.64 205.25 A
+375.64 208.8 375.64 201.71 2 L
+N
+372.09 205.25 379.18 205.25 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+7 X
+90 450 7.09 7.09 396.9 205.25 G
+0 X
+90 450 7.09 7.09 396.9 205.25 A
+396.9 208.8 396.9 201.71 2 L
+N
+393.35 205.25 400.44 205.25 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+7 X
+90 450 7.09 7.09 460.68 205.25 G
+0 X
+90 450 7.09 7.09 460.68 205.25 A
+460.67 208.8 460.67 201.71 2 L
+N
+457.13 205.25 464.22 205.25 2 L
+N
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+474.85 269.03 485.85 261.95 474.85 254.86 3 Y
+N
+90 450 1.38 1.77 487.65 261.95 A
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+365.33 233.6 365.33 235.17 368.05 233.6 365.33 232.03 4 Y
+0 Z
+N
+365.33 233.6 365.33 235.17 368.05 233.6 365.33 232.03 4 Y
+V
+361.46 233.6 365.08 233.6 2 L
+2 Z
+N
+386.6 233.6 386.6 235.17 389.31 233.6 386.6 232.03 4 Y
+0 Z
+N
+386.6 233.6 386.6 235.17 389.31 233.6 386.6 232.03 4 Y
+V
+382.72 233.6 386.35 233.6 2 L
+2 Z
+N
+407.86 233.6 407.86 235.17 410.57 233.6 407.86 232.03 4 Y
+0 Z
+N
+407.86 233.6 407.86 235.17 410.57 233.6 407.86 232.03 4 Y
+V
+403.98 233.6 407.61 233.6 2 L
+2 Z
+N
+429.11 233.6 429.11 235.17 431.83 233.6 429.11 232.03 4 Y
+0 Z
+N
+429.11 233.6 429.11 235.17 431.83 233.6 429.11 232.03 4 Y
+V
+425.24 233.6 428.86 233.6 2 L
+2 Z
+N
+450.38 233.6 450.38 235.17 453.09 233.6 450.38 232.03 4 Y
+0 Z
+N
+450.38 233.6 450.38 235.17 453.09 233.6 450.38 232.03 4 Y
+V
+446.5 233.6 450.12 233.6 2 L
+2 Z
+N
+471.64 261.95 471.64 263.51 474.35 261.95 471.64 260.38 4 Y
+0 Z
+N
+471.64 261.95 471.64 263.51 474.35 261.95 471.64 260.38 4 Y
+V
+467.76 261.95 471.39 261.95 2 L
+2 Z
+N
+450.38 261.95 450.38 263.51 453.09 261.95 450.38 260.38 4 Y
+0 Z
+N
+450.38 261.95 450.38 263.51 453.09 261.95 450.38 260.38 4 Y
+V
+446.5 261.95 450.12 261.95 2 L
+2 Z
+N
+429.11 261.95 429.11 263.51 431.83 261.95 429.11 260.38 4 Y
+0 Z
+N
+429.11 261.95 429.11 263.51 431.83 261.95 429.11 260.38 4 Y
+V
+403.98 261.95 428.86 261.95 2 L
+2 Z
+N
+386.6 261.95 386.6 263.51 389.31 261.95 386.6 260.38 4 Y
+0 Z
+N
+386.6 261.95 386.6 263.51 389.31 261.95 386.6 260.38 4 Y
+V
+382.72 261.95 386.35 261.95 2 L
+2 Z
+N
+365.33 205.25 365.33 206.82 368.05 205.25 365.33 203.69 4 Y
+0 Z
+N
+365.33 205.25 365.33 206.82 368.05 205.25 365.33 203.69 4 Y
+V
+361.46 205.25 365.08 205.25 2 L
+2 Z
+N
+386.6 205.25 386.6 206.82 389.31 205.25 386.6 203.69 4 Y
+0 Z
+N
+386.6 205.25 386.6 206.82 389.31 205.25 386.6 203.69 4 Y
+V
+382.72 205.25 386.35 205.25 2 L
+2 Z
+N
+450.38 205.25 450.38 206.82 453.09 205.25 450.38 203.69 4 Y
+0 Z
+N
+450.38 205.25 450.38 206.82 453.09 205.25 450.38 203.69 4 Y
+V
+403.98 205.25 450.12 205.25 2 L
+2 Z
+N
+510.28 223.3 508.71 223.3 510.28 226.01 511.85 223.3 4 Y
+0 Z
+N
+510.28 223.3 508.71 223.3 510.28 226.01 511.85 223.3 4 Y
+V
+467.76 205.25 510.28 205.25 510.28 223.05 3 L
+2 Z
+N
+510.28 243.9 511.85 243.9 510.28 241.19 508.71 243.9 4 Y
+0 Z
+N
+510.28 243.9 511.85 243.9 510.28 241.19 508.71 243.9 4 Y
+V
+489.02 261.95 510.28 261.95 510.28 244.15 3 L
+2 Z
+N
+322.82 233.6 322.82 235.17 325.53 233.6 322.82 232.03 4 Y
+0 Z
+N
+322.82 233.6 322.82 235.17 325.53 233.6 322.82 232.03 4 Y
+V
+311.86 233.6 322.57 233.6 2 L
+2 Z
+N
+375.64 251.65 374.07 251.65 375.64 254.36 377.2 251.65 4 Y
+0 Z
+N
+375.64 251.65 374.07 251.65 375.64 254.36 377.2 251.65 4 Y
+V
+375.64 240.69 375.64 251.4 2 L
+2 Z
+N
+396.9 251.65 395.33 251.65 396.9 254.36 398.46 251.65 4 Y
+0 Z
+N
+396.9 251.65 395.33 251.65 396.9 254.36 398.46 251.65 4 Y
+V
+396.9 240.69 396.9 251.4 2 L
+2 Z
+N
+439.42 251.65 437.85 251.65 439.42 254.36 440.98 251.65 4 Y
+0 Z
+N
+439.42 251.65 437.85 251.65 439.42 254.36 440.98 251.65 4 Y
+V
+439.42 240.69 439.42 251.4 2 L
+2 Z
+N
+460.67 251.65 459.11 251.65 460.67 254.36 462.24 251.65 4 Y
+0 Z
+N
+460.67 251.65 459.11 251.65 460.67 254.36 462.24 251.65 4 Y
+V
+460.67 240.69 460.67 251.4 2 L
+2 Z
+N
+460.67 215.55 462.24 215.55 460.67 212.84 459.11 215.55 4 Y
+0 Z
+N
+460.67 215.55 462.24 215.55 460.67 212.84 459.11 215.55 4 Y
+V
+460.67 226.51 460.67 215.8 2 L
+2 Z
+N
+396.9 215.55 398.46 215.55 396.9 212.84 395.33 215.55 4 Y
+0 Z
+N
+396.9 215.55 398.46 215.55 396.9 212.84 395.33 215.55 4 Y
+V
+396.9 226.51 396.9 215.8 2 L
+2 Z
+N
+375.64 215.55 377.2 215.55 375.64 212.84 374.07 215.55 4 Y
+0 Z
+N
+375.64 215.55 377.2 215.55 375.64 212.84 374.07 215.55 4 Y
+V
+375.64 226.51 375.64 215.8 2 L
+2 Z
+N
+354.38 215.55 355.94 215.55 354.38 212.84 352.81 215.55 4 Y
+0 Z
+N
+354.38 215.55 355.94 215.55 354.38 212.84 352.81 215.55 4 Y
+V
+354.38 226.51 354.38 215.8 2 L
+2 Z
+N
+365.33 261.95 365.33 263.51 368.05 261.95 365.33 260.38 4 Y
+0 Z
+N
+365.33 261.95 365.33 263.51 368.05 261.95 365.33 260.38 4 Y
+V
+333.12 240.69 333.12 261.95 365.08 261.95 3 L
+2 Z
+N
+(Input bit stream) 311.86 278.18 T
+(Output symbol stream) 455.99 278.18 T
+(G2 = 1011011) 392.33 276.97 T
+(G1 = 1111001) 392.33 184.77 T
+517.37 233.6 510.28 226.51 2 L
+N
+521.24 233.6 521.24 235.17 523.96 233.6 521.24 232.03 4 Y
+0 Z
+N
+521.24 233.6 521.24 235.17 523.96 233.6 521.24 232.03 4 Y
+V
+517.37 233.6 520.99 233.6 2 L
+2 Z
+N
+326.03 226.51 340.2 240.69 R
+N
+(0) 331.17 230.53 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+344.08 233.6 344.08 235.17 346.79 233.6 344.08 232.03 4 Y
+0 Z
+N
+344.08 233.6 344.08 235.17 346.79 233.6 344.08 232.03 4 Y
+V
+340.2 233.6 343.83 233.6 2 L
+2 Z
+N
+344.08 205.25 344.08 206.82 346.79 205.25 344.08 203.69 4 Y
+0 Z
+N
+344.08 205.25 344.08 206.82 346.79 205.25 344.08 203.69 4 Y
+V
+333.12 226.51 333.12 205.25 343.83 205.25 3 L
+2 Z
+N
+(Symbol 2) 474.85 242.14 T
+(Symbol 1) 474.85 220.88 T
+389.81 276.12 439.41 283.21 R
+N
+389.81 183.86 439.41 191.08 R
+N
+0 0 0 1 0 0 0 K
+311.82 90.71 524.41 771.03 C
+0 -0 595.3 841.89 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "3" 3
+%%Page: "4" 4
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(5) 70.87 765.03 T
+(RESCUE:) 99.22 765.03 T
+(REED-SOLOMON) 140.97 765.03 T
+(AND) 218.22 765.03 T
+(CONV) 99.22 754.03 T
+(OLUTION) 125.31 754.03 T
+(AL) 167.63 754.03 T
+(ENCODER) 182.38 754.03 T
+2 F
+1.98 (A ne) 70.87 732.03 P
+1.98 (w radiation hard Reed-Solomon and Con) 89.87 732.03 P
+1.98 (v) 247.14 732.03 P
+1.98 (olutional) 251.46 732.03 P
+2.06 (encoder is needed to replace the discontinued MA1916) 70.87 721.03 P
+1.38 (de) 70.87 710.03 P
+1.38 (vice for future spacecraft. This ne) 79.14 710.03 P
+1.38 (w de) 207.29 710.03 P
+1.38 (vice should not) 225.7 710.03 P
+-0.31 (only act as a replacement, b) 70.87 699.03 P
+-0.31 (ut should also ha) 169.11 699.03 P
+-0.31 (v) 228.74 699.03 P
+-0.31 (e an increased) 233.11 699.03 P
+0.64 (functionality and raised performance. The objecti) 70.87 688.03 P
+0.64 (v) 251.81 688.03 P
+0.64 (e is not) 256.18 688.03 P
+0.67 (to achie) 70.87 677.03 P
+0.67 (v) 99.56 677.03 P
+0.67 (e full functional or timing compatibility between) 103.93 677.03 P
+1.12 (the tw) 70.87 666.03 P
+1.12 (o de) 94.15 666.03 P
+1.12 (vices, b) 110.29 666.03 P
+1.12 (ut to de) 138.73 666.03 P
+1.12 (v) 167.75 666.03 P
+1.12 (elop a successor that could in) 172.12 666.03 P
+1.62 (most cases replace the MA1916 de) 70.87 655.03 P
+1.62 (vice with no or only) 204.48 655.03 P
+(minor modi\336cations e) 70.87 644.03 T
+(xisting board designs.) 149.74 644.03 T
+1.39 (The rest of this section forms a preliminary requirement) 70.87 622.03 P
+0.8 (speci\336cation of the ne) 70.87 611.03 P
+0.8 (w encoder de) 152.27 611.03 P
+0.8 (vice named RESCUE.) 201.62 611.03 P
+3.72 (The te) 70.87 600.03 P
+3.72 (xt has been purposely based on the MA1916) 97.2 600.03 P
+1.73 (speci\336cation to allo) 70.87 589.03 P
+1.73 (w users easily to recognise potential) 144.6 589.03 P
+2.4 (dif) 70.87 578.03 P
+2.4 (ferences. As a baseline, the ne) 80.64 578.03 P
+2.4 (w de) 201.11 578.03 P
+2.4 (vice will be pin) 220.53 578.03 P
+0.76 (compatible with MA1916. The RESCUE de) 70.87 567.03 P
+0.76 (vice pinout is) 233.44 567.03 P
+(sho) 70.87 556.03 T
+(wn in \336gure) 83.15 556.03 T
+(4 and is further discussed in section 7.) 128.89 556.03 T
+-0.56 (The RESCUE de) 70.87 534.03 P
+-0.56 (vice will be based on the tw) 131.03 534.03 P
+-0.56 (o encoder cores) 228.1 534.03 P
+0.25 (that ha) 70.87 523.03 P
+0.25 (v) 95.19 523.03 P
+0.25 (e been presented pre) 99.55 523.03 P
+0.25 (viously) 173.79 523.03 P
+0.25 (. Hence, all adv) 199.71 523.03 P
+0.25 (antages) 256.47 523.03 P
+1.91 (of assembling already v) 70.87 512.03 P
+1.91 (eri\336ed blocks will be e) 162.21 512.03 P
+1.91 (xploited,) 251.71 512.03 P
+-0.43 (such as minimising the required de) 70.87 501.03 P
+-0.43 (v) 194.23 501.03 P
+-0.43 (elopment schedule. The) 198.59 501.03 P
+(RESCUE de) 70.87 490.03 T
+(vice will operate in tw) 115.9 490.03 T
+(o principal modes:) 196.29 490.03 T
+(\245) 70.87 479.03 T
+(Basic: lar) 85.04 479.03 T
+(gely compatible with MA1916;) 119.13 479.03 T
+(\245) 70.87 468.03 T
+(Adv) 85.04 468.03 T
+(anced: with enhancements as listed further belo) 100.32 468.03 T
+(w) 271.05 468.03 T
+(.) 276.97 468.03 T
+0.52 (The follo) 70.87 446.03 P
+0.52 (wing enhancements o) 104.41 446.03 P
+0.52 (v) 183.29 446.03 P
+0.52 (er the MA1916 de) 187.65 446.03 P
+0.52 (vice are) 254.71 446.03 P
+(en) 70.87 435.03 T
+(visaged for both modes:) 79.01 435.03 T
+(\245) 70.87 424.03 T
+6.2 (synchronisation mark) 85.04 424.03 P
+6.2 (ers, information and check) 168.89 424.03 P
+-0.11 (symbol output will al) 85.04 413.03 P
+-0.11 (w) 161.39 413.03 P
+-0.11 (ays be deterministic after a reset) 167.79 413.03 P
+(\050MA1916 generates an in) 85.04 402.03 T
+(v) 176.41 402.03 T
+(alid frame after a reset\051;) 180.69 402.03 T
+(\245) 70.87 391.03 T
+-0.13 (internal symbol clock will be re-synchronised for e) 85.04 391.03 P
+-0.13 (v) 267.61 391.03 P
+-0.13 (ery) 271.97 391.03 P
+1.24 (frame \050MA1916 only synchronises on the \336rst frame) 85.04 380.03 P
+1.59 (after a reset, something that has caused problems in) 85.04 369.03 P
+(some pre) 85.04 358.03 T
+(vious board designs\051;) 117.56 358.03 T
+(\245) 70.87 347.03 T
+0.25 (errors due to SEUs will be contained within one frame) 85.04 347.03 P
+2.75 (and its check symbols thanks to tw) 85.04 336.03 P
+2.75 (o mechanisms:) 226.96 336.03 P
+0.49 (control logic will be re-initialised and re-synchronised) 85.04 325.03 P
+0.96 (for each frame, and check symbol calculation will be) 85.04 314.03 P
+(independent of an) 85.04 303.03 T
+(y pre) 149.39 303.03 T
+(vious code) 167.41 303.03 T
+(w) 205.93 303.03 T
+(ords;) 212.34 303.03 T
+(\245) 70.87 292.03 T
+2.5 (virtual \336ll and shortened code) 85.04 292.03 P
+2.5 (w) 202.31 292.03 P
+2.5 (ord lengths will be) 208.71 292.03 P
+1.09 (supported, allo) 85.04 281.03 P
+1.09 (wing 1 to 222 suppressed symbols per) 139.41 281.03 P
+(interlea) 85.04 270.03 T
+(v) 111.85 270.03 T
+(e depth \050not supported in MA1916\051;) 116.22 270.03 T
+(\245) 70.87 259.03 T
+-0.01 (deterministic relation between clock signals after reset;) 85.04 259.03 P
+(\245) 70.87 248.03 T
+0.46 (as a tar) 85.04 248.03 P
+0.46 (get, 20 Mbits/s data rate for the Reed-Solomon) 111.28 248.03 P
+2.07 (encoder) 85.04 237.03 P
+2.07 (, and 40 Mbits/s symbol output rate for the) 113.17 237.03 P
+-0.22 (Con) 85.04 226.03 P
+-0.22 (v) 99.69 226.03 P
+-0.22 (olutional encoder \0505 and 10 Mbits/s for MA1916\051.) 104.01 226.03 P
+1.04 (The follo) 70.87 204.03 P
+1.04 (wing additional enhancements are en) 104.93 204.03 P
+1.04 (visaged for) 242.19 204.03 P
+(the Adv) 70.87 193.03 T
+(anced mode:) 99.39 193.03 T
+(\245) 70.87 182.03 T
+4.81 (special input for synchronisation mark) 85.04 182.03 P
+4.81 (er bypass,) 242.66 182.03 P
+4.82 (releasing the requirement on holding the Reed-) 85.04 171.03 P
+0.99 (Solomon data input at logical 0 while check symbols) 85.04 160.03 P
+(are being output \050compatible with VCM\051;) 85.04 149.03 T
+(\245) 70.87 138.03 T
+2.21 (additional interlea) 85.04 138.03 P
+2.21 (v) 152.32 138.03 P
+2.21 (e depths 2 and 3 \050supporting all) 156.68 138.03 P
+(VCM frame lengths\051;) 85.04 127.03 T
+(\245) 70.87 116.03 T
+3.86 (on-chip support for cascading tw) 85.04 116.03 P
+3.86 (o Reed-Solomon) 218.86 116.03 P
+0.58 (encoders, allo) 85.04 105.03 P
+0.58 (wing interlea) 135.39 105.03 P
+0.58 (v) 183.03 105.03 P
+0.58 (e depths 6, 8 and 10 to be) 187.4 105.03 P
+(realised without additional e) 85.04 94.03 T
+(xternal logic;) 187.15 94.03 T
+0 F
+(Figure 4:) 311.82 534.03 T
+1 F
+(F) 368.51 534.03 T
+(or) 373.07 534.03 T
+(eseen pinout for the RESCUE de) 380.73 534.03 T
+(vice) 498.34 534.03 T
+2 F
+(\245) 311.82 512.03 T
+0.84 (pseudo-random generator compliant with \050Ref.) 325.99 512.03 P
+0.84 (1\051 and) 500.83 512.03 P
+(\050Ref.) 325.99 501.03 T
+(2\051, implementing the polynomial) 346.49 501.03 T
+(\245) 311.82 457.23 T
+0.84 (clock di) 325.99 457.23 P
+0.84 (vider al) 355.35 457.23 P
+0.84 (w) 383.35 457.23 P
+0.84 (ays being acti) 389.76 457.23 P
+0.84 (v) 440.7 457.23 P
+0.84 (e \050only started on the) 445.07 457.23 P
+-0.48 (\336rst frame after a reset in Basic mode and for MA1916\051.) 325.99 446.23 P
+(The en) 311.82 424.23 T
+(visaged dif) 336.2 424.23 T
+(ferences compared to MA1916 are:) 375.72 424.23 T
+(\245) 311.82 413.23 T
+(no test pattern generator \050since not widely used\051;) 325.99 413.23 T
+(\245) 311.82 402.23 T
+(no production test pins \050used for other functions\051;) 325.99 402.23 T
+(\245) 311.82 391.23 T
+-0.41 (changes in sampling and clocking schemes \050to allo) 325.99 391.23 P
+-0.41 (w for) 505.59 391.23 P
+-0.25 (a synchronous design and optimisation of the interf) 325.99 380.23 P
+-0.25 (aces) 508.92 380.23 P
+(for higher data rates\051.) 325.99 369.23 T
+(Preliminary characteristics of the RESCUE de) 311.82 347.23 T
+(vice are:) 478.32 347.23 T
+(Compliance:) 311.82 336.23 T
+1.1 (implementing ESA and CCSDS standards) 368.51 336.23 P
+0.76 (on channel encoding \050for pack) 368.51 325.23 P
+0.76 (et telemetry) 480.92 325.23 P
+(and adv) 368.51 314.23 T
+(anced orbiting systems\051;) 396.53 314.23 T
+(Compatibility:) 311.82 303.23 T
+2.58 (pin compatible with the MA1916, input) 368.51 303.23 P
+(interf) 368.51 292.23 T
+(ace compatible with the VCM;) 387.92 292.23 T
+(Performance:) 311.82 281.23 T
+8.39 (Reed-Solomon encoder and pseudo-) 368.51 281.23 P
+(random generator with) 368.51 270.23 T
+-0.61 (20 Mbits/s data rate,) 452.74 270.23 P
+3.86 (Con) 368.51 259.23 P
+3.86 (v) 383.16 259.23 P
+3.86 (olutional encoder with 20 Mbits/s) 387.48 259.23 P
+3.9 (input data rate and 40 Mbits/s output) 368.51 248.23 P
+(symbol rate \050preliminary tar) 368.51 237.23 T
+(gets\051;) 469.58 237.23 T
+(Interlea) 311.82 226.23 T
+(ving:) 339.13 226.23 T
+(1 to 5 \050plus 6, 8 and 10 with cascading\051;) 368.51 226.23 T
+(T) 311.82 215.23 T
+(echnology:) 316.69 215.23 T
+3.87 (MITEL 1.25) 368.51 215.23 P
+3 F
+3.87 (m) 423.99 215.23 P
+2 F
+3.87 (m CMOS/SOS5 process) 429.17 215.23 P
+(\050former ABB Hafo\051, 6000 equi) 368.51 204.23 T
+(v) 480.01 204.23 T
+(alent g) 484.29 204.23 T
+(ates) 508.49 204.23 T
+(Radiation:) 311.82 193.23 T
+0.99 (100 kRad guaranteed total dose tolerance,) 368.51 193.23 P
+(lo) 368.51 182.23 T
+(w SEU sensiti) 375.29 182.23 T
+(vity and Latch-up immune) 426.07 182.23 T
+(Po) 311.82 171.23 T
+(wer:) 321.1 171.23 T
+(+5) 368.51 171.23 T
+(V supply) 380.34 171.23 T
+(, lo) 412.51 171.23 T
+(w po) 423.78 171.23 T
+(wer consumption;) 441.3 171.23 T
+(P) 311.82 160.23 T
+(ackage:) 316.69 160.23 T
+(28 pin \337at pack;) 368.51 160.23 T
+(Schedule:) 311.82 149.23 T
+1.15 (design start in 1Q97, prototypes in 3Q97,) 368.51 149.23 P
+3.72 (SOS5 capability assessment programme) 368.51 138.23 P
+1.13 (completion in 2Q97 and SOS5 Capability) 368.51 127.23 P
+(Appro) 368.51 116.23 T
+(v) 391.37 116.23 T
+(al in 2Q98;) 395.65 116.23 T
+(Support:) 311.82 105.23 T
+1.38 (supported by foundry as an ASSP with a) 368.51 105.23 P
+(complete data sheet.) 368.51 94.23 T
+0 0 0 1 0 0 0 K
+311.22 551.91 525.02 771.03 C
+0 0 0 1 0 0 0 K
+7 X
+0 0 0 1 0 0 0 K
+180 270 5.67 5.67 422.61 765.72 G
+0.5 H
+2 Z
+0 X
+180 270 5.67 5.67 422.61 765.72 A
+7 X
+270 360 5.67 5.67 422.61 765.72 G
+0 X
+270 360 5.67 5.67 422.61 765.72 A
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+377.26 560.21 448.12 765.72 R
+N
+348.91 751.58 384.34 758.67 R
+7 X
+V
+0 X
+N
+348.91 737.41 384.34 744.5 R
+7 X
+V
+0 X
+N
+348.91 723.24 384.34 730.32 R
+7 X
+V
+0 X
+N
+348.91 709.06 384.34 716.15 R
+7 X
+V
+0 X
+N
+348.91 694.89 384.34 701.98 R
+7 X
+V
+0 X
+N
+348.91 680.72 384.34 687.8 R
+7 X
+V
+0 X
+N
+348.91 666.55 384.34 673.63 R
+7 X
+V
+0 X
+N
+348.91 652.37 384.34 659.46 R
+7 X
+V
+0 X
+N
+348.91 638.2 384.34 645.29 R
+7 X
+V
+0 X
+N
+348.91 624.03 384.34 631.11 R
+7 X
+V
+0 X
+N
+348.91 609.85 384.34 616.94 R
+7 X
+V
+0 X
+N
+348.91 595.68 384.34 602.77 R
+7 X
+V
+0 X
+N
+348.91 581.51 384.34 588.59 R
+7 X
+V
+0 X
+N
+348.91 567.33 384.34 574.42 R
+7 X
+V
+0 X
+N
+441.98 751.58 477.41 758.67 R
+7 X
+V
+0 X
+N
+441.98 737.41 477.41 744.5 R
+7 X
+V
+0 X
+N
+441.98 723.24 477.41 730.32 R
+7 X
+V
+0 X
+N
+441.98 709.06 477.41 716.15 R
+7 X
+V
+0 X
+N
+441.98 694.89 477.41 701.98 R
+7 X
+V
+0 X
+N
+441.98 680.72 477.41 687.8 R
+7 X
+V
+0 X
+N
+441.98 666.55 477.41 673.63 R
+7 X
+V
+0 X
+N
+441.98 652.37 477.41 659.46 R
+7 X
+V
+0 X
+N
+441.98 638.2 477.41 645.29 R
+7 X
+V
+0 X
+N
+441.98 624.03 477.41 631.11 R
+7 X
+V
+0 X
+N
+441.98 609.85 477.41 616.94 R
+7 X
+V
+0 X
+N
+441.98 595.68 477.41 602.77 R
+7 X
+V
+0 X
+N
+441.98 581.51 477.41 588.59 R
+7 X
+V
+0 X
+N
+441.98 567.33 477.41 574.42 R
+7 X
+V
+0 X
+N
+4 7 Q
+(Bottom) 401.6 664.68 T
+(28) 349.63 753.03 T
+(27) 349.63 738.86 T
+(26) 349.63 724.69 T
+(25) 349.63 710.51 T
+(24) 349.63 696.34 T
+(23) 349.63 682.17 T
+(22) 349.63 667.99 T
+(21) 349.63 653.82 T
+(20) 349.63 639.65 T
+(19) 349.63 625.48 T
+(18) 349.63 611.3 T
+(17) 349.63 597.13 T
+(16) 349.63 582.96 T
+(15) 349.63 568.78 T
+(1) 472.8 753.03 T
+(2) 472.8 738.86 T
+(3) 472.8 724.69 T
+(4) 472.8 710.51 T
+(5) 472.8 696.34 T
+(6) 472.8 682.17 T
+(7) 472.8 667.99 T
+(8) 472.8 653.82 T
+(9) 472.8 639.65 T
+(10) 468.91 625.48 T
+(11) 468.91 611.3 T
+(12) 468.91 597.13 T
+(13) 468.91 582.96 T
+(14) 468.91 568.78 T
+(Adv) 481.65 751.61 T
+(anced) 493.54 751.61 T
+(PseudoOut) 312.07 751.58 T
+(SyncMar) 481.65 652.37 T
+(kOut) 509.38 652.37 T
+(SyncMar) 481.65 737.41 T
+(k) 509.38 737.41 T
+(Clk) 481.65 723.23 T
+(CEIn) 481.65 709.06 T
+(CEOut) 481.65 694.89 T
+(ClkSla) 481.65 680.71 T
+(v) 501.74 680.71 T
+(e) 505.06 680.71 T
+(NC) 481.65 666.54 T
+(VSS) 481.65 638.19 T
+(IL0) 481.65 624.02 T
+(Un) 481.65 609.85 T
+(used) 490.53 609.85 T
+(IL1) 481.65 595.67 T
+(Symbol) 481.65 581.5 T
+(*) 505.58 581.5 T
+(Reset*) 481.65 567.33 T
+(Clk2Out) 312.07 737.41 T
+(F) 312.07 723.23 T
+(r) 316.04 723.23 T
+(ame) 318.3 723.23 T
+(RSOut) 312.07 709.06 T
+(Symbol) 312.07 694.89 T
+(Un) 312.07 680.71 T
+(used) 320.95 680.71 T
+(ClkOut) 312.07 666.54 T
+(VDD) 312.07 652.37 T
+(NC) 312.07 636.77 T
+(IL2) 312.07 624.02 T
+(RSIn) 312.07 609.85 T
+(Clk2) 312.07 595.67 T
+(Un) 312.07 581.5 T
+(used) 320.95 581.5 T
+(F) 312.07 567.33 T
+(r) 316.04 567.33 T
+(ameOut) 318.3 567.33 T
+(vie) 405.76 657.68 T
+(w) 414.57 657.68 T
+0 0 0 1 0 0 0 K
+0 -0 595.3 841.89 C
+311.82 90.71 524.41 771.03 C
+317.82 465.23 518.41 498.03 C
+0 0 0 1 0 0 0 K
+1 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(h) 362.7 478.21 T
+(x) 371.61 478.21 T
+3 F
+(\050) 367.73 478.21 T
+(\051) 376.27 478.21 T
+1 F
+(x) 393.57 478.21 T
+2 F
+(8) 397.93 483.85 T
+1 F
+(x) 412.25 478.21 T
+2 F
+(7) 416.61 483.85 T
+1 F
+(x) 430.92 478.21 T
+2 F
+(5) 435.29 483.85 T
+1 F
+(x) 449.6 478.21 T
+2 F
+(3) 453.97 483.85 T
+(1) 468.04 478.21 T
+(+) 404.68 478.21 T
+(+) 423.36 478.21 T
+(+) 442.04 478.21 T
+(+) 460.71 478.21 T
+(=) 383.76 478.21 T
+0 0 0 1 0 0 0 K
+311.82 90.71 524.41 771.03 C
+0 -0 595.3 841.89 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "4" 4
+%%Page: "5" 5
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(6) 70.87 765.03 T
+(DISCUSSION POINTS) 99.22 765.03 T
+2 F
+-0.02 (The baseline functionality of the RESCUE de) 70.87 743.03 P
+-0.02 (vice has been) 235.02 743.03 P
+1.26 (listed here abo) 70.87 732.03 P
+1.26 (v) 125.74 732.03 P
+1.26 (e. There are ho) 130.11 732.03 P
+1.26 (we) 187.63 732.03 P
+1.26 (v) 197.9 732.03 P
+1.26 (er functions that ha) 202.27 732.03 P
+1.26 (v) 275.1 732.03 P
+1.26 (e) 279.47 732.03 P
+0.6 (been assessed during speci\336cation writing which ha) 70.87 721.03 P
+0.6 (v) 260.75 721.03 P
+0.6 (e not) 265.12 721.03 P
+0.31 (been included. In this section both these cate) 70.87 710.03 P
+0.31 (gories will be) 233.85 710.03 P
+0.04 (discussed, pro) 70.87 699.03 P
+0.04 (viding the rationale for inclusion or rejection) 121.77 699.03 P
+1.71 (of some of the more contro) 70.87 688.03 P
+1.71 (v) 177.01 688.03 P
+1.71 (ersial features. Readers are) 181.38 688.03 P
+0.76 (in) 70.87 677.03 P
+0.76 (vited to pro) 77.51 677.03 P
+0.76 (vide comments and suggestions on what the) 120.4 677.03 P
+0.48 (RESCUE de) 70.87 666.03 P
+0.48 (vice should implement to \336t into their current) 116.38 666.03 P
+1.83 (and future applications. Suggestions should be pro) 70.87 655.03 P
+1.83 (vided) 263.46 655.03 P
+(before 15 January 1997.) 70.87 644.03 T
+-0.35 (F) 70.87 622.03 P
+-0.35 (or the Con) 75.74 622.03 P
+-0.35 (v) 112.68 622.03 P
+-0.35 (olutional encoder no changes or enhancements) 117 622.03 P
+0.84 (with respect to gi) 70.87 611.03 P
+0.84 (v) 135.41 611.03 P
+0.84 (en standards ha) 139.77 611.03 P
+0.84 (v) 196.76 611.03 P
+0.84 (e been included in the) 201.12 611.03 P
+1.01 (RESCUE de) 70.87 600.03 P
+1.01 (vice. Means for interchanging G1 and G2 or) 116.91 600.03 P
+-0.1 (the position of the in) 70.87 589.03 P
+-0.1 (v) 144.62 589.03 P
+-0.1 (erter could be considered. Also codes) 148.99 589.03 P
+4.51 (with other constraint lengths or bit rates could be) 70.87 578.03 P
+0.08 (considered if at least one speci\336c application requiring this) 70.87 567.03 P
+(is kno) 70.87 556.03 T
+(wn before the design start.) 92.4 556.03 T
+2.17 (T) 70.87 534.03 P
+2.17 (urbo codes ha) 75.96 534.03 P
+2.17 (v) 130.11 534.03 P
+2.17 (e been suggested as a replacement for) 134.48 534.03 P
+0.23 (Con) 70.87 523.03 P
+0.23 (v) 85.51 523.03 P
+0.23 (olutional -) 89.83 523.03 P
+0.23 ( and sometimes Reed-Solomon) 127.32 523.03 P
+0.23 (-) 242.74 523.03 P
+0.23 ( encoding.) 245.74 523.03 P
+-0.54 (Such codes ha) 70.87 512.03 P
+-0.54 (v) 121.1 512.03 P
+-0.54 (e been studied in other ESA acti) 125.46 512.03 P
+-0.54 (vities, b) 237.97 512.03 P
+-0.54 (ut no) 265.75 512.03 P
+4.4 (ESA or CCSDS standard yet co) 70.87 501.03 P
+4.4 (v) 206.97 501.03 P
+4.4 (ers T) 211.34 501.03 P
+4.4 (urbo coding.) 233.57 501.03 P
+2.59 (Inclusion of such an encoder w) 70.87 490.03 P
+2.59 (ould therefore only be) 195.96 490.03 P
+(feasible if at least one application requiring it is kno) 70.87 479.03 T
+(wn.) 257.87 479.03 T
+0.28 (F) 70.87 457.03 P
+0.28 (or the Reed-Solomon encoder no changes to the code are) 75.74 457.03 P
+2.45 (en) 70.87 446.03 P
+2.45 (visaged since there is a \336x) 79.01 446.03 P
+2.45 (ed standard for telemetry) 185.88 446.03 P
+1.68 (applications. There are ho) 70.87 435.03 P
+1.68 (we) 169.15 435.03 P
+1.68 (v) 179.42 435.03 P
+1.68 (er some other aspects that) 183.78 435.03 P
+1.78 (need to be considered. The RESCUE de) 70.87 424.03 P
+1.78 (vice is tar) 225.57 424.03 P
+1.78 (geted) 263.97 424.03 P
+3.59 (to) 70.87 413.03 P
+3.59 (w) 77.65 413.03 P
+3.59 (ards applications with lo) 84.06 413.03 P
+3.59 (w to medium data rates.) 182.85 413.03 P
+0.4 (Therefore, to support higher data rates, as w) 70.87 402.03 P
+0.4 (ould normally) 232.31 402.03 P
+(be the case for adv) 70.87 391.03 T
+(anced orbiting systems, is not feasible.) 138.12 391.03 T
+0.03 (Interlea) 70.87 369.03 P
+0.03 (v) 98.18 369.03 P
+0.03 (e depths 1 to 5 ha) 102.54 369.03 P
+0.03 (v) 165.74 369.03 P
+0.03 (e been chosen for the RESCUE) 170.1 369.03 P
+0.89 (de) 70.87 358.03 P
+0.89 (vice, co) 79.14 358.03 P
+0.89 (v) 107.89 358.03 P
+0.89 (ering most applications e) 112.26 358.03 P
+0.89 (xcept for some deep-) 205.05 358.03 P
+0.27 (space missions where an interlea) 70.87 347.03 P
+0.27 (v) 189.75 347.03 P
+0.27 (e depth of 8 is desirable.) 194.12 347.03 P
+1.87 (T) 70.87 336.03 P
+1.87 (o support this interlea) 75.65 336.03 P
+1.87 (v) 159.31 336.03 P
+1.87 (e depth on-chip, an increase of) 163.67 336.03 P
+3.04 (some 50% of silicon area w) 70.87 325.03 P
+3.04 (ould ha) 185.69 325.03 P
+3.04 (v) 215.3 325.03 P
+3.04 (e been required,) 219.66 325.03 P
+-0.24 (resulting in a more e) 70.87 314.03 P
+-0.24 (xpensi) 143.78 314.03 P
+-0.24 (v) 167.05 314.03 P
+-0.24 (e chip and unused functionality) 171.42 314.03 P
+2.68 (for the a) 70.87 303.03 P
+2.68 (v) 106.04 303.03 P
+2.68 (erage application. Instead, the baseline is to) 110.41 303.03 P
+1.73 (support interlea) 70.87 292.03 P
+1.73 (v) 128.66 292.03 P
+1.73 (e depths 6, 8 and 10 by cascading tw) 133.02 292.03 P
+1.73 (o) 278.96 292.03 P
+2.97 (RESCUE de) 70.87 281.03 P
+2.97 (vices as sho) 118.87 281.03 P
+2.97 (wn in \336gure) 167.58 281.03 P
+2.97 (5. No additional) 219.27 281.03 P
+(e) 70.87 270.03 T
+(xternal logic will be required for cascading.) 74.73 270.03 T
+2.55 (In cascading mode, both the master and sla) 70.87 248.03 P
+2.55 (v) 243.53 248.03 P
+2.55 (e de) 247.9 248.03 P
+2.55 (vices) 264.97 248.03 P
+1.46 (recei) 70.87 237.03 P
+1.46 (v) 88.13 237.03 P
+1.46 (e incoming data at bit rate frequenc) 92.5 237.03 P
+1.46 (y) 228.61 237.03 P
+1.46 (. Each de) 232.53 237.03 P
+1.46 (vice) 268.47 237.03 P
+1.94 (performs Reed-Solomon encoding on half the incoming) 70.87 226.03 P
+0.28 (data, taking e) 70.87 215.03 P
+0.28 (v) 119.44 215.03 P
+0.28 (ery second information symbol as input and) 123.81 215.03 P
+2.43 (generating e) 70.87 204.03 P
+2.43 (v) 117.31 204.03 P
+2.43 (ery second code) 121.67 204.03 P
+2.43 (w) 184.28 204.03 P
+2.43 (ord symbol. The master) 190.69 204.03 P
+-0.12 (w) 70.87 193.03 P
+-0.12 (orks on e) 77.28 193.03 P
+-0.12 (v) 109.82 193.03 P
+-0.12 (en numbered interlea) 114.18 193.03 P
+-0.12 (v) 189.75 193.03 P
+-0.12 (e depths and the sla) 194.12 193.03 P
+-0.12 (v) 263.97 193.03 P
+-0.12 (e on) 268.33 193.03 P
+-0.28 (odd numbered ones. The clock input on the sla) 70.87 182.03 P
+-0.28 (v) 236.68 182.03 P
+-0.28 (e encoder is) 241.04 182.03 P
+2.11 (dri) 70.87 171.03 P
+2.11 (v) 80.64 171.03 P
+2.11 (en by the special ClkSla) 85.01 171.03 P
+2.11 (v) 180.27 171.03 P
+2.11 (e output from the master) 184.64 171.03 P
+2.11 (,) 281.21 171.03 P
+0.58 (generating a clock that is acti) 70.87 160.03 P
+0.58 (v) 178.79 160.03 P
+0.58 (e only when odd numbered) 183.15 160.03 P
+0.68 (symbols are recei) 70.87 149.03 P
+0.68 (v) 134.98 149.03 P
+0.68 (ed or transmitted. Complete code) 139.34 149.03 P
+0.68 (w) 261.56 149.03 P
+0.68 (ords) 267.96 149.03 P
+2.03 (\050comprising both e) 70.87 138.03 P
+2.03 (v) 142.71 138.03 P
+2.03 (en and odd numbered symbols\051 are) 147.07 138.03 P
+2.59 (pro) 70.87 127.03 P
+2.59 (vided on the RSOut and PseudoOut outputs of the) 82.73 127.03 P
+0.54 (master encoder) 70.87 116.03 P
+0.54 (. A dra) 125.64 116.03 P
+0.54 (wback with this cascading approach) 151.33 116.03 P
+1.35 (is that the clocking scheme of the de) 70.87 105.03 P
+1.35 (vice becomes more) 211.29 105.03 P
+0.13 (complicated. This could be mitig) 70.87 94.03 P
+0.13 (ated if the encoder core is) 190.09 94.03 P
+1.78 (designed in a w) 311.82 765.03 P
+1.78 (ay allo) 373.31 765.03 P
+1.78 (wing odd or e) 399.11 765.03 P
+1.78 (v) 453.96 765.03 P
+1.78 (en symbols to be) 458.33 765.03 P
+-0.53 (ignored or suppressed, b) 311.82 754.03 P
+-0.53 (ut that w) 398.05 754.03 P
+-0.53 (ould adv) 428.4 754.03 P
+-0.53 (ersely increase the) 458.99 754.03 P
+0.86 (core sized. Note that the symbols from the Con) 311.82 743.03 P
+0.86 (v) 488.09 743.03 P
+0.86 (olutional) 492.41 743.03 P
+(encoder are pro) 311.82 732.03 T
+(vided on the CEOut output of the master) 367.66 732.03 T
+(.) 513.4 732.03 T
+1.82 (T) 311.82 710.03 P
+1.82 (o include additionally the RS\050255, 239\051 code used for) 316.6 710.03 P
+1.83 (digital video broadcasting seems not feasible since it is) 311.82 699.03 P
+-0.16 (based on a dif) 311.82 688.03 P
+-0.16 (ferent \336eld polynomial than the code used for) 361.34 688.03 P
+1.07 (telemetry) 311.82 677.03 P
+1.07 (. Consequently) 345.23 677.03 P
+1.07 (, this w) 399.71 677.03 P
+1.07 (ould result in a lar) 428.01 677.03 P
+1.07 (ge area) 497.61 677.03 P
+0.6 (increase. Also, the desired data rates of some 200 Mbits/s) 311.82 666.03 P
+-0.05 (are not compatible with the lo) 311.82 655.03 P
+-0.05 (w po) 419.08 655.03 P
+-0.05 (wer/small area approach) 436.55 655.03 P
+(chosen for the RESCUE de) 311.82 644.03 T
+(vice.) 410.08 644.03 T
+-0.39 (The clocking and sampling schemes of the RESCUE de) 311.82 622.03 P
+-0.39 (vice) 509.42 622.03 P
+0.98 (will be adapted to the VCM for the Adv) 311.82 611.03 P
+0.98 (anced mode, b) 463.4 611.03 P
+0.98 (ut) 517.41 611.03 P
+0.42 (will remain compatible with MA1916 for the Basic mode.) 311.82 600.03 P
+-0.01 (As an e) 311.82 589.03 P
+-0.01 (xample, the ClkOut output will al) 338.66 589.03 P
+-0.01 (w) 459.53 589.03 P
+-0.01 (ays toggle when) 465.94 589.03 P
+0.32 (Clk2 is acti) 311.82 578.03 P
+0.32 (v) 353.24 578.03 P
+0.32 (e, in contrast to MA1916 where this is started) 357.61 578.03 P
+(at the be) 311.82 567.03 T
+(ginning of the \336rst frame after a reset.) 342.18 567.03 T
+1.58 (The RESCUE de) 311.82 545.03 P
+1.58 (vice will include a Pseudo Randomiser) 376.26 545.03 P
+1.48 (compliant with \050Ref.) 311.82 534.03 P
+1.48 (1\051 that will mix the Reed-Solomon) 391.77 534.03 P
+3.27 (output bit stream with a deterministic pseudo-random) 311.82 523.03 P
+2.62 (sequence. This function can be used to obtain the bit) 311.82 512.03 P
+-0.56 (transition density required on a channel to allo) 311.82 501.03 P
+-0.56 (w the recei) 474.91 501.03 P
+-0.56 (v) 513.05 501.03 P
+-0.56 (er) 517.42 501.03 P
+(on ground to maintain bit synchronisation.) 311.82 490.03 T
+3.07 (Finally) 311.82 468.03 P
+3.07 (, the question of whether to pro) 336.74 468.03 P
+3.07 (vide a drop-in) 467.78 468.03 P
+1.91 (compatible replacement for the MA1916 with the same) 311.82 457.03 P
+3.99 (timing and functionality) 311.82 446.03 P
+3.99 (, including the less desirable) 406.22 446.03 P
+3.1 (features, is still open. The baseline is to support the) 311.82 435.03 P
+0.12 (functionality) 311.82 424.03 P
+0.12 (, b) 357.23 424.03 P
+0.12 (ut not to ha) 366.17 424.03 P
+0.12 (v) 407.1 424.03 P
+0.12 (e e) 411.46 424.03 P
+0.12 (xactly the same timing. This) 421.69 424.03 P
+0.14 (is the case for the undeterministic relationship between the) 311.82 413.03 P
+1.93 (input and output clock signals after reset that has been) 311.82 402.03 P
+1.15 (observ) 311.82 391.03 P
+1.15 (ed for the MA1916 de) 335.68 391.03 P
+1.15 (vice, something that will be) 420.05 391.03 P
+(impro) 311.82 380.03 T
+(v) 333.19 380.03 T
+(ed in the RESCUE de) 337.55 380.03 T
+(vice.) 415.82 380.03 T
+0 F
+(Figure 5:) 311.82 105.13 T
+1 F
+(T) 368.51 105.13 T
+(wo cascaded RESCUE de) 372.85 105.13 T
+(vices) 465.45 105.13 T
+0 0 0 1 0 0 0 K
+311.82 124.13 524.41 377.03 C
+0 0 0 1 0 0 0 K
+379.07 220.05 478.28 354.7 R
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+4 7 Q
+(RSI) 386.15 328.41 T
+4 5.6 Q
+(N) 397.82 328.41 T
+4 7 Q
+(C) 386.15 313.62 T
+4 5.6 Q
+(LK) 391.21 313.62 T
+4 7 Q
+(Clk2) 386.15 243.37 T
+(ClkOut) 442.85 242.76 T
+J
+379.07 305.09 478.28 305.09 2 L
+J
+379.07 305.09 379.82 305.09 2 L
+N
+[1.458 4.375] 1.458 I
+379.82 305.09 477.53 305.09 2 L
+N
+J
+477.53 305.09 478.28 305.09 2 L
+N
+(Reed-Solomon) 391.33 341.97 T
+(Encoder) 439.95 341.97 T
+(Con) 393.62 294.43 T
+(v) 406.32 294.43 T
+(olutional) 409.64 294.43 T
+(Encoder) 437.66 294.43 T
+J
+(RSO) 442.85 327.8 T
+4 5.6 Q
+(UT) 458.02 327.8 T
+4 7 Q
+(CEIn) 386.15 278.19 T
+(CEOut) 442.85 278.19 T
+375.85 333.44 375.85 335 378.57 333.44 375.85 331.87 4 Y
+0 Z
+N
+375.85 333.44 375.85 335 378.57 333.44 375.85 331.87 4 Y
+V
+322.38 333.44 375.6 333.44 2 L
+2 Z
+N
+329.46 241.31 343.64 255.48 R
+N
+375.85 248.4 375.85 249.96 378.57 248.4 375.85 246.83 4 Y
+0 Z
+N
+375.85 248.4 375.85 249.96 378.57 248.4 375.85 246.83 4 Y
+V
+343.64 248.4 375.6 248.4 2 L
+2 Z
+N
+329.46 244.15 332.3 244.15 332.3 248.4 336.55 248.4 336.55 244.15 340.8 244.15 340.8 248.4
+ 343.64 248.4 8 L
+N
+510.5 283.83 510.5 285.4 513.21 283.83 510.5 282.26 4 Y
+0 Z
+N
+510.5 283.83 510.5 285.4 513.21 283.83 510.5 282.26 4 Y
+V
+478.28 283.83 510.25 283.83 2 L
+2 Z
+N
+(RS) 315.29 341.97 T
+(in) 326.96 341.97 T
+(RS) 315.29 306.54 T
+(cloc) 328.9 306.54 T
+(k) 341.21 306.54 T
+(RS) 499.54 341.97 T
+(out) 511.21 341.97 T
+(CE) 499.54 292.37 T
+(out) 511.21 292.37 T
+(Sla) 402.58 129.98 T
+(v) 412.55 129.98 T
+(e encoder) 415.88 129.98 T
+325.59 319.26 325.59 317.7 322.88 319.26 325.59 320.83 4 Y
+0 Z
+N
+325.59 319.26 325.59 317.7 322.88 319.26 325.59 320.83 4 Y
+V
+357.81 319.26 325.84 319.26 2 L
+2 Z
+N
+4 5.6 Q
+(X) 329.46 257.54 T
+4 7 Q
+(2) 333.2 257.54 T
+4 5.6 Q
+(X) 484.83 249.85 T
+4 7 Q
+(1) 488.56 249.85 T
+379.07 142.1 478.28 191.09 R
+N
+(RSIn) 386.15 164.81 T
+(RSOut) 442.41 164.81 T
+(Reed-Solomon) 391.33 178.37 T
+(Encoder) 439.95 178.37 T
+J
+(Master encoder) 404.36 363.84 T
+(Clk) 386.15 150.63 T
+510.5 333.44 510.5 335 513.21 333.44 510.5 331.87 4 Y
+0 Z
+N
+510.5 333.44 510.5 335 513.21 333.44 510.5 331.87 4 Y
+V
+478.28 333.44 510.25 333.44 2 L
+2 Z
+N
+375.85 170.44 375.85 172.01 378.57 170.44 375.85 168.88 4 Y
+0 Z
+N
+375.85 170.44 375.85 172.01 378.57 170.44 375.85 168.88 4 Y
+V
+350.72 333.44 350.72 170.44 375.6 170.44 3 L
+2 Z
+N
+375.85 283.83 375.85 285.4 378.57 283.83 375.85 282.26 4 Y
+0 Z
+N
+375.85 283.83 375.85 285.4 378.57 283.83 375.85 282.26 4 Y
+V
+478.28 170.44 492.45 170.44 492.45 212.96 364.89 212.96 364.89 283.83 375.6 283.83 6 L
+2 Z
+N
+375.85 319.26 375.85 320.83 378.57 319.26 375.85 317.7 4 Y
+0 Z
+N
+375.85 319.26 375.85 320.83 378.57 319.26 375.85 317.7 4 Y
+V
+478.28 248.4 506.63 248.4 506.63 205.88 357.81 205.88 357.81 319.26 375.6 319.26 6 L
+2 Z
+N
+(\050I) 414.5 314.24 T
+(=) 420.72 314.24 T
+(6,) 426.76 314.24 T
+(8,) 434.54 314.24 T
+(10\051) 442.33 314.24 T
+(\050I) 414.5 150.63 T
+(=) 420.72 150.63 T
+(3,) 426.76 150.63 T
+(4,) 434.54 150.63 T
+(5\051) 442.33 150.63 T
+349.3 332.02 352.14 334.85 R
+V
+N
+356.39 317.85 359.23 320.68 R
+V
+N
+(ClkSla) 442.85 228.59 T
+(v) 462.93 228.59 T
+(e) 466.26 228.59 T
+375.85 156.27 375.85 157.84 378.57 156.27 375.85 154.7 4 Y
+0 Z
+N
+375.85 156.27 375.85 157.84 378.57 156.27 375.85 154.7 4 Y
+V
+478.28 234.22 499.54 234.22 499.54 198.79 364.89 198.79 364.89 156.27 375.6 156.27 6 L
+2 Z
+N
+J
+379.07 269.66 478.28 269.66 2 L
+J
+379.07 269.66 379.82 269.66 2 L
+N
+[1.458 4.375] 1.458 I
+379.82 269.66 477.53 269.66 2 L
+N
+J
+477.53 269.66 478.28 269.66 2 L
+N
+(Cloc) 408.13 257.54 T
+(k) 421.99 257.54 T
+(Divider) 427.44 257.54 T
+J
+4 5.6 Q
+(X) 485.37 235.67 T
+4 7 Q
+(1/2) 489.1 235.67 T
+0 0 0 1 0 0 0 K
+0 -0 595.3 841.89 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "5" 5
+%%Page: "6" 6
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(7) 70.87 765.03 T
+(RESCUE PINOUT COMP) 99.22 765.03 T
+(ARED T) 202.05 765.03 T
+(O MA1916) 235.64 765.03 T
+2 F
+-0.19 (W) 70.87 743.03 P
+-0.19 (ith pin compatibility between the RESCUE and MA1916) 79.01 743.03 P
+-0.41 (de) 70.87 732.03 P
+-0.41 (vices being an essential requirement, it w) 79.14 732.03 P
+-0.41 (as felt necessary) 225.31 732.03 P
+1.09 (to conduct a preliminary comparison. A lar) 70.87 721.03 P
+1.09 (ge part of the) 232.46 721.03 P
+0.76 (MA1916 functionality is directly re\337ected on its pins and) 70.87 710.03 P
+3.96 (their de\336nitions ha) 70.87 699.03 P
+3.96 (v) 146.11 699.03 P
+3.96 (e therefore been repeated in the) 150.47 699.03 P
+(comparison belo) 70.87 688.03 T
+(w) 130.39 688.03 T
+(.) 136.3 688.03 T
+-0.5 (The intention is to pro) 70.87 666.03 P
+-0.5 (vide the reader with a comprehensible) 148.74 666.03 P
+1.82 (description of the potential dif) 70.87 655.03 P
+1.82 (ferences between the tw) 186.89 655.03 P
+1.82 (o) 278.96 655.03 P
+1.07 (de) 70.87 644.03 P
+1.07 (vices. F) 79.14 644.03 P
+1.07 (or a deeper understanding of the dissimilarities) 108.07 644.03 P
+1.35 (and their impact, the reader is recommended to read the) 70.87 633.03 P
+2.11 (MA1916 data sheet \050Ref.) 70.87 622.03 P
+2.11 (6\051. A summary of the pinout) 170.43 622.03 P
+(comparison is gi) 70.87 611.03 T
+(v) 130.14 611.03 T
+(en in table) 134.51 611.03 T
+(3.) 174.25 611.03 T
+0 F
+(Pin 1:) 70.87 589.03 T
+(Adv) 99.22 589.03 T
+(anced) 115.13 589.03 T
+3 F
+(\333) 139.88 589.03 T
+0 F
+( T2 \050T) 149.26 589.03 T
+(est P) 172.43 589.03 T
+(atter) 190.58 589.03 T
+(n Select\051) 208.93 589.03 T
+2 F
+2.25 (F) 70.87 567.03 P
+2.25 (or MA1916, this input selects between patterns to be) 75.74 567.03 P
+(generated by the test generator) 70.87 556.03 T
+(.) 180.84 556.03 T
+-0.05 (F) 70.87 534.03 P
+-0.05 (or the RESCUE de) 75.74 534.03 P
+-0.05 (vice, this input will select between tw) 143.61 534.03 P
+-0.05 (o) 278.96 534.03 P
+(operational modes:) 70.87 523.03 T
+(\245) 70.87 512.03 T
+0.98 (Basic: lar) 85.04 512.03 P
+0.98 (gely compatible with MA1916 when tied to) 120.1 512.03 P
+(logical 0;) 85.04 501.03 T
+(\245) 70.87 490.03 T
+(Adv) 85.04 490.03 T
+(anced: enhanced mode when tied to logical 1.) 100.32 490.03 T
+0 F
+(Pin 14:) 70.87 468.03 T
+(Reset) 99.22 468.03 T
+3 F
+(* \333) 120.2 468.03 T
+0 F
+(n_RST \050Reset\051) 138.58 468.03 T
+2 F
+-0.06 (No dif) 70.87 446.03 P
+-0.06 (ference between the MA1916 and RESCUE de) 93.83 446.03 P
+-0.06 (vices.) 262.72 446.03 P
+0 F
+(Pin 17:) 70.87 424.03 T
+(Clk2) 99.22 424.03 T
+3 F
+(\333) 119.97 424.03 T
+0 F
+( CLK \050Clock\051) 129.35 424.03 T
+2 F
+-0.39 (F) 70.87 402.03 P
+-0.39 (or MA1916, this clock input dri) 75.74 402.03 P
+-0.39 (v) 188.04 402.03 P
+-0.39 (es the Reed-Solomon and) 192.4 402.03 P
+(Con) 70.87 391.03 T
+(v) 85.51 391.03 T
+(olutional encoders and the test generator) 89.83 391.03 T
+(.) 235.06 391.03 T
+1.65 (F) 70.87 369.03 P
+1.65 (or the RESCUE de) 75.74 369.03 P
+1.65 (vice, this input clock will dri) 148.7 369.03 P
+1.65 (v) 260.21 369.03 P
+1.65 (e the) 264.57 369.03 P
+0.8 (Con) 70.87 358.03 P
+0.8 (v) 85.51 358.03 P
+0.8 (olutional encoder and the clock di) 89.83 358.03 P
+0.8 (vider) 215.85 358.03 P
+0.8 (, being acti) 233.98 358.03 P
+0.8 (v) 275.1 358.03 P
+0.8 (e) 279.47 358.03 P
+(on the rising edge.) 70.87 347.03 T
+0 F
+(Pin 27:) 70.87 325.03 T
+(Clk2Out) 99.22 325.03 T
+3 F
+(\333) 134.97 325.03 T
+0 F
+( CLK_OUT \050Clock Out\051) 144.35 325.03 T
+2 F
+(F) 70.87 303.03 T
+(or MA1916, this output is the b) 75.74 303.03 T
+(uf) 188.82 303.03 T
+(fered CLK input.) 196.09 303.03 T
+1.04 (F) 70.87 281.03 P
+1.04 (or the RESCUE de) 75.74 281.03 P
+1.04 (vice, this output will be the b) 146.88 281.03 P
+1.04 (uf) 257.7 281.03 P
+1.04 (fered) 264.98 281.03 P
+(Clk2 input \050which is compatible with MA1916\051.) 70.87 270.03 T
+0 F
+(Pin 22:) 70.87 248.03 T
+(ClkOut) 99.22 248.03 T
+3 F
+(\333) 130.47 248.03 T
+0 F
+( CLKS \050Synchr) 139.85 248.03 T
+(onisation Clock\051) 199.2 248.03 T
+2 F
+1.02 (F) 70.87 226.03 P
+1.02 (or MA1916, this output de\336nes the timing of the Reed-) 75.74 226.03 P
+0.08 (Solomon encoder) 70.87 215.03 P
+0.08 (, acting as a bit delimiter) 133.83 215.03 P
+0.08 (. The toggling of) 222.73 215.03 P
+(this output be) 70.87 204.03 T
+(gins at the \336rst rising SMC edge after reset.) 119.74 204.03 T
+-0.02 (F) 70.87 182.03 P
+-0.02 (or the RESCUE de) 75.74 182.03 P
+-0.02 (vice, this output will act in tw) 143.7 182.03 P
+-0.02 (o modes:) 250.73 182.03 P
+(\245) 70.87 171.03 T
+(Basic: compatible with MA1916;) 85.04 171.03 T
+(\245) 70.87 160.03 T
+-0.45 (Adv) 85.04 160.03 P
+-0.45 (anced: this output will carry a clock signal with half) 100.32 160.03 P
+1.14 (the Clk2 frequenc) 85.04 149.03 P
+1.14 (y) 151.67 149.03 P
+1.14 (, that will al) 155.58 149.03 P
+1.14 (w) 201.9 149.03 P
+1.14 (ays toggle when the) 208.31 149.03 P
+0.77 (RESCUE de) 85.04 138.03 P
+0.77 (vice is supplied with a clock on the Clk2) 130.84 138.03 P
+0.31 (input. This will allo) 85.04 127.03 P
+0.31 (w the bit clock of the VCM de) 156.77 127.03 P
+0.31 (vice) 268.47 127.03 P
+-0.15 (to be directly dri) 85.04 116.03 P
+-0.15 (v) 144.1 116.03 P
+-0.15 (en from the RESCUE de) 148.46 116.03 P
+-0.15 (vice, without) 236.62 116.03 P
+-0.26 (the need for an e) 85.04 105.03 P
+-0.26 (xternal clock di) 143.82 105.03 P
+-0.26 (vider as is the case with) 199.06 105.03 P
+(current VCM/MA1916 con\336gurations.) 85.04 94.03 T
+0 F
+(Pin 3:) 311.82 765.03 T
+(Clk) 340.17 765.03 T
+3 F
+(\333) 356.42 765.03 T
+0 F
+( CE_CLKS \050Con) 365.8 765.03 T
+(v) 430.45 765.03 T
+(olutional Clock\051) 434.86 765.03 T
+2 F
+4.68 (F) 311.82 743.03 P
+4.68 (or MA1916, this input de\336nes the timing of the) 316.69 743.03 P
+(Con) 311.82 732.03 T
+(v) 326.46 732.03 T
+(olutional encoder) 330.78 732.03 T
+(, acting as a bit delimiter) 393.16 732.03 T
+(.) 481.66 732.03 T
+1.31 (F) 311.82 710.03 P
+1.31 (or the RESCUE de) 316.69 710.03 P
+1.31 (vice, this clock will dri) 388.65 710.03 P
+1.31 (v) 476.43 710.03 P
+1.31 (e the Reed-) 480.8 710.03 P
+3.65 (Solomon encoder and act as a bit delimiter for the) 311.82 699.03 P
+(Con) 311.82 688.03 T
+(v) 326.46 688.03 T
+(olutional encoder) 330.78 688.03 T
+(.) 393.03 688.03 T
+0 F
+(Pin 6:) 311.82 666.03 T
+(ClkSla) 340.17 666.03 T
+(v) 365.95 666.03 T
+(e) 370.36 666.03 T
+3 F
+(\333) 376.61 666.03 T
+0 F
+( TEST_POINT \050Pr) 385.98 666.03 T
+(oduction T) 458.83 666.03 T
+(est\051) 499.76 666.03 T
+2 F
+(F) 311.82 644.03 T
+(or MA1916, this output is used for production testing.) 316.69 644.03 T
+0.12 (F) 311.82 622.03 P
+0.12 (or the RESCUE de) 316.69 622.03 P
+0.12 (vice, this output will carry a clock that) 385.08 622.03 P
+(should be connected to the sla) 311.82 611.03 T
+(v) 419.87 611.03 T
+(e encoder when cascaded.) 424.24 611.03 T
+0 F
+(Pin 10:) 311.82 589.03 T
+(IL0) 340.17 589.03 T
+3 F
+(\333) 356.42 589.03 T
+0 F
+( SEL_A \050Interlea) 365.8 589.03 T
+(v) 431.57 589.03 T
+(e Depth Select\051) 435.98 589.03 T
+2 F
+0.28 (F) 311.82 567.03 P
+0.28 (or MA1916, this input is used for selecting the interlea) 316.69 567.03 P
+0.28 (v) 516.05 567.03 P
+0.28 (e) 520.42 567.03 P
+(depth of the Reed-Solomon encoder) 311.82 556.03 T
+(.) 441.3 556.03 T
+0.66 (F) 311.82 534.03 P
+0.66 (or the RESCUE de) 316.69 534.03 P
+0.66 (vice, this input together with IL1 and) 386.7 534.03 P
+3.07 (IL2 will select the Reed-Solomon encoding interlea) 311.82 523.03 P
+3.07 (v) 516.05 523.03 P
+3.07 (e) 520.42 523.03 P
+(depth, acting in tw) 311.82 512.03 T
+(o modes as de\336ned in table) 378.73 512.03 T
+(1 and table) 478.72 512.03 T
+(2.) 520.46 512.03 T
+0 F
+(Pin 12:) 311.82 226.03 T
+(IL1) 340.17 226.03 T
+3 F
+(\333) 356.42 226.03 T
+0 F
+( SEL_B \050Interlea) 365.8 226.03 T
+(v) 431.08 226.03 T
+(e Depth Select\051) 435.48 226.03 T
+2 F
+0.28 (F) 311.82 204.03 P
+0.28 (or MA1916, this input is used for selecting the interlea) 316.69 204.03 P
+0.28 (v) 516.05 204.03 P
+0.28 (e) 520.42 204.03 P
+(depth of the Reed-Solomon encoder) 311.82 193.03 T
+(.) 441.3 193.03 T
+(F) 311.82 171.03 T
+(or the RESCUE de) 316.69 171.03 T
+(vice, see IL0 for a de\336nition.) 384.71 171.03 T
+0 F
+(Pin 19:) 311.82 149.03 T
+(IL2) 340.17 149.03 T
+3 F
+(\333) 356.42 149.03 T
+0 F
+( T0 \050T) 365.8 149.03 T
+(est P) 388.97 149.03 T
+(atter) 407.13 149.03 T
+(n Select\051) 425.48 149.03 T
+2 F
+2.25 (F) 311.82 127.03 P
+2.25 (or MA1916, this input selects between patterns to be) 316.69 127.03 P
+(generated by the test generator) 311.82 116.03 T
+(.) 421.79 116.03 T
+(F) 311.82 94.03 T
+(or the RESCUE de) 316.69 94.03 T
+(vice, see IL0 for a de\336nition.) 384.71 94.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 7 Q
+(Basic mode \050compliant with MA1916\051) 363.87 484.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL0) 315.5 471.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL1) 332.5 471.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL2) 349.5 471.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Interlea) 366.53 471.36 T
+(v) 387.77 471.36 T
+(e depth) 391.16 471.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Remarks) 457.17 471.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 318.8 458.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 335.8 458.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(-) 353.38 458.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(5) 387.3 458.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL2 can be tied to logical 0 or 1) 425.48 458.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 318.8 445.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 335.8 445.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(-) 353.38 445.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(4) 387.3 445.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL2 can be tied to logical 0 or 1) 425.48 445.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 318.8 432.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 335.8 432.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(-) 353.38 432.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 387.3 432.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL2 can be tied to logical 0 or 1) 425.48 432.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 318.8 419.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 335.8 419.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(-) 353.38 419.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(5) 387.3 419.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL2 can be tied to logical 0 or 1) 425.48 419.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+(Table 1:) 312.05 402.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+1 F
+(Interleave depth selection: basic mode) 368.74 402.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 7 Q
+(Adv) 395.36 382.36 T
+(anced mode) 407.24 382.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL0) 315.5 369.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL1) 332.5 369.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL2) 349.5 369.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Interlea) 366.53 369.36 T
+(v) 387.77 369.36 T
+(e depth) 391.16 369.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Remarks) 457.17 369.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 318.8 356.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 335.8 356.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 352.8 356.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 387.3 356.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 318.8 343.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 335.8 343.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 352.8 343.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(2) 387.3 343.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 318.8 330.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 335.8 330.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 352.8 330.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(3) 387.3 330.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 318.8 317.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 335.8 317.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 352.8 317.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(4) 387.3 317.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 318.8 304.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 335.8 304.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 352.8 304.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(5) 387.3 304.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 318.8 291.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 335.8 291.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 352.8 291.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(6) 387.3 291.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(sla) 428.43 291.36 T
+(v) 436.07 291.36 T
+(e set to 3 when cascading) 439.46 291.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 318.8 278.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 335.8 278.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(0) 352.8 278.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(8) 387.3 278.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(sla) 428.43 278.36 T
+(v) 436.07 278.36 T
+(e set to 4 when cascading) 439.46 278.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 318.8 265.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 335.8 265.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 352.8 265.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(10) 385.55 265.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(sla) 428.43 265.36 T
+(v) 436.07 265.36 T
+(e set to 5 when cascading) 439.46 265.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+(Table 2:) 312.05 248.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+1 F
+(Interleave depth selection: advanced mode) 368.74 248.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+311.1 492.78 311.1 413.28 2 L
+V
+0.4 H
+0 Z
+N
+313 490.88 313 415.18 2 L
+V
+N
+329.05 479.23 329.05 415.18 2 L
+V
+N
+346.05 479.23 346.05 415.18 2 L
+V
+N
+363.05 479.23 363.05 415.18 2 L
+V
+N
+415.05 479.23 415.05 415.18 2 L
+V
+N
+523.23 490.88 523.23 415.18 2 L
+V
+N
+525.13 492.78 525.13 413.28 2 L
+V
+N
+310.9 492.98 525.33 492.98 2 L
+V
+N
+312.8 491.08 523.43 491.08 2 L
+V
+N
+313.2 479.03 523.03 479.03 2 L
+V
+N
+313.2 466.98 523.03 466.98 2 L
+V
+N
+313.2 465.08 523.03 465.08 2 L
+V
+N
+313.2 453.03 523.03 453.03 2 L
+V
+N
+313.2 440.03 523.03 440.03 2 L
+V
+N
+313.2 427.03 523.03 427.03 2 L
+V
+N
+312.8 414.98 523.43 414.98 2 L
+V
+N
+310.9 413.08 525.33 413.08 2 L
+V
+N
+311.1 390.78 311.1 259.28 2 L
+V
+N
+313 388.88 313 261.18 2 L
+V
+N
+329.05 377.23 329.05 261.18 2 L
+V
+N
+346.05 377.23 346.05 261.18 2 L
+V
+N
+363.05 377.23 363.05 261.18 2 L
+V
+N
+415.05 377.23 415.05 261.18 2 L
+V
+N
+523.23 388.88 523.23 261.18 2 L
+V
+N
+525.13 390.78 525.13 259.28 2 L
+V
+N
+310.9 390.98 525.33 390.98 2 L
+V
+N
+312.8 389.08 523.43 389.08 2 L
+V
+N
+313.2 377.03 523.03 377.03 2 L
+V
+N
+313.2 364.98 523.03 364.98 2 L
+V
+N
+313.2 363.08 523.03 363.08 2 L
+V
+N
+313.2 351.03 523.03 351.03 2 L
+V
+N
+313.2 338.03 523.03 338.03 2 L
+V
+N
+313.2 325.03 523.03 325.03 2 L
+V
+N
+313.2 312.03 523.03 312.03 2 L
+V
+N
+313.2 299.03 523.03 299.03 2 L
+V
+N
+313.2 286.03 523.03 286.03 2 L
+V
+N
+313.2 273.03 523.03 273.03 2 L
+V
+N
+312.8 260.98 523.43 260.98 2 L
+V
+N
+310.9 259.08 525.33 259.08 2 L
+V
+N
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "6" 6
+%%Page: "7" 7
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(Pin 26:) 70.87 765.03 T
+(Frame) 99.22 765.03 T
+3 F
+(\333) 126.95 765.03 T
+0 F
+( SMC \050Select Message or Checksum\051) 136.33 765.03 T
+2 F
+4 (F) 70.87 743.03 P
+4 (or MA1916, this input selects between information) 75.74 743.03 P
+1.79 (symbol input or check symbol output. No distinction is) 70.87 732.03 P
+1.52 (made between check symbol output and synchronisation) 70.87 721.03 P
+(mark) 70.87 710.03 T
+(er transfer) 89.28 710.03 T
+(.) 125.51 710.03 T
+(F) 70.87 688.03 T
+(or the RESCUE de) 75.74 688.03 T
+(vice, this input will act in tw) 143.76 688.03 T
+(o modes:) 246.42 688.03 T
+(\245) 70.87 677.03 T
+(Basic: the same functionality as for MA1916;) 85.04 677.03 T
+(\245) 70.87 666.03 T
+5.94 (Adv) 85.04 666.03 P
+5.94 (anced: this input will also select between) 100.32 666.03 P
+0.51 (information symbol input or check symbol output, b) 85.04 655.03 P
+0.51 (ut) 276.46 655.03 P
+3.74 (the distinction between check symbol output and) 85.04 644.03 P
+3.46 (synchronisation mark) 85.04 633.03 P
+3.46 (er transfer will be performed) 166.16 633.03 P
+3.08 (e) 85.04 622.03 P
+3.08 (xplicitly with the SyncMark input. This mode is) 88.9 622.03 P
+(compatible with the VCM output interf) 85.04 611.03 T
+(ace.) 226.2 611.03 T
+0 F
+(Pin 15: FrameOut) 70.87 589.03 T
+3 F
+(\333) 143.11 589.03 T
+0 F
+( SMC_OUT \050Message/Checksum\051) 152.49 589.03 T
+2 F
+(F) 70.87 567.03 T
+(or MA1916, this output is used with the test generator) 75.74 567.03 T
+(.) 269.73 567.03 T
+-0.02 (F) 70.87 545.03 P
+-0.02 (or the RESCUE de) 75.74 545.03 P
+-0.02 (vice, this output will act in tw) 143.7 545.03 P
+-0.02 (o modes:) 250.73 545.03 P
+(\245) 70.87 534.03 T
+(Basic: a logical 0 will be output;) 85.04 534.03 T
+(\245) 70.87 523.03 T
+0.99 (Adv) 85.04 523.03 P
+0.99 (anced: the Frame input v) 100.32 523.03 P
+0.99 (alue will be output after) 193.53 523.03 P
+(being sampled on the rising Clk edge.) 85.04 512.03 T
+0 F
+(Pin 2:) 70.87 490.03 T
+(SyncMark) 99.22 490.03 T
+3 F
+(\333) 141.97 490.03 T
+0 F
+( T1 \050T) 151.34 490.03 T
+(est P) 174.52 490.03 T
+(atter) 192.67 490.03 T
+(n Select\051) 211.02 490.03 T
+2 F
+2.25 (F) 70.87 468.03 P
+2.25 (or MA1916, this input selects between patterns to be) 75.74 468.03 P
+(generated by the test generator) 70.87 457.03 T
+(.) 180.84 457.03 T
+(F) 70.87 435.03 T
+(or the RESCUE de) 75.74 435.03 T
+(vice, this input will act in tw) 143.76 435.03 T
+(o modes:) 246.42 435.03 T
+(\245) 70.87 424.03 T
+(Basic: can be tied to a logical 0 or 1;) 85.04 424.03 T
+(\245) 70.87 413.03 T
+-0.12 (Adv) 85.04 413.03 P
+-0.12 (anced: this input will be used for indicating when a) 100.32 413.03 P
+(synchronisation mark) 85.04 402.03 T
+(er is transferred.) 162.7 402.03 T
+0 F
+(Pin 8:) 70.87 380.03 T
+(SyncMarkOut) 99.22 380.03 T
+3 F
+(\333) 156.97 380.03 T
+0 F
+( ST1 \050RS Output V) 166.35 380.03 T
+(alid\051) 239.03 380.03 T
+2 F
+-0.53 (F) 70.87 358.03 P
+-0.53 (or MA1916, this output indicates when the output from the) 75.74 358.03 P
+(Reed-Solomon encoder is v) 70.87 347.03 T
+(alid after a reset.) 170.38 347.03 T
+-0.02 (F) 70.87 325.03 P
+-0.02 (or the RESCUE de) 75.74 325.03 P
+-0.02 (vice, this output will act in tw) 143.7 325.03 P
+-0.02 (o modes:) 250.73 325.03 P
+(\245) 70.87 314.03 T
+0.07 (Basic: a logical 1 will be output, since the encoder will) 85.04 314.03 P
+5.51 (transfer unmodi\336ed synchronisation mark) 85.04 303.03 P
+5.51 (ers and) 252.21 303.03 P
+(produce v) 85.04 292.03 T
+(alid code) 120.56 292.03 T
+(w) 153.07 292.03 T
+(ords directly after reset;) 159.48 292.03 T
+(\245) 70.87 281.03 T
+1.73 (Adv) 85.04 281.03 P
+1.73 (anced: the SyncMark input v) 100.32 281.03 P
+1.73 (alue will be output) 211.01 281.03 P
+(after being sampled on the rising Clk edge.) 85.04 270.03 T
+0 F
+(Pin 18: RSIn) 70.87 248.03 T
+3 F
+(\333) 122.63 248.03 T
+0 F
+( MSG \050Message\051) 132.01 248.03 T
+2 F
+6.82 (F) 70.87 226.03 P
+6.82 (or MA1916, this input carries input data and) 75.74 226.03 P
+2.35 (synchronisation mark) 70.87 215.03 P
+2.35 (ers, and must be held at logical) 150.87 215.03 P
+2.35 (0) 278.96 215.03 P
+(while check symbols are output.) 70.87 204.03 T
+-0.53 (F) 70.87 182.03 P
+-0.53 (or the RESCUE de) 75.74 182.03 P
+-0.53 (vice, this input will also carry input data) 142.18 182.03 P
+0.71 (and synchronisation mark) 70.87 171.03 P
+0.71 (ers. But in the Adv) 165.19 171.03 P
+0.71 (ance mode it) 236.05 171.03 P
+-0.38 (will not be required to stay at logical 0 while check symbols) 70.87 160.03 P
+(are output, since it is mask) 70.87 149.03 T
+(ed by the SyncMark input.) 166.77 149.03 T
+0 F
+(Pin 25: RSOut) 70.87 127.03 T
+3 F
+(\333) 129.13 127.03 T
+0 F
+( RSE_OUT \050RS Output\051) 138.51 127.03 T
+2 F
+0.28 (F) 70.87 105.03 P
+0.28 (or the MA1916 and RESCUE de) 75.74 105.03 P
+0.28 (vices, this output carries) 195.14 105.03 P
+(code) 70.87 94.03 T
+(w) 87.64 94.03 T
+(ord symbols and synchronisation mark) 94.04 94.03 T
+(ers.) 233.45 94.03 T
+0 F
+(Pin 28: PseudoOut) 311.82 765.03 T
+3 F
+(\333) 386.08 765.03 T
+0 F
+( MSG_OUT \050T) 395.46 765.03 T
+(est Message Out\051) 452.63 765.03 T
+2 F
+0.5 (F) 311.82 743.03 P
+0.5 (or MA1916, this output carries patterns generated by the) 316.69 743.03 P
+(test generator) 311.82 732.03 T
+(.) 360.06 732.03 T
+-0.02 (F) 311.82 710.03 P
+-0.02 (or the RESCUE de) 316.69 710.03 P
+-0.02 (vice, this output will act in tw) 384.65 710.03 P
+-0.02 (o modes:) 491.68 710.03 P
+(\245) 311.82 699.03 T
+(Basic: a logical 0 will be output;) 325.99 699.03 T
+(\245) 311.82 688.03 T
+2.11 (Adv) 325.99 688.03 P
+2.11 (anced: this output will carry the Reed-Solomon) 341.27 688.03 P
+-0.03 (encoder output mix) 325.99 677.03 P
+-0.03 (ed with a pseudo-random sequence.) 395.8 677.03 P
+0 F
+(Pin 24:) 311.82 655.03 T
+(Symbol) 340.17 655.03 T
+3 F
+(\333) 371.42 655.03 T
+0 F
+( SYZ \050Byte Rate Clock\051) 380.8 655.03 T
+2 F
+1.55 (F) 311.82 633.03 P
+1.55 (or the MA1916 and RESCUE de) 316.69 633.03 P
+1.55 (vices, this output is a) 442.46 633.03 P
+-0.55 (symbol clock used in the Reed-Solomon encoding. It is high) 311.82 622.03 P
+(during e) 311.82 611.03 T
+(v) 341.34 611.03 T
+(ery eighth CLKS period and lo) 345.7 611.03 T
+(w at other times.) 456.72 611.03 T
+0 F
+(Pin 13:) 311.82 589.03 T
+(Symbol) 340.17 589.03 T
+3 F
+(* \333) 369.17 589.03 T
+0 F
+(SZY \050Byte Rate Clock\051) 387.55 589.03 T
+2 F
+0.11 (F) 311.82 567.03 P
+0.11 (or the MA1916 and RESCUE de) 316.69 567.03 P
+0.11 (vices, this output has the) 435.24 567.03 P
+(in) 311.82 556.03 T
+(v) 318.46 556.03 T
+(erted Symbol v) 322.83 556.03 T
+(alue \050i.e. the SYZ v) 377.6 556.03 T
+(alue for MA1916\051.) 447.86 556.03 T
+0 F
+(Pin 4:) 311.82 534.03 T
+(CEIn) 340.17 534.03 T
+3 F
+(\333) 363.42 534.03 T
+0 F
+( CE_IN \050Con) 372.8 534.03 T
+(v) 422.94 534.03 T
+(olutional Data In\051) 427.35 534.03 T
+2 F
+0.84 (F) 311.82 512.03 P
+0.84 (or the MA1916 and RESCUE de) 316.69 512.03 P
+0.84 (vices, this input carries) 438.9 512.03 P
+1.61 (input data to the Con) 311.82 501.03 P
+1.61 (v) 393.4 501.03 P
+1.61 (olutional encoder) 397.72 501.03 P
+1.61 (. This input also) 461.58 501.03 P
+1.69 (carries odd check symbols from the sla) 311.82 490.03 P
+1.69 (v) 462.24 490.03 P
+1.69 (e to the master) 466.61 490.03 P
+(when tw) 311.82 479.03 T
+(o RESCUE de) 342.47 479.03 T
+(vices are cascaded.) 394.25 479.03 T
+0 F
+(Pin 5:) 311.82 457.03 T
+(CEOut) 340.17 457.03 T
+3 F
+(\333) 369.92 457.03 T
+0 F
+( CE_OUT \050Con) 379.3 457.03 T
+(v) 438.94 457.03 T
+(olutional Output\051) 443.35 457.03 T
+2 F
+0.28 (F) 311.82 435.03 P
+0.28 (or the MA1916 and RESCUE de) 316.69 435.03 P
+0.28 (vices, this output carries) 436.09 435.03 P
+(output symbols from the Con) 311.82 424.03 T
+(v) 416.97 424.03 T
+(olutional encoder) 421.29 424.03 T
+(.) 483.53 424.03 T
+0 F
+(Pin 7 and 20:) 311.82 402.03 T
+(NC) 364.83 402.03 T
+3 F
+(\333) 380.08 402.03 T
+0 F
+( N/C \050Not connected\051) 389.45 402.03 T
+2 F
+-0.06 (No dif) 311.82 380.03 P
+-0.06 (ference between the MA1916 and RESCUE de) 334.78 380.03 P
+-0.06 (vices.) 503.67 380.03 P
+0 F
+(Pin 11:) 311.82 358.03 T
+(Unused) 340.17 358.03 T
+3 F
+(\333) 371.42 358.03 T
+0 F
+( ST2 \050Pr) 380.8 358.03 T
+(oduction T) 413.14 358.03 T
+(est Output\051) 454.07 358.03 T
+2 F
+(F) 311.82 336.03 T
+(or MA1916, this output is used for production testing.) 316.69 336.03 T
+(F) 311.82 314.03 T
+(or the RESCUE de) 316.69 314.03 T
+(vice, a logical 0 will be output.) 384.71 314.03 T
+0 F
+(Pin 16:) 311.82 292.03 T
+(Unused) 340.17 292.03 T
+3 F
+(\333) 371.42 292.03 T
+0 F
+( READ) 380.8 292.03 T
+(Y \050T) 408.19 292.03 T
+(est Data V) 425.11 292.03 T
+(alid\051) 464.27 292.03 T
+2 F
+(F) 311.82 270.03 T
+(or MA1916, this output is used for test patter generation.) 316.69 270.03 T
+(F) 311.82 248.03 T
+(or the RESCUE de) 316.69 248.03 T
+(vice, a logical 1 will be output.) 384.71 248.03 T
+0 F
+(Pin 23:) 311.82 226.03 T
+(Unused) 340.17 226.03 T
+3 F
+(\333) 371.42 226.03 T
+0 F
+( T3 \050Pr) 380.8 226.03 T
+(oduction T) 408.13 226.03 T
+(est Input\051) 449.07 226.03 T
+2 F
+(F) 311.82 204.03 T
+(or MA1916, this input is used for production testing.) 316.69 204.03 T
+(F) 311.82 182.03 T
+(or the RESCUE de) 316.69 182.03 T
+(vice, it can be tied to a logical) 384.71 182.03 T
+(0 or 1.) 494.94 182.03 T
+0 F
+(Pin 9:) 311.82 160.03 T
+(VSS) 340.17 160.03 T
+3 F
+(\333) 358.92 160.03 T
+0 F
+( VSS) 368.3 160.03 T
+2 F
+-0.06 (No dif) 311.82 138.03 P
+-0.06 (ference between the MA1916 and RESCUE de) 334.78 138.03 P
+-0.06 (vices.) 503.67 138.03 P
+0 F
+(Pin 21: VDD) 311.82 116.03 T
+3 F
+(\333) 363.07 116.03 T
+0 F
+( VDD) 372.44 116.03 T
+2 F
+-0.06 (No dif) 311.82 94.03 P
+-0.06 (ference between the MA1916 and RESCUE de) 334.78 94.03 P
+-0.06 (vices.) 503.67 94.03 P
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "7" 7
+%%Page: "8" 8
+595.3 841.89 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(8) 70.87 361.03 T
+(SUMMAR) 99.22 361.03 T
+(Y) 140.39 361.03 T
+2 F
+1.33 (An ongoing de) 70.87 339.03 P
+1.33 (v) 126.8 339.03 P
+1.33 (elopment of reusable Reed-Solomon and) 131.16 339.03 P
+3.49 (Con) 70.87 328.03 P
+3.49 (v) 85.51 328.03 P
+3.49 (olutional encoder cores has been presented. The) 89.83 328.03 P
+1.9 (encoders are oriented to) 70.87 317.03 P
+1.9 (w) 162.56 317.03 P
+1.9 (ards lo) 168.97 317.03 P
+1.9 (w or medium data rate) 194.89 317.03 P
+0.77 (applications such as pack) 70.87 306.03 P
+0.77 (et telemetry) 164.34 306.03 P
+0.77 (. The) 207.27 306.03 P
+0.77 (y are written in) 226.4 306.03 P
+0.05 (synthesizable VHDL and can be modi\336ed to accommodate) 70.87 295.03 P
+(higher data rates or other encoding algorithms if required.) 70.87 284.03 T
+-0.38 (The cores will potentially pro) 70.87 262.03 P
+-0.38 (vide reduction of design ef) 175.72 262.03 P
+-0.38 (fort) 270.47 262.03 P
+1.03 (for de) 70.87 251.03 P
+1.03 (vices that incorporate them, since the) 92.92 251.03 P
+1.03 (y already will) 231.91 251.03 P
+9.27 (ha) 70.87 240.03 P
+9.27 (v) 79.19 240.03 P
+9.27 (e been v) 83.55 240.03 P
+9.27 (eri\336ed for correct operation and) 131.94 240.03 P
+1.87 (implementability) 70.87 229.03 P
+1.87 (. If a de) 131.79 229.03 P
+1.87 (vice incorporating the encoders) 164.65 229.03 P
+-0.35 (needs to be transferred to another foundry) 70.87 218.03 P
+-0.35 (, the cores will act) 219.13 218.03 P
+(as a virtual second source reducing further design ef) 70.87 207.03 T
+(forts.) 258.59 207.03 T
+2.5 (In parallel with the current encoder core de) 70.87 185.03 P
+2.5 (v) 243.35 185.03 P
+2.5 (elopment,) 247.71 185.03 P
+1.79 (further speci\336cation of a radiation hard de) 70.87 174.03 P
+1.79 (vice that will) 232.88 174.03 P
+2.95 (replace the discontinued MA1916 de) 70.87 163.03 P
+2.95 (vice is necessary) 215.42 163.03 P
+2.95 (.) 281.21 163.03 P
+0.8 (Users are ask) 70.87 152.03 P
+0.8 (ed to pro) 120.35 152.03 P
+0.8 (vide detailed requirements on what) 153.8 152.03 P
+-0.21 (functionality is needed and what ne) 70.87 141.03 P
+-0.21 (w capabilities should be) 197.34 141.03 P
+(incorporated in the replacement de) 70.87 130.03 T
+(vice named RESCUE.) 195.61 130.03 T
+3.05 (Please direct comments and suggestions re) 70.87 108.03 P
+3.05 (g) 239.71 108.03 P
+3.05 (arding the) 244.17 108.03 P
+(preliminary RESCUE de) 70.87 97.03 T
+(vice speci\336cation to the author) 160.14 97.03 T
+(.) 270.13 97.03 T
+0 F
+(9) 311.82 361.03 T
+(REFERENCES) 340.17 361.03 T
+2 F
+(1) 311.82 339.03 T
+-0.54 (T) 325.99 339.03 P
+-0.54 (elemetry Channel Coding Standard, ESA PSS-04-103,) 330.86 339.03 P
+(Issue 1, September 1989) 325.99 328.03 T
+(2) 311.82 317.03 T
+(T) 325.99 317.03 T
+(elemetry Channel Coding, CCSDS 101.0-B-3, 1992) 330.86 317.03 T
+(3) 311.82 306.03 T
+0.42 (P) 325.99 306.03 P
+0.42 (ack) 330.86 306.03 P
+0.42 (et T) 343.26 306.03 P
+0.42 (elemetry Standard, ESA PSS-04-106, Issue 1,) 357.3 306.03 P
+(January 1988) 325.99 295.03 T
+(4) 311.82 284.03 T
+(P) 325.99 284.03 T
+(ack) 330.86 284.03 T
+(et T) 343.26 284.03 T
+(elemetry) 356.88 284.03 T
+(, CCSDS 102.0-B-4, 1995) 387.79 284.03 T
+(5) 311.82 273.03 T
+(Adv) 325.99 273.03 T
+(anced Orbiting Systems, CCSDS 701.0-B-2, 1992) 341.27 273.03 T
+(6) 311.82 262.03 T
+(GPS SOS Radiation Hard Handbook, July 1995) 325.99 262.03 T
+(7) 311.82 251.03 T
+(MITEL VCM HAF_12396 Data Sheet, January 1994) 325.99 251.03 T
+0 F
+(10) 311.82 229.03 T
+(A) 340.17 229.03 T
+(CR) 346.17 229.03 T
+(ONYMS AND ABBREVIA) 358.89 229.03 T
+(TIONS) 463.03 229.03 T
+2 F
+(ASSP) 311.82 207.03 T
+(Application Speci\336c Standard Product) 340.17 207.03 T
+-0.63 (CCSDS) 311.82 196.03 S
+(Consultati) 340.17 196.03 T
+(v) 376.95 196.03 T
+(e Committee for Space Data) 381.31 196.03 T
+( Systems) 483.29 196.03 T
+(CMOS) 311.82 185.03 T
+(Complementary Metal-Oxide Semiconductor) 340.17 185.03 T
+(RS) 311.82 174.03 T
+(Reed-Solomon) 340.17 174.03 T
+(SEU) 311.82 163.03 T
+(Single Ev) 340.17 163.03 T
+(ent Upset) 375.28 163.03 T
+(SOS) 311.82 152.03 T
+(Silicon On Sapphire) 340.17 152.03 T
+(VCM) 311.82 141.03 T
+(V) 340.17 141.03 T
+(irtual Channel Multiple) 346.12 141.03 T
+(x) 430.49 141.03 T
+(er) 434.86 141.03 T
+(VHDL) 311.82 130.03 T
+(VHSIC Hardw) 340.17 130.03 T
+(are Description Language) 393.82 130.03 T
+-0.63 (VHSIC) 311.82 119.03 S
+(V) 340.17 119.03 T
+(ery High Speed Inte) 345.67 119.03 T
+(grated Circuits) 417.76 119.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 7 Q
+(Pin) 85.7 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(number) 79.68 753.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I/O) 120.21 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(type) 118.84 753.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(RESCUE) 151.45 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(pin name) 151.94 753.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(MA1916) 201.33 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(pin name) 201.04 753.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Basic mode) 251.39 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Adv) 315.33 761.36 T
+(anced mode) 327.21 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Compatible) 385.25 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(with MA1916) 381.85 753.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Remarks) 461.75 761.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(1) 88.62 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Adv) 150.77 738.36 T
+(anced) 162.65 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(T2) 210.08 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(tie to logical 0) 247.7 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(tie to logical 1) 317.96 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(partially) 389.92 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(mode selection) 453.1 738.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(14) 86.87 725.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 725.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Reset) 155.34 725.36 T
+3 F
+(*) 170.9 725.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 F
+(n_RST) 204.05 725.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(reset) 261.21 725.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 725.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 725.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(17) 86.87 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Clk2) 158.06 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CLK) 206.96 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as CLK) 257.03 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(partially) 389.92 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(dri) 433.13 712.36 T
+(v) 440.73 712.36 T
+(es Con) 444.13 712.36 T
+(v) 463.1 712.36 T
+(olutional encoder) 466.46 712.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(27) 86.87 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Clk2Out) 152.81 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CLK_OUT) 198.02 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as CLK_OUT) 248.09 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Clk2 b) 454.81 699.36 T
+(uf) 473.54 699.36 T
+(fered) 479.19 699.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(22) 86.87 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(ClkOut) 154.56 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CLKS) 205.02 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as CLKS) 255.09 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(al) 317.06 686.36 T
+(w) 322.05 686.36 T
+(ays toggled) 327.03 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Clk2 di) 449.1 686.36 T
+(vided by 2) 469.73 686.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(3) 88.62 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Clk) 159.81 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CE_CLKS) 198.8 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as CE_CLKS) 248.86 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(partially) 389.92 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(dri) 431.95 673.36 T
+(v) 439.55 673.36 T
+(es Reed-Solomon encoder) 442.95 673.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(6) 88.62 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(ClkSla) 152.16 660.36 T
+(v) 171.08 660.36 T
+(e) 174.47 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(TEST_POINT) 193.55 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(logical 0) 255.67 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(sla) 322.56 660.36 T
+(v) 330.2 660.36 T
+(e clock) 333.59 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(partially) 389.92 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(used for cascading) 448.15 660.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(10) 86.87 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL0) 159.82 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SEL_A) 203.46 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as SEL_A) 253.53 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(selects interlea) 305.55 647.36 T
+(v) 346.82 647.36 T
+(e depth) 350.21 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(supports 1-5 in adv) 430.54 647.36 T
+(anced mode) 484.22 647.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(12) 86.87 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL1) 159.82 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SEL_B) 203.66 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as SEL_B) 253.73 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(selects interlea) 305.55 634.36 T
+(v) 346.82 634.36 T
+(e depth) 350.21 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(supports 1-5 in adv) 430.54 634.36 T
+(anced mode) 484.22 634.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(19) 86.87 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(IL2) 159.82 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(T0) 210.08 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(tie to logical 0 or 1) 241.28 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(selects interlea) 305.55 621.36 T
+(v) 346.82 621.36 T
+(e depth) 350.21 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(supports 1-5 in adv) 430.54 621.36 T
+(anced mode) 484.22 621.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(26) 86.87 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Frame) 155.93 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SMC) 206.57 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as SMC) 256.64 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(compatible with VCM) 442.69 608.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(15) 86.87 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(FrameOut) 150.68 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SMC_OUT) 197.63 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SMC delayed) 248.67 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(no) 398.09 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(\050old test generator output\051) 437.74 595.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(2) 88.62 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SyncMark) 150.29 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(T1) 210.08 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(tie to logical 0 or 1) 241.28 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(bypass RS encoding) 309.7 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(compatible with VCM) 442.69 582.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(8) 88.62 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SyncMarkOut) 145.04 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(ST1) 208.13 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(logical 1) 255.67 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SyncMark delayed) 311.75 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(partially) 389.92 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(\050old production test output\051) 435.79 569.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(18) 86.87 556.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 556.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(RSIn) 157.67 556.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(MSG) 206.38 556.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as MSG) 256.45 556.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 556.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 556.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(25) 86.87 543.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 543.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(RSOut) 155.34 543.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(RSE_OUT) 198.6 543.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as RSE_OUT) 248.67 543.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 543.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 543.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(28) 86.87 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(PseudoOut) 149.51 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(MSG_OUT) 197.44 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(logical 0) 255.67 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(pseudo-random transitions) 300.85 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(no) 398.09 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(\050old test generator output\051) 437.74 530.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(24) 86.87 517.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 517.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Symbol) 153.98 517.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(SYZ) 207.35 517.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as SYZ) 257.42 517.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 517.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 517.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(13) 86.87 504.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 504.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Symbol) 152.23 504.36 T
+3 F
+(*) 174.01 504.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+2 F
+(SZY) 207.35 504.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as SZY) 257.42 504.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 504.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 504.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(4) 88.62 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CEIn) 157.48 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CE_IN) 204.05 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as CE_IN) 254.12 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(also used for cascading) 441.63 491.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(5) 88.62 478.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 478.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CEOut) 155.15 478.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(CE_OUT) 200.55 478.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as CE_OUT) 250.62 478.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(as for Basic mode) 312.91 478.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 478.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(7 & 20) 80.65 465.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(N/C) 119.04 465.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(NC) 160.01 465.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(N/C) 208.13 465.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 465.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(11) 86.87 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Unused) 154.18 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(ST2) 208.13 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(logical 0) 255.67 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(logical 0) 325.93 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(partially) 389.92 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(v) 429.66 452.36 T
+(alue compatible with MA1916) 432.98 452.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(16) 86.87 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(O) 122.34 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Unused) 154.18 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(READ) 202.1 439.36 T
+(Y) 220.77 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(logical 1) 255.67 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(logical 1) 325.93 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(partially) 389.92 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(v) 429.66 439.36 T
+(alue compatible with MA1916) 432.98 439.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(23) 86.87 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(I) 123.71 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(Unused) 154.18 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(T3) 210.08 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(tie to logical 0 or 1) 241.28 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(tie to logical 0 or 1) 311.55 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(\050old production test input\051) 437.54 426.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(9) 88.62 413.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(P) 122.92 413.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(VSS) 158.45 413.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(VSS) 207.55 413.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 413.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(21) 86.87 400.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(P) 122.92 400.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(VDD) 157.29 400.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(VDD) 206.38 400.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+(yes) 396.92 400.36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+(Table 3:) 70.87 383.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+1 F
+(Comparison between the pinouts of the RESCUE and MA1916 de) 127.56 383.03 T
+(vices) 363.67 383.03 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+69.92 771.78 69.92 394.28 2 L
+V
+0.4 H
+0 Z
+N
+71.82 769.88 71.82 396.18 2 L
+V
+N
+109.87 769.88 109.87 396.18 2 L
+V
+N
+139.87 769.88 139.87 396.18 2 L
+V
+N
+189.87 769.88 189.87 396.18 2 L
+V
+N
+238.06 769.88 238.06 396.18 2 L
+V
+N
+297.59 769.88 297.59 396.18 2 L
+V
+N
+378.59 769.88 378.59 396.18 2 L
+V
+N
+424.59 769.88 424.59 396.18 2 L
+V
+N
+522.85 769.88 522.85 396.18 2 L
+V
+N
+524.75 771.78 524.75 394.28 2 L
+V
+N
+69.72 771.98 524.95 771.98 2 L
+V
+N
+71.62 770.08 523.05 770.08 2 L
+V
+N
+72.02 746.98 522.65 746.98 2 L
+V
+N
+72.02 745.08 522.65 745.08 2 L
+V
+N
+72.02 733.03 522.65 733.03 2 L
+V
+N
+72.02 720.03 522.65 720.03 2 L
+V
+N
+72.02 707.03 522.65 707.03 2 L
+V
+N
+72.02 694.03 522.65 694.03 2 L
+V
+N
+72.02 681.03 522.65 681.03 2 L
+V
+N
+72.02 668.03 522.65 668.03 2 L
+V
+N
+72.02 655.03 522.65 655.03 2 L
+V
+N
+72.02 642.03 522.65 642.03 2 L
+V
+N
+72.02 629.03 522.65 629.03 2 L
+V
+N
+72.02 616.03 522.65 616.03 2 L
+V
+N
+72.02 603.03 522.65 603.03 2 L
+V
+N
+72.02 590.03 522.65 590.03 2 L
+V
+N
+72.02 577.03 522.65 577.03 2 L
+V
+N
+72.02 564.03 522.65 564.03 2 L
+V
+N
+72.02 551.03 522.65 551.03 2 L
+V
+N
+72.02 538.03 522.65 538.03 2 L
+V
+N
+72.02 525.03 522.65 525.03 2 L
+V
+N
+72.02 512.03 522.65 512.03 2 L
+V
+N
+72.02 499.03 522.65 499.03 2 L
+V
+N
+72.02 486.03 522.65 486.03 2 L
+V
+N
+72.02 473.03 522.65 473.03 2 L
+V
+N
+72.02 460.03 522.65 460.03 2 L
+V
+N
+72.02 447.03 522.65 447.03 2 L
+V
+N
+72.02 434.03 522.65 434.03 2 L
+V
+N
+72.02 421.03 522.65 421.03 2 L
+V
+N
+72.02 408.03 522.65 408.03 2 L
+V
+N
+71.62 395.98 523.05 395.98 2 L
+V
+N
+69.72 394.08 524.95 394.08 2 L
+V
+N
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "8" 8
+%%Trailer
+%%BoundingBox: 0 0 595.3 841.89
+%%PageOrder: Ascend
+%%Pages: 8
+%%DocumentFonts: Times-Bold
+%%+ Times-Italic
+%%+ Times-Roman
+%%+ Symbol
+%%+ Helvetica
+%%EOF

@@ -1,0 +1,143 @@
+
+fcheck-1.1, ERC32 FPU rev.B ldd/std bug checker
+-----------------------------------------------
+
+1. Introduction
+
+Fcheck checks for the failing FPU instruction sequences identified in
+the ERC32 bug list ("Current errors in ERC32 CBA", Issue 1, 04-02-1997, MHS).
+It will check for all three failing sequences as described in paragraphs
+3.1, 3.2, and 3.3. The failing sequences are denoted case 1, case 2 and case 3
+respectively.
+
+The fcheck program reads binaries in either a.out, srecords or tektronix hex
+format. The following syntax is used:
+
+	fcheck [-c] [-v] [-sec sec_name] files ...
+
+The program will scan the text part of the binary and report the address of
+each failing sequence found. The -v switch will also dump a dis-assembly of
+the failing sequence. As default, only sections named '.text' or '.sec1' are
+checked, ocrresponding to the text sections in a.out and srec formats. The
+-sec switch can be used to also check sections with other names. Since
+case 3 errors only occurs when waitstates are used, they can be neglected
+in most systems. If the '-c' switch is given to fcheck, only case 1 and
+case 2 will be flagged.
+
+The program will report found failing sequences as follows:
+
+> fcheck test.o
+ERROR 1 at 00000010, (lddf/stdf)
+ERROR 2 at 00000018, (ldfsr/stfsr)
+ERROR 3 at 00000000, (ldf/FPops)
+
+The error type correspond to the error case as defined above.
+Using the -v switch, the failing instructions are also provided:
+
+> fcheck -v test.o
+loading test.o:
+checking section .text at 0x00000000 (160 bytes)
+ERROR 1 at 00000010, (lddf/stdf)
+ldd  [ %o0 ], %f30
+std  %f28, [ %fp ]
+ERROR 2 at 00000018, (ldfsr/stfsr)
+ld  [ %o0 ], %fsr
+st  %fsr, [ %fp ]
+ERROR 3 at 00000000, (ldf/FPops)
+ld  [ %o0 ], %f0
+fdivs  %f0, %f2, %f4
+
+
+
+The provided program runs on sparcstaions under SunOs or Solaris.
+
+2. Bug description
+
+2.1 Case 1
+
+The error occurs in the following sequence:
+
+	ldd	[...], %fd1
+	std	%fd2, [%rs1 + ...]
+
+If %fd1 is equal to %rs1, AND %fd1 is not equal to %fd2, THEN the std
+instrution will store the wrong data. Examples:
+
+This sequence will fail:
+
+	ldd	[%o0], %f30
+	std	%f28, [%fp]
+
+because %f30 is equal to %fp (r30).
+
+The two following sequences will NOT fail:
+
+	ldd	[%o0], %f30
+	std	%f30, [%fp]
+
+	ldd	[%o0], %f30
+	std	%f28, [%i0]
+
+2.2 Case 2
+
+The error occurs in the following sequence:
+
+ 1. Single-precision load followed by single-precision store or FPop
+
+	ld 	[..], %fN
+	FPops 	%fX, %fY, %fZ
+    
+	ld 	[..], %fN
+	st 	%fX, [..]
+    
+    Error is flagged if N=X or N=Y. 
+
+ 2. Single-precision load followed by double-precision store or FPop
+
+	ld 	[..], %fN
+	FPopd 	%fX, %fY, %fZ
+    
+	ld 	[..], %fN
+	std 	%fX, [..]
+    
+    Error is flagged if N=X or N=Y. Note that N is truncated to an even
+    value since double-precision FPop always use even %f registers.
+
+
+ 3. Double-precision load followed by single-precision load or FPop
+
+	ldd 	[..], %fN
+	FPops 	%fX, %fY, %fZ
+
+	ldd 	[..], %fN
+	st 	%fX, [..]
+    
+    
+    Error is flagged if N=X or N=Y. Note that X and Y are truncated to an even
+    value since double-precision load always use even %f registers.
+
+ 3. Double-precision load followed by double-precision load or FPop
+
+	ldd 	[..], %fN
+	FPop 	%fX, %fY, %fZ
+
+	ldd 	[..], %fN
+	std 	%fX, [..]
+    
+    Error is flagged if N=X or N=Y.
+
+2.3 Case 3
+
+The error occurs in the following sequence:
+
+	ld	[..], %fsr
+	st	%fsr, [..]
+
+
+Report errors to jgais@wd.estec.esa.nl
+
+Good luck!!!
+
+Jiri.
+
+

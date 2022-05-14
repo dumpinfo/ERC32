@@ -1,0 +1,49 @@
+Last updated 11 Feb 1999 by sh
+
+
+       European Space Agency VHDL Repository: temporary directory
+       =========================================================
+
+This directory is used for storing information related to VHDL, ASIC
+design, FPGAs and components for designing spacecraft electronics.
+
+
+                             COPYRIGHT
+                             ---------
+
+Unless otherwise specified, the following copyright notice applies to
+all information in this repository:
+
+    Copyright (c) 1997 European Space Agency. All rights reserved.
+
+    This information may be used and distributed without restriction
+    provided that this copyright statement is retained and that any
+    derivative work acknowledges the origin of the information.
+
+
+                             DISCLAIMER
+                             ----------
+
+All information is provided "as is", there is no warranty that the
+information is correct or suitable for any purpose, neither implicit
+nor explicit.
+
+The information does not necessarily reflect the policy of the European 
+Space Agency.
+
+
+                             CONTENTS
+                             --------
+
+EVI32.pdf       "ERC32 VMEBus Interface (EVI32) - Functional Specification"
+                 Format: Adobe PDF
+
+EVI32-1.3.zip   "ERC32 VMEBus Interface (EVI32) - Synthesizable VHDL Model"
+                 Format: Encrypted ZIP 
+                 UnZip for Unix can be found at ftp://ftp.icce.rug.nl/infozip
+                 Contact Jiri Gaisler (jgais@ws.estec.esa.nl) for key
+
+cenelec2.14.ps   link to ../doc/cenelec2.14.ps. See README file in that
+                 directory. Do *NOT* reference this link, instead reference
+                 ../doc/cenelec2.14.ps since this link will be removed in
+                 the future.

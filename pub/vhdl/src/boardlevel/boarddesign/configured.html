@@ -1,0 +1,169 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BoardDesign(Configured) (Architecture)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : Configured.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : The architecture contains information on connectivity,
+</font></i><font color=green><i>--                and timing related information and selection of
+</font></i><font color=green><i>--                entity/architecture is made here.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : 
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BoardDesign_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164,
+</font></i><font color=green><i>--                BitMod_Lib.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New model
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Naming convention: Active low signals are indicated by _N.
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=blue>library</font> BitMod_Lib;
+
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Vital_Timing.<font color=blue>all</font>;
+
+<font color=green><i>-- The timing package contents are not made visible since this would potentially
+</font></i><font color=green><i>-- conflict with any contenst of timing packages of other models. (This is not
+</font></i><font color=green><i>-- illustrated in this example).
+</font></i>
+<font color=blue>architecture</font> Configured <font color=blue>of</font> BoardDesign <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Component declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- The generic declaration needs only to include those generics which will
+</font></i>   <font color=green><i>-- be associated in the architecture. The rest will take default values
+</font></i>   <font color=green><i>-- as defined for the entity referenced in the _for all_ statement. 
+</font></i>   <font color=green><i>--
+</font></i>   <font color=green><i>-- The timing generic delcaration need to have the default value
+</font></i>   <font color=green><i>-- as defined for the entity, since one instantiation will have
+</font></i>   <font color=green><i>-- unmodified timing (IC2). The default value is fetched from the
+</font></i>   <font color=green><i>-- timing package, with a full named selection not to conflict with
+</font></i>   <font color=green><i>-- any other paramters of other models.
+</font></i>   <font color=green><i>--
+</font></i>   <font color=blue>component</font> BitMod
+      <font color=blue>generic</font>(
+         SimCondition:   SimConditionType := WorstCase;
+         InstancePath:   <font color=red>String</font>           := <font color=black>"BitMod:"</font>;
+         TimingChecksOn: <font color=red>Boolean</font>          := <font color=red>False</font>;
+         tpd_Clk_MData:  TimeArray01      := 
+                               BitMod_Lib.BitMod_Timing.tpd_Clk_MData);
+      <font color=blue>port</font>(
+         Test:    <font color=blue>in</font>     <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);     <font color=green><i>-- Test mode
+</font></i>         Clk:     <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Master Clock
+</font></i>         Reset_N: <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Master Reset
+</font></i>         A:       <font color=blue>in</font>     <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);     <font color=green><i>-- Address bus
+</font></i>         CS_N:    <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Chip select, act. low
+</font></i>         RW_N:    <font color=blue>in</font>     <font color=red>Std_Logic</font>;                    <font color=green><i>-- Read/write, read = 1
+</font></i>         D:       <font color=blue>inout</font>  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);     <font color=green><i>-- Bidir. data bus
+</font></i>         SClk:    <font color=blue>in</font>     <font color=red>Std_ULogic</font>;                   <font color=green><i>-- Serial Clock
+</font></i>         SData:   <font color=blue>in</font>     <font color=red>Std_ULogic</font>;                   <font color=green><i>-- Serial input Data
+</font></i>         MData:   <font color=blue>out</font>    <font color=red>Std_Logic</font>);                   <font color=green><i>-- Modulated output Data
+</font></i>   <font color=blue>end</font> <font color=blue>component</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Local signal declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>signal</font> Data0: <font color=red>Std_ULogic</font>;                           <font color=green><i>-- Serial Data
+</font></i>   <font color=blue>signal</font> Data1: <font color=red>Std_ULogic</font>;                           <font color=green><i>-- Serial Data
+</font></i>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Configuration of components.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- All instances of the component BitMod are tied to the entity
+</font></i>   <font color=green><i>-- configured by BitMod_Configuration in this configuration 
+</font></i>   <font color=green><i>-- specification.
+</font></i>   <font color=blue>for</font> <font color=blue>all</font>: BitMod
+         <font color=blue>use</font> <font color=blue>configuration</font> BitMod_Lib.BitMod_Configuration;
+
+<font color=blue>begin</font> <font color=green><i>--========================== Architecture ==============================--
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Instantiation of components.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   IC0: BitMod                                 <font color=green><i>-- Annotated timing
+</font></i>      <font color=blue>generic</font> <font color=blue>map</font>(
+         SimCondition   => SimCondition,
+         InstancePath   => InstancePath&<font color=black>"IC0:"</font>,
+         TimingChecksOn => TimingChecksOn,
+         tpd_Clk_MData  => 
+
+            ((BitMod_Lib.BitMod_Timing.tpd_Clk_MData(WorstCase)(tr01) + 5 ns,
+              BitMod_Lib.BitMod_Timing.tpd_Clk_MData(WorstCase)(tr10)+ 5 ns),
+
+             (BitMod_Lib.BitMod_Timing.tpd_Clk_MData(TypCase)(tr01)+ 5 ns,
+              BitMod_Lib.BitMod_Timing.tpd_Clk_MData(TypCase)(tr10)+ 5 ns),
+
+             (BitMod_Lib.BitMod_Timing.tpd_Clk_MData(BestCase)(tr01)+ 5 ns,
+              BitMod_Lib.BitMod_Timing.tpd_Clk_MData(BestCase)(tr10)+ 5 ns)))
+      <font color=blue>port</font> <font color=blue>map</font>(
+         Test     => Test,
+         Clk      => Clk,
+         Reset_N  => Reset_N,
+         A        => A,
+         CS_N     => CS0_N,
+         RW_N     => RW_N,
+         D        => D,
+         SClk     => SClk,
+         SData    => DataIn,
+         MData    => Data0);
+
+   IC1: BitMod                                 <font color=green><i>-- Absolute timing
+</font></i>      <font color=blue>generic</font> <font color=blue>map</font>(
+         SimCondition   => SimCondition,
+         InstancePath   => InstancePath&<font color=black>"IC1:"</font>,
+         TimingChecksOn => TimingChecksOn,
+         tpd_Clk_MData  => ((5 ns, 5 ns), (5 ns, 5 ns), (5 ns, 5 ns)))
+      <font color=blue>port</font> <font color=blue>map</font>(
+         Test     => Test,
+         Clk      => Clk,
+         Reset_N  => Reset_N,
+         A        => A,
+         CS_N     => CS1_N,
+         RW_N     => RW_N,
+         D        => D,
+         SClk     => SClk,
+         SData    => Data0,
+         MData    => Data1);
+
+   IC2: BitMod                                 <font color=green><i>-- Unmodified timing
+</font></i>      <font color=blue>generic</font> <font color=blue>map</font>(
+         SimCondition   => SimCondition,
+         InstancePath   => InstancePath&<font color=black>"IC2:"</font>,
+         TimingChecksOn => TimingChecksOn)
+      <font color=blue>port</font> <font color=blue>map</font>(
+         Test     => Test,
+         Clk      => Clk,
+         Reset_N  => Reset_N,
+         A        => A,
+         CS_N     => CS2_N,
+         RW_N     => RW_N,
+         D        => D,
+         SClk     => SClk,
+         SData    => Data1,
+         MData    => DataOut);
+<font color=blue>end</font> Configured; <font color=green><i>--================== End of architecture =====================--
+</font></i></pre>
+</body>
+</html>

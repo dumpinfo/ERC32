@@ -1,0 +1,51 @@
+Last updated 19 February 1996 by sh.
+
+
+      European Space Agency VHDL Repository: Board-level directory
+      ============================================================
+
+This directory is used for storing VHDL source code related to the document 
+"VHDL Models for Board-level Simulation".
+
+                             COPYRIGHT
+                             ---------
+
+Unless otherwise specified, the following copyright notice applies to
+all information in this repository:
+
+    Copyright (c) 1995 European Space Agency. All rights reserved.
+
+    This information may be used and distributed without restriction
+    provided that this copyright statement is retained and that any
+    derivative work acknowledges the origin of the information.
+
+
+                             DISCLAIMER
+                             ----------
+
+All information is provided "as is", there is no warranty that the
+information is correct or suitable for any purpose, neither implicit
+nor explicit.
+
+The information does not necessarily reflect the policy of the European 
+Space Agency.
+
+
+                             CONTENTS
+                             --------
+boardlevel.tar.Z  Compressed tar-file containing this directory.
+
+bitmod/           Directory for VHDL source code of a model for board-level 
+                  simulation.
+
+bitmod_tb/        Directory for VHDL source code for the verification of a
+                  model for board-level simulation.
+
+boarddesign/      Directory for VHDL source code of a board design using
+                  models for board-level simulation.
+
+boarddesign_t/    Directory for VHDL source code for the verification of a
+                  board design with models for board-level simulation.
+
+esa/              Directory for VHDL source code of packages defined by ESA.
+

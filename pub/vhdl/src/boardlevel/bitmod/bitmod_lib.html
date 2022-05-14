@@ -1,0 +1,1086 @@
+<html>
+<body bgcolor="white">
+<pre>
+<font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BitMod_Definition (Package declaration and body)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : bitmod_definition.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : This packages defines the conversion functions used for
+</font></i><font color=green><i>--                the BitMod design which are not contained in the
+</font></i><font color=green><i>--                IEEE Std_Logic_1164 package.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : Functions are held as simple as possible.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New package
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;
+
+<font color=blue>package</font> BitMod_Definition <font color=blue>is</font>
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Integer to Std_Logic_Vector (0 to Size-1).
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_StdLogicVector(
+      <font color=blue>constant</font> Arg:                 <font color=red>Integer</font>;
+      <font color=blue>constant</font> Size:                <font color=red>Integer</font>        := 8)
+      <font color=blue>return</font>                        <font color=red>Std_Logic_Vector</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts unsigned Std_Logic_Vector to Integer, leftmost bit is MSB
+</font></i>   <font color=green><i>-- Error message for unknowns (U, X, W, Z, -), converted to 0
+</font></i>   <font color=green><i>-- Verifies whether vector is too long (> 31 bits)
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_Integer(
+      <font color=blue>constant</font> Vector:              <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> VectorName:          <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_Integer"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Integer</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the relation between two clocks
+</font></i>   <font color=green><i>-- If FasterThanRef = True,
+</font></i>   <font color=green><i>-- then the TestSignal may not have more than Period rising edges 
+</font></i>   <font color=green><i>-- between two RefSignal rising edges.
+</font></i>   <font color=green><i>-- If FasterThanRef = False,
+</font></i>   <font color=green><i>-- then the RefSignal may not have more than Period rising edges 
+</font></i>   <font color=green><i>-- between two TestSignal rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> PeriodCheck(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> FasterThanRef:   <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"PeriodCheck:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>);
+
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the TestPort stable width w.r.t. number of RefPort rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> CheckWidth(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> TestSignalLevel: <font color=blue>in</font>    <font color=red>Std_ULogic</font>     := '0';
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"CheckWidth:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>);
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_ULogic to X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur 
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package 
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_Logic_Vector to Std_ULogic_Vector of X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur 
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic_Vector</font>;
+
+<font color=blue>end</font> BitMod_Definition; <font color=green><i>--============ End of package header ==================--
+</font></i>
+<font color=blue>package</font> <font color=blue>body</font> BitMod_Definition <font color=blue>is</font>
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Integer to Std_Logic_Vector (0 to Size-1).
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_StdLogicVector(
+      <font color=blue>constant</font> Arg:                 <font color=red>Integer</font>;
+      <font color=blue>constant</font> Size:                <font color=red>Integer</font>        := 8)
+      <font color=blue>return</font>                        <font color=red>Std_Logic_Vector</font> <font color=blue>is</font>
+   <font color=blue>begin</font>       
+      <font color=blue>return</font> <font color=red>Std_Logic_Vector</font>'(<font color=black>"000"</font>);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_StdLogicVector;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts unsigned Std_Logic_Vector to Integer
+</font></i>   <font color=green><i>-- Leftmost bit is most significant
+</font></i>   <font color=green><i>-- Error message for unknowns (U, X, W, Z, -), which are converted to 0
+</font></i>   <font color=green><i>-- Verifies whether vector is too long (> 31 bits)
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_Integer(
+      <font color=blue>constant</font> Vector:              <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> VectorName:          <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_Integer"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Integer</font> <font color=blue>is</font>
+   <font color=blue>begin</font>
+      <font color=blue>return</font> <font color=red>Integer</font>'(0);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_Integer;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the relation between two clocks
+</font></i>   <font color=green><i>-- If FasterThanRef = True,
+</font></i>   <font color=green><i>-- then the TestSignal may not have more than Period rising edges
+</font></i>   <font color=green><i>-- between two RefSignal rising edges.
+</font></i>   <font color=green><i>-- If FasterThanRef = False,
+</font></i>   <font color=green><i>-- then the RefSignal may not have more than Period rising edges
+</font></i>   <font color=green><i>-- between two TestSignal rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> PeriodCheck(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> FasterThanRef:   <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"PeriodCheck:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>) <font color=blue>is</font>
+   <font color=blue>begin</font> 
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> PeriodCheck;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Checks the TestPort stable width w.r.t. number of RefPort rising edges.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>procedure</font> CheckWidth(
+      <font color=blue>variable</font> Violation:       <font color=blue>out</font>   <font color=red>X10</font>;
+      <font color=blue>variable</font> PeriodData:      <font color=blue>inout</font> <font color=red>Integer</font>;
+      <font color=blue>signal</font>   TestSignal:      <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestSignalName:  <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> TestSignalLevel: <font color=blue>in</font>    <font color=red>Std_ULogic</font>     := '0';
+      <font color=blue>signal</font>   RefSignal:       <font color=blue>in</font>    <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> RefSignalName:   <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>""</font>;
+      <font color=blue>constant</font> Period:          <font color=blue>in</font>    <font color=red>Integer</font>        := 0;
+      <font color=blue>constant</font> CheckEnabled:    <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> HeaderMsg:       <font color=blue>in</font>    <font color=red>String</font>         := <font color=black>"CheckWidth:"</font>;
+      <font color=blue>constant</font> XOn:             <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgOn:           <font color=blue>in</font>    <font color=red>Boolean</font>        := <font color=red>True</font>;
+      <font color=blue>constant</font> MsgSeverity:     <font color=blue>in</font>    <font color=red>Severity_Level</font> := <font color=red>Warning</font>) <font color=blue>is</font>
+   <font color=blue>begin</font> 
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> CheckWidth;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_ULogic to X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font> To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_ULogic</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic</font> <font color=blue>is</font>
+   <font color=blue>begin</font> 
+      <font color=blue>return</font> To_X01(Test);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_X01;
+ 
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Converts Std_Logic_Vector to Std_ULogic_Vector of X01.
+</font></i>   <font color=green><i>-- Asserts that no unknown value exists at the time of conversion.
+</font></i>   <font color=green><i>-- Reports with the Severity_Level MsgSeverity the signal name TestName.
+</font></i>   <font color=green><i>-- No default value for TestName since a resolution conflict can occur
+</font></i>   <font color=green><i>-- between the functions with the same name in this package and in package
+</font></i>   <font color=green><i>-- IEEE.Std_Logic_1164. X is propagated.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>function</font>  To_X01(
+      <font color=blue>constant</font> Test:                <font color=red>Std_Logic_Vector</font>;
+      <font color=blue>constant</font> TestName:            <font color=red>String</font>;
+      <font color=blue>constant</font> HeaderMsg:           <font color=red>String</font>         := <font color=black>"To_X01:"</font>;
+      <font color=blue>constant</font> MsgSeverity:         <font color=red>Severity_Level</font> := <font color=red>Warning</font>)
+      <font color=blue>return</font>                        <font color=red>Std_ULogic_Vector</font> <font color=blue>is</font>
+   <font color=blue>begin</font>
+      <font color=blue>return</font> <font color=red>Std_ULogic_Vector</font>'(<font color=black>"000"</font>);
+      <font color=green><i>-- TBD
+</font></i>   <font color=blue>end</font> To_X01;
+
+<font color=blue>end</font> BitMod_Definition; <font color=green><i>--================ End of package body ================--
+</font></i><font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BitMod_Timing (Package declaration and body)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : bitmod_timing.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : In this package, all timing parameters for the Bit Modulator
+</font></i><font color=green><i>--                are defined as deferred constants; their value can be modified
+</font></i><font color=green><i>--                by recompiling only the package body.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : The timing figures have been taken from the data sheet for the
+</font></i><font color=green><i>--                Bit Modulator dated January 1995. The timing figures
+</font></i><font color=green><i>--                are based on 25 pF load on the outputs. The timing parameter
+</font></i><font color=green><i>--                names are compliant with Vital Level 0.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : Best case and typical figures have been approximated:  
+</font></i><font color=green><i>--                Best case    = Worst case / 4, for path delays,
+</font></i><font color=green><i>--                Typical case = Worst case / 2, for path delays.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors:      : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : ESA.Simulation, ESA.Timing.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P.O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New package
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i> 
+<font color=blue>library</font> ESA;
+<font color=blue>use</font> ESA.Simulation.<font color=blue>all</font>;
+<font color=blue>use</font> ESA.Timing.<font color=blue>all</font>;
+
+<font color=blue>package</font> BitMod_Timing <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Deferred constants for the timing parameters, all values are defined in
+</font></i>   <font color=green><i>-- the package body.
+</font></i>   <font color=green><i>--
+</font></i>   <font color=green><i>-- Input Test is not allowed to change when Reset_N is de-asserted 
+</font></i>   <font color=green><i>-- (checked in model).
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>
+   <font color=green><i>-- System signal timing parameters                  Data sheet reference
+</font></i>   <font color=blue>constant</font> tperiod_Clk:       TimeArray;              <font color=green><i>-- TClk
+</font></i>   <font color=blue>constant</font> tpw_Clk_posedge:   TimeArray;              <font color=green><i>-- TCHi
+</font></i>   <font color=blue>constant</font> tpw_Clk_negedge:   TimeArray;              <font color=green><i>-- TCLo
+</font></i>
+   <font color=green><i>-- Parameters TSCk and TRes depend on the architectural design and can not
+</font></i>   <font color=green><i>-- be changed by the user. They are defined in the architecture of the 
+</font></i>   <font color=green><i>-- functional core.
+</font></i>
+   <font color=green><i>-- Internal registers interface timing parameters
+</font></i>   <font color=blue>constant</font> tpw_CSN_negedge:   TimeArray;              <font color=green><i>-- T1
+</font></i>   <font color=blue>constant</font> tsetup_D_CSN:      TimeArray;              <font color=green><i>-- T2
+</font></i>   <font color=blue>constant</font> thold_D_CSN:       TimeArray;              <font color=green><i>-- T3
+</font></i>   <font color=blue>constant</font> tpd_CSN_D_negedge: TimeArray;              <font color=green><i>-- T4 Tri-state modelling
+</font></i>   <font color=blue>constant</font> tpd_CSN_D_posedge: TimeArray;              <font color=green><i>-- T5 -------- " --------
+</font></i>   <font color=blue>constant</font> tpd_A_D:           TimeArray;              <font color=green><i>-- T6
+</font></i>
+   <font color=green><i>-- Parameters T7 and T8 depend on the architectural design and can not 
+</font></i>   <font color=green><i>-- be changed by the user. They are defined in the architecture of the 
+</font></i>   <font color=green><i>-- functional core.
+</font></i>   
+   <font color=green><i>-- Output interface timing parameters
+</font></i>   <font color=blue>constant</font> tpd_Clk_MData:     TimeArray01;            <font color=green><i>-- T9
+</font></i>
+<font color=blue>end</font> BitMod_Timing; <font color=green><i>--=============== End of package header ===================--
+</font></i>
+<font color=blue>package</font> <font color=blue>body</font> BitMod_Timing <font color=blue>is</font>
+
+   <font color=green><i>-- System signal timing parameters      WC     Typ    BC         Ref.
+</font></i>   <font color=blue>constant</font> tperiod_Clk:       TimeArray := (80 ns, 80 ns, 80 ns); <font color=green><i>-- TClk
+</font></i>   <font color=blue>constant</font> tpw_Clk_posedge:   TimeArray := (40 ns, 40 ns, 40 ns); <font color=green><i>-- TCHi
+</font></i>   <font color=blue>constant</font> tpw_Clk_negedge:   TimeArray := (40 ns, 40 ns, 40 ns); <font color=green><i>-- TCLo
+</font></i> 
+   <font color=green><i>-- Internal registers interface timing parameters
+</font></i>   <font color=blue>constant</font> tpw_CSN_negedge:   TimeArray := (40 ns, 30 ns, 20 ns); <font color=green><i>-- T1
+</font></i>   <font color=blue>constant</font> tsetup_D_CSN:      TimeArray := (15 ns, 10 ns,  6 ns); <font color=green><i>-- T2
+</font></i>   <font color=blue>constant</font> thold_D_CSN:       TimeArray := (10 ns,  8 ns,  3 ns); <font color=green><i>-- T3
+</font></i>   <font color=blue>constant</font> tpd_CSN_D_negedge: TimeArray := (30 ns, 15 ns,  8 ns); <font color=green><i>-- T4
+</font></i>   <font color=blue>constant</font> tpd_CSN_D_posedge: TimeArray := (40 ns, 20 ns, 10 ns); <font color=green><i>-- T5
+</font></i>   <font color=blue>constant</font> tpd_A_D:           TimeArray := (30 ns, 15 ns,  8 ns); <font color=green><i>-- T6
+</font></i>
+   <font color=green><i>-- Output interface timing parameter                            -- T9
+</font></i>   <font color=blue>constant</font> tpd_Clk_MData:     TimeArray01 := ((25 ns, 24 ns),     <font color=green><i>-- WC
+</font></i>                                               (11 ns, 13 ns),     <font color=green><i>-- TC
+</font></i>                                               ( 7 ns,  8 ns));    <font color=green><i>-- BC
+</font></i>
+<font color=blue>end</font> BitMod_Timing; <font color=green><i>--================= End of package body ===================--
+</font></i><font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BitMod_Core(Behavioural) (Entity and architecture)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : bitmod_core.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : This is the functional core of the BitMod implementing
+</font></i><font color=green><i>--                all the Bit Modulator functionality, except the 
+</font></i><font color=green><i>--                multiplexing of the data bus D which is performed in the 
+</font></i><font color=green><i>--                Board-level architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The Bit Modulator receives serial input data, modulates it
+</font></i><font color=green><i>--                and outputs it synchronously with the system clock. Different
+</font></i><font color=green><i>--                modes of modulation can be configured in internal registers.
+</font></i><font color=green><i>--                The registers can be read and written via a parallel
+</font></i><font color=green><i>--                interface. The Bit Modulator optionally performs BIST after
+</font></i><font color=green><i>--                reset. For further information see the data sheet for the
+</font></i><font color=green><i>--                Bit Modulator.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : This model is modelled after the design (the design was not
+</font></i><font color=green><i>--                synthesized from this model). The model has been extensively
+</font></i><font color=green><i>--                verified versus the gate-level design on clock-by-clock
+</font></i><font color=green><i>--                basis.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Unknown values on input signals are handled as follows:
+</font></i><font color=green><i>--                  'X' on Reset_N is treated as '1',
+</font></i><font color=green><i>--                  'X' on Test    is treated as '0',
+</font></i><font color=green><i>--                  'X' on A       is treated as '0',
+</font></i><font color=green><i>--                  'X' on D       is treated as '0',
+</font></i><font color=green><i>--                  'X' on CS_N    is treated as '1' during write and read
+</font></i><font color=green><i>--                  'X' on RW_N    is treated as '1' during write and
+</font></i><font color=green><i>--                                            as '0' during read
+</font></i><font color=green><i>--                  'X' on SData   is propagated to MData output.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Unknown values on the Clk input are handled using the
+</font></i><font color=green><i>--                Std_Logic_1164 Rising_Edge() and Falling_Edge() functions in
+</font></i><font color=green><i>--                the functional core. Clk is checked for unknown values when
+</font></i><font color=green><i>--                neither edge is detected, which is also done during reset.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The SClk input is sampled in the functional core with Clk,
+</font></i><font color=green><i>--                and is checked for unknown values in the Board-level
+</font></i><font color=green><i>--                architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                All conversions of logical values are performed in the
+</font></i><font color=green><i>--                functional core, except for the signals Reset_N and Test,
+</font></i><font color=green><i>--                which is performed in the Board-level architecture.
+</font></i><font color=green><i>--                The conversion of logical values and X-Checking is generally
+</font></i><font color=green><i>--                only performed when the value is needed.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                All scheduling of output delays and timing checking are
+</font></i><font color=green><i>--                performed in the Board-level architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : BIST internal function not modelled, only the resulting delay
+</font></i><font color=green><i>--                after reset. Manufacturing test is not modelled.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The modelling is not fully correct w.r.t. a typical RAM I/F, 
+</font></i><font color=green><i>--                since some relaxations have been introduced.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164,
+</font></i><font color=green><i>--                BitMod_Lib.BitMod_Definition.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New model
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i> 
+<font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Naming convention: Active low signals are indicated by _N.
+</font></i><font color=green><i>-- All external signals have been named as in the data sheet.
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;                           <font color=green><i>-- For data types
+</font></i>
+<font color=blue>entity</font> BitMod_Core <font color=blue>is</font>
+   <font color=blue>generic</font>(
+      InstancePath: <font color=red>String</font> := <font color=black>"BitMod_Core:"</font>); <font color=green><i>-- For assertions
+</font></i>   <font color=blue>port</font>(
+      <font color=green><i>-- System signals
+</font></i>      Test0:   <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Test mode
+</font></i>      Clk:     <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Master Clock
+</font></i>      Reset_N: <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Master Reset
+</font></i>
+      <font color=green><i>-- Interface to internal registers
+</font></i>      A:       <font color=blue>in</font>   <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);          <font color=green><i>-- Address bus
+</font></i>      CS_N:    <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Chip select
+</font></i>      RW_N:    <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Read/write
+</font></i>      D_In:    <font color=blue>in</font>   <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);          <font color=green><i>-- Data bus input
+</font></i>      D_Out:   <font color=blue>out</font>  <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 255;            <font color=green><i>-- Data bus output
+</font></i>      DEnable: <font color=blue>out</font>  <font color=red>Boolean</font>;                           <font color=green><i>-- Data bus enable
+</font></i>
+      <font color=green><i>-- Serial Interface
+</font></i>      SClk:    <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Serial clock
+</font></i>      SData:   <font color=blue>in</font>   <font color=red>Std_ULogic</font>;                        <font color=green><i>-- Serial input 
+</font></i>      MData:   <font color=blue>out</font>  <font color=red>Std_ULogic</font>);                       <font color=green><i>-- Serial output 
+</font></i>
+<font color=blue>end</font> BitMod_Core; <font color=green><i>--================== End of entity ==========================--
+</font></i>
+<font color=green><i>--=============================== Architecture ===============================--
+</font></i> 
+<font color=blue>library</font> BitMod_Lib; 
+<font color=blue>use</font> BitMod_Lib.BitMod_Definition.<font color=blue>all</font>;                  <font color=green><i>-- For custom functions
+</font></i>
+<font color=blue>architecture</font> Behavioural <font color=blue>of</font> BitMod_Core <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Definitions for the internal registers
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>constant</font> RegisterSize:    <font color=red>Integer</font> := 4;
+   <font color=blue>subtype</font>  DataRange     <font color=blue>is</font> <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 255;
+   <font color=blue>subtype</font>  AddressRange  <font color=blue>is</font> <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> RegisterSize-1;
+   <font color=blue>type</font>     RegisterType  <font color=blue>is</font> <font color=blue>array</font>(AddressRange) <font color=blue>of</font> DataRange;
+   <font color=blue>constant</font> RegisterInit:    RegisterType := (0, 1, 2, 255);
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Local signal declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>signal</font>   DWrite:          DataRange;                <font color=green><i>-- Data to write
+</font></i>   <font color=blue>signal</font>   AWrite:          AddressRange;             <font color=green><i>-- Address to write
+</font></i>
+<font color=blue>begin</font> <font color=green><i>--========================== Architecture ==============================--
+</font></i>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Implementation of all functionality driven by Clk.
+</font></i>   <font color=green><i>-- Generation of synchronisation marker and header octets;
+</font></i>   <font color=green><i>-- optional generation of trailer; synchronised writing of internal 
+</font></i>   <font color=green><i>-- registers data; handling of reset and BIST delay; the SClk input is
+</font></i>   <font color=green><i>-- sampled within the process.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   ClkRegion: <font color=blue>process</font>(Reset_N, Clk, A)
+      <font color=blue>variable</font> A_Integer: <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 3;
+      <font color=blue>variable</font> Registers: RegisterType;
+   <font color=blue>begin</font>
+      <font color=blue>if</font> Reset_N = '0' <font color=blue>then</font>                            
+         <font color=green><i>-- Asynchronous reset of model
+</font></i>         <font color=green><i>-- To_X01 on Reset_N is done in Board-level
+</font></i>         Registers := RegisterInit;                    <font color=green><i>-- Initialize reg. file
+</font></i>         D_Out     <= Registers(A_Integer);
+      <font color=blue>elsif</font> Rising_Edge(Clk) <font color=blue>then</font>   
+         <font color=green><i>-- Rising Clk edge region
+</font></i>         Registers(AWrite) := DWrite;
+         D_Out <= Registers(A_Integer);
+      <font color=blue>elsif</font> Falling_Edge(Clk) <font color=blue>then</font>                    
+         <font color=green><i>-- Falling Clk edge region
+</font></i>         <font color=green><i>-- Not implemented in this VHDL code
+</font></i>      <font color=blue>else</font>
+         <font color=green><i>-- Check for unknown Clk value, since the model is not being reset,
+</font></i>         <font color=green><i>-- and neither rising nor falling Clk edge is detected.
+</font></i>         <font color=blue>assert</font> <font color=blue>not</font> (Is_X(Clk) <font color=blue>and</font> (Now /= 0 ns))      <font color=green><i>-- No assertions at start
+</font></i>           <font color=blue>report</font> InstancePath & <font color=black>" 'X' on Clk input"</font> <font color=blue>severity</font> <font color=red>Error</font>;
+      <font color=blue>end</font> <font color=blue>if</font>;
+      <font color=green><i>--------------------------------------------------------------------------
+</font></i>      <font color=green><i>-- Output register data on the internal bus whenever the address changes
+</font></i>      <font color=green><i>-- Only convert A to integer when it changes (used elsewhere)
+</font></i>      <font color=green><i>--------------------------------------------------------------------------
+</font></i>      <font color=blue>if</font> A'Event <font color=blue>then</font>
+         <font color=green><i>-- X is treated as 0
+</font></i>         A_Integer := To_Integer(A, <font color=black>"A"</font>, InstancePath, <font color=red>Error</font>);
+         D_Out      <= Registers(A_Integer);
+      <font color=blue>end</font> <font color=blue>if</font>;
+
+   <font color=blue>end</font> <font color=blue>process</font> ClkRegion;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Implementation of all asynchronous functionality.
+</font></i>   <font color=green><i>-- Latching of data to be written into the internal registers.
+</font></i>   <font color=green><i>-- Generation of external data bus enable. Checks for unknown values 
+</font></i>   <font color=green><i>-- are done for the input signals.
+</font></i>   <font color=green><i>-- The modelling is not fully correct w.r.t. a typical RAM I/F, since some
+</font></i>   <font color=green><i>-- relaxations have been introduced.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   AsynchronousRegion: <font color=blue>process</font>(CS_N, RW_N, Reset_N)
+   <font color=blue>begin</font>
+      <font color=blue>if</font> Reset_N = '0' <font color=blue>then</font>
+         <font color=green><i>-- To_X01 on Reset_N is done in Board-level
+</font></i>         <font color=green><i>-- Asynchronous reset of model
+</font></i>         DEnable <= <font color=red>False</font>;
+      <font color=blue>elsif</font> Rising_Edge(CS_N) <font color=blue>then</font> 
+         <font color=green><i>-- End of access
+</font></i>         <font color=blue>if</font> To_X01(RW_N, <font color=black>"RW_N"</font>, InstancePath, <font color=red>Error</font>)='0' <font color=blue>then</font>
+            <font color=green><i>-- Write access to internal registers
+</font></i>            <font color=green><i>-- X on CS_N is treated as no event (no access)
+</font></i>            <font color=green><i>-- X on RW_N is treated as 1 (no write access)
+</font></i>            <font color=green><i>-- X on A and D_In are treated as 0
+</font></i>            AWrite  <= To_Integer(A,    <font color=black>"A"</font>, InstancePath, <font color=red>Error</font>);
+            DWrite  <= To_Integer(D_In, <font color=black>"D"</font>, InstancePath, <font color=red>Error</font>);
+         <font color=blue>end</font> <font color=blue>if</font>;
+            DEnable <= <font color=red>False</font>;
+      <font color=blue>elsif</font> Now /= 0 ns <font color=blue>then</font>
+         <font color=green><i>-- Asynchronous behaviour
+</font></i>         <font color=green><i>-- Enabled for read cycles after Reset
+</font></i>         <font color=green><i>-- X on RW_N is treated as 0, X on CS_N is treated as 1
+</font></i>         DEnable <= (To_X01(RW_N, <font color=black>"RW_N"</font>, InstancePath, <font color=red>Error</font>)='1') <font color=blue>and</font>
+                    (To_X01(CS_N, <font color=black>"CS_N"</font>, InstancePath, <font color=red>Error</font>)='0') <font color=blue>and</font>
+                    (Reset_N='1');
+      <font color=blue>end</font> <font color=blue>if</font>;
+   <font color=blue>end</font> <font color=blue>process</font> AsynchronousRegion;
+
+<font color=blue>end</font> Behavioural; <font color=green><i>--================ End of architecture ======================--
+</font></i><font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BitMod(BoardLevel) (Entity and architecture)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : bitmod.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : The Bit Modulator receives serial input data, modulates it
+</font></i><font color=green><i>--                and outputs it synchronously with the system clock. Different
+</font></i><font color=green><i>--                modes of modulation can be configured in internal registers.
+</font></i><font color=green><i>--                The registers can be read and written via a parallel 
+</font></i><font color=green><i>--                interface. The Bit Modulator optionally performs BIST after
+</font></i><font color=green><i>--                reset. For further information see the data sheet for the 
+</font></i><font color=green><i>--                Bit Modulator dated January 1995.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : All timing parameter names are compliant with Vital Level 0.
+</font></i><font color=green><i>--                Selection of Worst, Typical and Best Case timing is performed
+</font></i><font color=green><i>--                by the ESA.Simulation.SimCondition type generic SimCondition.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                This model is modelled after the design (the design was not
+</font></i><font color=green><i>--                synthesised from this model). The model has been extensively
+</font></i><font color=green><i>--                verified versus the gate-level design on a clock-by-clock
+</font></i><font color=green><i>--                basis, and is compliant to the data sheet for the
+</font></i><font color=green><i>--                Bit Modulator dated January 1995.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Test is not allowed to change when Reset_N is de-asserted 
+</font></i><font color=green><i>--                (checked in model).
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Unknown values on input signals are handled as follows:
+</font></i><font color=green><i>--                  'X' on Reset_N is treated as '1',
+</font></i><font color=green><i>--                  'X' on Test    is treated as '0',
+</font></i><font color=green><i>--                  'X' on A       is treated as '0',
+</font></i><font color=green><i>--                  'X' on D       is treated as '0',
+</font></i><font color=green><i>--                  'X' on CS_N    is treated as '1' during write and read
+</font></i><font color=green><i>--                  'X' on RW_N    is treated as '1' during write and
+</font></i><font color=green><i>--                                            as '0' during read
+</font></i><font color=green><i>--                  'X' on SData   is propagated to MData output.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Unknown values on the Clk input are handled using the 
+</font></i><font color=green><i>--                Std_Logic_1164 Rising_Edge() and Falling_Edge() functions in 
+</font></i><font color=green><i>--                the functional core. Clk is checked for unknown values when 
+</font></i><font color=green><i>--                neither edge is detected, which is also done during reset.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The SClk input is sampled in the functional core with Clk,
+</font></i><font color=green><i>--                and is checked for unknown values in the Board-level 
+</font></i><font color=green><i>--                architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                All conversions of logical values are performed in the
+</font></i><font color=green><i>--                functional core, except for the signals Reset_N and Test, 
+</font></i><font color=green><i>--                which is performed in the Board-level architecture.
+</font></i><font color=green><i>--                The conversion of logical values and X-Checking is generally 
+</font></i><font color=green><i>--                only performed when the value is needed.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The timing figures have been taken from the data sheet for the
+</font></i><font color=green><i>--                Bit Modulator dated January 1995. The timing figures are 
+</font></i><font color=green><i>--                based on 25 pF load on the outputs. The timing parameter
+</font></i><font color=green><i>--                names are compliant with Vital Level 0.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                All scheduling of output delays and timing checking are 
+</font></i><font color=green><i>--                performed in the Board-level architecture.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : BIST internal function not modelled, only the resulting delay
+</font></i><font color=green><i>--                after reset. Manufacturing test is not modelled.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                Do NEVER use this timing modelling instead of worst case
+</font></i><font color=green><i>--                timing analysis; the timing modelling is not always accurate
+</font></i><font color=green><i>--                and is only intended to be used for simulation.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The timing checks of parameters TRes and T7 are approximated.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>--                The Vital_Timing package is analysed into BitMod_Lib, since
+</font></i><font color=green><i>--                the package has not yet been formally approved by the IEEE.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known 
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164,
+</font></i><font color=green><i>--                ESA.Simulation, 
+</font></i><font color=green><i>--                ESA.Timing, 
+</font></i><font color=green><i>--                BitMod_Lib.BitMod_Definition,
+</font></i><font color=green><i>--                BitMod_Lib.BitMod_Timing.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New model
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Naming convention:
+</font></i><font color=green><i>-- All external signals have been named as in the data sheet.
+</font></i><font color=green><i>-- Active low signals are indicated by _N.
+</font></i><font color=green><i>-- Internal, strength converted signals are named after their new strength, for
+</font></i><font color=green><i>-- example _X01.
+</font></i><font color=green><i>-- Internal signals without output delays are indicated by _NoTime.
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i>
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Std_Logic_1164.<font color=blue>all</font>;
+
+<font color=blue>library</font> ESA;
+<font color=blue>use</font> ESA.Simulation.<font color=blue>all</font>;                                <font color=green><i>-- For simulation cond.
+</font></i><font color=blue>use</font> ESA.Timing.<font color=blue>all</font>;                                    <font color=green><i>-- For time arrays 
+</font></i>
+<font color=blue>library</font> BitMod_Lib;
+<font color=blue>use</font> BitMod_Lib.BitMod_Timing.<font color=blue>all</font>;                      <font color=green><i>-- Default timing
+</font></i>
+<font color=blue>entity</font> BitMod <font color=blue>is</font>
+   <font color=blue>generic</font>(
+      SimCondition:      SimConditionType := WorstCase;
+      InstancePath:      <font color=red>String</font>           := <font color=black>"BitMod:"</font>;
+      TimingChecksOn:    <font color=red>Boolean</font>          := <font color=red>False</font>;
+
+      tperiod_Clk:       TimeArray        := tperiod_Clk;       <font color=green><i>-- TClk
+</font></i>      tpw_Clk_posedge:   TimeArray        := tpw_Clk_posedge;   <font color=green><i>-- TCHi
+</font></i>      tpw_Clk_negedge:   TimeArray        := tpw_Clk_negedge;   <font color=green><i>-- TCLo
+</font></i>      tpw_CSN_negedge:   TimeArray        := tpw_CSN_negedge;   <font color=green><i>-- T1
+</font></i>      tsetup_D_CSN:      TimeArray        := tsetup_D_CSN;      <font color=green><i>-- T2
+</font></i>      thold_D_CSN:       TimeArray        := thold_D_CSN;       <font color=green><i>-- T3
+</font></i>      tpd_CSN_D_negedge: TimeArray        := tpd_CSN_D_negedge; <font color=green><i>-- T4
+</font></i>      tpd_CSN_D_posedge: TimeArray        := tpd_CSN_D_posedge; <font color=green><i>-- T5
+</font></i>      tpd_A_D:           TimeArray        := tpd_A_D;           <font color=green><i>-- T6
+</font></i>      tpd_Clk_MData:     TimeArray01      := tpd_Clk_MData);    <font color=green><i>-- T9
+</font></i>
+   <font color=blue>port</font>(
+      <font color=green><i>-- System signals (4)
+</font></i>      Test:    <font color=blue>in</font>     <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);        <font color=green><i>-- Test mode
+</font></i>      Clk:     <font color=blue>in</font>     <font color=red>Std_Logic</font>;                       <font color=green><i>-- Master Clock
+</font></i>      Reset_N: <font color=blue>in</font>     <font color=red>Std_Logic</font>;                       <font color=green><i>-- Master Reset
+</font></i>
+      <font color=green><i>-- Interface to internal registers (12)
+</font></i>      A:       <font color=blue>in</font>     <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);        <font color=green><i>-- Address bus
+</font></i>      CS_N:    <font color=blue>in</font>     <font color=red>Std_Logic</font>;                       <font color=green><i>-- Chip select
+</font></i>      RW_N:    <font color=blue>in</font>     <font color=red>Std_Logic</font>;                       <font color=green><i>-- Read/write
+</font></i>      D:       <font color=blue>inout</font>  <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);        <font color=green><i>-- Bidir. bus
+</font></i> 
+      <font color=green><i>-- Serial Interface (3)
+</font></i>      SClk:    <font color=blue>in</font>     <font color=red>Std_Logic</font>;                       <font color=green><i>-- Serial clock
+</font></i>      SData:   <font color=blue>in</font>     <font color=red>Std_Logic</font>;                       <font color=green><i>-- Serial input
+</font></i>      MData:   <font color=blue>out</font>    <font color=red>Std_Logic</font>);                      <font color=green><i>-- Serial output
+</font></i>
+<font color=blue>end</font> BitMod; <font color=green><i>--====================== End of entity ===========================--
+</font></i>
+<font color=green><i>--=============================== Architecture ===============================--
+</font></i> 
+<font color=blue>library</font> IEEE;
+<font color=blue>use</font> IEEE.Vital_Timing.<font color=blue>all</font>;
+
+<font color=blue>library</font> BitMod_Lib; 
+<font color=blue>use</font> BitMod_Lib.BitMod_Definition.<font color=blue>all</font>;                <font color=green><i>-- For custom functions
+</font></i> 
+<font color=blue>architecture</font> BoardLevel <font color=blue>of</font> BitMod <font color=blue>is</font>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Component declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=blue>component</font> BitMod_Core
+      <font color=blue>generic</font>(
+         InstancePath:  <font color=red>String</font> := <font color=black>"BitMod_Core:"</font>);    <font color=green><i>-- For reports
+</font></i>      <font color=blue>port</font>(
+         <font color=green><i>-- System signals
+</font></i>         Test0:   <font color=blue>in</font>    <font color=red>Std_ULogic</font>;                    <font color=green><i>-- Test mode
+</font></i>         Clk:     <font color=blue>in</font>    <font color=red>Std_ULogic</font>;                    <font color=green><i>-- Master Clock
+</font></i>         Reset_N: <font color=blue>in</font>    <font color=red>Std_ULogic</font>;                    <font color=green><i>-- Master Reset
+</font></i> 
+         <font color=green><i>-- Interface to internal registers
+</font></i>         A:       <font color=blue>in</font>    <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 1);      <font color=green><i>-- Address bus
+</font></i>         CS_N:    <font color=blue>in</font>    <font color=red>Std_ULogic</font>;                    <font color=green><i>-- Chip select
+</font></i>         RW_N:    <font color=blue>in</font>    <font color=red>Std_ULogic</font>;                    <font color=green><i>-- Read/write
+</font></i>         D_In:    <font color=blue>in</font>    <font color=red>Std_Logic_Vector</font>(0 <font color=blue>to</font> 7);      <font color=green><i>-- Data bus input
+</font></i>         D_Out:   <font color=blue>out</font>   <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 255;        <font color=green><i>-- Data bus output
+</font></i>         DEnable: <font color=blue>out</font>   <font color=red>Boolean</font>;                       <font color=green><i>-- Data bus enable
+</font></i>
+         <font color=green><i>-- Serial Interface
+</font></i>         SClk:    <font color=blue>in</font>    <font color=red>Std_ULogic</font>;                    <font color=green><i>-- Serial Clock
+</font></i>         SData:   <font color=blue>in</font>    <font color=red>Std_ULogic</font>;                    <font color=green><i>-- Serial input 
+</font></i>         MData:   <font color=blue>out</font>   <font color=red>Std_ULogic</font>);                   <font color=green><i>-- Serial output
+</font></i>   <font color=blue>end</font> <font color=blue>component</font>;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Local signal declarations.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Signal declarations for un-delayed external signals
+</font></i>   <font color=blue>signal</font> MData_NoTime:     <font color=red>Std_ULogic</font>;
+
+   <font color=green><i>-- Signal declarations for internal registers output data generation
+</font></i>   <font color=blue>signal</font> DEn_NoTime:       <font color=red>Boolean</font>;
+   <font color=blue>signal</font> DEn_Delayed:      <font color=red>Boolean</font>;
+   <font color=blue>signal</font> D_NoTime:         <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 255;
+   <font color=blue>signal</font> D_Delayed:        <font color=red>Integer</font> <font color=blue>range</font> 0 <font color=blue>to</font> 255;
+
+   <font color=green><i>-- Signal declarations for conversion to type X01
+</font></i>   <font color=blue>signal</font> Reset_N_X01:      <font color=red>Std_ULogic</font>;
+   <font color=blue>signal</font> Test_X01:         <font color=red>Std_ULogic_Vector</font>(0 <font color=blue>to</font> 1);
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- The following timing parameters are architecture dependent and do not 
+</font></i>   <font color=green><i>-- change for varying simulation conditions.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Minimum number of Clk cycles that Reset_N must be asserted
+</font></i>   <font color=blue>constant</font> tpw_ResetN_negedge: <font color=red>Integer</font> := 3;          <font color=green><i>-- TRes
+</font></i>   <font color=green><i>-- Number of Clk clock periods per SClk period
+</font></i>   <font color=blue>constant</font> tperiod_SClk:       <font color=red>Integer</font> := 4;          <font color=green><i>-- TSCk
+</font></i>   <font color=green><i>-- Minimum number of Clk cycles that CS_N must be de-asserted
+</font></i>   <font color=blue>constant</font> tpw_CSN_posedge:    <font color=red>Integer</font> := 4;          <font color=green><i>-- T7
+</font></i>
+<font color=blue>begin</font> <font color=green><i>--========================== Architecture ==============================--
+</font></i>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Strength stripping to X01 using Std_Logic_1164 provided subprograms.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   Reset_N_X01   <= To_X01(Reset_N);                   <font color=green><i>-- Semi-static signal
+</font></i>   Test_X01      <= To_StdULogicVector(To_X01(Test));  <font color=green><i>-- Static signal
+</font></i>
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Check for unknown values on the SClk input.
+</font></i>   <font color=green><i>-- The Clk input is checked in the functional core.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   CheckDynamicInputs: <font color=blue>process</font>(SClk)
+   <font color=blue>begin</font>
+      <font color=blue>assert</font> <font color=blue>not</font> (Is_X(SClk) <font color=blue>and</font> (Now /= 0 ns))        <font color=green><i>-- No assertions at start
+</font></i>         <font color=blue>report</font> InstancePath & <font color=black>" 'X' on SClk input"</font>          
+         <font color=blue>severity</font> <font color=red>Error</font>;
+   <font color=blue>end</font> <font color=blue>process</font> CheckDynamicInputs;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Check for unknown values on the static inputs and that they only change
+</font></i>   <font color=green><i>-- during reset. Check for unknown values on Reset_N.
+</font></i>   <font color=green><i>-- All other signals are checked for unknown values in the functional core.
+</font></i>   <font color=green><i>-- Activating production test does not change the state of the model, and has
+</font></i>   <font color=green><i>-- therefore Severity_Level Note.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   CheckStaticInputs: <font color=blue>process</font>(Reset_N_X01, Test_X01)
+   <font color=blue>begin</font>
+      <font color=blue>if</font> (Reset_N_X01='1') <font color=blue>and</font> (Now /= 0 ns) <font color=blue>then</font>
+         <font color=green><i>-- No assertions at start-up or when Reset_N is asserted
+</font></i>         <font color=blue>assert</font> (Test_X01(1)='0')
+            <font color=blue>report</font> InstancePath & <font color=black>" Prod. test not modelled"</font>     <font color=blue>severity</font> <font color=red>Note</font>;
+         <font color=blue>assert</font> <font color=blue>not</font> Is_X(Test_X01)                     <font color=green><i>-- Note: done on a vector
+</font></i>            <font color=blue>report</font> InstancePath & <font color=black>" 'X' on Test input"</font>           <font color=blue>severity</font> <font color=red>Error</font>;
+
+         <font color=green><i>-- Check if the static pin changed after reset
+</font></i>         <font color=blue>assert</font> <font color=blue>not</font> Test_X01'Event
+            <font color=blue>report</font> InstancePath & <font color=black>" Test changed after reset"</font>    <font color=blue>severity</font> <font color=red>Error</font>;
+
+      <font color=blue>elsif</font> Reset_N_X01'Event <font color=blue>and</font> (Now /= 0 ns) <font color=blue>then</font>   <font color=green><i>-- Check for X on Reset_N
+</font></i>         <font color=blue>assert</font> <font color=blue>not</font> Is_X(Reset_N_X01)
+            <font color=blue>report</font> InstancePath & <font color=black>" 'X' on Reset_N input"</font>        <font color=blue>severity</font> <font color=red>Error</font>;
+      <font color=blue>end</font> <font color=blue>if</font>;
+   <font color=blue>end</font> <font color=blue>process</font> CheckStaticInputs;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Timing checks on inputs (setup, hold, period, pulse width).
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   TimingGenerate: <font color=blue>if</font> TimingChecksOn <font color=blue>generate</font>
+      TimingCheck: <font color=blue>process</font>(Clk, SClk, D, CS_N, RW_N, Reset_N_X01)
+         <font color=green><i>-- Variables containing information for period checkers
+</font></i>         <font color=blue>variable</font> Period_Clk:       VitalPeriodDataType := VitalPeriodDataInit;
+         <font color=blue>variable</font> Period_CSN:       VitalPeriodDataType := VitalPeriodDataInit;
+
+         <font color=green><i>-- Variables containing information for setup and hold checkers
+</font></i>         <font color=blue>variable</font> Timing_D:         VitalTimingDataType := VitalTimingDataInit;
+
+         <font color=green><i>-- Variable indicating whether a timing violation has occurred
+</font></i>         <font color=blue>variable</font> Violation:        <font color=red>X10</font>                 := '0';
+
+         <font color=green><i>-- Variables for enabling timing checkers
+</font></i>         <font color=blue>variable</font> DataCheckEnabled: <font color=red>Boolean</font>             := <font color=red>False</font>;
+
+         <font color=green><i>-- Number of falling Clk edges during reset
+</font></i>         <font color=blue>variable</font> Period_Reset:     <font color=red>Integer</font>             := tpw_ResetN_negedge;
+         <font color=green><i>-- Number of Clk periods per SCk periods, w.r.t. falling edges
+</font></i>         <font color=blue>variable</font> Period_SClk:      <font color=red>Integer</font>             := tperiod_SClk;
+         <font color=green><i>-- Number of falling Clk edges CS_N must be de-asserted
+</font></i>         <font color=blue>variable</font> Period_CSN_Clk:   <font color=red>Integer</font>             := tpw_CSN_posedge;
+ 
+      <font color=blue>begin</font>
+         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- Enabling of various checkers.
+</font></i>         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- Enables the setup and hold checker for D during write operations.
+</font></i>         <font color=green><i>-- The checker is enabled when both CS_N and RW_N are asserted, until 
+</font></i>         <font color=green><i>-- the next read access begins, since the data hold constraint is 
+</font></i>         <font color=green><i>-- longer than the time either CS_N or RW_N is de-asserted after write.
+</font></i>         <font color=blue>if</font> ((Falling_Edge(CS_N) <font color=blue>and</font> To_X01(RW_N)='0') <font color=blue>or</font>
+             (Falling_Edge(RW_N) <font color=blue>and</font> To_X01(CS_N)='0')) <font color=blue>then</font>
+            DataCheckEnabled := <font color=red>True</font>;                  <font color=green><i>-- Enable checker
+</font></i>         <font color=blue>elsif</font> (Falling_Edge(CS_N) <font color=blue>and</font> To_X01(RW_N)='1') <font color=blue>then</font>
+            DataCheckEnabled := <font color=red>False</font>;                 <font color=green><i>-- Disable checker
+</font></i>         <font color=blue>end</font> <font color=blue>if</font>;
+ 
+         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- Reset_N low time w.r.t. Clk (TRes) 
+</font></i>         <font color=green><i>-- Asserts that there are at least tpw_ResetN_negedge number of 
+</font></i>         <font color=green><i>-- falling Clk edges during the assertion of Reset_N.
+</font></i>         <font color=green><i>-- This timing checker is approximated w.r.t. the data sheet. Only the
+</font></i>         <font color=green><i>-- number of Clk edges are counted for tpw_ResetN_negedge.
+</font></i>         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=blue>if</font> (Falling_Edge(Clk) <font color=blue>and</font> Reset_N_X01='0' <font color=blue>and</font> (Period_Reset>0)) <font color=blue>then</font>
+            Period_Reset := Period_Reset - 1;
+         <font color=blue>end</font> <font color=blue>if</font>;
+         <font color=blue>if</font> Falling_Edge(Reset_N_X01) <font color=blue>then</font>             <font color=green><i>-- Reset begins
+</font></i>            Period_Reset := tpw_ResetN_negedge;
+         <font color=blue>elsif</font> Rising_Edge(Reset_N_X01) <font color=blue>then</font>           <font color=green><i>-- Reset ends
+</font></i>            <font color=blue>assert</font> (Period_Reset = 0)
+               <font color=blue>report</font> InstancePath & <font color=black>" Signal width too short on Reset_N"</font>
+                  <font color=blue>severity</font> <font color=red>Error</font>;
+         <font color=blue>end</font> <font color=blue>if</font>;
+  
+         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- The internal register interface is checked for illegal events. (T8) 
+</font></i>         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- RW_N may not change when CS_N is asserted.
+</font></i>         <font color=blue>assert</font> <font color=blue>not</font> (RW_N'Event <font color=blue>and</font> To_X01(CS_N)='0' <font color=blue>and</font> Reset_N_X01='1')
+            <font color=blue>report</font> InstancePath & <font color=black>" RW_N event while CS_N asserted"</font>
+               <font color=blue>severity</font> <font color=red>Warning</font>;
+
+         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- Checkers using custom made subprograms.
+</font></i>         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- SClk period (TSCk)
+</font></i>         <font color=green><i>-- Checks the relation between the two clock inputs SClk and Clk.
+</font></i>         PeriodCheck(
+            Violation         => Violation,
+            PeriodData        => Period_SClk,
+            TestSignal        => SClk,
+            TestSignalName    => <font color=black>"SClk"</font>,
+            RefSignal         => Clk,
+            RefSignalName     => <font color=black>"Clk"</font>,
+            Period            => tperiod_SClk,
+            FasterThanRef     => <font color=red>False</font>,
+            CheckEnabled      => Reset_N_X01='1',
+            HeaderMsg         => InstancePath,
+            XOn               => <font color=red>False</font>,
+            MsgOn             => <font color=red>True</font>,
+            MsgSeverity       => <font color=red>Warning</font>);
+
+         <font color=green><i>-- CS_N de-assertion width (T7)
+</font></i>         CheckWidth(
+            Violation         => Violation,
+            PeriodData        => Period_CSN_Clk,
+            TestSignal        => CS_N,
+            TestSignalName    => <font color=black>"CS_N"</font>,
+            TestSignalLevel   => '1',
+            RefSignal         => Clk,
+            RefSignalName     => <font color=black>"Clk"</font>,
+            CheckEnabled      => Reset_N_X01='1',
+            HeaderMsg         => InstancePath,
+            XOn               => <font color=red>False</font>,
+            MsgOn             => <font color=red>True</font>,
+            MsgSeverity       => <font color=red>Warning</font>);
+
+         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- Timing checkers using Vital subprograms. 
+</font></i>         <font color=green><i>-----------------------------------------------------------------------
+</font></i>         <font color=green><i>-- Clk period, high and low times (TClk, TCLo, TCHi)
+</font></i>         VitalPeriodPulseCheck(
+            Violation         => Violation,
+            PeriodData        => Period_Clk,
+            TestSignal        => Clk,
+            TestSignalName    => <font color=black>"Clk"</font>,
+            Period            => tperiod_Clk(SimCondition),
+            PulseWidthHigh    => tpw_Clk_posedge(SimCondition),
+            PulseWidthLow     => tpw_Clk_negedge(SimCondition),
+            CheckEnabled      => <font color=red>True</font>,
+            HeaderMsg         => InstancePath,
+            XOn               => <font color=red>False</font>,
+            MsgOn             => <font color=red>True</font>,
+            MsgSeverity       => <font color=red>Warning</font>);
+
+         <font color=green><i>-- CS_N assertion width during write access (T1)
+</font></i>         VitalPeriodPulseCheck(
+            Violation         => Violation,
+            PeriodData        => Period_Clk,
+            TestSignal        => CS_N,
+            TestSignalName    => <font color=black>"CS_N"</font>,
+            PulseWidthLow     => tpw_CSN_negedge(SimCondition),
+            CheckEnabled      => To_X01(RW_N)='0',
+            HeaderMsg         => InstancePath,
+            XOn               => <font color=red>False</font>,
+            MsgOn             => <font color=red>True</font>,
+            MsgSeverity       => <font color=red>Error</font>);
+
+         <font color=green><i>-- D setup & hold w.r.t. CS_N (T2, T3)
+</font></i>         VitalSetupHoldCheck(
+            Violation         => Violation,
+            TimingData        => Timing_D,
+            TestSignal        => D,
+            TestSignalName    => <font color=black>"D"</font>,
+            RefSignal         => CS_N,
+            RefSignalName     => <font color=black>"CS_N"</font>,
+            SetupHigh         => tsetup_D_CSN(SimCondition),
+            SetupLow          => tsetup_D_CSN(SimCondition),
+            HoldHigh          => thold_D_CSN(SimCondition),
+            HoldLow           => thold_D_CSN(SimCondition),
+            CheckEnabled      => DataCheckEnabled,
+            RefTransition     => 'R',
+            HeaderMsg         => InstancePath,
+            XOn               => <font color=red>False</font>,
+            MsgOn             => <font color=red>True</font>,
+            MsgSeverity       => <font color=red>Warning</font>);
+
+      <font color=blue>end</font> <font color=blue>process</font> TimingCheck;
+   <font color=blue>end</font> <font color=blue>generate</font> TimingGenerate;
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Assignment of output delays.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Generation of tristate or drive for the external data bus. D_NoTime is
+</font></i>   <font color=green><i>-- delayed w.r.t. the address. DEn_NoTime is delayed, with different timing
+</font></i>   <font color=green><i>-- for tristate. The D assignment includes an Integer to Std_LogicVector 
+</font></i>   <font color=green><i>-- conversion.
+</font></i> 
+   DEn_Delayed <= transport DEn_NoTime <font color=blue>after</font> tpd_CSN_D_negedge(SimCondition)
+                     <font color=blue>when</font> DEn_NoTime <font color=blue>else</font>                                 <font color=green><i>-- T4
+</font></i>                  DEn_NoTime <font color=blue>after</font> tpd_CSN_D_posedge(SimCondition);       <font color=green><i>-- T5
+</font></i> 
+   D_Delayed   <= transport D_NoTime   <font color=blue>after</font> tpd_A_D(SimCondition);       <font color=green><i>-- T6
+</font></i> 
+   D           <= To_StdLogicVector(D_Delayed, 8)
+                     <font color=blue>when</font> DEn_Delayed <font color=blue>else</font>
+                  (<font color=blue>others</font> => 'Z');
+
+   MData       <= MData_NoTime <font color=blue>after</font> VitalCalcDelay(                      <font color=green><i>-- 9
+</font></i>                                        NewVal => MData_NoTime,
+                                        OldVal => MData_NoTime'Last_Value,
+                                        Delay  => tpd_Clk_MData(SimCondition));
+
+   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- Instantiation of components.
+</font></i>   <font color=green><i>-----------------------------------------------------------------------------
+</font></i>   <font color=green><i>-- The buses A and D are not converted to the unresolved type 
+</font></i>   <font color=green><i>-- Std_ULogic_Vector since a conversion is done to the type Integer in the 
+</font></i>   <font color=green><i>-- functional core when the signal values are used.
+</font></i>   <font color=green><i>--
+</font></i>   <font color=green><i>-- Only the LSB of the Test bus is used in the functional core. The MSB is
+</font></i>   <font color=green><i>-- handled in the CheckStaticInputs process.
+</font></i>
+   FunctionalCore: BitMod_Core
+      <font color=blue>generic</font> <font color=blue>map</font>(
+         InstancePath => InstancePath)
+      <font color=blue>port</font> <font color=blue>map</font>(
+         Test0        => Test_X01(0),                  <font color=green><i>-- Only LSB used in core
+</font></i>         Clk          => Clk,                          <font color=green><i>-- Falling/Rising_Edge
+</font></i>         Reset_N      => Reset_N_X01,
+         A            => A,                            <font color=green><i>-- To_X01 made in core
+</font></i>         CS_N         => CS_N,                         <font color=green><i>-- To_X01 made in core
+</font></i>         RW_N         => RW_N,                         <font color=green><i>-- To_X01 made in core
+</font></i>         D_In         => D,                            <font color=green><i>-- To_X01 made in core
+</font></i>         D_Out        => D_NoTime,                     <font color=green><i>-- Integer
+</font></i>         DEnable      => DEn_NoTime,
+         SClk         => SClk,                         <font color=green><i>-- Falling/Rising_Edge
+</font></i>         SData        => SData,                        <font color=green><i>-- To_X01 made in core
+</font></i>         MData        => MData_NoTime);
+
+<font color=blue>end</font> BoardLevel; <font color=green><i>--================ End of architecture =======================--
+</font></i><font color=green><i>--============================================================================--
+</font></i><font color=green><i>-- Design units : BitMod_Configuration (Configuration)
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- File name    : bitmod_configuration.vhd
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Purpose      : Board-level simulation for verification of a board
+</font></i><font color=green><i>--                containing a Bit Modulator component.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Note         : 
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Limitations  : 
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Errors       : None known
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Library      : BitMod_Lib
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Dependencies : IEEE.Std_Logic_1164,
+</font></i><font color=green><i>--                ESA.Simulation,
+</font></i><font color=green><i>--                BitMod_Lib.BitMod.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Author       : Sandi Habinc
+</font></i><font color=green><i>--                ESTEC Microelectronics and Technology Section (WSM)
+</font></i><font color=green><i>--                P. O. Box 299
+</font></i><font color=green><i>--                2200 AG Noordwijk
+</font></i><font color=green><i>--                The Netherlands
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Copyright    : European Space Agency (ESA) 1995. No part may be reproduced
+</font></i><font color=green><i>--                in any form without the prior written permission of ESA.
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- Simulator    : Synopsys v. 3.2b, on Sun SPARCstation 10, SunOS 4.1.3
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i><font color=green><i>-- Revision list
+</font></i><font color=green><i>-- Version Author Date       Changes
+</font></i><font color=green><i>--
+</font></i><font color=green><i>-- 0.1     SH      1 July 95 New configuration
+</font></i><font color=green><i>--------------------------------------------------------------------------------
+</font></i> 
+<font color=blue>library</font> BitMod_Lib;
+<font color=blue>configuration</font> BitMod_Configuration <font color=blue>of</font> BitMod <font color=blue>is</font>
+   <font color=blue>for</font> BoardLevel
+      <font color=blue>for</font> FunctionalCore: BitMod_Core
+         <font color=blue>use</font> <font color=blue>entity</font> BitMod_Lib.BitMod_Core(Behavioural)
+            <font color=blue>generic</font> <font color=blue>map</font>(InstancePath => InstancePath);
+      <font color=blue>end</font> <font color=blue>for</font>;
+   <font color=blue>end</font> <font color=blue>for</font>;
+<font color=blue>end</font> BitMod_Configuration; <font color=green><i>--============== End of configuration ==============-- 
+</font></i></pre>
+</body>
+</html>

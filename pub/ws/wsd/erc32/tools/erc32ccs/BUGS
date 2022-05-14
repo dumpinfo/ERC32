@@ -1,0 +1,21 @@
+MkProm-1.2
+----------
+
+The documentation (mkprom.pdf) incorrectly defines the usage of -romsize
+and -ramsize. These parameters now take values of kilobytes instead of
+bytes as earlier versions. To specify a 128 kbyte prom area, use the
+following: -romsize 128
+
+In addition, the -romsize and -ramsize option are incorrectly
+implemented. To update your system, do the following:
+
+* Linux systems:
+
+  1. Copy mkprom.c to erc32/src/mkprom
+  2. do 'make install'
+
+* Sunos/Solaris
+
+  1. Copy mkprom-sunos to erc32/bin/mkprom
+
+

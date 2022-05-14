@@ -1,0 +1,60 @@
+-- see file specification at end of file
+
+CHECK_ON 1
+ENVIRONMENT_BOARD 2
+SIM_BOARD 3
+LOAD_BOARD 50
+T_BOARD_SPECIFIC 37
+V_BOARD_SPECIFIC 5000
+PROCES_BOARD_SPECIFIC 0
+
+-------------------------------------------
+-- CHECK_ON : switch on/off timing checkers
+--  0 : off (FALSE)
+--  1 : on  (TRUE)
+-------------------------------------------
+-- ENVIRONMENT_BOARD : environment conditions
+--  0 : COMMERCIAL
+--  1 : INDUSTRIAL
+--  2 : MILITARY
+-------------------------------------------
+-- SIM_BOARD : simulation conditions
+--  0 : SPECIFIC
+--  1 : MINIMUM
+--  2 : TYPICAL
+--  3 : MAXIMUM
+-------------------------------------------
+-- LOAD_BOARD : default load value in pF
+-------------------------------------------
+-- T_BOARD_SPECIFIC : specific default temperature in Celsius
+-------------------------------------------
+-- V_BOARD_SPECIFIC : specific default voltage in mV
+-------------------------------------------
+-- PROCES_BOARD_SPECIFIC : specific default process
+--  0 : TYPICAL
+--  1 : BEST
+--  2 : WORST
+-------------------------------------------
+-- if SIM_BOARD = SPECIFIC, the specific values are used
+-- They need not to be declared if not in specific mode
+-------------------------------------------
+
+------------------------------------------------------------
+-- File name : stdsim.dft
+-- Title : StdSim Defaults
+-- project : SPARC
+-- Library : MMS
+-- Author(s) : E. Laubacher
+-- Purpose : ASCII file containing simulation conditions
+-- notes : to be copied in work directory and adapted
+--  only the values should be changed
+--  the header is put at end of file for efficiency
+------------------------------------------------------------
+-- Modification history :
+------------------------------------------------------------
+-- Version No : | Author | Mod. Date : | Changes made :
+------------------------------------------------------------
+-- v 1.0        | EL     | 92/06/14    | first version
+------------------------------------------------------------
+-- Copyright MATRA MARCONI SPACE FRANCE
+------------------------------------------------------------

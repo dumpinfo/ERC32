@@ -1,0 +1,78 @@
+-------------------------------------------------------------
+-- File containing nominal timing values for the MEC.
+-------------------------------------------------------------
+--clk2_period 25 ns
+clk2_period 50 ns
+t1   44 ns
+t2   10 ns
+t3   22 ns
+t4   15 ns
+t5   4 ns
+t6   15 ns
+t7   4 ns
+t8   15 ns
+t9   20 ns
+t10  15 ns
+t11  1 ns
+t12  8 ns
+-- t13 to t16 reflect delay from SYSCLK, not CLK2 as in data sheet
+t13  15 ns
+t14  15 ns
+t15  15 ns
+t16  15 ns
+------------------------------------------------------------------
+t17  15 ns
+t18  30 ns
+t19  35 ns
+t20  1 ns
+t21  20 ns
+t22  4 ns
+t23  35 ns
+t24  2 ns
+t25  15 ns
+t26  15 ns
+t27  15 ns
+t28  8 ns
+t29  4 ns
+t30  8 ns
+t31  4 ns
+t32  15 ns
+t33  8 ns
+t34  2 ns
+t35  8 ns
+t36  4 ns
+t37  15 ns
+t38  15 ns
+t39  4 ns
+t40  15 ns
+t42  15 ns
+t43  15 ns
+t44  8 ns
+t45  4 ns
+t46  8 ns
+t47  4 ns
+t48  15 ns
+t49  8 ns
+t50  4 ns
+t51  8 ns
+t53  15 ns
+t54  4 ns
+t55  1000 ns
+t56  8 ns
+t57  4 ns
+t58  8 ns
+t59  4 ns
+t60  8 ns
+t61  4 ns
+t62  15 ns
+t63  1000 ns
+t66  35 ns
+t68  22 ns
+t69  3 ns
+t70  3 ns
+t71  12 ns
+t73  40 ns
+t74  0 ns
+t75  4 ns
+
+

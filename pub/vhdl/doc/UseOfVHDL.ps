@@ -1,0 +1,2559 @@
+%!PS-Adobe-3.0
+/wpdict	120 dict def
+wpdict	begin
+/bdef	{bind def} bind def
+
+/bflg	false def
+/Bfont	0 def
+/bon	false def
+
+/psz	0 def
+/_S	/show load def
+/_t	{0 rmoveto} bdef
+
+/_pixelsnap
+	{transform .25 sub round .25 add
+	 exch .25 sub round .25 add exch itransform
+	} bdef
+/_pixeldsnap
+	{ dtransform round exch round exch idtransform } bdef
+
+/_lt	{_pixelsnap lineto} bdef
+/_rlt	{_pixeldsnap rlineto} bdef
+/_mt	{_pixelsnap moveto} bdef
+/_rmt	{_pixeldsnap rmoveto} bdef
+
+/bshow	{gsave psz 30 div 0 _rmt dup show grestore show} bdef
+
+/DUx	0 def
+/DUy	0 def
+/hscl	0 def
+
+/M	{_mt
+	 2 mul -2 2
+	 { -2 roll 0 _rmt _S } for
+	} bdef
+
+/makeoutl
+	{ dup /OutlineFlag known not
+	  { dup dup length 2 add dict begin
+	    {1 index /FID ne { def }{ pop pop } ifelse } forall
+	    /UniqueID known {/UniqueID UniqueID 10000 add def} if
+	    /PaintType PaintType 0 eq { 2 }{ PaintType } ifelse def
+	    /StrokeWidth 15 def
+	    /OutlineFlag true def
+	    /OutlineFont currentdict end definefont
+	  } if
+	} bdef
+
+/nbuff	32 string def
+/orntsv	0 def
+/plen	0 def
+/pwid	0 def
+/picstr	1 string def
+
+/reencode
+	{ dup FontDirectory exch known
+	  { findfont }
+	  {  dup nbuff cvs dup length 1 sub get 82 eq
+	     {	dup nbuff cvs dup length 1 sub 0 exch getinterval
+		findfont begin
+		currentdict dup length dict begin
+		{ 1 index /FID ne {def} {pop pop} ifelse } forall
+		/FontName exch def
+		/Encoding WPencoding def
+		currentdict dup end end
+		/FontName get exch definefont
+	     }
+	     { findfont } ifelse
+	  } ifelse
+	} bdef
+
+/ron	false def
+/sflg	false def
+/slan	0 def
+/sp	32 def
+
+/sshow
+	{ save exch
+	   gsave
+	    psz 20 div dup neg _rmt dup show
+	   grestore
+	   dup
+	   save exch
+	    Bfont setfont
+	    1 setgray show
+	   restore
+	   currentfont makeoutl setfont show
+	   currentpoint 3 -1 roll
+	  restore _mt
+	} bdef
+
+/Sx	0 def
+/Sy	0 def
+/Ux	0 def
+/Uy	0 def
+/W	/widthshow load def
+
+/WPencoding StandardEncoding 256 array copy def 0
+[ 127	/Aacute/Acircumflex/Adieresis/Agrave/Aring/Atilde/Ccedilla
+	/Delta/Eacute/Ecircumflex/Edieresis/Egrave/Eth/Gamma/Iacute
+	/Icircumflex/Idieresis/Igrave/Lambda/Ntilde/Oacute
+	/Ocircumflex/Odieresis/Ograve/Omega/Otilde/Phi/Pi/Psi
+	/Scaron/Sigma/TeXtext32/Theta/Thorn
+  209	/Uacute/Ucircumflex/Udieresis/Ugrave/Upsilon/Xi/Yacute
+	/Ydieresis/Zcaron/aacute/acircumflex/adieresis/agrave
+	/aring/atilde/brokenbar
+  228	/ccedilla/copyright/degree/divide
+  236	/dotlessj/eacute/ecircumflex/edieresis/egrave
+  242	/eth/ff/ffi
+  246	/ffl/iacute
+  252	/icircumflex/idieresis/igrave/logicalnot
+  1	/minus/mu/multiply/ntilde/oacute/ocircumflex/odieresis
+  	/ograve/onehalf/onequarter/onesuperior/otilde/plusminus
+  	/registered/scaron/thorn/threequarters/threesuperior
+  	/trademark/twosuperior/uacute/ucircumflex/udieresis
+  	/ugrave/yacute/ydieresis/zcaron
+]
+{ dup type /nametype eq
+  { WPencoding 2 index 2 index put pop 1 add }
+  { exch pop } ifelse
+} forall pop
+
+/_B	{/bflg true def
+	 sflg not {/_S /bshow load def /bon true def} if
+	} bdef
+/_b	{/bflg false def
+	 bon {/_S /show load def /bon false def} if
+	} bdef
+/_bd	{save} bdef
+/_bp	{save 2 setmiterlimit .06 .06 scale 0 0 _mt} bdef
+/_ccprocs
+	{/proc2 exch cvlit def
+	 /proc1 exch cvlit def
+	 /newproc proc1 length proc2 length add
+	 array def
+	 newproc 0 proc1 putinterval
+	 newproc proc1 length proc2 putinterval
+	 newproc cvx
+	} def
+/_clr	{3 {255 div 3 1 roll} repeat
+	 ron {6 3 roll pop pop pop} {setrgbcolor} ifelse
+	} bdef
+/_cp	/closepath load def
+/_cw	{stroke initclip _mt 0 2 index
+	 _rlt 0 _rlt 0 exch neg
+	 _rlt clip newpath
+	} bdef
+/_d	/setdash load def
+/_DU	{currentpoint /DUy exch def /DUx exch def} bdef
+/_du	{gsave
+	  save
+	   8 setlinewidth
+	   currentpoint -30 add _mt
+	   DUx DUy -30 add _lt stroke
+	  restore
+	  8 setlinewidth
+	  currentpoint -50 add _mt
+	  DUx DUy -50 add _lt stroke
+	 grestore
+	} bdef
+/_ed	{restore} bdef
+/_ep	{showpage restore 0 0 _mt} bdef
+/_f	/eofill load def
+/_ff	{ exch reencode exch
+	  3 div dup /psz exch def
+	  scalefont dup /Bfont exch def setfont
+	} bdef
+/_ffs	{ /slan exch 10 div def /hscl exch 1000 div def
+	  /psz exch 3 div def
+	  [ psz hscl mul 0 slan dup sin exch cos div psz mul psz 0 0 ]
+	  exch reencode exch makefont dup /Bfont exch def setfont
+	} bdef
+/_g	/setgray load def
+/_gs	{neg 100 add 100 div setgray} bdef
+/_i	{gsave
+	  dup /picstr exch 7 add 8 idiv string def
+	  3 1 roll translate dup 1 scale
+	  dup 1 1 [5 -1 roll 0 0 1 0 0]
+	  {currentfile picstr readhexstring pop} image
+         grestore
+        } bdef
+/_is	{save 4 1 roll
+	  dup /picstr exch 7 add 8 idiv string def
+	  3 1 roll translate dup 1 scale
+	  dup 1 1 [5 -1 roll 0 0 1 0 0]
+	  {currentfile picstr readhexstring pop} image
+	 restore
+	} bdef
+/_ie	{1 eq { {1 exch sub} currenttransfer _ccprocs settransfer} if
+	 /_isx exch def /_isy exch def
+	 _isx mul exch _isy mul translate
+	 add 2 div /_txc exch def
+	 add 2 div /_tyc exch def
+	 _txc _isx mul _tyc _isy mul translate
+	 360 exch sub rotate
+	 1 eq { _isx neg _isy scale }
+	 { _isx _isy scale }
+	 ifelse _txc neg _tyc neg translate
+	} bdef
+/_irms	{save
+	  12 1 roll
+	  1 eq {{1 exch sub} currenttransfer _ccprocs settransfer} if
+	  /picstr exch string def translate
+	  2 index 6 index sub 2 div 2 index 6 index sub 2 div neg
+	  translate
+	  5 index 5 index 2 div neg exch 2 div exch
+	  2 copy neg exch neg exch 5 2 roll translate
+	  360 exch sub rotate
+	  3 index 3 index 7 index div exch 8 index div exch scale
+	  translate pop pop 2 index 2 index scale
+	  3 index 0 eq
+	  { [ 3 index 0 0 5 index neg 0 0 ] }
+	  { 3 index 1 eq
+	    { [ 3 index 0 0 5 index 0 7 index ] }
+	    { 3 index 128 eq
+	      { [ 3 index neg 0 0 5 index neg 7 index 0 ] }
+	      { [ 3 index neg 0 0 5 index 7 index 7 index ] } ifelse
+	    } ifelse
+	  } ifelse
+          {currentfile picstr readhexstring pop} image
+          pop
+	 restore
+	} bdef
+
+/_l	{_lt} bdef
+/_lr	{_rlt} bdef
+/_m	{_mt} bdef
+/_O	{currentfont makeoutl setfont} bdef
+/_o	{Bfont setfont} bdef
+/_ornt	{/pwid exch def /plen exch def
+	 orntsv 1 eq {0 pwid translate -90 rotate} if
+	 orntsv 2 eq {pwid plen translate 180 rotate} if
+	 orntsv 3 eq {plen 0 translate 90 rotate} if
+	 dup 1 eq {pwid 0 translate 90 rotate} if
+	 dup 2 eq {pwid plen translate 180 rotate} if
+	 dup 3 eq {0 plen translate -90 rotate} if
+	 /orntsv exch def
+	} bdef
+/_lod1	{currentpoint orntsv plen pwid 6 -1 roll restore save} bdef
+/_lod2	{_bp 7 2 roll _ornt _mt} bdef
+/_unlod	{currentpoint orntsv plen pwid 7 -2 roll restore restore
+	 _bp 6 1 roll _ornt _mt
+	} bdef
+/_p	{2 copy _mt 1 0 _rlt _mt} bdef
+/_pl	{{_lt} repeat} bdef
+/_R	{/ron true def currentrgbcolor 1 .25 .25 setrgbcolor} bdef
+/_r	{/ron false def setrgbcolor} bdef /_rm  {0 _rmt} bdef
+/_rmxy	{_rmt} bdef
+/_s	/stroke load def
+/_SH	{bon {/bon false def} if
+	 /_S /sshow load def /sflg true def
+	} bdef
+/_sh	{/_S /show load def /sflg false def bflg {_B} if} bdef
+/_sp	{ gsave stroke grestore } bdef
+/_ST	{currentpoint /Sy exch def /Sx exch def} bdef
+/_st	{gsave
+	  currentpoint pop
+	  Sx dup Sy _mt sub
+	  (\320) stringwidth pop div
+	  dup floor cvi dup
+	  {(\320) show} repeat sub
+	  dup 0 gt {1 scale (\320) show}{pop} ifelse
+	 grestore
+	} bdef
+/_U	{currentpoint /Uy exch def /Ux exch def} bdef
+/_u	{gsave
+	  currentpoint
+	  -30 add _mt
+	  Ux Uy -30 add _lt
+	  12 setlinewidth
+	  stroke
+	 grestore
+	} bdef
+/_w	/setlinewidth load def
+end
+/#copies 1 def wpdict begin
+_bd _bp 0 14032 9922 _ornt /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s [] 0 _d _s 100 _gs 177 1569 _m
+_sp 1063 1569 1063 1571 177 1571 3 _pl _f _s grestore gsave 0 0 translate 8 8 scale _s 0 _gs 136 136 177 1559 _cw save 0.125 0.125 scale 0 360 820 758 80 18 104.22251 78.46192 14.67935 14.67935 0 _ie end /_n {} bind def/copypage {_n} bind def/showpage {_n} bind def/erasepage {_n} bind def%!PS-Adobe-2.0 EPSF-1.2
+%%BoundingBox: 18 758 80 820
+%%Title: esal.EPS
+%%Creator: HP EPS File Format Converter
+%%CreationDate: Tue Jun 16 13:02:02 1992
+%% Pages: 1
+%%EndComments
+
+/x-origin 020 def    
+/y-origin 760 def    
+                     
+
+/units {.8 mul} def
+/A {37 units 37 units} def
+/B {55 units 37 units} def
+/C {59 units 37 units} def
+/D {49 units 37 units} def
+/D1 {49 units 40.5 units } def
+/D2 {49 units 33.5 units } def
+/E {18.5 units 37 units} def
+/X1 {66 units 40.5 units} def
+/X2 {72 units 33.5 units} def
+
+/B-B1 {11 units} def
+/B-B2 {18 units} def
+/A-A1 {37 units} def
+/C-C1 {15 units} def
+/C-C2 {22 units} def
+/E-E1 {5.25 units} def
+
+
+/big-circle {1 setgray A 37 units 0 360 arc
+            } def
+/little-circle{ newpath E 5.25 units 0 360 arc 1 setgray fill 0 setgray
+              } def
+/hollow-e { newpath
+            X2 moveto
+            D2 lineto
+            D1 lineto
+            X1 lineto
+            B B-B1 0 180 arc
+            C C-C1 180 360 arc
+            % A A-A1 0 340 arcn
+            C C-C2 330 180 arcn
+            B B-B2 180 348.8 arcn
+            1 setgray
+            fill
+            } def
+
+/concentric-circles { newpath 0 setgray
+                      /theta 37 28 atan def
+                      /xcentre 37 39 theta cos mul add units def
+                      /ycentre 37 39 theta sin mul add units def
+                      /radius 1.3 units def
+                      0 setgray
+                      1 units setlinewidth
+                      38 { xcentre ycentre radius 0 360 arc stroke
+                          /radius radius 2 units add def} repeat
+                    } def
+%%EndProlog
+
+x-origin y-origin translate
+big-circle clip
+concentric-circles
+little-circle
+hollow-e
+
+
+restore wpdict begin _s 1650 1275 0 0 _cw _s grestore gsave 0 0 translate 8 8 scale _s 114 338 726 1564 _cw _s 1650 1275 0 0 _cw _s grestore 5812 13239 _m
+/Helvetica-BoldR 700 _ff
+(european)_S 78 _t (space)_S 78 _t (agency)_S /HelveticaR 700 _ff
+5812 12976 _m
+(european)_S 78 _t (space)_S 78 _t (research)_S 5812 12710 _m
+(and)_S 78 _t (technology)_S 78 _t (centre)_S /Times-RomanR 600 _ff
+gsave 0 0 translate 8 8 scale _s 119 178 295 1591 _cw _s 1650 1275 0 0 _cw _s grestore 2362 13116 _m
+/Helvetica-BoldR 2200 _ff
+(esa)_S /Times-RomanR 600 _ff
+gsave 0 0 translate 8 8 scale _s 119 178 295 1517 _cw _s 1650 1275 0 0 _cw _s grestore 2362 12729 _m
+/Helvetica-BoldR 1400 _ff
+(estec)_S /Times-RomanR 600 _ff
+/HelveticaR 600 _ff
+1459 10813 _m
+/Helvetica-BoldR 850 _ff
+(T)_S /Helvetica-BoldR 680 _ff
+(HE)_S /Helvetica-BoldR 850 _ff
+94 _t (U)_S /Helvetica-BoldR 680 _ff
+(SAGE)_S /Helvetica-BoldR 850 _ff
+94 _t /Helvetica-BoldR 680 _ff
+(OF)_S /Helvetica-BoldR 850 _ff
+94 _t (VHDL)_S 94 _t /Helvetica-BoldR 680 _ff
+(IN)_S /Helvetica-BoldR 850 _ff
+94 _t /Helvetica-BoldR 680 _ff
+(THE)_S /Helvetica-BoldR 850 _ff
+94 _t (E)_S /Helvetica-BoldR 680 _ff
+(UROPEAN)_S /Helvetica-BoldR 850 _ff
+94 _t (S)_S /Helvetica-BoldR 680 _ff
+(PACE)_S /Helvetica-BoldR 850 _ff
+94 _t (A)_S /Helvetica-BoldR 680 _ff
+(GENCY)_S /HelveticaR 600 _ff
+4423 10330 _m
+/HelveticaR 480 _ff
+(Peter)_S 53 _t (Sinander)_S 2402 10127 _m
+(ESA/ESTEC)_S 53 _t (WSM,)_S 53 _t (Postbus)_S 53 _t (299,)_S 53 _t (2200)_S 53 _t (AG)_S 53 _t (Noordwijk,)_S 53 _t (The)_S 53 _t (Netherlands)_S 2337 9934 _m
+(Phone:)_S 53 _t (+31-71-653367,)_S 53 _t (fax:)_S 53 _t (+31-71-654295,)_S 53 _t (e-mail:)_S 53 _t (psi@wd.estec.esa.nl)_S /HelveticaR 600 _ff
+/Times-RomanR 600 _ff
+1417 9251 _m
+/Times-BoldR 600 _ff
+(A)_S /Times-BoldR 480 _ff
+(BSTRACT)_S /Times-RomanR 600 _ff
+1417 8783 _m
+/Times-ItalicR 600 _ff
+(Being)_S 84 _t (a)_S 84 _t (standardised)_S 85 _t (Hardware)_S 84 _t (Description)_S 85 _t (Language)_S 84 _t (supported)_S 84 _t (by)_S 85 _t (most)_S 84 _t (CAD)_S 85 _t (tool)_S 1417 8550 _m
+(vendors,)_S 45 _t (VHDL)_S 45 _t (is)_S 46 _t (well)_S 45 _t (suited)_S 45 _t (for)_S 46 _t (describing)_S 45 _t (digital)_S 45 _t (circuits,)_S 45 _t (particularly)_S 45 _t (when)_S 46 _t (more)_S 45 _t (than)_S 1417 8317 _m
+(a)_S 55 _t (hundred)_S 55 _t (companies)_S 55 _t (from)_S 55 _t (fifteen)_S 55 _t (different)_S 55 _t (countries)_S 55 _t (work)_S 55 _t (together.)_S 55 _t (This)_S 55 _t (paper)_S 55 _t (outlines)_S 1417 8084 _m
+(how)_S 66 _t (VHDL)_S 65 _t (is)_S 66 _t (used)_S 65 _t (in)_S /Times-RomanR 600 _ff
+65 _t (European)_S 66 _t (Space)_S 65 _t (Agency)_S 66 _t /Times-ItalicR 600 _ff
+(activities,)_S 65 _t (in)_S 65 _t (particular)_S 66 _t (focusing)_S 65 _t (on)_S 65 _t (the)_S 1417 7849 _m
+(need)_S 49 _t (for)_S 50 _t (modelling)_S 49 _t (guidelines)_S 50 _t (and)_S 49 _t (an)_S 50 _t (approach)_S 49 _t (to)_S 50 _t (use)_S 49 _t (VHDL)_S 50 _t (for)_S 49 _t (board-level)_S 50 _t (simulation.)_S 1417 7616 _m
+(Concerning)_S 44 _t (the)_S 44 _t (latter,)_S 44 _t (various)_S 44 _t (techniques)_S 43 _t (are)_S 44 _t (described)_S 44 _t (including)_S 44 _t (methods)_S 43 _t (for)_S 44 _t (protecting)_S 1417 7383 _m
+(the)_S 121 _t (design)_S 121 _t (information)_S 120 _t (in)_S 121 _t (a)_S 121 _t (VHDL)_S 121 _t (model,)_S 121 _t (such)_S 120 _t (as)_S 121 _t (source)_S 121 _t (code)_S 121 _t (encryption)_S 121 _t (and)_S 1417 7150 _m
+(distribution)_S 80 _t (of)_S 79 _t (compiled)_S 80 _t (models.)_S 80 _t (While)_S 80 _t (only)_S 80 _t (an)_S 80 _t (overview)_S 80 _t (is)_S 79 _t (presented)_S 80 _t (here,)_S 80 _t (complete)_S 1417 6917 _m
+(information)_S 67 _t (is)_S 67 _t (freely)_S 67 _t (available)_S 67 _t (on)_S 67 _t (the)_S 67 _t /Times-RomanR 600 _ff
+(Internet.)_S 1417 5985 _m
+/Times-BoldR 600 _ff
+(1)_S 1889 5985 _m
+(I)_S /Times-BoldR 480 _ff
+(NTRODUCTION)_S /Times-RomanR 600 _ff
+1417 5517 _m
+(The)_S 52 _t /Times-ItalicR 600 _ff
+(European)_S 53 _t (Space)_S 52 _t (Agency)_S /Times-RomanR 600 _ff
+53 _t (\(ESA\))_S 52 _t (is)_S 52 _t (an)_S 52 _t (organisation)_S 53 _t (with)_S 52 _t (14)_S 52 _t (European)_S 53 _t (member)_S 52 _t (states,)_S 1417 5284 _m
+(and)_S 48 _t (with)_S 48 _t (Canada)_S 48 _t (as)_S 48 _t (an)_S 48 _t (associate)_S 48 _t (member.)_S 48 _t (The)_S 48 _t (purpose)_S 49 _t (of)_S 48 _t (ESA)_S 48 _t (is)_S 48 _t (to)_S 48 _t (promote)_S 48 _t (cooperation)_S 1417 5051 _m
+(among)_S 54 _t (the)_S 53 _t (member)_S 53 _t (states)_S 54 _t (in)_S 53 _t (space)_S 54 _t (research)_S 53 _t (and)_S 53 _t (technology)_S 54 _t (and)_S 53 _t (their)_S 53 _t (space)_S 53 _t (applications,)_S 1417 4818 _m
+(in)_S 67 _t (particular)_S 67 _t (for)_S 67 _t (scientific)_S 67 _t (purposes)_S 67 _t (and)_S 68 _t (space)_S 67 _t (application)_S 67 _t (systems.)_S 67 _t (Since)_S 67 _t (the)_S 67 _t (charter)_S 68 _t (is)_S 1417 4585 _m
+(to)_S 112 _t (develop)_S 113 _t (the)_S 112 _t (space)_S 113 _t (industry)_S 112 _t (of)_S 112 _t (the)_S 113 _t (member)_S 112 _t (states,)_S 112 _t (all)_S 113 _t (major)_S 112 _t (technical)_S 113 _t (work)_S 112 _t (is)_S 1417 4352 _m
+(performed)_S 67 _t (by)_S 67 _t (external)_S 67 _t (companies)_S 67 _t (under)_S 67 _t (ESA)_S 67 _t (contracts)_S 67 _t (and)_S 67 _t (supervision.)_S 1417 3884 _m
+(ESA)_S 111 _t (has)_S 111 _t (several)_S 110 _t (establishments)_S 111 _t (in)_S 111 _t (Europe,)_S 110 _t (of)_S 111 _t (which)_S 111 _t (one)_S 110 _t (is)_S 111 _t (the)_S 111 _t /Times-ItalicR 600 _ff
+(European)_S 110 _t (Space)_S 1417 3649 _m
+(Research)_S 169 _t (and)_S 168 _t (Technology)_S 169 _t (Centre)_S /Times-RomanR 600 _ff
+168 _t (\(ESTEC\))_S 169 _t (located)_S 169 _t (in)_S 168 _t (the)_S 169 _t (Netherlands.)_S 168 _t (The)_S 1417 3414 _m
+/Times-ItalicR 600 _ff
+(Microelectronics)_S 141 _t (and)_S 141 _t (Technology)_S /Times-RomanR 600 _ff
+140 _t (section)_S 141 _t (\(WSM\))_S 141 _t (at)_S 140 _t (ESTEC)_S 141 _t (deals)_S 140 _t (with)_S 141 _t (design)_S 1417 3181 _m
+(methodology)_S 66 _t (in)_S 66 _t (the)_S 66 _t (field)_S 66 _t (of)_S 67 _t (microelectronics,)_S 66 _t (development)_S 66 _t (of)_S 66 _t (Integrated)_S 66 _t (Circuits)_S 66 _t (\(ICs\))_S 1417 2948 _m
+(and)_S 67 _t (related)_S 67 _t (topics.)_S 1417 2482 _m
+(Electronic)_S 64 _t (equipment)_S 64 _t (and)_S 64 _t (components)_S 64 _t (are)_S 64 _t (an)_S 64 _t (increasingly)_S 64 _t (important)_S 64 _t (part)_S 64 _t (of)_S 64 _t (spacecraft,)_S 1417 2249 _m
+(as)_S 83 _t (in)_S 83 _t (almost)_S 84 _t (all)_S 83 _t (other)_S 83 _t (complex)_S 83 _t (systems.)_S 84 _t (Due)_S 83 _t (to)_S 84 _t (the)_S 83 _t (harsh)_S 83 _t (environment)_S 84 _t (in)_S 83 _t (space)_S 83 _t (-)_S 84 _t (in)_S 1417 2016 _m
+(particular)_S 74 _t (radiation)_S 73 _t (effects)_S 74 _t (-)_S 74 _t (and)_S 73 _t (the)_S 74 _t (fact)_S 73 _t (that)_S 74 _t (it)_S 73 _t (is)_S 74 _t (practically)_S 73 _t (impossible)_S 74 _t (or)_S 73 _t (extremely)_S 1417 1783 _m
+(expensive)_S 49 _t (to)_S 48 _t (service)_S 49 _t (a)_S 49 _t (spacecraft)_S 48 _t (after)_S 49 _t (it)_S 49 _t (has)_S 49 _t (been)_S 49 _t (launched,)_S 48 _t (special)_S 49 _t (system)_S 49 _t (concepts,)_S 49 _t (ICs)_S 1417 935 _m
+/Times-RomanR 480 _ff
+(Copyright)_S 53 _t (\345)_S 53 _t (1995)_S 53 _t (European)_S 53 _t (Space)_S 53 _t (Agency.)_S 53 _t (All)_S 53 _t (rights)_S 53 _t (reserved.)_S 1417 742 _m
+(This)_S 45 _t (document)_S 44 _t (may)_S 45 _t (be)_S 45 _t (used)_S 45 _t (and)_S 44 _t (distributed)_S 45 _t (without)_S 45 _t (restrictions)_S 44 _t (provided)_S 45 _t (that)_S 45 _t (this)_S 45 _t (copyright)_S 44 _t (notice)_S 45 _t (is)_S 45 _t (retained)_S 1417 549 _m
+(and)_S 53 _t (that)_S 53 _t (any)_S 53 _t (derivative)_S 53 _t (work)_S 53 _t (acknowledges)_S 53 _t (the)_S 53 _t (origin)_S 53 _t (of)_S 53 _t (the)_S 53 _t (information.)_S /Times-RomanR 600 _ff
+_ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s 100 _gs _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S 4905 12687 _m
+(2)_S 6348 12687 _m
+(european)_S 67 _t (space)_S 67 _t (agency)_S /Times-RomanR 600 _ff
+1417 11794 _m
+(and)_S 71 _t (process)_S 71 _t (technologies)_S 72 _t (are)_S 71 _t (frequently)_S 71 _t (employed.)_S 72 _t (Such)_S 71 _t (special)_S 71 _t (ICs)_S 71 _t (are)_S 72 _t (developed)_S 71 _t (by)_S 1417 11561 _m
+(the)_S 99 _t (space)_S 98 _t (industry,)_S 98 _t (in)_S 98 _t (Europe)_S 98 _t (often)_S 99 _t (under)_S 98 _t (ESA)_S 98 _t (contract.)_S 98 _t (Three)_S 98 _t (main)_S 98 _t (categories)_S 98 _t (of)_S 1417 11328 _m
+(devices)_S 67 _t (can)_S 67 _t (be)_S 67 _t (distinguished:)_S 1417 11093 _m
+(\267)_S 1653 11093 _m
+(ASICs)_S 52 _t (\()_S /Times-ItalicR 600 _ff
+(Application)_S 53 _t (Specific)_S 52 _t (Integrated)_S 53 _t (Circuits)_S /Times-RomanR 600 _ff
+(\),)_S 52 _t (typically)_S 53 _t (used)_S 52 _t (only)_S 53 _t (for)_S 52 _t (one)_S 53 _t (specific)_S 1653 10860 _m
+(application;)_S 1417 10625 _m
+(\267)_S 1653 10625 _m
+(ASSPs)_S 56 _t (\()_S /Times-ItalicR 600 _ff
+(Application)_S 56 _t (Specific)_S 55 _t (Standard)_S 56 _t (Products)_S /Times-RomanR 600 _ff
+(\),)_S 56 _t (i.e.)_S 56 _t (an)_S 55 _t (ASIC)_S 56 _t (that)_S 56 _t (is)_S 55 _t (made)_S 56 _t (available)_S 1653 10392 _m
+(to)_S 67 _t (other)_S 67 _t (users)_S 67 _t (than)_S 67 _t (the)_S 67 _t (designer;)_S 1417 10159 _m
+(\267)_S 1653 10159 _m
+(Transfer)_S 64 _t (of)_S 65 _t (existing)_S 64 _t (commercial)_S 65 _t (ICs)_S 64 _t (for)_S 65 _t (comparatively)_S 64 _t (complex)_S 65 _t (devices)_S 64 _t (such)_S 65 _t (as)_S 64 _t (the)_S 1653 9926 _m
+(SPARC)_S 67 _t (microprocessor)_S 67 _t (and)_S 67 _t (the)_S 67 _t (ADSP21020)_S 67 _t (Digital)_S 67 _t (Signal)_S 67 _t (Processor.)_S 1417 9227 _m
+/Times-BoldR 600 _ff
+(2)_S 1889 9227 _m
+(ASIC)_S /Times-BoldR 480 _ff
+(S)_S /Times-BoldR 600 _ff
+67 _t /Times-BoldR 480 _ff
+(AND)_S /Times-BoldR 600 _ff
+67 _t (VHDL)_S /Times-RomanR 600 _ff
+1417 8761 _m
+/Times-BoldR 600 _ff
+(2.1)_S 1889 8761 _m
+(Development)_S 67 _t (of)_S 67 _t (ASICs)_S /Times-RomanR 600 _ff
+1417 8295 _m
+(Most)_S 66 _t (of)_S 66 _t (the)_S 65 _t (serious)_S 66 _t (errors)_S 66 _t (encountered)_S 66 _t (in)_S 65 _t (ASIC)_S 66 _t (developments)_S 66 _t (originate)_S 65 _t (from)_S 66 _t (incorrect)_S 1417 8062 _m
+(specifications)_S 44 _t (or)_S 44 _t (incorrect)_S 44 _t (implementation)_S 44 _t (of)_S 43 _t (the)_S 44 _t (specification.)_S 44 _t (To)_S 44 _t (allow)_S 44 _t (the)_S 44 _t (functionality)_S 1417 7829 _m
+(of)_S 82 _t (a)_S 82 _t (device)_S 82 _t (to)_S 82 _t (be)_S 82 _t (independently)_S 82 _t (evaluated,)_S 82 _t (in)_S 82 _t (ESA)_S 82 _t (developments)_S 82 _t (before)_S 82 _t (the)_S 82 _t (detailed)_S 1417 7596 _m
+(design)_S 73 _t (is)_S 73 _t (started)_S 73 _t (a)_S 73 _t (VHDL)_S 73 _t (model)_S 73 _t (is)_S 73 _t (normally)_S 73 _t (required)_S 73 _t (to)_S 73 _t (allow)_S 73 _t (the)_S 73 _t (functionality)_S 73 _t (to)_S 73 _t (be)_S 1417 7363 _m
+(simulated,)_S 67 _t (e.g.)_S 67 _t (by)_S 67 _t (ESA)_S 67 _t (or)_S 67 _t (by)_S 67 _t (another)_S 67 _t (company.)_S 1417 6897 _m
+/Times-BoldR 600 _ff
+(2.2)_S 1889 6897 _m
+(Selecting)_S 67 _t (VHDL)_S /Times-RomanR 600 _ff
+1417 6431 _m
+(Since)_S 48 _t (the)_S 47 _t (design)_S 47 _t (of)_S 48 _t (ASICs)_S 47 _t (is)_S 48 _t (performed)_S 47 _t (by)_S 48 _t (various)_S 47 _t (companies,)_S 48 _t (ESA)_S 47 _t (must)_S 48 _t (allow)_S 47 _t (different)_S 1417 6198 _m
+(design)_S 60 _t (tools)_S 60 _t (to)_S 59 _t (be)_S 60 _t (used;)_S 60 _t (it)_S 59 _t (is)_S 60 _t (neither)_S 60 _t (desirable)_S 60 _t (nor)_S 60 _t (feasible)_S 59 _t (to)_S 60 _t (force)_S 60 _t (all)_S 60 _t (companies)_S 59 _t (to)_S 60 _t (use)_S 1417 5965 _m
+(tools)_S 78 _t (from)_S 78 _t (a)_S 78 _t (specific)_S 78 _t (vendor.)_S 79 _t (In)_S 78 _t (the)_S 78 _t (beginning)_S 78 _t (of)_S 78 _t (the)_S 78 _t (nineties)_S 79 _t (when)_S 78 _t (the)_S 78 _t (ASIC)_S 78 _t (design)_S 1417 5732 _m
+(process)_S 111 _t (was)_S 112 _t (being)_S 112 _t (formalised)_S 111 _t (for)_S 112 _t (ESA)_S 112 _t (developments,)_S 111 _t (VHDL)_S 112 _t (was)_S 112 _t (the)_S 111 _t (only)_S 112 _t (HDL)_S 1417 5499 _m
+(\(Hardware)_S 53 _t (Description)_S 52 _t (Language\))_S 52 _t (supported)_S 53 _t (by)_S 52 _t (multiple)_S 52 _t (tool)_S 52 _t (vendors)_S 53 _t (and)_S 52 _t (was)_S 52 _t (therefore)_S 1417 5266 _m
+(the)_S 67 _t (natural)_S 67 _t (choice.)_S 1417 4800 _m
+(VHDL)_S 67 _t ('93)_S 69 _t ([VHDL93])_S 69 _t (is)_S 69 _t (the)_S 69 _t (baseline)_S 69 _t (today)_S 69 _t (since)_S 69 _t (there)_S 69 _t (is)_S 69 _t (a)_S 69 _t (desire)_S 69 _t (to)_S 70 _t (reduce)_S 69 _t (the)_S 69 _t (long-)_S 1417 4567 _m
+(term)_S 51 _t (maintenance)_S 51 _t (costs)_S 51 _t (for)_S 51 _t (the)_S 51 _t (VHDL)_S 51 _t (models;)_S 51 _t (after)_S 51 _t (being)_S 51 _t (delivered)_S 51 _t (ESA)_S 51 _t (cannot)_S 51 _t (require)_S 1417 4334 _m
+(that)_S 78 _t (the)_S 78 _t (original)_S 79 _t (model)_S 78 _t (developer)_S 78 _t (shall)_S 78 _t (update)_S 78 _t (the)_S 79 _t (model)_S 78 _t (when)_S 78 _t (needed.)_S 78 _t (While)_S 79 _t (it)_S 78 _t (was)_S 1417 4101 _m
+(initially)_S 59 _t (intended)_S 58 _t (to)_S 59 _t (use)_S 58 _t (VHDL)_S 67 _t ('87)_S 59 _t (as)_S 58 _t (a)_S 59 _t (baseline,)_S 58 _t (this)_S 59 _t (was)_S 58 _t (changed)_S 59 _t (to)_S 59 _t (VHDL)_S 67 _t ('93)_S 58 _t (when)_S 1417 3868 _m
+(it)_S 52 _t (became)_S 53 _t (clear)_S 53 _t (that)_S 52 _t (it)_S 53 _t (would)_S 52 _t (be)_S 53 _t (necessary)_S 53 _t (to)_S 52 _t (update)_S 53 _t (practically)_S 53 _t (every)_S 52 _t (VHDL)_S 67 _t ('87)_S 53 _t (model,)_S 1417 3635 _m
+(since)_S 95 _t (there)_S 95 _t (are)_S 94 _t (minor)_S 95 _t (syntax)_S 94 _t (and)_S 95 _t (semantic)_S 94 _t (differences.)_S 95 _t (Although)_S 94 _t (these)_S 95 _t (changes)_S 94 _t (are)_S 1417 3402 _m
+(technically)_S 60 _t (of)_S 60 _t (minor)_S 60 _t (nature,)_S 60 _t (it)_S 60 _t (would)_S 60 _t (be)_S 60 _t (a)_S 60 _t (major)_S 60 _t (task)_S 59 _t (to)_S 60 _t (update)_S 60 _t (and)_S 60 _t (subsequently)_S 60 _t (verify)_S 1417 3169 _m
+(a)_S 67 _t (large)_S 67 _t (number)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (models)_S 67 _t (originating)_S 67 _t (from)_S 67 _t (several)_S 67 _t (companies.)_S 1417 2703 _m
+(However,)_S 46 _t (many)_S 47 _t (VHDL)_S 46 _t (tool)_S 47 _t (vendors)_S 46 _t (still)_S 46 _t (only)_S 47 _t (support)_S 46 _t (VHDL)_S 67 _t ('87,)_S 47 _t (some)_S 46 _t (even)_S 47 _t (supporting)_S 1417 2470 _m
+(constructs)_S 72 _t (deemed)_S 72 _t (illegal)_S 72 _t (by)_S 73 _t (the)_S 72 _t (VASG)_S 72 _t (\(VHDL)_S 72 _t (Analysis)_S 73 _t (and)_S 72 _t (Standardization)_S 72 _t (Group\))_S 1417 2235 _m
+([Interpret].)_S 53 _t (One)_S 54 _t (example)_S 54 _t (is)_S 53 _t (the)_S 54 _t /Times-ItalicR 600 _ff
+(Std.TextIO.EndLine)_S /Times-RomanR 600 _ff
+53 _t (function,)_S 54 _t (which)_S 53 _t (is)_S 54 _t (illegal)_S 53 _t (VHDL)_S 54 _t (but)_S 1417 2002 _m
+(still)_S 81 _t (is)_S 82 _t (supported)_S 82 _t (by)_S 82 _t (at)_S 82 _t (least)_S 82 _t (one)_S 82 _t (simulator.)_S 82 _t (Several)_S 82 _t (ESA)_S 82 _t (developments)_S 82 _t (therefore)_S 82 _t (use)_S 1417 1769 _m
+(tools)_S 75 _t (based)_S 76 _t (on)_S 75 _t (VHDL)_S 67 _t ('87,)_S 76 _t (with)_S 75 _t (an)_S 75 _t (update)_S 76 _t (to)_S 75 _t (VHDL)_S 67 _t ('93)_S 76 _t (being)_S 75 _t (performed)_S 75 _t (just)_S 76 _t (before)_S 1417 1536 _m
+(delivery.)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(european)_S 67 _t (space)_S 67 _t (agency)_S 4905 12687 _m
+(3)_S 5991 12687 _m
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S /Times-RomanR 600 _ff
+1417 11792 _m
+(There)_S 88 _t (is)_S 88 _t (no)_S 87 _t (requirement)_S 88 _t (on)_S 87 _t (which)_S 88 _t (gate-level)_S 88 _t (simulator)_S 87 _t (to)_S 88 _t (be)_S 87 _t (used,)_S 88 _t (be)_S 88 _t (that)_S 87 _t /Times-ItalicR 600 _ff
+(Cadence)_S 1417 11557 _m
+(Verilog-XL)_S /Times-RomanR 600 _ff
+(,)_S 96 _t /Times-ItalicR 600 _ff
+(Mentor)_S 96 _t (QuickSim)_S /Times-RomanR 600 _ff
+96 _t (or)_S 96 _t (any)_S 96 _t (other)_S 96 _t (gate-level)_S 96 _t (simulator,)_S 96 _t (provided)_S 96 _t (that)_S 95 _t (it)_S 96 _t (is)_S 1417 11324 _m
+(supported)_S 58 _t (by)_S 59 _t (the)_S 59 _t (ASIC)_S 59 _t (foundry.)_S 58 _t (The)_S 59 _t (choice)_S 58 _t (of)_S 59 _t (whether)_S 59 _t (to)_S 58 _t (use)_S 59 _t (stand-alone)_S 58 _t (or)_S 59 _t (integrated)_S 1417 11091 _m
+(VHDL)_S 67 _t (and)_S 67 _t (gate-level)_S 67 _t (simulators)_S 67 _t (is)_S 67 _t (deferred)_S 67 _t (to)_S 67 _t (the)_S 67 _t (designers.)_S 1417 10625 _m
+(The)_S 61 _t (number)_S 61 _t (of)_S 61 _t (tools)_S 61 _t (supporting)_S 61 _t (the)_S 61 _t (Verilog)_S 61 _t (HDL)_S 62 _t (has)_S 61 _t (increased)_S 61 _t (after)_S 61 _t (it)_S 61 _t (was)_S 61 _t (released)_S 62 _t (as)_S 1417 10392 _m
+(a)_S 68 _t (non-proprietary)_S 68 _t (language)_S 68 _t (in)_S 68 _t (an)_S 68 _t (effort)_S 68 _t (to)_S 68 _t (counter)_S 69 _t (the)_S 68 _t (increasing)_S 68 _t (popularity)_S 68 _t (of)_S 68 _t (VHDL.)_S 1417 10159 _m
+(Nevertheless)_S 52 _t (VHDL)_S 51 _t (is)_S 51 _t (regarded)_S 51 _t (as)_S 52 _t (a)_S 51 _t (good)_S 51 _t (choice,)_S 51 _t (especially)_S 51 _t (in)_S 51 _t (view)_S 52 _t (of)_S 51 _t (its)_S 51 _t (capability)_S 51 _t (for)_S 1417 9926 _m
+(high-level)_S 48 _t (abstractions.)_S 49 _t (It)_S 48 _t (is)_S 48 _t (however)_S 48 _t (possible)_S 49 _t (that)_S 48 _t (such)_S 48 _t (features)_S 49 _t (will)_S 48 _t (be)_S 48 _t (added)_S 49 _t (to)_S 48 _t (Verilog)_S 1417 9693 _m
+(in)_S 61 _t (the)_S 60 _t (future,)_S 61 _t (in)_S 60 _t (the)_S 61 _t (same)_S 60 _t (way)_S 60 _t (as)_S 61 _t (analog)_S 60 _t (capabilities)_S 61 _t (similar)_S 60 _t (to)_S 60 _t (what)_S 61 _t (is)_S 60 _t (being)_S 60 _t (developed)_S 1417 9460 _m
+(for)_S 67 _t (VHDL-A)_S 67 _t ([VHDL-A])_S 67 _t (have)_S 67 _t (been)_S 67 _t (announced.)_S 1417 8761 _m
+/Times-BoldR 600 _ff
+(3)_S 1889 8761 _m
+(VHDL)_S 67 _t (M)_S /Times-BoldR 480 _ff
+(ODELLING)_S /Times-BoldR 600 _ff
+67 _t (G)_S /Times-BoldR 480 _ff
+(UIDELINES)_S /Times-RomanR 600 _ff
+1417 8295 _m
+/Times-BoldR 600 _ff
+(3.1)_S 1889 8295 _m
+(The)_S 67 _t (need)_S 67 _t (for)_S 67 _t (Modelling)_S 67 _t (Guidelines)_S /Times-RomanR 600 _ff
+1417 7829 _m
+(Companies)_S 42 _t (working)_S 42 _t (with)_S 42 _t (ESA)_S 41 _t (have)_S 42 _t (varying)_S 42 _t (experience,)_S 41 _t (ranging)_S 42 _t (from)_S 42 _t (large)_S 41 _t (multinational)_S 1417 7596 _m
+(corporations)_S 99 _t (with)_S 99 _t (decades)_S 99 _t (of)_S 99 _t (relevant)_S 99 _t (experience)_S 99 _t (to)_S 99 _t (small)_S 99 _t (companies)_S 99 _t (entering)_S 99 _t (new)_S 1417 7363 _m
+(business)_S 57 _t (areas.)_S 58 _t (In)_S 58 _t (comparatively)_S 58 _t (new)_S 58 _t (fields)_S 58 _t (such)_S 58 _t (as)_S 58 _t (ASIC)_S 58 _t (design)_S 58 _t (and)_S 58 _t (VHDL)_S 58 _t (modelling)_S 1417 7130 _m
+(it)_S 58 _t (is)_S 58 _t (therefore)_S 58 _t (often)_S 57 _t (necessary)_S 58 _t (to)_S 58 _t (actively)_S 57 _t (support)_S 58 _t (the)_S 58 _t (development)_S 58 _t (work.)_S 57 _t (ESA)_S 58 _t (thus)_S 57 _t (tries)_S 1417 6897 _m
+(to)_S 69 _t (establish)_S 69 _t (concepts)_S 68 _t (and)_S 69 _t (methodologies)_S 69 _t (helping)_S 68 _t (companies)_S 69 _t (to)_S 68 _t (gain)_S 69 _t (proficiency)_S 69 _t (and)_S 68 _t (to)_S 1417 6664 _m
+(increase)_S 55 _t (their)_S 55 _t (efficiency.)_S 56 _t (Implanting)_S 55 _t (such)_S 55 _t (knowledge)_S 55 _t (into)_S 55 _t (the)_S 55 _t (companies)_S 55 _t (is)_S 55 _t (beneficial)_S 55 _t (to)_S 1417 6431 _m
+(ESA,)_S 67 _t (ultimately)_S 67 _t (reducing)_S 67 _t (development)_S 67 _t (risk,)_S 67 _t (cost)_S 67 _t (and)_S 67 _t (schedules.)_S 1417 5965 _m
+(In)_S 75 _t (the)_S 74 _t (last)_S 75 _t (five)_S 75 _t (years)_S 75 _t (ESA)_S 75 _t (has)_S 75 _t (received)_S 75 _t (VHDL)_S 74 _t (models)_S 75 _t (developed)_S 75 _t (by)_S 75 _t (contractors.)_S 75 _t (For)_S 1417 5732 _m
+(each)_S 62 _t (delivery)_S 62 _t (of)_S 62 _t (a)_S 61 _t (VHDL)_S 62 _t (model)_S 62 _t (new)_S 62 _t (error)_S 62 _t (types)_S 62 _t (and)_S 62 _t (unusual)_S 62 _t (coding)_S 62 _t (styles)_S 62 _t (that)_S 62 _t (should)_S 1417 5499 _m
+(be)_S 67 _t (avoided)_S 67 _t (have)_S 67 _t (been)_S 67 _t (identified.)_S 67 _t (Some)_S 67 _t (examples)_S 67 _t (are:)_S 1417 5266 _m
+(\267)_S 1653 5266 _m
+(No)_S 67 _t (or)_S 67 _t (confusing)_S 67 _t (indentation;)_S 1417 5033 _m
+(\267)_S 1653 5033 _m
+(Comments)_S 67 _t (irrelevant)_S 67 _t (or)_S 67 _t (missing;)_S 1417 4800 _m
+(\267)_S 1653 4800 _m
+(Simulator)_S 62 _t (dependent)_S 62 _t (code,)_S 62 _t (such)_S 62 _t (as)_S 62 _t (illegal)_S 62 _t (VHDL)_S 62 _t (being)_S 62 _t (accepted)_S 62 _t (by)_S 61 _t (the)_S 62 _t (contractor's)_S 1653 4567 _m
+(simulator;)_S 1417 4334 _m
+(\267)_S 1653 4334 _m
+(Obscure)_S 67 _t (and/or)_S 67 _t (unnecessarily)_S 67 _t (complicated)_S 67 _t (code;)_S 1417 4101 _m
+(\267)_S 1653 4101 _m
+(The)_S 60 _t (model)_S 60 _t (has)_S 60 _t (the)_S 60 _t (wrong)_S 60 _t (functionality,)_S 60 _t (but)_S 61 _t (was)_S 60 _t (not)_S 60 _t (sufficiently)_S 60 _t (verified)_S 60 _t (so)_S 60 _t (the)_S 60 _t (error)_S 1653 3868 _m
+(was)_S 67 _t (not)_S 67 _t (discovered;)_S 1417 3635 _m
+(\267)_S 1653 3635 _m
+(Run-time)_S 67 _t (code)_S 67 _t (errors)_S 67 _t (not)_S 67 _t (being)_S 67 _t (discovered)_S 67 _t (due)_S 67 _t (to)_S 67 _t (insufficient)_S 67 _t (verification.)_S 1417 3169 _m
+(Although)_S 86 _t (some)_S 86 _t (of)_S 86 _t (these)_S 85 _t (coding)_S 86 _t (anomalies)_S 86 _t (might)_S 85 _t (be)_S 86 _t (regarded)_S 85 _t (as)_S 86 _t (minor,)_S 86 _t (problems)_S 85 _t (in)_S 1417 2936 _m
+(terms)_S 50 _t (of)_S 51 _t (long-term)_S 50 _t (maintenance,)_S 50 _t (code)_S 50 _t (reuse)_S 50 _t (etc.)_S 50 _t (are)_S 50 _t (significant)_S 50 _t (when)_S 50 _t (considering)_S 50 _t (a)_S 50 _t (large)_S 1417 2703 _m
+(number)_S 65 _t (of)_S 66 _t (models)_S 65 _t (and)_S 65 _t (with)_S 65 _t (many)_S 66 _t (different)_S 65 _t (companies)_S 65 _t (being)_S 66 _t (involved,)_S 65 _t (either)_S 65 _t (as)_S 65 _t (model)_S 1417 2470 _m
+(developers)_S 83 _t (or)_S 84 _t (model)_S 83 _t (users.)_S 83 _t (A)_S 83 _t (similar)_S 84 _t (problem)_S 83 _t (exists)_S 83 _t (for)_S 84 _t (multinational)_S 83 _t (and)_S 83 _t (multi-site)_S 1417 2237 _m
+(companies,)_S 129 _t (and)_S 129 _t (sometimes)_S 129 _t (even)_S 129 _t (between)_S 129 _t (different)_S 129 _t (departments)_S 129 _t (within)_S 129 _t (the)_S 129 _t (same)_S 1417 2004 _m
+(company.)_S 62 _t (In)_S 61 _t (all)_S 62 _t (situations)_S 62 _t (where)_S 62 _t (VHDL)_S 61 _t (is)_S 62 _t (employed)_S 61 _t (for)_S 62 _t (portability)_S 62 _t (reasons,)_S 61 _t (modelling)_S 1417 1771 _m
+(guidelines)_S 67 _t (are)_S 67 _t (necessary)_S 67 _t (as)_S 67 _t (well.)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S 4905 12687 _m
+(4)_S 6348 12687 _m
+(european)_S 67 _t (space)_S 67 _t (agency)_S /Times-RomanR 600 _ff
+1417 11794 _m
+/Times-BoldR 600 _ff
+(3.2)_S 1889 11794 _m
+(Existing)_S 67 _t (Guidelines)_S /Times-RomanR 600 _ff
+1417 11328 _m
+(Before)_S 62 _t (creating)_S 63 _t (ESA)_S 62 _t (specific)_S 62 _t (guidelines,)_S 62 _t (we)_S 62 _t (tried)_S 62 _t (to)_S 62 _t (find)_S 62 _t (existing)_S 62 _t (modelling)_S 62 _t (guidelines)_S 1417 11095 _m
+(that)_S 68 _t (could)_S 68 _t (be)_S 68 _t (used,)_S 68 _t (fully)_S 68 _t (or)_S 67 _t (at)_S 68 _t (least)_S 68 _t (as)_S 68 _t (a)_S 68 _t (starting)_S 68 _t (point.)_S 68 _t (Unfortunately,)_S 68 _t (those)_S 67 _t (guidelines)_S 1417 10862 _m
+(found)_S 72 _t (\(e.g.)_S 72 _t (EIA-567A)_S 73 _t ([EIA567],)_S 72 _t (US)_S 72 _t (military)_S 72 _t (guidelines\))_S 73 _t (were)_S 72 _t (not)_S 72 _t (considered)_S 72 _t (as)_S 73 _t (very)_S 1417 10629 _m
+(useful,)_S 73 _t (containing)_S 72 _t (mainly)_S 73 _t (general)_S 73 _t (and)_S 72 _t (high-level)_S 73 _t (requirements.)_S 73 _t (The)_S 73 _t (scope)_S 72 _t (is)_S 73 _t (often)_S 73 _t (too)_S 1417 10396 _m
+(vast)_S 103 _t (to)_S 104 _t (be)_S 103 _t (practical,)_S 103 _t (such)_S 103 _t (as)_S 104 _t (covering)_S 103 _t (both)_S 103 _t (modelling)_S 103 _t (issues)_S 104 _t (and)_S 103 _t (requirements)_S 103 _t (for)_S 1417 10163 _m
+(electronic)_S 88 _t (data)_S 89 _t (sheets.)_S 88 _t (Such)_S 88 _t (guidelines)_S 89 _t (would)_S 88 _t (require)_S 89 _t (each)_S 88 _t (user)_S 89 _t (to)_S 88 _t (spend)_S 89 _t (significant)_S 1417 9930 _m
+(effort)_S 49 _t (for)_S 50 _t (the)_S 49 _t (analysis)_S 50 _t (of)_S 50 _t (requirements)_S 49 _t (and)_S 50 _t (for)_S 49 _t (developing)_S 50 _t (the)_S 50 _t (technical)_S 49 _t (solutions)_S 50 _t (needed.)_S 1417 9697 _m
+(In)_S 69 _t (addition,)_S 68 _t (despite)_S 69 _t (several)_S 69 _t (years)_S 69 _t (of)_S 68 _t (existence)_S 69 _t (none)_S 69 _t (of)_S 69 _t (these)_S 68 _t (guidelines)_S 69 _t (seem)_S 69 _t (yet)_S 68 _t (to)_S 69 _t (be)_S 1417 9464 _m
+(widely)_S 67 _t (accepted)_S 67 _t (by)_S 67 _t (the)_S 67 _t (design)_S 67 _t (community.)_S 1417 8996 _m
+(There)_S 62 _t (were)_S 63 _t (discussions)_S 63 _t (with)_S 62 _t /Times-ItalicR 600 _ff
+(The)_S 63 _t (VHDL)_S 62 _t (Technology)_S 63 _t (Group)_S /Times-RomanR 600 _ff
+63 _t (regarding)_S 63 _t (the)_S 62 _t (possibility)_S 63 _t (to)_S 1417 8761 _m
+(use)_S 66 _t (the)_S 66 _t /Times-ItalicR 600 _ff
+(Std_DevelopersKit)_S /Times-RomanR 600 _ff
+66 _t ([StdDevKit],)_S 66 _t (a)_S 66 _t (commercial)_S 66 _t (product)_S 66 _t (consisting)_S 66 _t (of)_S 66 _t (modelling)_S 1417 8528 _m
+(guidelines)_S 74 _t (combined)_S 75 _t (with)_S 74 _t (several)_S 74 _t (VHDL)_S 75 _t (utility)_S 74 _t (packages.)_S 74 _t (It)_S 74 _t (was)_S 75 _t (however)_S 74 _t (difficult)_S 74 _t (to)_S 1417 8295 _m
+(reach)_S 45 _t (an)_S 46 _t (agreement)_S 45 _t (allowing)_S 46 _t (models)_S 45 _t (to)_S 46 _t (be)_S 45 _t (exchanged)_S 45 _t (between)_S 46 _t (the)_S 45 _t (ESA)_S 46 _t (contractors;)_S 45 _t (ESA)_S 1417 8060 _m
+(could)_S 88 _t (not)_S 88 _t (mandate)_S 88 _t (all)_S 88 _t (companies)_S 88 _t (to)_S 88 _t (buy)_S 88 _t (this)_S 88 _t (particular)_S 88 _t (product)_S 88 _t (whereas)_S 88 _t /Times-ItalicR 600 _ff
+(The)_S 88 _t (VHDL)_S 1417 7825 _m
+(Technology)_S 54 _t (Group)_S /Times-RomanR 600 _ff
+55 _t (had)_S 55 _t (concerns)_S 54 _t (over)_S 55 _t (the)_S 55 _t (risk)_S 54 _t (that)_S 55 _t (any)_S 55 _t (ESA)_S 54 _t (contractor)_S 55 _t (potentially)_S 55 _t (could)_S 1417 7592 _m
+(get)_S 54 _t (access)_S 53 _t (to)_S 53 _t (their)_S 53 _t (product)_S 54 _t (without)_S 53 _t (payment.)_S 53 _t (While)_S 53 _t (the)_S 54 _t (VHDL)_S 53 _t (packages)_S 53 _t (included)_S 53 _t (would)_S 1417 7359 _m
+(be)_S 64 _t (helpful,)_S 64 _t (it)_S 64 _t (was)_S 64 _t (believed)_S 64 _t (that)_S 64 _t (in)_S 64 _t (the)_S 63 _t (long)_S 64 _t (term)_S 64 _t (similar)_S 64 _t (packages)_S 64 _t (would)_S 63 _t (be)_S 64 _t (established)_S 1417 7126 _m
+(within)_S 67 _t (the)_S 67 _t (frame)_S 67 _t (of)_S 67 _t (the)_S 67 _t (IEEE,)_S 67 _t (and)_S 67 _t (thus)_S 67 _t (freely)_S 67 _t (available.)_S 1417 6659 _m
+/Times-BoldR 600 _ff
+(3.3)_S 1889 6659 _m
+(The)_S 67 _t (ESA)_S 67 _t /Times-BoldItalicR 600 _ff
+(VHDL)_S 67 _t (Modelling)_S 67 _t (Guidelines)_S /Times-RomanR 600 _ff
+1417 6193 _m
+(The)_S 105 _t (first)_S 105 _t (basic)_S 105 _t (modelling)_S 105 _t (guidelines)_S 105 _t (were)_S 105 _t (established)_S 105 _t (in)_S 106 _t (1992,)_S 105 _t (based)_S 105 _t (on)_S 105 _t (our)_S 105 _t (own)_S 1417 5960 _m
+(modelling)_S 132 _t (experiences)_S 133 _t (obtained)_S 133 _t (during)_S 133 _t (several)_S 133 _t (years.)_S 132 _t (They)_S 133 _t (were)_S 133 _t (introduced)_S 133 _t (for)_S 1417 5727 _m
+(contracted)_S 113 _t (developments)_S 113 _t (and)_S 114 _t (were)_S 113 _t (updated)_S 113 _t (every)_S 113 _t (time)_S 113 _t (a)_S 114 _t (new)_S 113 _t (VHDL)_S 113 _t (model)_S 113 _t (was)_S 1417 5494 _m
+(received.)_S 58 _t (The)_S 57 _t (updated)_S 58 _t (document)_S 57 _t (was)_S 58 _t (again)_S 57 _t (used)_S 58 _t (in)_S 57 _t (new)_S 58 _t (external)_S 57 _t (developments,)_S 58 _t (and)_S 57 _t (the)_S 1417 5261 _m
+(resulting)_S 51 _t (feed-back)_S 51 _t (introduced.)_S 52 _t (After)_S 51 _t (several)_S 51 _t (such)_S 51 _t (overlapping)_S 51 _t (iterations,)_S 51 _t (in)_S 52 _t (March)_S 51 _t (1994)_S 1417 5028 _m
+(a)_S 82 _t (major)_S 81 _t (draft)_S 81 _t (was)_S 81 _t (circulated)_S 82 _t (for)_S 81 _t (review)_S 81 _t (among)_S 81 _t (most)_S 81 _t (of)_S 82 _t (the)_S 81 _t (companies)_S 81 _t (working)_S 81 _t (with)_S 1417 4793 _m
+(ESA.)_S 102 _t (After)_S 102 _t (updating)_S 101 _t (this)_S 102 _t (document)_S 101 _t (became)_S 102 _t (the)_S 102 _t (ESA)_S 101 _t /Times-ItalicR 600 _ff
+(VHDL)_S 102 _t (Modelling)_S 101 _t (Guidelines)_S /Times-RomanR 600 _ff
+1417 4560 _m
+([ModGuide])_S 96 _t (issued)_S 96 _t (in)_S 96 _t (September)_S 97 _t (1994.)_S 96 _t (It)_S 96 _t (is)_S 96 _t (intended)_S 96 _t (to)_S 96 _t (be)_S 96 _t (used)_S 97 _t (as)_S 96 _t (a)_S 96 _t (requirement)_S 1417 4327 _m
+(document)_S 67 _t (in)_S 67 _t (most)_S 67 _t (ESA)_S 67 _t (contracts)_S 67 _t (involving)_S 67 _t (VHDL)_S 67 _t (modelling.)_S 1417 3861 _m
+(The)_S 124 _t (guidelines)_S 124 _t (have)_S 124 _t (been)_S 124 _t (written)_S 125 _t (to)_S 124 _t (be)_S gsave 0 0 translate 8 8 scale _s 0 _gs 262 398 643 216 _cw save 0.125 0.125 scale 0 90 755 0 575 0 12.66220 785.34349 4.99046 6.54998 0 _ie end /_n {} bind def/copypage {_n} bind def/showpage {_n} bind def/erasepage {_n} bind def%!PS-Adobe-1.0
+%%Title: GEM Document
+%%Creator: GEM
+%%Pages: (atend)
+%%BoundingBox: 0 0 575 755 
+%%EndComments
+% Copyright (C) Digital Research, Inc. 1986, 1987. All rights reserved.
+systemdict /setpacking known {/svp currentpacking def true setpacking}if
+/gemdict 250 dict def
+gemdict begin
+
+/bd{bind def}bind def
+/ed{exch def}bind def
+
+% User defined Start of Page procedure:  this operator will be
+% executed at the beginning of each page output by GEM
+% and is provided to allow user-defined page initialization.
+/UserSoP{}bd
+
+/GEM_INISUB{pop pop pop pop}bd
+/GEM_INIDOC{/#copies ed settray
+	statusdict /setpageparams known
+	{statusdict begin 0 1 setpageparams end}{pop pop}ifelse}bd
+/geminit{np 1 setlinejoin /mpf true def
+	/encstr 80 string def gs}bd
+/matinit{/landscape ed /p3 ed /p2 ed /p1 ed
+	gr 72 300 div exch div dup scale clippath pathbbox exch /prx ed
+	exch dup /ply ed sub 1 add p3 sub 2 div ply add /ty ed
+	dup prx exch sub 1 add p2 sub 2 div add
+	landscape{p1 add}if ty translate
+	landscape{90 rotate p2 /p1 ed p3 /p2 ed p1 /p3 ed}if
+	gs}bd
+/gr /grestore load def
+/np /newpath load def
+/cp /currentpoint load def
+/gi /getinterval load def
+/lto /lineto load def
+/mto /moveto load def
+/clw /currentlinewidth load def
+/gs /gsave load def 
+/greset{gr gs}bd
+/settray{dup 0 lt mf dup 0 ge{tray}{pop}ifelse}bd
+/mf{statusdict /manualfeed known
+	{statusdict begin /manualfeed ed end}{pop}ifelse}bd
+/tray{statusdict begin true
+	product(QMS-PS 1200)eq{not exch dup 1 gt{pop 0}if
+		defaultpapertray exch 0 ne{3 exch sub}if setpapertray}if
+	product dup(PrintServer 40)eq exch(QMS-PS 2400)eq or{
+		not exch dup 2 gt{pop 0}if
+		dup 0 eq{pop defaultpapertray}
+		{dup defaultpapertray ge{1 add}if}ifelse setpapertray}if
+	{statusdict /defaultpapertray known statusdict /setpapertray known and
+		{defaultpapertray exch 0 ne{1 exch sub}if setpapertray}
+		{pop}ifelse}if end}bd
+/reencsmalldict 12 dict def
+/ReEncodeSmall{reencsmalldict begin
+	/newcodesandnames ed /newfontname ed
+	/basefontname ed /basefontdict basefontname findfont def
+	/newfont basefontdict maxlength dict def basefontdict
+	{exch dup /FID ne
+		{dup /Encoding eq
+			{exch dup length array copy newfont 3 1 roll put}
+			{exch newfont 3 1 roll put}ifelse}
+		{pop pop}ifelse}forall
+	newfont /FontName newfontname put newcodesandnames aload pop
+	newcodesandnames length 2 idiv
+	{newfont /Encoding get 3 1 roll put}repeat
+	newfontname newfont definefont pop end}bd
+/gemenvec[8#200 /Ccedilla 8#201 /udieresis 8#202 /eacute 8#203 /acircumflex
+	8#204 /adieresis 8#205 /agrave 8#206 /aring 8#207 /ccedilla
+	8#210 /ecircumflex 8#211 /edieresis 8#212 /egrave 8#213 /idieresis
+	8#214 /icircumflex  8#215 /igrave 8#216 /Adieresis 8#217 /Aring
+	8#220 /Eacute 8#221 /ae 8#222 /AE 8#223 /ocircumflex 8#224 /odieresis
+	8#225 /ograve 8#226 /ucircumflex 8#227 /ugrave 8#230 /ydieresis
+	8#231 /Odieresis 8#232 /Udieresis 8#233 /oslash 8#234 /sterling
+	8#235 /Oslash 8#236 /currency 8#237 /florin 8#240 /aacute 8#241 /iacute
+	8#242 /oacute 8#243 /uacute 8#244 /ntilde 8#245 /Ntilde
+	8#246 /ordfeminine 8#247 /ordmasculine 8#250 /questiondown
+	8#251 /quotedblleft 8#252 /quotedblright 8#253 /guilsinglleft
+	8#254 /guilsinglright 8#255 /exclamdown 8#256 /guillemotleft
+	8#257 /guillemotright 8#260 /atilde 8#261 /otilde 8#262 /yen
+	8#263 /cent 8#264 /oe 8#265 /OE 8#266 /Agrave 8#267 /Atilde
+	8#270 /Otilde 8#271 /section 8#272 /daggerdbl 8#273 /dagger
+	8#274 /paragraph
+	8#300 /quotedblbase 8#301 /ellipsis 8#302 /perthousand 8#303 /bullet
+	8#304 /endash 8#305 /emdash 8#306 /ring 8#307 /Aacute
+	8#310 /Acircumflex 8#311 /Egrave 8#312 /Ecircumflex 8#313 /Edieresis
+	8#314 /Igrave 8#315 /Iacute 8#316 /Icircumflex 8#317 /Idieresis
+	8#320 /Ograve 8#321 /Oacute 8#322 /Ocircumflex 8#323 /Scaron
+	8#324 /scaron 8#325 /Ugrave 8#326 /Uacute 8#327 /Ucircumflex
+	8#330 /Ydieresis 8#331 /germandbls 8#341 /germandbls
+	8#351 /grave 8#352 /acute 8#353 /circumflex 8#354 /tilde 8#355 /macron
+	8#356 /breve 8#357 /dotaccent 8#360 /dieresis 8#361 /ring
+	8#362 /cedilla 8#363 /caron
+	version(23.0)eq{8#275 /space 8#276 /space 8#277 /space}
+	{8#275 /copyright 8#276 /registered 8#277 /trademark}ifelse]def
+/addfont{fonts exch fpt exch put /fpt fpt 1 add def}bd
+/encfont{fonts exch get dup encstr cvs length 1 sub encstr exch 1 exch
+	getinterval cvn exch gemenvec ReEncodeSmall}bd
+/path{np mto{lto}repeat}bd
+/circle{np 0 0 1 0 360 arc}bd
+/rend{gs 1 setlinecap np mto cp 0.1 add lto stroke gr}bd
+/vl{dup /st ed dup apath exch get tx sub dup mul
+	exch 1 add apath exch get ty sub dup mul add sqrt}bd
+/doarrow{/rot ed /ty ed /tx ed 6 array currentmatrix
+	tx ty translate clw 4 lt{4}{clw}ifelse dup scale rot rotate np
+	0 0 mto -3 1.5 lto -3 -1.5 lto fill setmatrix}bd
+/arpath{np apath 0 get apath 1 get mto 2 2 points 1 sub
+	{dup apath exch get exch 1 add apath exch get lto}for}bd
+/arrowline{/apath ed /lend ed /lbeg ed /len clw 3 mul def
+	/points apath length def lbeg
+	{apath 0 get dup /tx ed /x1 ed apath 1 get dup
+		/ty ed /y1 ed true 2 2 points 1 sub
+		{vl len ge{pop false exit}if}for
+		{/lbeg false def /lend false def}
+		{apath 2 apath st points st sub gi putinterval /r1 y1
+			apath 3 get sub x1 apath 2 get sub atan def apath 0
+			x1 r1 cos len mul sub put apath 1 y1 r1 sin len mul
+			sub put /points points st 2 sub sub def}ifelse}if
+	lend{apath points 2 sub get dup /tx ed /x2 ed
+		apath points 1 sub get dup /ty ed /y2 ed
+		true points 4 sub -2 0
+		{vl len ge{pop false exit}if}for
+		{/lbeg false def /lend false def}
+		{/r2 y2 apath st 1 add get sub x2 apath st get sub
+			atan def /st st 2 add def apath st x2 r2 cos len mul
+			sub put apath st 1 add y2 r2 sin len mul sub put
+			/points st 2 add def}ifelse}if
+	lbeg{x1 y1 r1 doarrow}if lend{x2 y2 r2 doarrow}if arpath}bd
+/ac{6 array currentmatrix xt yt translate xs ys scale}bd
+/shorten{dup mul exch dup mul add sqrt clw 150 mul exch div}bd
+/xang{dup 360 ge{360}{0}ifelse exch dup sin xs mul exch cos ys mul atan
+	dup 360 lt{add}{exch pop}ifelse}bd
+/arrowarc{/eang ed /bang ed /ys ed /xs ed /yt ed
+	/xt ed /lend ed /lbeg ed ac np 0 0 1 bang xang
+	eang xang arc setmatrix cp /y2 ed /x2 ed ac np 0 0 1 bang
+	xang dup arc setmatrix cp /y1 ed /x1 ed lbeg
+	{/bang bang xs ys shorten add def}if
+	lend{/eang eang xs ys shorten sub def}if ac np 0 0 1 bang xang eang
+	xang arc setmatrix gs stroke gr
+	lend{x2 y2 cp y2 exch sub exch x2 exch sub atan doarrow}if
+	lbeg{ac np 0 0 1 bang xang dup arc setmatrix x1 y1 cp y1 exch sub
+		exch x1 exch sub atan doarrow}if}bd
+/rbox{/ury ed /urx ed /lly ed /llx ed urx llx sub
+	4 div dup 50 gt{pop 50}if /radius ed ury lly sub 4 div dup
+	radius gt{pop radius}if /radius ed np urx radius sub ury mto llx
+	ury llx lly radius arcto 4{pop}repeat llx lly urx lly radius arcto
+	4{pop}repeat urx lly urx ury radius arcto 4{pop}repeat urx ury llx ury
+	radius arcto 4{pop}repeat}bd
+/marker{1 sub mdef exch get /mproc ed 32 div /msize ed
+	{gs np translate msize dup scale 1 setlinewidth
+		mproc stroke gr}repeat}bd
+/mdef[{0 0 mto 1 0 lto 1 1 lto 0 1 lto closepath}bind
+	{-16 0 mto 16 0 lto 0 -16 mto 0 16 lto}bind
+	{0 -16 mto 0 16 lto 13.9 8 mto -13.9 -8 lto 13.9 -8 mto
+		-13.9 8 lto}bind
+	{16 16 mto -16 16 lto -16 -16 lto 16 -16 lto closepath}bind
+	{16 16 mto -16 -16 lto -16 16 mto 16 -16 lto}bind
+	{16 0 mto 0 16 lto -16 0 lto 0 -16 lto closepath}bind]def
+/bitison{/ybit ed /xbit ed bstring ybit bwidth mul xbit 8 idiv add get
+	1 7 xbit 8 mod sub bitshift and 0 ne}bd
+/setpattern{/freq ed /bwidth ed /bpside ed /bstring ed /onbits 0 def
+	/offbits 0 def freq 0 {/y ed /x ed /xindex x 1 add 2 div bpside mul
+	cvi def /yindex y 1 add 2 div bpside mul cvi def xindex yindex
+	bitison {/onbits onbits 1 add def 1} {/offbits offbits 1 add def 0}
+	ifelse}setscreen{}settransfer offbits dup onbits add div setgray}bd
+/ellpie{/pie ed /eang ed /bang ed /ys ed /xs ed
+	/yt ed /xt ed 6 array currentmatrix xt yt translate xs ys
+	scale np pie{0 0 mto}if 0 0 1 bang xang eang xang arc setmatrix}bd
+/roundarc{gs 1 setlinecap cp np mto cp lto stroke gr}bd
+/fstimg{{vrep 0.1 gt{/vrep vrep 1 sub def}{
+			{currentfile token pop 0 eq
+				{currentfile scan readhexstring pop pop exit}
+				{/vrep currentfile token pop def}ifelse
+			}loop}ifelse scan}image}bd
+/decode{/patstring patlen string def /bonestr 1 string def
+	{vrep 0.1 gt{/vrep vrep 1 sub def scan}
+		{/spos 0 def
+			{currentfile token pop currentfile token pop
+				exch imop exch get exec spos smax ge
+				{scan exit}if}loop}ifelse}image}bd
+/imop[{<ff> psc}bind
+	{<00> psc}bind
+	{currentfile patstring readhexstring pop psc}bind
+	{1 exch 1 exch
+		{pop currentfile bonestr readhexstring pop scan exch
+			spos exch 0 get put /spos spos 1 add def}for}bind
+	{1 sub /vrep ed}bind]def
+/psc{dup length /plen ed exch -1 1
+	{pop dup scan exch spos exch putinterval /spos spos plen add def}for
+	pop}bd
+/gtext{gs /msg ed /ty ed /tx ed tx ty translate trotate
+	rotate tcolor setgray 10 setflat horz halign get exec
+	vert valign get exec np tx ty mto msg show tunder
+	{cp cp extents pop pop 5 div dup neg setlinewidth 1.5 mul ty add
+		/ty ed [] 0 setdash pop np pop ty mto tx ty lto
+		stroke np mto}if
+	gr}bd
+/etext{gs translate trotate rotate tcolor setgray /tx 0 def /ty 0 def
+	{tx add dup /tx ed np ty mto show}repeat gr}bd
+/jtext{/msg ed /jtype ed /sps ed /dx ed /ty ed
+	/tx ed
+	gs tx ty translate trotate rotate tcolor setgray 10 setflat
+	jhorz halign get exec vert valign get exec jo gr}bd
+/fet{gs translate /tx 0 def /ty 0 def
+	{tx add dup /tx ed np ty mto show}repeat gr}bd
+/fjt{/msg ed /jtype ed /sps ed /dx ed /ty ed
+	gs ty translate 10 setflat /tx 0 def /ty 0 def jo gr}bd
+/sf{fonts tface get findfont txscale tyscale matrix scale makefont setfont}bd
+/tpos{np tx ty mto}bd
+/extra{dx msg stringwidth pop sub}bd
+/justify[{tpos msg show}bind
+	{sps 0 eq{tpos msg show}{extra sps div 0 32 tpos msg widthshow}ifelse}
+	bind{extra msg length div 0 tpos msg ashow}bind]def
+/jo{justify jtype get exec tunder
+	{cp cp extents pop pop 5 div dup neg setlinewidth 1.5 mul
+	ty add /ty ed [] 0 setdash
+	pop np pop ty mto tx ty lto stroke np mto}if}bd
+/horz[{/tx 0 def}bind
+	{msg stringwidth pop -2 div /tx ed}bind
+	{msg stringwidth pop neg /tx ed}bind]def
+/extents{(_)bbox pop pop msg stringwidth pop (])bbox 3{exch pop}repeat}bd
+/bbox{np 0 0 mto false charpath flattenpath pathbbox np}bd
+/vert[{/ty 0 def}bind
+	{extents -2 div /ty ed pop pop pop}bind
+	{extents neg /ty ed pop pop pop}bind
+	{extents pop pop neg /ty ed pop}bind]def
+/jhorz[{/tx 0 def}bind
+	{/tx dx -2 div def}bind
+	{/tx dx neg def}bind]def
+/symindex 12 def
+/CR{/ah 0 def}bd
+/LF{0 -50 translate}bd
+/atext{gs /msg ed tcolor setgray np ah av mto
+	msg show tunder{cp cp (_)bbox pop pop exch pop 5 div dup neg
+	setlinewidth 1.5 mul add dup ah exch [] 0 setdash np mto lto
+	stroke np mto}if cp pop /ah ed gr}bd
+end
+systemdict /setpacking known{svp setpacking}if
+%%EndProlog
+userdict /gemdict known not {/Times-Roman findfont 12 scalefont
+setfont newpath 72 700 moveto
+(Error:  the GEM PostScript preamble is not available)show
+newpath 72 686 moveto
+(  on your printer.  Pre-download the preamble or include it with)
+show newpath 72 672 moveto (your print job.)show
+newpath 72 658 moveto(This print job has been aborted.)show
+showpage stop}if gemdict begin
+648 828 0 1 GEM_INIDOC geminit
+1 2399 2400 3150 false matinit
+/fonts 35 array def /fpt 0 def
+/GCourier addfont
+/GCourier-Bold addfont
+/GCourier-Oblique addfont
+/GCourier-BoldOblique addfont
+/GHelvetica addfont
+/GHelvetica-Bold addfont
+/GHelvetica-Oblique addfont
+/GHelvetica-BoldOblique addfont
+/GTimes-Roman addfont
+/GTimes-Bold addfont
+/GTimes-Italic addfont
+/GTimes-BoldItalic addfont
+/Symbol addfont
+/GNewCenturySchlbk-Roman addfont
+/GNewCenturySchlbk-Bold addfont
+/GNewCenturySchlbk-Italic addfont
+/GNewCenturySchlbk-BoldItalic addfont
+/GPalatino-Roman addfont
+/GPalatino-Bold addfont
+/GPalatino-Italic addfont
+/GPalatino-BoldItalic addfont
+/GBookman-Light addfont
+/GBookman-Demi addfont
+/GBookman-LightItalic addfont
+/GBookman-DemiItalic addfont
+/GHelvetica-Narrow addfont
+/GHelvetica-Narrow-Bold addfont
+/GHelvetica-Narrow-Oblique addfont
+/GHelvetica-Narrow-BoldOblique addfont
+/GAvantGarde-Book addfont
+/GAvantGarde-Demi addfont
+/GAvantGarde-BookOblique addfont
+/GAvantGarde-DemiOblique addfont
+/GZapfChancery-MediumItalic addfont
+/ZapfDingbats addfont
+save mark
+%Begin page
+UserSoP
+initclip 0 3149 2399 3149 2399 0 0 0 np mto lto lto lto clip np
+9 setlinewidth
+0 setgray
+1854 286 1145 286 1145 1536 1854 1536 4 1854 286 path
+stroke
+1854 286 rend
+1854 286 rend
+6 array currentmatrix 159 202 832 2555 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 1 setlinewidth
+0 setgray
+832 2555 159 202 0 360 false ellpie gs stroke gr
+0 setgray
+792 2628 792 2623 788 2616 788 2608 786 2602 786 2594 788 2587 792 2580 800 2572 810 2571 820 2571 843 2572 855 2574 867 2574 877 2571 883 2564 885 2558 885 2549 881 2543 873 2540 847 2538 839 2538 832 2540 822 2543 812 2543 804 2541 796 2537 792 2528 788 2512 788 2505 30 790 2483 path
+stroke
+6 array currentmatrix 11 29 826 2501 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+826 2501 11 29 0 360 false ellpie gs stroke gr
+6 array currentmatrix 11 29 826 2618 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+826 2618 11 29 0 360 false ellpie gs stroke gr
+6 array currentmatrix 159 202 1423 504 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1423 504 159 202 0 360 false ellpie gs stroke gr
+0 setgray
+1854 461 1854 453 1852 447 1850 434 1850 427 1848 419 1846 412 1840 398 1834 389 1828 383 1824 377 1814 363 1809 357 1789 346 1781 342 1771 341 1738 337 1728 337 1712 339 1704 341 1696 344 1688 344 1673 350 1665 352 1649 360 1641 363 1623 373 1615 377 1605 383 1596 388 1580 389 1572 389 1564 391 33 1548 389 path
+stroke
+0 setgray
+1851 1375 1853 1391 1853 1399 1851 1417 1849 1425 1841 1450 1837 1458 1835 1469 1829 1478 1813 1494 1805 1504 1798 1512 1790 1518 1782 1521 1756 1523 1748 1523 1732 1525 1725 1527 1709 1527 1701 1523 1699 1517 1695 1510 1695 1504 1697 1497 1697 1491 1699 1478 1699 1471 1701 1464 1711 1458 1719 1452 1725 1445 1732 1432 1734 1425 1732 1419 1731 1411 1723 1406 1715 1406 1707 1404 1699 1401 1691 1396 1683 1393 1675 1386 1652 1375 1644 1370 1636 1367 1628 1365 1612 1357 1604 1354 1588 1344 1581 1341 1569 1334 1559 1329 1551 1326 1543 1321 1527 1313 1519 1310 1509 1303 1502 1298 1484 1290 1474 1285 1466 1280 1456 1274 1448 1267 1436 1253 1431 1246 1428 1240 1425 1225 1425 1217 1427 1210 1427 1204 1428 1191 1431 1184 1434 1178 1436 1171 74 1446 1158 path
+stroke
+0 setgray
+1861 1028 1857 1029 1855 1037 1851 1046 1851 1054 1847 1062 1845 1070 1839 1086 1835 1094 1833 1104 1827 1112 1819 1119 1811 1122 1794 1129 1784 1132 1776 1134 1768 1139 1758 1140 1748 1143 1738 1148 1731 1155 1721 1160 1713 1165 1705 1168 1695 1171 1683 1178 1665 1184 1657 1187 1648 1191 1640 1192 1630 1196 1614 1201 1606 1204 1598 1210 1590 1220 1582 1227 1575 1230 1581 1246 1586 1254 1594 1262 1604 1269 1624 1280 1634 1285 1644 1288 1656 1295 1667 1300 1679 1303 1689 1306 1721 1316 1731 1319 1752 1323 1764 1324 1774 1328 1784 1333 1794 1336 1803 1342 1815 1349 1835 1363 58 1851 1377 path
+stroke
+0 setgray
+1853 1024 1853 1018 1855 990 1855 982 1857 975 1853 956 1851 949 1853 933 1853 926 1851 908 1849 902 1845 895 1843 882 1843 876 1841 869 1841 863 1839 856 1839 848 1835 841 1835 835 1833 828 1831 793 1831 784 1829 778 1831 736 1831 724 1833 633 1833 622 1835 574 1835 568 1837 553 1839 547 1837 535 1839 529 1839 522 1841 515 1845 509 1853 489 1855 483 1855 475 1853 468 41 1855 455 path
+stroke
+0 setgray
+1663 786 1663 794 1665 804 1665 812 1667 832 1669 841 1669 850 1667 876 1667 884 1665 892 1663 902 1661 918 1661 928 1659 939 1659 948 1657 956 1653 965 1648 975 1644 983 1638 993 1636 1001 1622 1016 1614 1022 1606 1031 1582 1053 1575 1060 1567 1061 1559 1066 1547 1081 1539 1088 1531 1093 1521 1097 1513 1102 1506 1109 1498 1117 1490 1124 1466 1140 1458 1145 38 1444 1158 path
+stroke
+0 setgray
+1681 395 1681 402 1691 400 1701 400 1715 402 1725 408 1738 433 1742 441 1746 454 1748 465 1752 477 1754 486 1754 494 1756 519 1756 532 1754 545 1750 558 1746 568 1742 583 1736 602 1732 613 1727 627 1725 635 1719 648 1713 659 1707 669 1699 679 1693 690 1683 700 1675 710 1667 716 1657 726 1652 734 1644 747 1628 762 1620 768 1612 780 1604 786 1596 796 1581 809 1573 819 41 1555 832 path
+stroke
+0 setgray
+1557 834 1557 842 1563 850 1567 869 1567 878 1557 894 1549 900 1537 904 1525 904 1513 902 1503 895 1488 881 1480 873 1476 864 1472 848 1472 837 1474 830 1478 822 1488 819 19 1500 816 path
+stroke
+0 setgray
+1503 818 1509 810 1513 803 1527 784 1531 777 1537 771 1541 764 1547 756 1551 750 1558 740 1566 732 1574 725 1580 719 1584 712 1586 706 1590 699 1598 693 1602 686 1608 679 1622 666 1627 660 1631 653 1637 647 1641 640 1647 634 1651 627 1655 618 1663 603 1665 595 1669 588 1671 582 1677 575 1681 567 1685 560 1685 552 1687 544 1687 536 1689 517 1689 510 1687 503 1687 497 1685 490 42 1669 479 path
+stroke
+0 setgray
+1659 607 1659 602 1657 595 1652 589 1644 576 1638 569 1634 563 1626 558 1616 552 1608 547 1600 543 11 1582 535 path
+stroke
+0 setgray
+1667 718 1667 728 1665 752 1665 760 1667 768 5 1663 786 path
+stroke
+0 setgray
+1384 576 1384 571 1380 565 1380 557 1378 550 1378 542 1380 535 1384 529 1391 521 1401 519 1411 519 1435 521 1446 523 1458 523 1468 519 1474 513 1476 506 1476 498 1472 491 1464 488 1439 487 1431 487 1423 488 1413 491 1403 491 1395 490 1387 485 1384 477 1380 461 1380 454 30 1381 431 path
+stroke
+6 array currentmatrix 11 29 1417 449 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1417 449 11 29 0 360 false ellpie gs stroke gr
+6 array currentmatrix 11 29 1417 567 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1417 567 11 29 0 360 false ellpie gs stroke gr
+0 setgray
+1492 588 1498 585 1512 571 1517 565 1521 559 1525 550 1531 537 1533 531 1533 524 1535 511 1535 505 1533 492 1533 485 1531 472 1529 466 1521 446 1517 440 1508 433 18 1494 420 path
+stroke
+1464 326 1476 337 1393 349 1393 361 1346 385 1358 420 1334 432 1346 503 1334 526 1370 574 1346 597 1370 633 1358 644 1441 656 1452 668 1476 668 1476 680 1488 703 1429 715 1382 715 1346 680 1323 680 1275 621 1264 526 1252 503 1275 408 1275 385 1346 314 1405 290 1488 302 30 1464 326 path
+gs 4 8 div setgray
+gs eofill gr gr 0 setgray
+1464 326 1476 337 1393 349 1393 361 1346 385 1358 420 1334 432 1346 503 1334 526 1370 574 1346 597 1370 633 1358 644 1441 656 1452 668 1476 668 1476 680 1488 703 1429 715 1382 715 1346 680 1323 680 1275 621 1264 526 1252 503 1275 408 1275 385 1346 314 1405 290 1488 302 30 1464 326 path
+stroke
+9 setlinewidth
+0 setgray
+1854 3011 1 1854 1823 path
+stroke
+0 setgray
+562 3005 1 1854 3005 path
+stroke
+6 array currentmatrix 37 53 934 2554 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 1 setlinewidth
+0 setgray
+934 2554 37 53 0 360 false ellpie gs stroke gr
+853 2373 863 2390 784 2417 734 2439 748 2471 724 2484 736 2556 724 2580 760 2624 738 2647 756 2680 746 2696 821 2706 837 2719 865 2719 876 2753 778 2765 681 2771 746 2742 649 2747 713 2719 626 2721 673 2699 602 2686 689 2667 584 2655 675 2628 570 2616 647 2594 610 2582 655 2561 570 2556 655 2527 574 2517 659 2488 574 2484 661 2458 580 2442 669 2432 584 2417 697 2399 574 2390 716 2369 772 2347 44 874 2354 path
+gs 4 8 div setgray
+gs eofill gr gr 0 setgray
+853 2373 863 2390 784 2417 734 2439 748 2471 724 2484 736 2556 724 2580 760 2624 738 2647 756 2680 746 2696 821 2706 837 2719 865 2719 876 2753 778 2765 681 2771 746 2742 649 2747 713 2719 626 2721 673 2699 602 2686 689 2667 584 2655 675 2628 570 2616 647 2594 610 2582 655 2561 570 2556 655 2527 574 2517 659 2488 574 2484 661 2458 580 2442 669 2432 584 2417 697 2399 574 2390 716 2369 772 2347 44 874 2354 path
+stroke
+0 setgray
+1170 2351 1168 2344 1166 2331 1164 2325 1154 2307 1148 2298 1144 2290 1142 2281 1140 2274 1120 2250 1113 2241 1103 2233 1091 2227 1081 2220 1073 2215 1061 2211 1051 2207 1042 2202 1034 2201 1026 2201 1002 2194 990 2193 980 2191 972 2191 963 2189 923 2188 915 2188 903 2186 890 2183 878 2181 866 2176 848 2175 840 2175 830 2170 822 2168 813 2166 805 2163 797 2163 761 2162 753 2162 753 2155 751 2149 747 2142 742 2136 734 2126 718 2122 710 2122 702 2127 694 2137 694 2145 690 2154 686 2171 686 2181 688 2201 690 2212 698 2220 720 2217 730 2214 742 2220 751 2223 765 2227 775 2230 787 2233 797 2233 807 2235 824 2240 842 2240 860 2241 874 2241 892 2245 901 2245 913 2246 923 2246 939 2248 955 2256 965 2263 988 2282 998 2292 1010 2305 1018 2316 1026 2325 1030 2333 1036 2346 1039 2365 1039 2377 1038 2388 1038 2396 1036 2406 1034 2414 1030 2424 1026 2432 1020 2442 1014 2450 1010 2460 998 2470 95 980 2480 path
+stroke
+0 setgray
+1849 2713 1853 2674 1853 2661 1857 2635 1857 2622 1849 2609 1829 2603 1805 2596 1782 2593 1766 2593 1722 2590 1707 2590 1671 2586 1656 2583 1624 2580 1608 2576 1592 2576 1572 2570 1553 2567 1537 2560 1521 2557 1506 2544 1490 2534 1474 2521 1462 2508 1466 2482 1470 2469 1486 2456 1509 2446 1529 2440 1553 2426 1581 2413 1604 2407 1624 2400 1644 2400 1667 2397 1691 2391 1711 2387 1738 2374 1762 2365 1790 2358 1817 2348 1841 2335 1849 2319 1853 2306 45 1849 2277 path
+stroke
+0 setgray
+1854 2264 1854 2250 1850 2238 1854 2198 1854 2182 1850 2169 1850 2156 1843 2143 1839 2130 1823 2117 1807 2120 1791 2133 1783 2166 1783 2185 1779 2202 1772 2218 1756 2224 1740 2228 1724 2238 1708 2244 1689 2250 1673 2264 1626 2277 1594 2283 1578 2290 1562 2293 1547 2303 1531 2306 1515 2316 1499 2319 1479 2329 1428 2342 1412 2342 1286 2345 1270 2345 35 1172 2348 path
+stroke
+0 setgray
+1843 2622 1858 2668 1858 2684 1854 2700 1854 2717 1850 2733 1854 2749 1850 2766 1843 2782 1827 2792 1811 2785 1795 2785 1787 2772 1787 2756 1783 2743 1783 2730 1772 2717 1756 2717 1740 2713 1724 2707 1689 2700 1673 2700 1657 2697 1626 2697 1610 2700 1594 2700 1558 2704 1543 2704 1527 2700 1511 2700 1495 2691 1448 2687 1432 2687 1401 2691 1385 2694 1369 2694 1353 2697 1337 2694 1322 2694 1290 2691 1274 2691 1258 2687 1227 2691 1211 2694 1195 2700 1180 2710 46 1152 2730 path
+stroke
+0 setgray
+1153 2723 1153 2733 1149 2749 1149 2766 1145 2782 1145 2798 1141 2815 1133 2831 1117 2847 1101 2860 1086 2863 1070 2870 1007 2893 991 2899 975 2903 955 2912 936 2912 904 2922 888 2925 872 2925 841 2929 825 2929 809 2925 794 2929 778 2942 774 2961 766 2978 734 2984 719 2978 703 2964 699 2951 695 2925 695 2912 699 2899 707 2886 711 2873 726 2860 746 2870 821 2867 841 2860 861 2857 940 2828 959 2821 979 2818 999 2808 1015 2795 1022 2782 1026 2769 1030 2730 1030 2717 1034 2678 1034 2665 1030 2651 1030 2638 1026 2625 1015 2612 56 983 2606 path
+stroke
+%End page
+showpage cleartomark restore gr
+gs save mark
+%Begin page
+UserSoP
+cleartomark restore end
+%%Trailer
+%%Pages: 1 
+%%EOF
+restore wpdict begin _s 1650 1275 0 0 _cw _s grestore 1417 3628 _m
+(practical)_S 79 _t (and)_S 79 _t (ready-to-use,)_S 79 _t (since)_S 79 _t (this)_S 79 _t (gives)_S 1417 3393 _m
+(the)_S 99 _t (best)_S 100 _t (effect;)_S 99 _t (")_S /Times-ItalicR 600 _ff
+(many)_S 100 _t (designers)_S 99 _t (prefer)_S 99 _t (a)_S 1417 3158 _m
+(small)_S 150 _t (well-defined)_S 150 _t (box)_S 150 _t (to)_S 150 _t (a)_S 150 _t (large)_S 150 _t (but)_S 1417 2925 _m
+(unknown)_S 51 _t (freedom)_S /Times-RomanR 600 _ff
+(".)_S 51 _t (But)_S 51 _t (it)_S 51 _t (is)_S 51 _t (crucial)_S 51 _t (to)_S 51 _t (avoid)_S 1417 2692 _m
+(insignificant)_S 125 _t (issues)_S 125 _t (considered)_S 125 _t (as)_S 125 _t (almost)_S 1417 2459 _m
+(fundamental)_S 85 _t (by)_S 86 _t (some)_S 86 _t (designers.)_S 85 _t (A)_S 86 _t (typical)_S 1417 2226 _m
+(example)_S 65 _t (is)_S 65 _t (whether)_S 65 _t (to)_S 65 _t (use)_S 65 _t (upper-)_S 65 _t (or)_S 66 _t (lower-)_S 1417 1993 _m
+(case)_S 129 _t (characters)_S 129 _t (for)_S 129 _t (reserved)_S 129 _t (words;)_S 129 _t (this)_S 1417 1760 _m
+(actually)_S 44 _t (unimportant)_S 44 _t (issue)_S 45 _t (can)_S 44 _t (cause)_S 45 _t (endless)_S 1417 1527 _m
+(discussions.)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s 100 _gs _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(european)_S 67 _t (space)_S 67 _t (agency)_S 4905 12687 _m
+(5)_S 5991 12687 _m
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S /Times-RomanR 600 _ff
+1417 11792 _m
+(In)_S 87 _t (line)_S 88 _t (with)_S 87 _t (the)_S 88 _t (philosophy)_S 87 _t (of)_S 88 _t (not)_S 87 _t (mandating)_S 88 _t (specific)_S 87 _t (design)_S 88 _t (tools,)_S 87 _t (the)_S 88 _t (ESA)_S 88 _t /Times-ItalicR 600 _ff
+(VHDL)_S 1417 11557 _m
+(Modelling)_S 79 _t (Guidelines)_S /Times-RomanR 600 _ff
+79 _t (can)_S 78 _t (be)_S 79 _t (used)_S 79 _t (with)_S 79 _t (practically)_S 78 _t (any)_S 79 _t (VHDL)_S 79 _t (simulator)_S 79 _t (or)_S 79 _t (synthesis)_S 1417 11322 _m
+(tool.)_S 54 _t (The)_S 55 _t (only)_S 54 _t (firm)_S 54 _t (requirement)_S 55 _t (is)_S 54 _t (that)_S 55 _t (the)_S 54 _t /Times-ItalicR 600 _ff
+(IEEE.Std_Logic_1164)_S /Times-RomanR 600 _ff
+55 _t ([StdLogic])_S 54 _t (types)_S 55 _t (must)_S 1417 11089 _m
+(be)_S 67 _t (supported.)_S 1417 10623 _m
+(Regarding)_S 81 _t (the)_S 80 _t (definition)_S 81 _t (of)_S 80 _t (modelling)_S 81 _t (levels)_S 81 _t (there)_S 80 _t (are)_S 81 _t (many)_S 81 _t (different)_S 80 _t (interpretations,)_S 1417 10390 _m
+(almost)_S 73 _t (as)_S 72 _t (many)_S 73 _t (as)_S 73 _t (there)_S 73 _t (are)_S 73 _t (designers.)_S 72 _t (Instead)_S 73 _t (of)_S 73 _t (introducing)_S 73 _t (particular)_S 72 _t (definitions)_S 73 _t (of)_S 1417 10155 _m
+(what)_S 66 _t (constitutes)_S 65 _t (for)_S 66 _t (example)_S 66 _t (a)_S 66 _t (model)_S 65 _t (on)_S 66 _t (the)_S 66 _t /Times-ItalicR 600 _ff
+(Register-Transfer)_S /Times-RomanR 600 _ff
+66 _t (level)_S 65 _t (or)_S 66 _t (the)_S 66 _t /Times-ItalicR 600 _ff
+(Behavioral)_S /Times-RomanR 600 _ff
+1417 9922 _m
+(level,)_S 57 _t (the)_S 57 _t (purpose)_S 57 _t (of)_S 57 _t (the)_S 57 _t (models)_S 57 _t (is)_S 57 _t (stressed;)_S 57 _t (models)_S 57 _t (for)_S 56 _t /Times-BoldR 600 _ff
+(component)_S 57 _t (simulation)_S /Times-RomanR 600 _ff
+57 _t (\(mainly)_S 1417 9689 _m
+(for)_S 67 _t (ASIC)_S 67 _t (design\),)_S 67 _t (for)_S 67 _t /Times-BoldR 600 _ff
+(board-level)_S 67 _t (simulation)_S /Times-RomanR 600 _ff
+67 _t (and)_S 67 _t (for)_S 67 _t /Times-BoldR 600 _ff
+(system-level)_S 67 _t (simulation)_S /Times-RomanR 600 _ff
+(.)_S gsave 0 0 translate 8 8 scale _s 0 _gs 279 841 200 869 _cw save 0.125 0.125 scale 0 90 755 0 575 0 23.27014 137.63439 11.80950 11.62500 0 _ie end /_n {} bind def/copypage {_n} bind def/showpage {_n} bind def/erasepage {_n} bind def%!PS-Adobe-1.0
+%%Title: GEM Document
+%%Creator: GEM
+%%Pages: (atend)
+%%BoundingBox: 0 0 575 755 
+%%EndComments
+% Copyright (C) Digital Research, Inc. 1986, 1987. All rights reserved.
+systemdict /setpacking known {/svp currentpacking def true setpacking}if
+/gemdict 250 dict def
+gemdict begin
+
+/bd{bind def}bind def
+/ed{exch def}bind def
+
+% User defined Start of Page procedure:  this operator will be
+% executed at the beginning of each page output by GEM
+% and is provided to allow user-defined page initialization.
+/UserSoP{}bd
+
+/GEM_INISUB{pop pop pop pop}bd
+/GEM_INIDOC{/#copies ed settray
+	statusdict /setpageparams known
+	{statusdict begin 0 1 setpageparams end}{pop pop}ifelse}bd
+/geminit{np 1 setlinejoin /mpf true def
+	/encstr 80 string def gs}bd
+/matinit{/landscape ed /p3 ed /p2 ed /p1 ed
+	gr 72 300 div exch div dup scale clippath pathbbox exch /prx ed
+	exch dup /ply ed sub 1 add p3 sub 2 div ply add /ty ed
+	dup prx exch sub 1 add p2 sub 2 div add
+	landscape{p1 add}if ty translate
+	landscape{90 rotate p2 /p1 ed p3 /p2 ed p1 /p3 ed}if
+	gs}bd
+/gr /grestore load def
+/np /newpath load def
+/cp /currentpoint load def
+/gi /getinterval load def
+/lto /lineto load def
+/mto /moveto load def
+/clw /currentlinewidth load def
+/gs /gsave load def 
+/greset{gr gs}bd
+/settray{dup 0 lt mf dup 0 ge{tray}{pop}ifelse}bd
+/mf{statusdict /manualfeed known
+	{statusdict begin /manualfeed ed end}{pop}ifelse}bd
+/tray{statusdict begin true
+	product(QMS-PS 1200)eq{not exch dup 1 gt{pop 0}if
+		defaultpapertray exch 0 ne{3 exch sub}if setpapertray}if
+	product dup(PrintServer 40)eq exch(QMS-PS 2400)eq or{
+		not exch dup 2 gt{pop 0}if
+		dup 0 eq{pop defaultpapertray}
+		{dup defaultpapertray ge{1 add}if}ifelse setpapertray}if
+	{statusdict /defaultpapertray known statusdict /setpapertray known and
+		{defaultpapertray exch 0 ne{1 exch sub}if setpapertray}
+		{pop}ifelse}if end}bd
+/reencsmalldict 12 dict def
+/ReEncodeSmall{reencsmalldict begin
+	/newcodesandnames ed /newfontname ed
+	/basefontname ed /basefontdict basefontname findfont def
+	/newfont basefontdict maxlength dict def basefontdict
+	{exch dup /FID ne
+		{dup /Encoding eq
+			{exch dup length array copy newfont 3 1 roll put}
+			{exch newfont 3 1 roll put}ifelse}
+		{pop pop}ifelse}forall
+	newfont /FontName newfontname put newcodesandnames aload pop
+	newcodesandnames length 2 idiv
+	{newfont /Encoding get 3 1 roll put}repeat
+	newfontname newfont definefont pop end}bd
+/gemenvec[8#200 /Ccedilla 8#201 /udieresis 8#202 /eacute 8#203 /acircumflex
+	8#204 /adieresis 8#205 /agrave 8#206 /aring 8#207 /ccedilla
+	8#210 /ecircumflex 8#211 /edieresis 8#212 /egrave 8#213 /idieresis
+	8#214 /icircumflex  8#215 /igrave 8#216 /Adieresis 8#217 /Aring
+	8#220 /Eacute 8#221 /ae 8#222 /AE 8#223 /ocircumflex 8#224 /odieresis
+	8#225 /ograve 8#226 /ucircumflex 8#227 /ugrave 8#230 /ydieresis
+	8#231 /Odieresis 8#232 /Udieresis 8#233 /oslash 8#234 /sterling
+	8#235 /Oslash 8#236 /currency 8#237 /florin 8#240 /aacute 8#241 /iacute
+	8#242 /oacute 8#243 /uacute 8#244 /ntilde 8#245 /Ntilde
+	8#246 /ordfeminine 8#247 /ordmasculine 8#250 /questiondown
+	8#251 /quotedblleft 8#252 /quotedblright 8#253 /guilsinglleft
+	8#254 /guilsinglright 8#255 /exclamdown 8#256 /guillemotleft
+	8#257 /guillemotright 8#260 /atilde 8#261 /otilde 8#262 /yen
+	8#263 /cent 8#264 /oe 8#265 /OE 8#266 /Agrave 8#267 /Atilde
+	8#270 /Otilde 8#271 /section 8#272 /daggerdbl 8#273 /dagger
+	8#274 /paragraph
+	8#300 /quotedblbase 8#301 /ellipsis 8#302 /perthousand 8#303 /bullet
+	8#304 /endash 8#305 /emdash 8#306 /ring 8#307 /Aacute
+	8#310 /Acircumflex 8#311 /Egrave 8#312 /Ecircumflex 8#313 /Edieresis
+	8#314 /Igrave 8#315 /Iacute 8#316 /Icircumflex 8#317 /Idieresis
+	8#320 /Ograve 8#321 /Oacute 8#322 /Ocircumflex 8#323 /Scaron
+	8#324 /scaron 8#325 /Ugrave 8#326 /Uacute 8#327 /Ucircumflex
+	8#330 /Ydieresis 8#331 /germandbls 8#341 /germandbls
+	8#351 /grave 8#352 /acute 8#353 /circumflex 8#354 /tilde 8#355 /macron
+	8#356 /breve 8#357 /dotaccent 8#360 /dieresis 8#361 /ring
+	8#362 /cedilla 8#363 /caron
+	version(23.0)eq{8#275 /space 8#276 /space 8#277 /space}
+	{8#275 /copyright 8#276 /registered 8#277 /trademark}ifelse]def
+/addfont{fonts exch fpt exch put /fpt fpt 1 add def}bd
+/encfont{fonts exch get dup encstr cvs length 1 sub encstr exch 1 exch
+	getinterval cvn exch gemenvec ReEncodeSmall}bd
+/path{np mto{lto}repeat}bd
+/circle{np 0 0 1 0 360 arc}bd
+/rend{gs 1 setlinecap np mto cp 0.1 add lto stroke gr}bd
+/vl{dup /st ed dup apath exch get tx sub dup mul
+	exch 1 add apath exch get ty sub dup mul add sqrt}bd
+/doarrow{/rot ed /ty ed /tx ed 6 array currentmatrix
+	tx ty translate clw 4 lt{4}{clw}ifelse dup scale rot rotate np
+	0 0 mto -3 1.5 lto -3 -1.5 lto fill setmatrix}bd
+/arpath{np apath 0 get apath 1 get mto 2 2 points 1 sub
+	{dup apath exch get exch 1 add apath exch get lto}for}bd
+/arrowline{/apath ed /lend ed /lbeg ed /len clw 3 mul def
+	/points apath length def lbeg
+	{apath 0 get dup /tx ed /x1 ed apath 1 get dup
+		/ty ed /y1 ed true 2 2 points 1 sub
+		{vl len ge{pop false exit}if}for
+		{/lbeg false def /lend false def}
+		{apath 2 apath st points st sub gi putinterval /r1 y1
+			apath 3 get sub x1 apath 2 get sub atan def apath 0
+			x1 r1 cos len mul sub put apath 1 y1 r1 sin len mul
+			sub put /points points st 2 sub sub def}ifelse}if
+	lend{apath points 2 sub get dup /tx ed /x2 ed
+		apath points 1 sub get dup /ty ed /y2 ed
+		true points 4 sub -2 0
+		{vl len ge{pop false exit}if}for
+		{/lbeg false def /lend false def}
+		{/r2 y2 apath st 1 add get sub x2 apath st get sub
+			atan def /st st 2 add def apath st x2 r2 cos len mul
+			sub put apath st 1 add y2 r2 sin len mul sub put
+			/points st 2 add def}ifelse}if
+	lbeg{x1 y1 r1 doarrow}if lend{x2 y2 r2 doarrow}if arpath}bd
+/ac{6 array currentmatrix xt yt translate xs ys scale}bd
+/shorten{dup mul exch dup mul add sqrt clw 150 mul exch div}bd
+/xang{dup 360 ge{360}{0}ifelse exch dup sin xs mul exch cos ys mul atan
+	dup 360 lt{add}{exch pop}ifelse}bd
+/arrowarc{/eang ed /bang ed /ys ed /xs ed /yt ed
+	/xt ed /lend ed /lbeg ed ac np 0 0 1 bang xang
+	eang xang arc setmatrix cp /y2 ed /x2 ed ac np 0 0 1 bang
+	xang dup arc setmatrix cp /y1 ed /x1 ed lbeg
+	{/bang bang xs ys shorten add def}if
+	lend{/eang eang xs ys shorten sub def}if ac np 0 0 1 bang xang eang
+	xang arc setmatrix gs stroke gr
+	lend{x2 y2 cp y2 exch sub exch x2 exch sub atan doarrow}if
+	lbeg{ac np 0 0 1 bang xang dup arc setmatrix x1 y1 cp y1 exch sub
+		exch x1 exch sub atan doarrow}if}bd
+/rbox{/ury ed /urx ed /lly ed /llx ed urx llx sub
+	4 div dup 50 gt{pop 50}if /radius ed ury lly sub 4 div dup
+	radius gt{pop radius}if /radius ed np urx radius sub ury mto llx
+	ury llx lly radius arcto 4{pop}repeat llx lly urx lly radius arcto
+	4{pop}repeat urx lly urx ury radius arcto 4{pop}repeat urx ury llx ury
+	radius arcto 4{pop}repeat}bd
+/marker{1 sub mdef exch get /mproc ed 32 div /msize ed
+	{gs np translate msize dup scale 1 setlinewidth
+		mproc stroke gr}repeat}bd
+/mdef[{0 0 mto 1 0 lto 1 1 lto 0 1 lto closepath}bind
+	{-16 0 mto 16 0 lto 0 -16 mto 0 16 lto}bind
+	{0 -16 mto 0 16 lto 13.9 8 mto -13.9 -8 lto 13.9 -8 mto
+		-13.9 8 lto}bind
+	{16 16 mto -16 16 lto -16 -16 lto 16 -16 lto closepath}bind
+	{16 16 mto -16 -16 lto -16 16 mto 16 -16 lto}bind
+	{16 0 mto 0 16 lto -16 0 lto 0 -16 lto closepath}bind]def
+/bitison{/ybit ed /xbit ed bstring ybit bwidth mul xbit 8 idiv add get
+	1 7 xbit 8 mod sub bitshift and 0 ne}bd
+/setpattern{/freq ed /bwidth ed /bpside ed /bstring ed /onbits 0 def
+	/offbits 0 def freq 0 {/y ed /x ed /xindex x 1 add 2 div bpside mul
+	cvi def /yindex y 1 add 2 div bpside mul cvi def xindex yindex
+	bitison {/onbits onbits 1 add def 1} {/offbits offbits 1 add def 0}
+	ifelse}setscreen{}settransfer offbits dup onbits add div setgray}bd
+/ellpie{/pie ed /eang ed /bang ed /ys ed /xs ed
+	/yt ed /xt ed 6 array currentmatrix xt yt translate xs ys
+	scale np pie{0 0 mto}if 0 0 1 bang xang eang xang arc setmatrix}bd
+/roundarc{gs 1 setlinecap cp np mto cp lto stroke gr}bd
+/fstimg{{vrep 0.1 gt{/vrep vrep 1 sub def}{
+			{currentfile token pop 0 eq
+				{currentfile scan readhexstring pop pop exit}
+				{/vrep currentfile token pop def}ifelse
+			}loop}ifelse scan}image}bd
+/decode{/patstring patlen string def /bonestr 1 string def
+	{vrep 0.1 gt{/vrep vrep 1 sub def scan}
+		{/spos 0 def
+			{currentfile token pop currentfile token pop
+				exch imop exch get exec spos smax ge
+				{scan exit}if}loop}ifelse}image}bd
+/imop[{<ff> psc}bind
+	{<00> psc}bind
+	{currentfile patstring readhexstring pop psc}bind
+	{1 exch 1 exch
+		{pop currentfile bonestr readhexstring pop scan exch
+			spos exch 0 get put /spos spos 1 add def}for}bind
+	{1 sub /vrep ed}bind]def
+/psc{dup length /plen ed exch -1 1
+	{pop dup scan exch spos exch putinterval /spos spos plen add def}for
+	pop}bd
+/gtext{gs /msg ed /ty ed /tx ed tx ty translate trotate
+	rotate tcolor setgray 10 setflat horz halign get exec
+	vert valign get exec np tx ty mto msg show tunder
+	{cp cp extents pop pop 5 div dup neg setlinewidth 1.5 mul ty add
+		/ty ed [] 0 setdash pop np pop ty mto tx ty lto
+		stroke np mto}if
+	gr}bd
+/etext{gs translate trotate rotate tcolor setgray /tx 0 def /ty 0 def
+	{tx add dup /tx ed np ty mto show}repeat gr}bd
+/jtext{/msg ed /jtype ed /sps ed /dx ed /ty ed
+	/tx ed
+	gs tx ty translate trotate rotate tcolor setgray 10 setflat
+	jhorz halign get exec vert valign get exec jo gr}bd
+/fet{gs translate /tx 0 def /ty 0 def
+	{tx add dup /tx ed np ty mto show}repeat gr}bd
+/fjt{/msg ed /jtype ed /sps ed /dx ed /ty ed
+	gs ty translate 10 setflat /tx 0 def /ty 0 def jo gr}bd
+/sf{fonts tface get findfont txscale tyscale matrix scale makefont setfont}bd
+/tpos{np tx ty mto}bd
+/extra{dx msg stringwidth pop sub}bd
+/justify[{tpos msg show}bind
+	{sps 0 eq{tpos msg show}{extra sps div 0 32 tpos msg widthshow}ifelse}
+	bind{extra msg length div 0 tpos msg ashow}bind]def
+/jo{justify jtype get exec tunder
+	{cp cp extents pop pop 5 div dup neg setlinewidth 1.5 mul
+	ty add /ty ed [] 0 setdash
+	pop np pop ty mto tx ty lto stroke np mto}if}bd
+/horz[{/tx 0 def}bind
+	{msg stringwidth pop -2 div /tx ed}bind
+	{msg stringwidth pop neg /tx ed}bind]def
+/extents{(_)bbox pop pop msg stringwidth pop (])bbox 3{exch pop}repeat}bd
+/bbox{np 0 0 mto false charpath flattenpath pathbbox np}bd
+/vert[{/ty 0 def}bind
+	{extents -2 div /ty ed pop pop pop}bind
+	{extents neg /ty ed pop pop pop}bind
+	{extents pop pop neg /ty ed pop}bind]def
+/jhorz[{/tx 0 def}bind
+	{/tx dx -2 div def}bind
+	{/tx dx neg def}bind]def
+/symindex 12 def
+/CR{/ah 0 def}bd
+/LF{0 -50 translate}bd
+/atext{gs /msg ed tcolor setgray np ah av mto
+	msg show tunder{cp cp (_)bbox pop pop exch pop 5 div dup neg
+	setlinewidth 1.5 mul add dup ah exch [] 0 setdash np mto lto
+	stroke np mto}if cp pop /ah ed gr}bd
+end
+systemdict /setpacking known{svp setpacking}if
+%%EndProlog
+userdict /gemdict known not {/Times-Roman findfont 12 scalefont
+setfont newpath 72 700 moveto
+(Error:  the GEM PostScript preamble is not available)show
+newpath 72 686 moveto
+(  on your printer.  Pre-download the preamble or include it with)
+show newpath 72 672 moveto (your print job.)show
+newpath 72 658 moveto(This print job has been aborted.)show
+showpage stop}if gemdict begin
+648 828 0 1 GEM_INIDOC geminit
+1 2399 2400 3150 false matinit
+/fonts 35 array def /fpt 0 def
+/GCourier addfont
+/GCourier-Bold addfont
+/GCourier-Oblique addfont
+/GCourier-BoldOblique addfont
+/GHelvetica addfont
+/GHelvetica-Bold addfont
+/GHelvetica-Oblique addfont
+/GHelvetica-BoldOblique addfont
+/GTimes-Roman addfont
+/GTimes-Bold addfont
+/GTimes-Italic addfont
+/GTimes-BoldItalic addfont
+/Symbol addfont
+/GNewCenturySchlbk-Roman addfont
+/GNewCenturySchlbk-Bold addfont
+/GNewCenturySchlbk-Italic addfont
+/GNewCenturySchlbk-BoldItalic addfont
+/GPalatino-Roman addfont
+/GPalatino-Bold addfont
+/GPalatino-Italic addfont
+/GPalatino-BoldItalic addfont
+/GBookman-Light addfont
+/GBookman-Demi addfont
+/GBookman-LightItalic addfont
+/GBookman-DemiItalic addfont
+/GHelvetica-Narrow addfont
+/GHelvetica-Narrow-Bold addfont
+/GHelvetica-Narrow-Oblique addfont
+/GHelvetica-Narrow-BoldOblique addfont
+/GAvantGarde-Book addfont
+/GAvantGarde-Demi addfont
+/GAvantGarde-BookOblique addfont
+/GAvantGarde-DemiOblique addfont
+/GZapfChancery-MediumItalic addfont
+/ZapfDingbats addfont
+save mark
+%Begin page
+UserSoP
+initclip 0 3149 2399 3149 2399 0 0 0 np mto lto lto lto clip np
+1258 1775 1376 1775 1376 2365 3 1258 2365 path
+gs /p18 <0180024004200810100820044002800180014002200410080810042002400180> def
+p18 16 2 10 setpattern
+gs eofill gr gr 0 setgray
+1376 1775 1258 1775 1258 2365 1376 2365 4 1376 1775 path
+stroke
+1376 1775 rend
+1376 1775 rend
+1258 357 1530 357 1530 948 3 1258 948 path
+gs p18 16 2 10 setpattern
+gs eofill gr gr 0 setgray
+1530 357 1258 357 1258 948 1530 948 4 1530 357 path
+stroke
+1530 357 rend
+1530 357 rend
+1436 1066 1530 1066 1530 1656 3 1436 1656 path
+gs p18 16 2 10 setpattern
+gs eofill gr gr 0 setgray
+1530 1066 1436 1066 1436 1656 1530 1656 4 1530 1066 path
+stroke
+1530 1066 rend
+1530 1066 rend
+/tface 4 def
+4 encfont
+/tcolor 0 2 div def
+/txscale 20 300 mul 72 div def /tyscale 20 300 mul 72 div def
+/trotate 90 def
+/halign 0 def
+/valign 0 def
+/tunder false def
+sf
+1054 2471 378 0 2 (GENERAL)jtext
+1361 2483 319 0 2 (DOMAIN)jtext
+1467 2483 358 0 2 (SPECIFIC)jtext
+845 357 1259 357 1259 948 1141 948 1141 1066 1436 1066 1436 1656 1259 1656 1141 1656 1141 1774 1259 1774 1259 2365 845 2365 13 845 357 path
+gs 1 setgray
+gs eofill gr gr 9 setlinewidth
+0 setgray
+845 357 1259 357 1259 948 1141 948 1141 1066 1436 1066 1436 1656 1259 1656 1141 1656 1141 1774 1259 1774 1259 2365 845 2365 13 845 357 path
+stroke
+1 setlinewidth
+[12 4]0 setdash
+0 setgray
+1199 2837 1 1199 357 path
+stroke
+1042 787 1127 3 2 (ESA VHDL Modelling Guidelines)jtext
+1632 440 423 0 2 (Component)jtext
+1632 1160 404 0 2 (Board-level)jtext
+1632 1845 456 0 2 (System-level)jtext
+1349 631 1349 629 1351 623 1351 616 1349 610 1347 596 1347 590 1349 583 1349 577 1351 525 1351 518 1353 512 1359 499 1363 492 1372 487 1382 489 1394 492 1404 495 1414 500 1426 507 1432 517 1437 525 1445 535 1447 553 1449 561 1453 570 1455 583 1457 595 1459 611 1459 619 1457 629 1459 681 1459 693 1457 714 1455 724 1453 737 1451 748 1449 756 1445 766 1440 774 1432 784 1426 794 1418 802 1408 807 1400 808 1382 807 1374 805 1366 799 1359 786 1357 779 1355 751 1355 743 1353 727 1353 720 1351 686 1351 678 1349 647 1349 640 58 1351 626 path
+gs 1 setgray
+gs eofill gr gr []0 setdash
+0 setgray
+1349 631 1349 629 1351 623 1351 616 1349 610 1347 596 1347 590 1349 583 1349 577 1351 525 1351 518 1353 512 1359 499 1363 492 1372 487 1382 489 1394 492 1404 495 1414 500 1426 507 1432 517 1437 525 1445 535 1447 553 1449 561 1453 570 1455 583 1457 595 1459 611 1459 619 1457 629 1459 681 1459 693 1457 714 1455 724 1453 737 1451 748 1449 756 1445 766 1440 774 1432 784 1426 794 1418 802 1408 807 1400 808 1382 807 1374 805 1366 799 1359 786 1357 779 1355 751 1355 743 1353 727 1353 720 1351 686 1351 678 1349 647 1349 640 58 1351 626 path
+stroke
+/txscale 10 300 mul 72 div def /tyscale 10 300 mul 72 div def
+sf
+1390 511 273 1 2 (Logic synthesis)jtext
+1428 558 176 0 2 (guidelines)jtext
+%End page
+showpage cleartomark restore gr
+gs save mark
+%Begin page
+UserSoP
+cleartomark restore end
+%%Trailer
+%%Pages: 1 
+%%EOF
+restore wpdict begin _s 1650 1275 0 0 _cw _s grestore 1417 6194 _m
+(Specific)_S 59 _t (guidelines)_S 59 _t (for)_S 60 _t (Logic)_S 59 _t (Synthesis)_S 59 _t (have)_S 59 _t (not)_S 60 _t (been)_S 59 _t (incorporated)_S 59 _t (since)_S 59 _t (ESA)_S 60 _t (does)_S 59 _t (not)_S 1417 5961 _m
+(mandate)_S 98 _t (Logic)_S 97 _t (Synthesis)_S 97 _t (for)_S 98 _t (ASIC)_S 97 _t (design;)_S 98 _t (this)_S 97 _t (is)_S 97 _t (the)_S 98 _t (choice)_S 97 _t (-)_S 97 _t (and)_S 98 _t (potentially)_S 97 _t (the)_S 1417 5728 _m
+(problem)_S 67 _t (-)_S 82 _t (for)_S 83 _t (each)_S 82 _t (company.)_S 83 _t (In)_S 82 _t (cases)_S 83 _t (where)_S 82 _t (the)_S 83 _t (modelling)_S 82 _t (is)_S 82 _t (not)_S 83 _t (directly)_S 82 _t (related)_S 83 _t (to)_S 1417 5495 _m
+(ASIC)_S 64 _t (design)_S 64 _t (it)_S 65 _t (is)_S 64 _t (even)_S 64 _t (not)_S 65 _t (desirable.)_S 64 _t (Furthermore)_S 64 _t (different)_S 65 _t (Logic)_S 64 _t (Synthesis)_S 64 _t (tools)_S 65 _t (have)_S 1417 5262 _m
+(different)_S 69 _t (limitations)_S 68 _t (and)_S 69 _t (capabilities,)_S 69 _t (and)_S 69 _t (the)_S 68 _t (status)_S 69 _t (of)_S 69 _t (tools)_S 69 _t (available)_S 68 _t (on)_S 69 _t (the)_S 69 _t (market)_S 69 _t (is)_S 1417 5029 _m
+(constantly)_S 86 _t (changing.)_S 87 _t (In)_S 86 _t (summary)_S 87 _t (there)_S 86 _t (are)_S 87 _t (few)_S 86 _t (specific)_S 87 _t (requirements)_S 86 _t (on)_S 87 _t (models)_S 86 _t (for)_S 1417 4796 _m
+(component)_S 130 _t (simulation,)_S 131 _t (allowing)_S 130 _t (a)_S 131 _t (flexible)_S 130 _t (selection)_S 131 _t (of)_S 130 _t (design)_S 131 _t (tools)_S 130 _t (and)_S 131 _t (design)_S 1417 4563 _m
+(methodology.)_S 1417 4097 _m
+(The)_S 87 _t (requirements)_S 86 _t (for)_S 87 _t (models)_S 87 _t (for)_S 87 _t (board-)_S gsave 0 0 translate 8 8 scale _s 100 _gs _s 100 _gs 620 205 _m
+_sp 1065 205 1065 207 620 207 3 _pl _f _s _s 100 _gs 1063 205 _m
+_sp 1065 205 1065 532 1063 532 3 _pl _f _s _s 100 _gs 620 530 _m
+_sp 1065 530 1065 532 620 532 3 _pl _f _s _s 100 _gs 620 205 _m
+_sp 622 205 622 532 620 532 3 _pl _f _s 276 394 645 230 _cw _s 1650 1275 0 0 _cw _s grestore 5166 3909 _m
+/Helvetica-BoldR 500 _ff
+(Summary)_S 56 _t (of)_S 56 _t (Concept:)_S /HelveticaR 500 _ff
+/HelveticaR 300 _ff
+5166 3578 _m
+/HelveticaR 500 _ff
+(\267)_S 5402 3578 _m
+(High)_S 56 _t (readability)_S 56 _t (and)_S 56 _t (clarity;)_S 5166 3378 _m
+(\267)_S 5402 3378 _m
+(Avoid)_S 56 _t (obscure)_S 56 _t (constructs;)_S 5166 3178 _m
+(\267)_S 5402 3178 _m
+(Only)_S 56 _t (use)_S 56 _t (portable)_S 56 _t (constructs;)_S 5166 2978 _m
+(\267)_S 5402 2978 _m
+(High)_S 56 _t (level)_S 56 _t (of)_S 56 _t (verification;)_S 5166 2778 _m
+(\267)_S 5402 2778 _m
+(Common)_S 52 _t (characteristics)_S 52 _t (and)_S 52 _t (interfaces)_S 5402 2578 _m
+(for)_S 56 _t (models)_S 56 _t (for)_S 56 _t (board-level)_S 56 _t (simulation.)_S /HelveticaR 300 _ff
+5166 2245 _m
+/HelveticaR 500 _ff
+(General)_S 34 _t (requirements)_S 33 _t (supporting)_S 33 _t (almost)_S 33 _t (all)_S 5166 2045 _m
+(simulators)_S 48 _t (and)_S 49 _t (synthesis)_S 48 _t (tools,)_S 48 _t (written)_S 48 _t (in)_S 49 _t (a)_S 5166 1845 _m
+(ready-to-use)_S 56 _t (style.)_S /Times-RomanR 600 _ff
+1417 3864 _m
+(level)_S 83 _t (simulation)_S 84 _t (are)_S 83 _t (more)_S 84 _t (elaborated,)_S 83 _t (as)_S 1417 3631 _m
+(described)_S 67 _t (in)_S 67 _t (the)_S 67 _t (following)_S 67 _t (section.)_S 1417 3165 _m
+(Finally,)_S 120 _t (system-level)_S 120 _t (simulation)_S 121 _t (covers)_S 1417 2932 _m
+(many)_S 63 _t (areas)_S 64 _t (such)_S 63 _t (as)_S 63 _t (protocols,)_S 64 _t (algorithms)_S 1417 2699 _m
+(and)_S 90 _t (models)_S 91 _t (for)_S 90 _t (performance)_S 90 _t (evaluation.)_S 1417 2466 _m
+(Some)_S 138 _t (system-level)_S 139 _t (concepts)_S 139 _t (have)_S 139 _t (not)_S 1417 2233 _m
+(been)_S 73 _t (tried)_S 73 _t (yet,)_S 73 _t (at)_S 73 _t (least)_S 73 _t (not)_S 73 _t (using)_S 73 _t (VHDL.)_S 1417 2000 _m
+(There)_S 135 _t (are)_S 136 _t (therefore)_S 135 _t (not)_S 136 _t (very)_S 136 _t (detailed)_S 1417 1767 _m
+(requirements)_S 67 _t (for)_S 67 _t (this)_S 67 _t (type)_S 67 _t (of)_S 67 _t (models.)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S 4905 12687 _m
+(6)_S 6348 12687 _m
+(european)_S 67 _t (space)_S 67 _t (agency)_S /Times-RomanR 600 _ff
+1417 11794 _m
+/Times-BoldR 600 _ff
+(3.4)_S 1889 11794 _m
+(Using)_S 67 _t (VHDL)_S 67 _t (for)_S 67 _t (Board-level)_S 67 _t (Simulation)_S /Times-RomanR 600 _ff
+1417 11328 _m
+(Board-level)_S 52 _t (simulation)_S 51 _t (can)_S 52 _t (be)_S 52 _t (defined)_S 52 _t (as)_S 52 _t (simulating)_S 51 _t (the)_S 52 _t (functionality)_S 52 _t (of)_S 52 _t (a)_S 52 _t (printed)_S 52 _t (circuit)_S 1417 11095 _m
+(board)_S 48 _t (built)_S 49 _t (with)_S 48 _t (standard)_S 49 _t (components,)_S 48 _t (possibly)_S 49 _t (incorporating)_S 48 _t (ASICs)_S 48 _t (and)_S 49 _t (ASSPs)_S 48 _t (as)_S 49 _t (well.)_S 1417 10862 _m
+(Due)_S 59 _t (to)_S 60 _t (simulator)_S 59 _t (performance)_S 60 _t (reasons)_S 59 _t (board-level)_S 60 _t (simulation)_S 59 _t (is)_S 60 _t (normally)_S 60 _t (limited)_S 59 _t (to)_S 60 _t (the)_S 1417 10629 _m
+(digital)_S 67 _t (domain.)_S 1417 10163 _m
+(A)_S 62 _t (major)_S 63 _t (issue)_S 62 _t (for)_S 63 _t (board-level)_S 62 _t (simulation)_S 62 _t (is)_S 63 _t (the)_S 62 _t (availability)_S 63 _t (of)_S 62 _t (simulation)_S 62 _t (models)_S 63 _t (of)_S 62 _t (the)_S 1417 9930 _m
+(components)_S 75 _t (used)_S 75 _t (on)_S 75 _t (the)_S 76 _t (board.)_S 75 _t (Despite)_S 75 _t (commercial)_S 75 _t (models)_S 76 _t (being)_S 75 _t (available)_S 75 _t (for)_S 76 _t (many)_S 1417 9697 _m
+(standard)_S 70 _t (components,)_S 70 _t (increasingly)_S 70 _t (often)_S 70 _t (ASSPs,)_S 70 _t (ASICs)_S 70 _t (and)_S 70 _t (other)_S 70 _t (unusual)_S 70 _t (devices)_S 70 _t (are)_S 1417 9464 _m
+(used.)_S 89 _t (Hardware)_S 90 _t (modellers)_S 89 _t (can)_S 90 _t (solve)_S 89 _t (this)_S 90 _t (problem,)_S 89 _t (though)_S 90 _t (they)_S 89 _t (are)_S 89 _t (expensive,)_S 90 _t (more)_S 1417 9231 _m
+(complicated)_S 90 _t (to)_S 90 _t (use)_S 89 _t (and)_S 90 _t (have)_S 90 _t (limitations)_S 89 _t (in)_S 90 _t (the)_S 90 _t (number)_S 90 _t (of)_S 89 _t (devices)_S 90 _t (that)_S 90 _t (can)_S 90 _t (be)_S 89 _t (used)_S 1417 8998 _m
+(simultaneously.)_S 1417 8532 _m
+(VHDL)_S 80 _t (models)_S 81 _t (are)_S 80 _t (therefore)_S 81 _t (an)_S 80 _t (interesting)_S 80 _t (alternative)_S 81 _t (when)_S 80 _t (no)_S 80 _t (models)_S 81 _t (are)_S 80 _t (available,)_S 1417 8299 _m
+(which)_S 85 _t (is)_S 86 _t (the)_S 86 _t (typical)_S 85 _t (case)_S 86 _t (for)_S 86 _t (almost)_S 86 _t (all)_S 85 _t (components)_S 86 _t (used)_S 85 _t (onboard)_S 86 _t (spacecraft.)_S 86 _t (Major)_S 1417 8066 _m
+(issues)_S 90 _t (when)_S 90 _t (using)_S 90 _t (VHDL)_S 90 _t (for)_S 89 _t (board-level)_S 90 _t (simulation)_S 90 _t (are)_S 90 _t (to)_S 90 _t (have)_S 90 _t (a)_S 89 _t /Times-BoldR 600 _ff
+(common)_S 90 _t (model)_S 1417 7833 _m
+(interface)_S /Times-RomanR 600 _ff
+(,)_S 49 _t (to)_S 50 _t (implement)_S 49 _t /Times-BoldR 600 _ff
+(timing)_S 50 _t (modelling)_S /Times-RomanR 600 _ff
+49 _t (\(setup)_S 50 _t (and)_S 49 _t (hold)_S 50 _t (times,)_S 49 _t (output)_S 50 _t (delays)_S 49 _t (etc.\))_S 50 _t (and)_S 1417 7600 _m
+/Times-BoldR 600 _ff
+(handling)_S 50 _t (of)_S 50 _t (unknowns)_S /Times-RomanR 600 _ff
+51 _t (for)_S 50 _t (the)_S 50 _t (model)_S 51 _t (inputs)_S 50 _t (and)_S 50 _t (outputs,)_S 51 _t (and)_S 50 _t /Times-BoldR 600 _ff
+(simulation)_S 51 _t (performance)_S /Times-RomanR 600 _ff
+(.)_S 1417 7132 _m
+(In)_S 66 _t (the)_S 67 _t (ESA)_S 66 _t /Times-ItalicR 600 _ff
+(VHDL)_S 67 _t (Modelling)_S 67 _t (Guidelines)_S /Times-RomanR 600 _ff
+66 _t (the)_S 67 _t (concept)_S 67 _t (for)_S 66 _t (timing)_S 67 _t (modelling)_S 66 _t (is)_S 67 _t (based)_S 67 _t (on)_S 1417 6899 _m
+(the)_S 67 _t (IEEE)_S 68 _t (Vital)_S 67 _t (\(VHDL)_S 67 _t (Initiative)_S 67 _t (Toward)_S 67 _t (ASIC)_S 68 _t (Libraries\))_S 67 _t (activity)_S 67 _t ([Vital].)_S 67 _t (This)_S 67 _t (allows)_S 1417 6666 _m
+(the)_S 62 _t (Vital)_S 62 _t (subprograms)_S 62 _t (to)_S 62 _t (be)_S 62 _t (reused,)_S 62 _t (saving)_S 62 _t (coding)_S 62 _t (effort)_S 62 _t (as)_S 62 _t (well)_S 62 _t (as)_S 62 _t (potentially)_S 62 _t (offering)_S 1417 6433 _m
+(speed)_S 131 _t (optimisation;)_S 131 _t (several)_S 131 _t (simulators)_S 131 _t (already)_S 131 _t (offer)_S 130 _t (optimised)_S 131 _t (versions)_S 131 _t (of)_S 131 _t (Vital)_S 1417 6200 _m
+(subprograms.)_S 55 _t (Full)_S 55 _t (Vital)_S 55 _t (compliance)_S 55 _t (has)_S 55 _t (not)_S 55 _t (been)_S 56 _t (achieved;)_S 55 _t (a)_S 55 _t (different)_S 55 _t (technique)_S 56 _t (for)_S 55 _t (the)_S 1417 5967 _m
+(selection)_S 67 _t (of)_S 67 _t (the)_S 67 _t (simulation)_S 67 _t (conditions)_S 67 _t (\(e.g.)_S 67 _t (min.)_S 67 _t (or)_S 67 _t (max.)_S 67 _t (delay\))_S 67 _t (has)_S 67 _t (been)_S 67 _t (specified:)_S 1417 5734 _m
+(\267)_S 1653 5734 _m
+(Vital)_S 67 _t (is)_S 68 _t (based)_S 68 _t (on)_S 68 _t (using)_S 68 _t (an)_S 67 _t (external)_S 68 _t (delay)_S 68 _t (calculator,)_S 68 _t (where)_S 67 _t (the)_S 68 _t (actual)_S 68 _t (timing)_S 68 _t (values)_S 1653 5501 _m
+(for)_S 49 _t (a)_S 49 _t (specific)_S 49 _t (simulation)_S 50 _t (condition)_S 49 _t (are)_S 49 _t (back-annotated)_S 50 _t (using)_S 49 _t (the)_S 49 _t (SDF)_S 49 _t (\(Standard)_S 50 _t (Delay)_S 1653 5268 _m
+(File\))_S 67 _t (format.)_S 67 _t (The)_S 67 _t (timing)_S 67 _t (values)_S 67 _t (are)_S 67 _t (specific)_S 67 _t (for)_S 67 _t (each)_S 67 _t (component)_S 67 _t (instance;)_S 1417 5035 _m
+(\267)_S 1653 5035 _m
+(It)_S 63 _t (was)_S 64 _t (felt)_S 64 _t (that)_S 64 _t (users)_S 63 _t (of)_S 64 _t (board-level)_S 64 _t (simulation)_S 63 _t (prefer)_S 64 _t (a)_S 63 _t (less)_S 64 _t (complicated)_S 64 _t (mechanism)_S 1653 4802 _m
+(such)_S 91 _t (as)_S 91 _t (simply)_S 92 _t (using)_S 91 _t (a)_S 91 _t (single)_S 91 _t (generic)_S 91 _t (to)_S 92 _t (change)_S 91 _t (the)_S 91 _t (simulation)_S 91 _t (condition)_S 92 _t (for)_S 91 _t (all)_S 1653 4569 _m
+(components)_S 67 _t (together.)_S 1417 4101 _m
+(As)_S 95 _t (a)_S 95 _t (support)_S 95 _t (to)_S 95 _t (the)_S 95 _t /Times-ItalicR 600 _ff
+(VHDL)_S 94 _t (Modelling)_S 95 _t (Guidelines)_S /Times-RomanR 600 _ff
+(,)_S 95 _t (the)_S 95 _t (document)_S 94 _t /Times-ItalicR 600 _ff
+(VHDL)_S 95 _t (Models)_S 95 _t (for)_S 1417 3866 _m
+(Board-level)_S 41 _t (Simulation)_S /Times-RomanR 600 _ff
+42 _t ([BoardLevel])_S 41 _t (is)_S 42 _t (currently)_S 41 _t (under)_S 42 _t (preparation.)_S 41 _t (While)_S 42 _t (the)_S 41 _t (guidelines)_S 1417 3633 _m
+(largely)_S 57 _t (contain)_S 56 _t (requirements,)_S 57 _t (this)_S 57 _t (document)_S 57 _t (will)_S 57 _t (show)_S 57 _t (how)_S 57 _t (they)_S 57 _t (can)_S 57 _t (be)_S 57 _t (implemented)_S 57 _t (in)_S 1417 3400 _m
+(a)_S 90 _t (practical)_S 90 _t (way,)_S 90 _t (explaining)_S 89 _t (the)_S 90 _t (underlying)_S 90 _t (issues)_S 90 _t (and)_S 90 _t (trade-offs.)_S 90 _t (The)_S 90 _t (main)_S 89 _t (scope)_S 90 _t (is)_S 1417 3167 _m
+(VHDL)_S 81 _t (models)_S 81 _t (for)_S 81 _t (board-level)_S 81 _t (simulation,)_S 81 _t (but)_S 81 _t (many)_S 81 _t (techniques)_S 81 _t (can)_S 81 _t (be)_S 81 _t (used)_S 81 _t (also)_S 81 _t (for)_S 1417 2934 _m
+(other)_S 67 _t (types)_S 67 _t (of)_S 67 _t (modelling.)_S 67 _t (Some)_S 67 _t (examples)_S 67 _t (of)_S 67 _t (the)_S 67 _t (contents)_S 67 _t (are:)_S 1417 2701 _m
+(\267)_S 1653 2701 _m
+(How)_S 61 _t (to)_S 62 _t (efficiently)_S 61 _t (code)_S 62 _t (models)_S 61 _t (with)_S 62 _t (timing)_S 61 _t (checkers)_S 61 _t (and)_S 62 _t (X-checkers)_S 61 _t (only)_S 62 _t (activated)_S 1653 2468 _m
+(when)_S 67 _t (necessary;)_S 1417 2235 _m
+(\267)_S 1653 2235 _m
+(Techniques)_S 67 _t (for)_S 67 _t (improving)_S 67 _t (simulation)_S 67 _t (performance;)_S 1417 2002 _m
+(\267)_S 1653 2002 _m
+(Verification)_S 54 _t (of)_S 54 _t (the)_S 55 _t (models)_S 54 _t (including)_S 54 _t (methods)_S 54 _t (for)_S 54 _t (assessing)_S 55 _t (the)_S 54 _t (verification)_S 54 _t (coverage;)_S 1417 1769 _m
+(\267)_S 1653 1769 _m
+(Automatic)_S 74 _t (testbenches)_S 73 _t (allowing)_S 74 _t (repeatable)_S 73 _t (verification,)_S 74 _t (with)_S 74 _t (cycle-by-cycle)_S 73 _t (checks)_S 1653 1536 _m
+(using)_S 67 _t (MISR)_S 67 _t (\(Multiple)_S 67 _t (Input)_S 67 _t (Shift)_S 67 _t (Register\))_S 67 _t (techniques)_S 67 _t (\(detailed)_S 67 _t (on)_S 67 _t (the)_S 67 _t (next)_S 67 _t (page\).)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(european)_S 67 _t (space)_S 67 _t (agency)_S 4905 12687 _m
+(7)_S 5991 12687 _m
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S /Times-RomanR 600 _ff
+1417 11794 _m
+(A)_S 62 _t (method)_S 62 _t (useful)_S 62 _t (for)_S 62 _t (verifying)_S 62 _t (that)_S 61 _t (the)_S 62 _t (exact)_S 62 _t (behavior)_S 62 _t (of)_S 62 _t (a)_S 62 _t (model)_S 61 _t (has)_S 62 _t (not)_S 62 _t (changed)_S 62 _t (is)_S 61 _t (to)_S 1417 11561 _m
+(generate)_S 58 _t (a)_S 58 _t (signature,)_S 59 _t (similar)_S 58 _t (to)_S 58 _t (implementing)_S 59 _t (Built-In)_S 58 _t (Self)_S 58 _t (Test)_S 58 _t (\(BIST\))_S 59 _t (for)_S 58 _t (ASICs.)_S 59 _t (One)_S 1417 11328 _m
+(usage)_S 71 _t (of)_S 72 _t (this)_S 72 _t (technique)_S 72 _t (is)_S 72 _t (to)_S 72 _t (prove)_S 72 _t (the)_S 71 _t (exact)_S 72 _t (behavior)_S 72 _t (of)_S 72 _t (a)_S 72 _t (delivered)_S 72 _t (VHDL)_S 72 _t (model)_S 72 _t (to)_S 1417 11095 _m
+(the)_S 70 _t (user)_S 70 _t (of)_S 71 _t (the)_S 70 _t (model.)_S 70 _t (The)_S 71 _t (same)_S 70 _t (method)_S 71 _t (can)_S 70 _t (also)_S 70 _t (be)_S 71 _t (applied)_S 70 _t (during)_S 71 _t (the)_S 70 _t (design)_S 71 _t (phase,)_S 1417 10862 _m
+(significantly)_S 67 _t (simplifying)_S 67 _t (regression)_S 67 _t (testing,)_S 67 _t (e.g.)_S 67 _t (after)_S 67 _t (each)_S 67 _t (new)_S 67 _t (synthesis)_S 67 _t (run.)_S 1417 10394 _m
+(A)_S 89 _t (pitfall)_S 88 _t (is)_S 89 _t (to)_S 88 _t (generate)_S 89 _t (the)_S 88 _t (pseudorandom)_S 88 _t (stimuli)_S 89 _t (using)_S 88 _t /Times-ItalicR 600 _ff
+(Real)_S /Times-RomanR 600 _ff
+89 _t (types,)_S 88 _t (which)_S 89 _t (are)_S 88 _t (non-)_S 1417 10161 _m
+(portable.)_S 61 _t (Experience)_S 62 _t (has)_S 61 _t (shown)_S 62 _t (that)_S 62 _t (two)_S 61 _t (different)_S 62 _t (simulators)_S 61 _t (on)_S 62 _t (the)_S 61 _t (same)_S 62 _t (platform)_S 62 _t (and)_S 1417 9928 _m
+(operating)_S 68 _t (system)_S 67 _t (can)_S 68 _t (exhibit)_S 68 _t (slight)_S 67 _t (differences,)_S 68 _t (resulting)_S 68 _t (in)_S 68 _t (an)_S 67 _t (incorrect)_S 68 _t (signature.)_S 68 _t (For)_S 1417 9695 _m
+(pseudorandom)_S 66 _t (stimuli)_S 65 _t (generation)_S 65 _t (an)_S 65 _t (integer)_S 65 _t (based)_S 66 _t (function)_S 65 _t (should)_S 65 _t (always)_S 65 _t (be)_S 65 _t (used,)_S 65 _t (for)_S 1417 9460 _m
+(example)_S 86 _t (by)_S 86 _t (modifying)_S 85 _t (the)_S 86 _t /Times-ItalicR 600 _ff
+(Uniform)_S /Times-RomanR 600 _ff
+85 _t (procedure)_S 86 _t (from)_S 86 _t (the)_S 85 _t (IEEE)_S 86 _t (mathematical)_S 85 _t (package)_S 1417 9227 _m
+([MathPack])_S 67 _t (to)_S 67 _t (return)_S 67 _t (an)_S 67 _t (integer.)_S 1417 5033 _m
+/Times-BoldR 600 _ff
+(3.5)_S 1889 5033 _m
+(Availability)_S 67 _t (of)_S 67 _t (the)_S 67 _t (ESA)_S 67 _t (Documents)_S /Times-RomanR 600 _ff
+gsave 0 0 translate 8 8 scale _s 0 _gs 398 841 200 693 _cw save 0.125 0.125 scale 0 360 755 0 575 0 -237.50343 96.48240 16.84655 16.58332 0 _ie end /_n {} bind def/copypage {_n} bind def/showpage {_n} bind def/erasepage {_n} bind def%!PS-Adobe-1.0
+%%Title: GEM Document
+%%Creator: GEM
+%%Pages: (atend)
+%%BoundingBox: 0 0 575 755 
+%%EndComments
+% Copyright (C) Digital Research, Inc. 1986, 1987. All rights reserved.
+systemdict /setpacking known {/svp currentpacking def true setpacking}if
+/gemdict 250 dict def
+gemdict begin
+
+/bd{bind def}bind def
+/ed{exch def}bind def
+
+% User defined Start of Page procedure:  this operator will be
+% executed at the beginning of each page output by GEM
+% and is provided to allow user-defined page initialization.
+/UserSoP{}bd
+
+/GEM_INISUB{pop pop pop pop}bd
+/GEM_INIDOC{/#copies ed settray
+	statusdict /setpageparams known
+	{statusdict begin 0 1 setpageparams end}{pop pop}ifelse}bd
+/geminit{np 1 setlinejoin /mpf true def
+	/encstr 80 string def gs}bd
+/matinit{/landscape ed /p3 ed /p2 ed /p1 ed
+	gr 72 300 div exch div dup scale clippath pathbbox exch /prx ed
+	exch dup /ply ed sub 1 add p3 sub 2 div ply add /ty ed
+	dup prx exch sub 1 add p2 sub 2 div add
+	landscape{p1 add}if ty translate
+	landscape{90 rotate p2 /p1 ed p3 /p2 ed p1 /p3 ed}if
+	gs}bd
+/gr /grestore load def
+/np /newpath load def
+/cp /currentpoint load def
+/gi /getinterval load def
+/lto /lineto load def
+/mto /moveto load def
+/clw /currentlinewidth load def
+/gs /gsave load def 
+/greset{gr gs}bd
+/settray{dup 0 lt mf dup 0 ge{tray}{pop}ifelse}bd
+/mf{statusdict /manualfeed known
+	{statusdict begin /manualfeed ed end}{pop}ifelse}bd
+/tray{statusdict begin true
+	product(QMS-PS 1200)eq{not exch dup 1 gt{pop 0}if
+		defaultpapertray exch 0 ne{3 exch sub}if setpapertray}if
+	product dup(PrintServer 40)eq exch(QMS-PS 2400)eq or{
+		not exch dup 2 gt{pop 0}if
+		dup 0 eq{pop defaultpapertray}
+		{dup defaultpapertray ge{1 add}if}ifelse setpapertray}if
+	{statusdict /defaultpapertray known statusdict /setpapertray known and
+		{defaultpapertray exch 0 ne{1 exch sub}if setpapertray}
+		{pop}ifelse}if end}bd
+/reencsmalldict 12 dict def
+/ReEncodeSmall{reencsmalldict begin
+	/newcodesandnames ed /newfontname ed
+	/basefontname ed /basefontdict basefontname findfont def
+	/newfont basefontdict maxlength dict def basefontdict
+	{exch dup /FID ne
+		{dup /Encoding eq
+			{exch dup length array copy newfont 3 1 roll put}
+			{exch newfont 3 1 roll put}ifelse}
+		{pop pop}ifelse}forall
+	newfont /FontName newfontname put newcodesandnames aload pop
+	newcodesandnames length 2 idiv
+	{newfont /Encoding get 3 1 roll put}repeat
+	newfontname newfont definefont pop end}bd
+/gemenvec[8#200 /Ccedilla 8#201 /udieresis 8#202 /eacute 8#203 /acircumflex
+	8#204 /adieresis 8#205 /agrave 8#206 /aring 8#207 /ccedilla
+	8#210 /ecircumflex 8#211 /edieresis 8#212 /egrave 8#213 /idieresis
+	8#214 /icircumflex  8#215 /igrave 8#216 /Adieresis 8#217 /Aring
+	8#220 /Eacute 8#221 /ae 8#222 /AE 8#223 /ocircumflex 8#224 /odieresis
+	8#225 /ograve 8#226 /ucircumflex 8#227 /ugrave 8#230 /ydieresis
+	8#231 /Odieresis 8#232 /Udieresis 8#233 /oslash 8#234 /sterling
+	8#235 /Oslash 8#236 /currency 8#237 /florin 8#240 /aacute 8#241 /iacute
+	8#242 /oacute 8#243 /uacute 8#244 /ntilde 8#245 /Ntilde
+	8#246 /ordfeminine 8#247 /ordmasculine 8#250 /questiondown
+	8#251 /quotedblleft 8#252 /quotedblright 8#253 /guilsinglleft
+	8#254 /guilsinglright 8#255 /exclamdown 8#256 /guillemotleft
+	8#257 /guillemotright 8#260 /atilde 8#261 /otilde 8#262 /yen
+	8#263 /cent 8#264 /oe 8#265 /OE 8#266 /Agrave 8#267 /Atilde
+	8#270 /Otilde 8#271 /section 8#272 /daggerdbl 8#273 /dagger
+	8#274 /paragraph
+	8#300 /quotedblbase 8#301 /ellipsis 8#302 /perthousand 8#303 /bullet
+	8#304 /endash 8#305 /emdash 8#306 /ring 8#307 /Aacute
+	8#310 /Acircumflex 8#311 /Egrave 8#312 /Ecircumflex 8#313 /Edieresis
+	8#314 /Igrave 8#315 /Iacute 8#316 /Icircumflex 8#317 /Idieresis
+	8#320 /Ograve 8#321 /Oacute 8#322 /Ocircumflex 8#323 /Scaron
+	8#324 /scaron 8#325 /Ugrave 8#326 /Uacute 8#327 /Ucircumflex
+	8#330 /Ydieresis 8#331 /germandbls 8#341 /germandbls
+	8#351 /grave 8#352 /acute 8#353 /circumflex 8#354 /tilde 8#355 /macron
+	8#356 /breve 8#357 /dotaccent 8#360 /dieresis 8#361 /ring
+	8#362 /cedilla 8#363 /caron
+	version(23.0)eq{8#275 /space 8#276 /space 8#277 /space}
+	{8#275 /copyright 8#276 /registered 8#277 /trademark}ifelse]def
+/addfont{fonts exch fpt exch put /fpt fpt 1 add def}bd
+/encfont{fonts exch get dup encstr cvs length 1 sub encstr exch 1 exch
+	getinterval cvn exch gemenvec ReEncodeSmall}bd
+/path{np mto{lto}repeat}bd
+/circle{np 0 0 1 0 360 arc}bd
+/rend{gs 1 setlinecap np mto cp 0.1 add lto stroke gr}bd
+/vl{dup /st ed dup apath exch get tx sub dup mul
+	exch 1 add apath exch get ty sub dup mul add sqrt}bd
+/doarrow{/rot ed /ty ed /tx ed 6 array currentmatrix
+	tx ty translate clw 4 lt{4}{clw}ifelse dup scale rot rotate np
+	0 0 mto -3 1.5 lto -3 -1.5 lto fill setmatrix}bd
+/arpath{np apath 0 get apath 1 get mto 2 2 points 1 sub
+	{dup apath exch get exch 1 add apath exch get lto}for}bd
+/arrowline{/apath ed /lend ed /lbeg ed /len clw 3 mul def
+	/points apath length def lbeg
+	{apath 0 get dup /tx ed /x1 ed apath 1 get dup
+		/ty ed /y1 ed true 2 2 points 1 sub
+		{vl len ge{pop false exit}if}for
+		{/lbeg false def /lend false def}
+		{apath 2 apath st points st sub gi putinterval /r1 y1
+			apath 3 get sub x1 apath 2 get sub atan def apath 0
+			x1 r1 cos len mul sub put apath 1 y1 r1 sin len mul
+			sub put /points points st 2 sub sub def}ifelse}if
+	lend{apath points 2 sub get dup /tx ed /x2 ed
+		apath points 1 sub get dup /ty ed /y2 ed
+		true points 4 sub -2 0
+		{vl len ge{pop false exit}if}for
+		{/lbeg false def /lend false def}
+		{/r2 y2 apath st 1 add get sub x2 apath st get sub
+			atan def /st st 2 add def apath st x2 r2 cos len mul
+			sub put apath st 1 add y2 r2 sin len mul sub put
+			/points st 2 add def}ifelse}if
+	lbeg{x1 y1 r1 doarrow}if lend{x2 y2 r2 doarrow}if arpath}bd
+/ac{6 array currentmatrix xt yt translate xs ys scale}bd
+/shorten{dup mul exch dup mul add sqrt clw 150 mul exch div}bd
+/xang{dup 360 ge{360}{0}ifelse exch dup sin xs mul exch cos ys mul atan
+	dup 360 lt{add}{exch pop}ifelse}bd
+/arrowarc{/eang ed /bang ed /ys ed /xs ed /yt ed
+	/xt ed /lend ed /lbeg ed ac np 0 0 1 bang xang
+	eang xang arc setmatrix cp /y2 ed /x2 ed ac np 0 0 1 bang
+	xang dup arc setmatrix cp /y1 ed /x1 ed lbeg
+	{/bang bang xs ys shorten add def}if
+	lend{/eang eang xs ys shorten sub def}if ac np 0 0 1 bang xang eang
+	xang arc setmatrix gs stroke gr
+	lend{x2 y2 cp y2 exch sub exch x2 exch sub atan doarrow}if
+	lbeg{ac np 0 0 1 bang xang dup arc setmatrix x1 y1 cp y1 exch sub
+		exch x1 exch sub atan doarrow}if}bd
+/rbox{/ury ed /urx ed /lly ed /llx ed urx llx sub
+	4 div dup 50 gt{pop 50}if /radius ed ury lly sub 4 div dup
+	radius gt{pop radius}if /radius ed np urx radius sub ury mto llx
+	ury llx lly radius arcto 4{pop}repeat llx lly urx lly radius arcto
+	4{pop}repeat urx lly urx ury radius arcto 4{pop}repeat urx ury llx ury
+	radius arcto 4{pop}repeat}bd
+/marker{1 sub mdef exch get /mproc ed 32 div /msize ed
+	{gs np translate msize dup scale 1 setlinewidth
+		mproc stroke gr}repeat}bd
+/mdef[{0 0 mto 1 0 lto 1 1 lto 0 1 lto closepath}bind
+	{-16 0 mto 16 0 lto 0 -16 mto 0 16 lto}bind
+	{0 -16 mto 0 16 lto 13.9 8 mto -13.9 -8 lto 13.9 -8 mto
+		-13.9 8 lto}bind
+	{16 16 mto -16 16 lto -16 -16 lto 16 -16 lto closepath}bind
+	{16 16 mto -16 -16 lto -16 16 mto 16 -16 lto}bind
+	{16 0 mto 0 16 lto -16 0 lto 0 -16 lto closepath}bind]def
+/bitison{/ybit ed /xbit ed bstring ybit bwidth mul xbit 8 idiv add get
+	1 7 xbit 8 mod sub bitshift and 0 ne}bd
+/setpattern{/freq ed /bwidth ed /bpside ed /bstring ed /onbits 0 def
+	/offbits 0 def freq 0 {/y ed /x ed /xindex x 1 add 2 div bpside mul
+	cvi def /yindex y 1 add 2 div bpside mul cvi def xindex yindex
+	bitison {/onbits onbits 1 add def 1} {/offbits offbits 1 add def 0}
+	ifelse}setscreen{}settransfer offbits dup onbits add div setgray}bd
+/ellpie{/pie ed /eang ed /bang ed /ys ed /xs ed
+	/yt ed /xt ed 6 array currentmatrix xt yt translate xs ys
+	scale np pie{0 0 mto}if 0 0 1 bang xang eang xang arc setmatrix}bd
+/roundarc{gs 1 setlinecap cp np mto cp lto stroke gr}bd
+/fstimg{{vrep 0.1 gt{/vrep vrep 1 sub def}{
+			{currentfile token pop 0 eq
+				{currentfile scan readhexstring pop pop exit}
+				{/vrep currentfile token pop def}ifelse
+			}loop}ifelse scan}image}bd
+/decode{/patstring patlen string def /bonestr 1 string def
+	{vrep 0.1 gt{/vrep vrep 1 sub def scan}
+		{/spos 0 def
+			{currentfile token pop currentfile token pop
+				exch imop exch get exec spos smax ge
+				{scan exit}if}loop}ifelse}image}bd
+/imop[{<ff> psc}bind
+	{<00> psc}bind
+	{currentfile patstring readhexstring pop psc}bind
+	{1 exch 1 exch
+		{pop currentfile bonestr readhexstring pop scan exch
+			spos exch 0 get put /spos spos 1 add def}for}bind
+	{1 sub /vrep ed}bind]def
+/psc{dup length /plen ed exch -1 1
+	{pop dup scan exch spos exch putinterval /spos spos plen add def}for
+	pop}bd
+/gtext{gs /msg ed /ty ed /tx ed tx ty translate trotate
+	rotate tcolor setgray 10 setflat horz halign get exec
+	vert valign get exec np tx ty mto msg show tunder
+	{cp cp extents pop pop 5 div dup neg setlinewidth 1.5 mul ty add
+		/ty ed [] 0 setdash pop np pop ty mto tx ty lto
+		stroke np mto}if
+	gr}bd
+/etext{gs translate trotate rotate tcolor setgray /tx 0 def /ty 0 def
+	{tx add dup /tx ed np ty mto show}repeat gr}bd
+/jtext{/msg ed /jtype ed /sps ed /dx ed /ty ed
+	/tx ed
+	gs tx ty translate trotate rotate tcolor setgray 10 setflat
+	jhorz halign get exec vert valign get exec jo gr}bd
+/fet{gs translate /tx 0 def /ty 0 def
+	{tx add dup /tx ed np ty mto show}repeat gr}bd
+/fjt{/msg ed /jtype ed /sps ed /dx ed /ty ed
+	gs ty translate 10 setflat /tx 0 def /ty 0 def jo gr}bd
+/sf{fonts tface get findfont txscale tyscale matrix scale makefont setfont}bd
+/tpos{np tx ty mto}bd
+/extra{dx msg stringwidth pop sub}bd
+/justify[{tpos msg show}bind
+	{sps 0 eq{tpos msg show}{extra sps div 0 32 tpos msg widthshow}ifelse}
+	bind{extra msg length div 0 tpos msg ashow}bind]def
+/jo{justify jtype get exec tunder
+	{cp cp extents pop pop 5 div dup neg setlinewidth 1.5 mul
+	ty add /ty ed [] 0 setdash
+	pop np pop ty mto tx ty lto stroke np mto}if}bd
+/horz[{/tx 0 def}bind
+	{msg stringwidth pop -2 div /tx ed}bind
+	{msg stringwidth pop neg /tx ed}bind]def
+/extents{(_)bbox pop pop msg stringwidth pop (])bbox 3{exch pop}repeat}bd
+/bbox{np 0 0 mto false charpath flattenpath pathbbox np}bd
+/vert[{/ty 0 def}bind
+	{extents -2 div /ty ed pop pop pop}bind
+	{extents neg /ty ed pop pop pop}bind
+	{extents pop pop neg /ty ed pop}bind]def
+/jhorz[{/tx 0 def}bind
+	{/tx dx -2 div def}bind
+	{/tx dx neg def}bind]def
+/symindex 12 def
+/CR{/ah 0 def}bd
+/LF{0 -50 translate}bd
+/atext{gs /msg ed tcolor setgray np ah av mto
+	msg show tunder{cp cp (_)bbox pop pop exch pop 5 div dup neg
+	setlinewidth 1.5 mul add dup ah exch [] 0 setdash np mto lto
+	stroke np mto}if cp pop /ah ed gr}bd
+end
+systemdict /setpacking known{svp setpacking}if
+%%EndProlog
+userdict /gemdict known not {/Times-Roman findfont 12 scalefont
+setfont newpath 72 700 moveto
+(Error:  the GEM PostScript preamble is not available)show
+newpath 72 686 moveto
+(  on your printer.  Pre-download the preamble or include it with)
+show newpath 72 672 moveto (your print job.)show
+newpath 72 658 moveto(This print job has been aborted.)show
+showpage stop}if gemdict begin
+648 828 0 1 GEM_INIDOC geminit
+1 2399 2400 3150 false matinit
+/fonts 35 array def /fpt 0 def
+/GCourier addfont
+/GCourier-Bold addfont
+/GCourier-Oblique addfont
+/GCourier-BoldOblique addfont
+/GHelvetica addfont
+/GHelvetica-Bold addfont
+/GHelvetica-Oblique addfont
+/GHelvetica-BoldOblique addfont
+/GTimes-Roman addfont
+/GTimes-Bold addfont
+/GTimes-Italic addfont
+/GTimes-BoldItalic addfont
+/Symbol addfont
+/GNewCenturySchlbk-Roman addfont
+/GNewCenturySchlbk-Bold addfont
+/GNewCenturySchlbk-Italic addfont
+/GNewCenturySchlbk-BoldItalic addfont
+/GPalatino-Roman addfont
+/GPalatino-Bold addfont
+/GPalatino-Italic addfont
+/GPalatino-BoldItalic addfont
+/GBookman-Light addfont
+/GBookman-Demi addfont
+/GBookman-LightItalic addfont
+/GBookman-DemiItalic addfont
+/GHelvetica-Narrow addfont
+/GHelvetica-Narrow-Bold addfont
+/GHelvetica-Narrow-Oblique addfont
+/GHelvetica-Narrow-BoldOblique addfont
+/GAvantGarde-Book addfont
+/GAvantGarde-Demi addfont
+/GAvantGarde-BookOblique addfont
+/GAvantGarde-DemiOblique addfont
+/GZapfChancery-MediumItalic addfont
+/ZapfDingbats addfont
+save mark
+%Begin page
+UserSoP
+initclip 0 3149 2399 3149 2399 0 0 0 np mto lto lto lto clip np
+373 1605 727 1605 727 1959 3 373 1959 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+373 1605 373 1959 727 1959 727 1605 4 373 1605 path
+stroke
+373 1605 rend
+373 1605 rend
+0 setgray
+609 1250 609 1486 1790 1486 1790 1250 4 609 1250 path
+stroke
+609 1250 rend
+609 1250 rend
+904 1605 1317 1605 1317 1959 3 904 1959 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+904 1605 904 1959 1317 1959 1317 1605 4 904 1605 path
+stroke
+904 1605 rend
+904 1605 rend
+1672 1605 2026 1605 2026 1959 3 1672 1959 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1672 1605 1672 1959 2026 1959 2026 1605 4 1672 1605 path
+stroke
+1672 1605 rend
+1672 1605 rend
+0 setgray
+904 1900 1 727 1900 path
+stroke
+0 setgray
+904 1841 1 727 1841 path
+stroke
+0 setgray
+904 1782 1 727 1782 path
+stroke
+0 setgray
+904 1723 1 727 1723 path
+stroke
+0 setgray
+786 1486 1 786 1723 path
+stroke
+0 setgray
+845 1486 1 845 1841 path
+stroke
+0 setgray
+1377 1486 1 1377 1664 path
+stroke
+0 setgray
+1436 1486 1 1436 1723 path
+stroke
+0 setgray
+1554 1486 1 1554 1841 path
+stroke
+0 setgray
+1613 1486 1 1613 1900 path
+stroke
+0 setgray
+904 1664 1 727 1664 path
+stroke
+0 setgray
+1672 1900 1 1318 1900 path
+stroke
+0 setgray
+1672 1841 1 1318 1841 path
+stroke
+0 setgray
+1672 1782 1 1318 1782 path
+stroke
+0 setgray
+1672 1723 1 1318 1723 path
+stroke
+0 setgray
+1672 1664 1 1318 1664 path
+stroke
+0 setgray
+1495 1486 1 1495 1782 path
+stroke
+/tface 4 def
+4 encfont
+/tcolor 0 2 div def
+/txscale 14 300 mul 72 div def /tyscale 14 300 mul 72 div def
+/trotate 0 def
+/halign 0 def
+/valign 0 def
+/tunder false def
+sf
+465 1805 169 0 2 (Stimuli)fjt
+420 1734 260 0 2 (Generator)fjt
+1031 1805 159 0 2 (Model)fjt
+967 1734 286 1 2 (Under Test)fjt
+1719 1841 260 0 2 (Response)fjt
+1740 1770 218 0 2 (Checker)fjt
+1706 1699 286 0 2 (\(high-level\))fjt
+/txscale 10 300 mul 72 div def /tyscale 10 300 mul 72 div def
+sf
+684 1286 1046 7 2 (Mulitiple Input Shift Register \(MISR\) as Signature Generator)fjt
+0 setgray
+1908 1368 1 1790 1368 path
+stroke
+1924 1381 78 0 2 (Test)fjt
+1924 1333 172 0 2 (Signature)fjt
+791 1373 850 1373 850 1432 3 791 1432 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+791 1373 791 1432 850 1432 850 1373 4 791 1373 path
+stroke
+791 1373 rend
+791 1373 rend
+6 array currentmatrix 16 17 890 1402 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+890 1402 16 17 0 360 false ellpie gs stroke gr
+0 setgray
+902 1391 1 878 1414 path
+stroke
+0 setgray
+902 1414 1 879 1391 path
+stroke
+0 setgray
+false true[850 1403 873 1403 ]arrowline stroke
+0 setgray
+false true[909 1403 932 1403 ]arrowline stroke
+932 1373 991 1373 991 1432 3 932 1432 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+932 1373 932 1432 991 1432 991 1373 4 932 1373 path
+stroke
+932 1373 rend
+932 1373 rend
+6 array currentmatrix 16 17 1031 1402 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1031 1402 16 17 0 360 false ellpie gs stroke gr
+0 setgray
+1044 1390 1 1020 1414 path
+stroke
+0 setgray
+1044 1414 1 1021 1390 path
+stroke
+0 setgray
+false true[991 1402 1015 1402 ]arrowline stroke
+0 setgray
+false true[1050 1402 1074 1402 ]arrowline stroke
+6 array currentmatrix 16 17 748 1402 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+748 1402 16 17 0 360 false ellpie gs stroke gr
+0 setgray
+760 1390 1 737 1414 path
+stroke
+0 setgray
+760 1414 1 737 1390 path
+stroke
+0 setgray
+false true[708 1402 731 1402 ]arrowline stroke
+0 setgray
+false true[767 1402 791 1402 ]arrowline stroke
+1074 1373 1133 1373 1133 1432 3 1074 1432 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1074 1373 1074 1432 1133 1432 1133 1373 4 1074 1373 path
+stroke
+1074 1373 rend
+1074 1373 rend
+6 array currentmatrix 16 17 1173 1402 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1173 1402 16 17 0 360 false ellpie gs stroke gr
+0 setgray
+1185 1390 1 1162 1414 path
+stroke
+0 setgray
+1185 1414 1 1163 1390 path
+stroke
+0 setgray
+false true[1133 1402 1157 1402 ]arrowline stroke
+0 setgray
+false true[1192 1402 1216 1402 ]arrowline stroke
+1216 1373 1275 1373 1275 1432 3 1216 1432 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1216 1373 1216 1432 1275 1432 1275 1373 4 1216 1373 path
+stroke
+1216 1373 rend
+1216 1373 rend
+6 array currentmatrix 16 17 1315 1402 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1315 1402 16 17 0 360 false ellpie gs stroke gr
+0 setgray
+1327 1390 1 1303 1414 path
+stroke
+0 setgray
+1327 1414 1 1304 1390 path
+stroke
+0 setgray
+false true[1275 1402 1298 1402 ]arrowline stroke
+0 setgray
+false true[1334 1402 1357 1402 ]arrowline stroke
+1357 1373 1416 1373 1416 1432 3 1357 1432 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1357 1373 1357 1432 1416 1432 1416 1373 4 1357 1373 path
+stroke
+1357 1373 rend
+1357 1373 rend
+6 array currentmatrix 16 17 1456 1402 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1456 1402 16 17 0 360 false ellpie gs stroke gr
+0 setgray
+1469 1390 1 1445 1414 path
+stroke
+0 setgray
+1469 1414 1 1446 1390 path
+stroke
+0 setgray
+false true[1416 1402 1440 1402 ]arrowline stroke
+0 setgray
+false true[1476 1402 1499 1402 ]arrowline stroke
+1499 1373 1558 1373 1558 1432 3 1499 1432 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1499 1373 1499 1432 1558 1432 1558 1373 4 1499 1373 path
+stroke
+1499 1373 rend
+1499 1373 rend
+6 array currentmatrix 16 17 1598 1402 translate scale circle setmatrix
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1598 1402 16 17 0 360 false ellpie gs stroke gr
+0 setgray
+1611 1390 1 1587 1414 path
+stroke
+0 setgray
+1611 1414 1 1588 1390 path
+stroke
+0 setgray
+false true[1558 1402 1582 1402 ]arrowline stroke
+0 setgray
+false true[1617 1402 1641 1402 ]arrowline stroke
+1641 1373 1700 1373 1700 1432 3 1641 1432 path
+gs 1 setgray
+gs eofill gr gr 0 setgray
+1641 1373 1641 1432 1700 1432 1700 1373 4 1641 1373 path
+stroke
+1641 1373 rend
+1641 1373 rend
+0 setgray
+1724 1402 1 1700 1402 path
+stroke
+0 setgray
+1723 1337 1 708 1337 path
+stroke
+0 setgray
+1724 1402 1 1724 1337 path
+stroke
+0 setgray
+708 1403 1 708 1338 path
+stroke
+0 setgray
+false true[747 1455 747 1420 ]arrowline stroke
+0 setgray
+false true[888 1455 888 1420 ]arrowline stroke
+0 setgray
+false true[1030 1455 1030 1420 ]arrowline stroke
+0 setgray
+false true[1172 1455 1172 1420 ]arrowline stroke
+0 setgray
+false true[1313 1455 1313 1420 ]arrowline stroke
+0 setgray
+false true[1455 1455 1455 1420 ]arrowline stroke
+0 setgray
+false true[1596 1455 1596 1420 ]arrowline stroke
+881 1888 904 1900 881 1912 3 881 1888 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+881 1888 904 1900 881 1912 3 881 1888 path
+stroke
+881 1829 904 1841 881 1853 3 881 1829 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+881 1829 904 1841 881 1853 3 881 1829 path
+stroke
+881 1770 904 1782 881 1793 3 881 1770 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+881 1770 904 1782 881 1793 3 881 1770 path
+stroke
+881 1711 904 1723 881 1734 3 881 1711 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+881 1711 904 1723 881 1734 3 881 1711 path
+stroke
+881 1652 904 1664 881 1675 3 881 1652 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+881 1652 904 1664 881 1675 3 881 1652 path
+stroke
+833 1510 845 1486 857 1510 3 833 1510 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+833 1510 845 1486 857 1510 3 833 1510 path
+stroke
+774 1510 786 1486 798 1510 3 774 1510 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+774 1510 786 1486 798 1510 3 774 1510 path
+stroke
+1648 1888 1672 1900 1648 1912 3 1648 1888 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1648 1888 1672 1900 1648 1912 3 1648 1888 path
+stroke
+1648 1829 1672 1841 1648 1853 3 1648 1829 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1648 1829 1672 1841 1648 1853 3 1648 1829 path
+stroke
+1648 1770 1672 1782 1648 1793 3 1648 1770 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1648 1770 1672 1782 1648 1793 3 1648 1770 path
+stroke
+1648 1711 1672 1723 1648 1734 3 1648 1711 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1648 1711 1672 1723 1648 1734 3 1648 1711 path
+stroke
+1648 1652 1672 1664 1648 1675 3 1648 1652 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1648 1652 1672 1664 1648 1675 3 1648 1652 path
+stroke
+1424 1510 1436 1486 1447 1510 3 1424 1510 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1424 1510 1436 1486 1447 1510 3 1424 1510 path
+stroke
+1365 1510 1377 1486 1388 1510 3 1365 1510 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1365 1510 1377 1486 1388 1510 3 1365 1510 path
+stroke
+1542 1510 1554 1486 1566 1510 3 1542 1510 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1542 1510 1554 1486 1566 1510 3 1542 1510 path
+stroke
+1483 1510 1495 1486 1506 1510 3 1483 1510 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1483 1510 1495 1486 1506 1510 3 1483 1510 path
+stroke
+1601 1510 1613 1486 1625 1510 3 1601 1510 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1601 1510 1613 1486 1625 1510 3 1601 1510 path
+stroke
+1896 1357 1920 1368 1896 1380 3 1896 1357 path
+gs 0 8 div setgray
+gs eofill gr gr 0 setgray
+1896 1357 1920 1368 1896 1380 3 1896 1357 path
+stroke
+%End page
+showpage cleartomark restore gr
+gs save mark
+%Begin page
+UserSoP
+cleartomark restore end
+%%Trailer
+%%Pages: 1 
+%%EOF
+restore wpdict begin _s 1650 1275 0 0 _cw _s grestore 1417 4567 _m
+(Both)_S 48 _t (of)_S 48 _t (the)_S 48 _t (previously)_S 48 _t (described)_S 48 _t (ESA)_S 49 _t (documents)_S 48 _t (are)_S 48 _t (freely)_S 48 _t (available)_S 48 _t (to)_S 48 _t (anybody)_S 49 _t (finding)_S 1417 4334 _m
+(them)_S 63 _t (useful,)_S 63 _t (not)_S 63 _t (only)_S 63 _t (to)_S 63 _t (companies)_S 63 _t (involved)_S 63 _t (in)_S 63 _t (space)_S 63 _t (activities.)_S 63 _t (Some)_S 62 _t (examples)_S 63 _t (where)_S 1417 4099 _m
+(the)_S 54 _t (ESA)_S 55 _t /Times-ItalicR 600 _ff
+(VHDL)_S 54 _t (Modelling)_S 55 _t (Guidelines)_S /Times-RomanR 600 _ff
+55 _t (have)_S 54 _t (been)_S 55 _t (used)_S 55 _t (outside)_S 55 _t (the)_S 54 _t (space)_S 55 _t (community)_S 55 _t (are:)_S 1417 3866 _m
+(\267)_S 1653 3866 _m
+(VHDL)_S 70 _t (teaching)_S 70 _t (at)_S 70 _t (the)_S 71 _t (Technical)_S 70 _t (University)_S 70 _t (of)_S 70 _t (Twente,)_S 70 _t (the)_S 71 _t (Netherlands,)_S 70 _t (and)_S 70 _t (at)_S 70 _t (the)_S 1653 3633 _m
+(Technical)_S 67 _t (University)_S 67 _t (of)_S 67 _t (Vienna,)_S 67 _t (Austria;)_S 1417 3398 _m
+(\267)_S 1653 3398 _m
+(Parts)_S 51 _t (have)_S 52 _t (been)_S 51 _t (incorporated)_S 52 _t (in)_S 51 _t (the)_S 52 _t (book)_S 52 _t /Times-ItalicR 600 _ff
+(VHDL)_S 51 _t (Coding)_S 52 _t (Styles)_S 52 _t (and)_S 51 _t (Methodologies)_S /Times-RomanR 600 _ff
+52 _t (by)_S 1653 3165 _m
+(Mr)_S 67 _t (B.)_S 67 _t (Cohen,)_S 67 _t (to)_S 67 _t (be)_S 67 _t (published)_S 67 _t (by)_S 67 _t (Kluwer)_S 67 _t (Academic)_S 67 _t (Publishers)_S 67 _t (in)_S 67 _t (1995;)_S 1417 2932 _m
+(\267)_S 1653 2932 _m
+(Applied)_S 65 _t (Micro)_S 64 _t (Circuits)_S 65 _t (Corporation)_S 65 _t (\(AMCC\),)_S 64 _t (a)_S 65 _t (manufacturer)_S 65 _t (of)_S 65 _t (ASICs)_S 64 _t (and)_S 65 _t (ASSPs)_S 1653 2699 _m
+(located)_S 67 _t (in)_S 67 _t (California,)_S 67 _t (are)_S 67 _t (basing)_S 67 _t (their)_S 67 _t (internal)_S 67 _t (VHDL)_S 67 _t (modelling)_S 67 _t (guidelines)_S 67 _t (on)_S 67 _t (it;)_S 1417 2464 _m
+(\267)_S 1653 2464 _m
+(There)_S 72 _t (are)_S 71 _t (plans)_S 72 _t (within)_S 71 _t (the)_S 71 _t /Times-ItalicR 600 _ff
+(European)_S 72 _t (CAD)_S 71 _t (Standardisation)_S 72 _t (Initiative)_S /Times-RomanR 600 _ff
+71 _t (\(ECSI\))_S 72 _t (to)_S 71 _t (use)_S 1653 2231 _m
+(it)_S 67 _t (as)_S 67 _t (a)_S 67 _t (starting)_S 67 _t (point)_S 67 _t (for)_S 67 _t (an)_S 67 _t (international)_S 67 _t (standard.)_S 1417 1763 _m
+(The)_S 76 _t (ESA)_S 76 _t (documents)_S 77 _t (are)_S 76 _t (available)_S 76 _t (on)_S 76 _t (the)_S 76 _t /Times-ItalicR 600 _ff
+(Internet)_S /Times-RomanR 600 _ff
+76 _t (in)_S 76 _t (PostScript)_S 76 _t (format)_S 76 _t (at)_S 76 _t (the)_S 76 _t (address)_S 1417 1528 _m
+(given)_S 67 _t (in)_S 67 _t (the)_S 67 _t /Times-ItalicR 600 _ff
+(References)_S /Times-RomanR 600 _ff
+67 _t (section)_S 67 _t (of)_S 67 _t (this)_S 67 _t (paper.)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s 100 _gs _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S 4905 12687 _m
+(8)_S 6348 12687 _m
+(european)_S 67 _t (space)_S 67 _t (agency)_S /Times-RomanR 600 _ff
+1417 11794 _m
+/Times-BoldR 600 _ff
+(4)_S 1889 11794 _m
+(D)_S /Times-BoldR 480 _ff
+(ISTRIBUTING)_S /Times-BoldR 600 _ff
+67 _t (VHDL)_S 67 _t (M)_S /Times-BoldR 480 _ff
+(ODELS)_S /Times-BoldR 600 _ff
+67 _t /Times-BoldR 480 _ff
+(FOR)_S /Times-BoldR 600 _ff
+67 _t (B)_S /Times-BoldR 480 _ff
+(OARD)_S /Times-BoldR 600 _ff
+(-)_S /Times-BoldR 480 _ff
+(LEVEL)_S /Times-BoldR 600 _ff
+67 _t (S)_S /Times-BoldR 480 _ff
+(IMULATION)_S /Times-RomanR 600 _ff
+1417 11328 _m
+(By)_S 103 _t (the)_S 104 _t (middle)_S 103 _t (of)_S 104 _t (1995)_S 103 _t (ESA)_S 103 _t (will)_S 104 _t (have)_S 103 _t (received)_S 104 _t (around)_S 103 _t (twenty)_S 104 _t (VHDL)_S 103 _t (models)_S 103 _t (of)_S 1417 11095 _m
+(complex)_S 69 _t (ICs)_S 68 _t (for)_S 69 _t (spacecraft)_S 69 _t (electronics.)_S 69 _t (The)_S 69 _t (next)_S 69 _t (step)_S 68 _t (will)_S 69 _t (be)_S 69 _t (to)_S 69 _t (actively)_S 69 _t (introduce)_S 69 _t (the)_S 1417 10862 _m
+(concept)_S 73 _t (of)_S 73 _t (board-level)_S 72 _t (simulation)_S 73 _t (to)_S 73 _t (the)_S 72 _t (companies)_S 73 _t (working)_S 73 _t (with)_S 72 _t (ESA.)_S 73 _t (Not)_S 72 _t (only)_S 73 _t (will)_S 1417 10629 _m
+(board-level)_S 42 _t (simulation)_S 42 _t (improve)_S 42 _t (the)_S 41 _t (design)_S 42 _t (quality)_S 42 _t (and)_S 41 _t (reduce)_S 42 _t (the)_S 42 _t (development)_S 41 _t (schedules,)_S 1417 10396 _m
+(it)_S 63 _t (also)_S 63 _t (will)_S 63 _t (give)_S 63 _t (new)_S 64 _t (companies)_S 63 _t (increased)_S 63 _t (possibilities)_S 63 _t (to)_S 64 _t (design)_S 63 _t (spacecraft)_S 63 _t (electronics,)_S 1417 10163 _m
+(thus)_S 115 _t (increasing)_S 115 _t (the)_S 115 _t (competition)_S 115 _t (as)_S 115 _t (well)_S 115 _t (as)_S 115 _t (the)_S 115 _t (competitiveness)_S 115 _t (of)_S 115 _t (the)_S 116 _t (equipment)_S 1417 9930 _m
+(suppliers.)_S 67 _t (The)_S 67 _t (major)_S 67 _t (task)_S 67 _t (will)_S 67 _t (be)_S 67 _t (to)_S 67 _t (ensure)_S 67 _t (the)_S 67 _t (availability)_S 67 _t (of)_S 67 _t (simulation)_S 67 _t (models.)_S 1417 9464 _m
+(Realising)_S 78 _t (that)_S 77 _t (the)_S 78 _t (market)_S 78 _t (for)_S 77 _t (simulation)_S 78 _t (models)_S 78 _t (for)_S 78 _t (space-specific)_S 77 _t (components)_S 78 _t (is)_S 78 _t (too)_S 1417 9229 _m
+(small)_S 59 _t (to)_S 60 _t (be)_S 60 _t (of)_S 59 _t (economic)_S 60 _t (interest)_S 59 _t (to)_S 60 _t (established)_S 59 _t (modelling)_S 60 _t (companies)_S 59 _t (as)_S 60 _t /Times-ItalicR 600 _ff
+(Synopsys/Logic)_S 1417 8994 _m
+(Modelling)_S 78 _t (Corporation)_S /Times-RomanR 600 _ff
+79 _t (\(LMC\),)_S 78 _t (the)_S 78 _t (strategy)_S 78 _t (is)_S 79 _t (to)_S 78 _t (reuse)_S 78 _t (the)_S 78 _t (VHDL)_S 79 _t (models)_S 78 _t (developed)_S 1417 8761 _m
+(when)_S 100 _t (the)_S 101 _t (components)_S 100 _t (are)_S 101 _t (designed.)_S 100 _t (By)_S 101 _t (using)_S 100 _t (VHDL)_S 101 _t (the)_S 100 _t (effort)_S 101 _t (to)_S 100 _t (support)_S 101 _t (several)_S 1417 8528 _m
+(platforms)_S 83 _t (and)_S 83 _t (simulators)_S 83 _t (is)_S 83 _t (greatly)_S 83 _t (reduced,)_S 83 _t (since)_S 83 _t (VHDL)_S 83 _t (models)_S 83 _t (require)_S 83 _t (no)_S 83 _t (or)_S 82 _t (only)_S 1417 8295 _m
+(minor)_S 53 _t (modifications)_S 52 _t (for)_S 53 _t (each)_S 53 _t (new)_S 52 _t (simulator.)_S 53 _t (This)_S 52 _t (trend)_S 53 _t (can)_S 53 _t (be)_S 52 _t (seen)_S 53 _t (also)_S 52 _t (for)_S 53 _t (commercial)_S 1417 8062 _m
+(models,)_S 46 _t (e.g.)_S 45 _t (LMC)_S 46 _t (offers)_S 45 _t (VHDL)_S 46 _t (models)_S 45 _t (of)_S 46 _t (lower)_S 45 _t (complexity)_S 46 _t (components.)_S 45 _t (Commercially)_S 1417 7829 _m
+(C)_S 70 _t (models)_S 70 _t (are)_S 70 _t (often)_S 70 _t (used)_S 70 _t (for)_S 70 _t (complex)_S 70 _t (components,)_S 69 _t (mainly)_S 70 _t (for)_S 70 _t (performance)_S 70 _t (reasons;)_S 70 _t (if)_S 1417 7596 _m
+(a)_S 68 _t (relatively)_S 69 _t (large)_S 68 _t (number)_S 68 _t (of)_S 68 _t (models)_S 69 _t (can)_S 68 _t (be)_S 68 _t (sold)_S 68 _t (it)_S 68 _t (is)_S 68 _t (economically)_S 69 _t (possible)_S 68 _t (to)_S 68 _t (support)_S 1417 7363 _m
+(the)_S 67 _t (additional)_S 67 _t (cost)_S 67 _t (associated)_S 67 _t (with)_S 67 _t (creating,)_S 67 _t (porting)_S 67 _t (and)_S 67 _t (maintaining)_S 67 _t (a)_S 67 _t (C)_S 67 _t (model.)_S 1417 6897 _m
+/Times-BoldR 600 _ff
+(4.1)_S 1889 6897 _m
+(Source)_S 67 _t (Code)_S 67 _t (Encryption)_S /Times-RomanR 600 _ff
+1417 6431 _m
+(While)_S 71 _t (distributing)_S 71 _t (VHDL)_S 71 _t (source)_S 72 _t (code)_S 71 _t (would)_S 72 _t (require)_S 71 _t (a)_S 71 _t (minimum)_S 72 _t (effort)_S 71 _t (since)_S 71 _t (the)_S 72 _t (user)_S 1417 6198 _m
+(can)_S 54 _t (be)_S 55 _t (made)_S 54 _t (responsible)_S 54 _t (for)_S 55 _t (the)_S 54 _t (adaptation)_S 54 _t (for)_S 54 _t (different)_S 55 _t (simulators)_S 54 _t (if)_S 54 _t (necessary,)_S 55 _t (such)_S 54 _t (an)_S 1417 5965 _m
+(approach)_S 67 _t (is)_S 67 _t (not)_S 67 _t (acceptable)_S 67 _t (for)_S 67 _t (reasons)_S 67 _t (of)_S 67 _t (protecting)_S 67 _t (the)_S 67 _t (design)_S 67 _t (information:)_S 1417 5732 _m
+(\267)_S 1653 5732 _m
+(The)_S 70 _t (company)_S 70 _t (that)_S 71 _t (designed)_S 70 _t (the)_S 71 _t (component)_S 70 _t (is)_S 71 _t (understandably)_S 70 _t (often)_S 71 _t (unwilling)_S 70 _t (to)_S 71 _t (let)_S 1653 5499 _m
+(the)_S 63 _t (information)_S 62 _t (become)_S 63 _t (available)_S 63 _t (to)_S 63 _t (its)_S 63 _t (competitors,)_S 63 _t (especially)_S 63 _t (in)_S 63 _t (those)_S 63 _t (cases)_S 63 _t (where)_S 1653 5266 _m
+(the)_S 67 _t (VHDL)_S 67 _t (code)_S 67 _t (is)_S 67 _t (synthesizable;)_S 1417 5033 _m
+(\267)_S 1653 5033 _m
+(The)_S 49 _t (availability)_S 50 _t (of)_S 49 _t (VHDL)_S 49 _t (source)_S 50 _t (code)_S 49 _t (would)_S 49 _t (encourage)_S 49 _t (the)_S 50 _t (redevelopment)_S 49 _t (of)_S 49 _t (similar)_S 1653 4800 _m
+(devices)_S 81 _t (leading)_S 80 _t (to)_S 80 _t (increased)_S 80 _t (costs)_S 81 _t (for)_S 80 _t (ESA)_S 80 _t (as)_S 81 _t (well)_S 80 _t (as)_S 81 _t (significantly)_S 80 _t (decreasing)_S 80 _t (the)_S 1653 4567 _m
+(interest)_S 67 _t (for)_S 67 _t (a)_S 67 _t (foundry)_S 67 _t (to)_S 67 _t (support)_S 67 _t (a)_S 67 _t (device)_S 67 _t (as)_S 67 _t (an)_S 67 _t (ASSP.)_S gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 222 _m
+_sp 1065 222 1065 224 177 224 3 _pl _f _s _s 100 _gs 1063 222 _m
+_sp 1065 222 1065 532 1063 532 3 _pl _f _s _s 100 _gs 177 530 _m
+_sp 1065 530 1065 532 177 532 3 _pl _f _s _s 100 _gs 177 222 _m
+_sp 179 222 179 532 177 532 3 _pl _f _s 283 861 190 235 _cw _s 1650 1275 0 0 _cw _s grestore 1418 1585 _m
+/Times-ItalicR 600 _ff
+(Encrypted)_S 67 _t (VHDL)_S 67 _t (source)_S 67 _t (code)_S /Times-RomanR 600 _ff
+1528 4033 _m
+/CourierR 450 _ff
+(prOceSS)_S 90 _t (BEgIN)_S 90 _t (waiT)_S 90 _t (ON)_S 90 _t (llllll1ll)_S 90 _t (;)_S 90 _t (If)_S 90 _t (llllll1ll)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (anD)_S 90 _t (llllll1ll'eVENt)_S 90 _t (AnD)_S 1528 3883 _m
+(llllll1ll'LaST_VAlue)_S 90 _t (=)_S 90 _t ('0')_S 90 _t (ThEN)_S 90 _t (iF)_S 90 _t (\()_S 90 _t (ll1l11lll)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (\))_S 90 _t (ThEN)_S 90 _t (lll11llll)_S 90 _t (<=)_S 1528 3733 _m
+(ll11l11l1)_S 90 _t (;)_S 90 _t (END)_S 90 _t (IF)_S 90 _t (;)_S 90 _t (lll11l1l1)_S 90 _t (<=)_S 90 _t (ll1ll1l11)_S 90 _t (;)_S 90 _t (ll1llllll)_S 90 _t (<=)_S 90 _t (l1ll1l1l1)_S 90 _t (;)_S 1528 3583 _m
+(ll1llll1l)_S 90 _t (<=)_S 90 _t (ll1ll11ll)_S 90 _t (;)_S 90 _t (if)_S 90 _t (ll111l1ll)_S 90 _t (=)_S 90 _t ('0')_S 90 _t (THEn)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (l11l111l11)_S 90 _t (;)_S 1528 3433 _m
+(ElSE)_S 90 _t (cAse)_S 90 _t (l11l11ll1)_S 90 _t (IS)_S 90 _t (whEn)_S 90 _t (l11111l1l1)_S 90 _t (=>)_S 90 _t (if)_S 90 _t (ll1l1lll1)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (oR)_S 90 _t (l1llll11l)_S 90 _t (=)_S 1528 3283 _m
+('1')_S 90 _t (oR)_S 90 _t (llll111ll)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (oR)_S 90 _t (l1111llll)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (oR)_S 90 _t (ll1lll111)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (then)_S 90 _t (IF)_S 1528 3133 _m
+(ll1ll1l11)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (tHEn)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (l11111ll11)_S 90 _t (;)_S 90 _t (eNd)_S 90 _t (iF)_S 90 _t (;)_S 90 _t (end)_S 90 _t (if)_S 90 _t (;)_S 90 _t (wHeN)_S 1528 2983 _m
+(l11111ll11)_S 90 _t (=>)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (l1l11l1l11)_S 90 _t (;)_S 90 _t (WhEn)_S 90 _t (l1l11l1l11)_S 90 _t (=>)_S 90 _t (If)_S 90 _t (ll1ll111)_S 90 _t (l)_S 90 _t (=)_S 1528 2833 _m
+('1')_S 90 _t (Then)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (lll1llll11)_S 90 _t (;)_S 90 _t (eLse)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (llll1l1ll1)_S 90 _t (;)_S 90 _t (enD)_S 90 _t (If)_S 90 _t (;)_S 1528 2683 _m
+(whEn)_S 90 _t (llll1l1ll1)_S 90 _t (=>)_S 90 _t (IF)_S 90 _t (ll1ll111l)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (Then)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (lll1llll11)_S 90 _t (;)_S 90 _t (eLsIF)_S 1528 2533 _m
+(l1l1l11ll)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (THEN)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (l11l111111)_S 90 _t (;)_S 90 _t (end)_S 90 _t (iF)_S 90 _t (;)_S 90 _t (whEN)_S 90 _t (l11l111111)_S 90 _t (=>)_S 1528 2383 _m
+(iF)_S 90 _t (ll1ll111l)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (OR)_S 90 _t (l1l1l11ll)_S 90 _t (=)_S 90 _t ('1')_S 90 _t (thEN)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (lll1llll11)_S 90 _t (;)_S 90 _t (eNd)_S 90 _t (iF)_S 1528 2233 _m
+(;)_S 90 _t (WHEN)_S 90 _t (lll1llll11)_S 90 _t (=>)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (l11111l1l1)_S 90 _t (;)_S 90 _t (whEN)_S 90 _t (l11l111l11)_S 90 _t (=>)_S 1528 2083 _m
+(l11l11ll1)_S 90 _t (<=)_S 90 _t (ll11l11ll1)_S 90 _t (;)_S 90 _t (WHEn)_S 90 _t (ll11l11ll1)_S 90 _t (=>)_S 90 _t (l11l11ll1)_S 90 _t (<=)_S 90 _t (l11111l1l1)_S 90 _t (;)_S 90 _t (wheN)_S 1528 1933 _m
+(oThERs)_S 86 _t (=>)_S 86 _t (l11l11ll1)_S 86 _t (<=)_S 86 _t (l11111l1l1)_S 86 _t (;)_S 86 _t (eNd)_S 86 _t (case)_S 86 _t (;)_S 86 _t (ENd)_S 86 _t (if)_S 87 _t (;)_S 86 _t (EnD)_S 86 _t (If)_S 86 _t (;)_S 86 _t (enD)_S 86 _t (PrOcESS;)_S /Times-RomanR 600 _ff
+_ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(european)_S 67 _t (space)_S 67 _t (agency)_S 4905 12687 _m
+(9)_S 5991 12687 _m
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S /Times-RomanR 600 _ff
+1417 11794 _m
+(A)_S 70 _t (first)_S 70 _t (level)_S 69 _t (of)_S 70 _t (protection)_S 70 _t (can)_S 69 _t (be)_S 70 _t (achieved)_S 70 _t (by)_S 70 _t /Times-BoldR 600 _ff
+(source)_S 69 _t (code)_S 70 _t (encryption)_S /Times-RomanR 600 _ff
+70 _t (or)_S 69 _t (scrambling.)_S 1417 11561 _m
+(With)_S 73 _t (this)_S 73 _t (technique)_S 72 _t (comments)_S 73 _t (are)_S 73 _t (removed,)_S 73 _t (identifiers)_S 73 _t (are)_S 73 _t (replaced)_S 72 _t (with)_S 73 _t (meaningless)_S 1417 11328 _m
+(names)_S 71 _t (and)_S 71 _t (code)_S 71 _t (structure)_S 71 _t (such)_S 71 _t (as)_S 71 _t (indentation)_S 71 _t (is)_S 70 _t (removed.)_S 71 _t (While)_S 71 _t (the)_S 71 _t (encrypted)_S 71 _t (source)_S 1417 11095 _m
+(code)_S 97 _t (is)_S 97 _t (difficult)_S 97 _t (to)_S 97 _t (read)_S 97 _t (directly,)_S 97 _t (it)_S 97 _t (can)_S 97 _t (be)_S 98 _t (automatically)_S 97 _t (processed)_S 97 _t (to)_S 97 _t (increase)_S 97 _t (the)_S 1417 10862 _m
+(readability.)_S 56 _t (Worse)_S 56 _t (is)_S 57 _t (that)_S 56 _t (the)_S 56 _t (model)_S 56 _t (is)_S 57 _t (still)_S 56 _t (identical,)_S 56 _t (i.e.)_S 57 _t (a)_S 56 _t (synthesizable)_S 56 _t (model)_S 56 _t (will)_S 57 _t (still)_S 1417 10629 _m
+(be)_S 67 _t (equally)_S 67 _t (synthesizable.)_S 1417 10163 _m
+(In)_S 84 _t (one)_S 83 _t (case)_S 84 _t (as)_S 83 _t (an)_S 83 _t (experiment,)_S 84 _t (encrypted)_S 83 _t (VHDL)_S 83 _t (source)_S 84 _t (code)_S 83 _t (has)_S 84 _t (been)_S 83 _t (distributed)_S 83 _t (in)_S 1417 9928 _m
+(combination)_S 58 _t (with)_S 58 _t (a)_S 58 _t (non-disclosure)_S 58 _t (agreement.)_S 58 _t (While)_S 58 _t (the)_S 58 _t (tool)_S 59 _t /Times-ItalicR 600 _ff
+(Krypton)_S /Times-RomanR 600 _ff
+58 _t (is)_S 58 _t (available)_S 58 _t (from)_S 1417 9693 _m
+(the)_S 56 _t (French)_S 56 _t (company)_S 56 _t /Times-ItalicR 600 _ff
+(LEDA)_S /Times-RomanR 600 _ff
+56 _t ([Krypton],)_S 56 _t (for)_S 56 _t (this)_S 56 _t (first)_S 56 _t (experiment)_S 56 _t (a)_S 56 _t (simple)_S 56 _t (encryption)_S 56 _t (tool)_S 1417 9458 _m
+(was)_S 67 _t (developed)_S 67 _t (in-house)_S 67 _t (using)_S 67 _t /Times-ItalicR 600 _ff
+(TurboPascal)_S /Times-RomanR 600 _ff
+67 _t (on)_S 67 _t (an)_S 67 _t (IBM)_S 67 _t (PC.)_S 1417 8992 _m
+/Times-BoldR 600 _ff
+(4.2)_S 1889 8992 _m
+(Compiled)_S 67 _t (VHDL)_S 67 _t (models)_S /Times-RomanR 600 _ff
+1417 8526 _m
+(The)_S 53 _t (solution)_S 53 _t (envisaged)_S 53 _t (for)_S 53 _t (future)_S 53 _t (larger)_S 53 _t (scale)_S 53 _t (model)_S 53 _t (distribution)_S 53 _t (is)_S 53 _t (to)_S 53 _t (supply)_S 53 _t (the)_S 53 _t (models)_S 1417 8293 _m
+(in)_S 66 _t (a)_S 66 _t (compiled)_S 66 _t (format,)_S 66 _t (supporting)_S 66 _t (those)_S 66 _t (simulators)_S 66 _t (allowing)_S 66 _t (sufficient)_S 66 _t (protection)_S 66 _t (of)_S 67 _t (the)_S 1417 8060 _m
+(VHDL)_S 75 _t (code.)_S 74 _t (A)_S 75 _t (further)_S 74 _t (requirement)_S 75 _t (is)_S 74 _t (that)_S 75 _t (it)_S 74 _t (must)_S 75 _t (be)_S 74 _t (possible)_S 74 _t (to)_S 75 _t (remove)_S 74 _t (most)_S 75 _t (of)_S 74 _t (the)_S 1417 7827 _m
+(remaining)_S 67 _t (source)_S 67 _t (code)_S 67 _t (information.)_S 1417 7361 _m
+(To)_S 56 _t (increase)_S 55 _t (the)_S 55 _t (level)_S 55 _t (of)_S 55 _t (protection,)_S 55 _t (in)_S gsave 0 0 translate 8 8 scale _s _s 100 _gs 578 624 _m
+_sp 1065 624 1065 626 578 626 3 _pl _f _s _s 100 _gs 1063 624 _m
+_sp 1065 624 1065 940 1063 940 3 _pl _f _s _s 100 _gs 578 938 _m
+_sp 1065 938 1065 940 578 940 3 _pl _f _s _s 100 _gs 578 624 _m
+_sp 580 624 580 940 578 940 3 _pl _f _s 265 448 603 649 _cw _s 1650 1275 0 0 _cw _s grestore 4631 4805 _m
+/Times-ItalicR 600 _ff
+(Simulation)_S 56 _t (of)_S 57 _t (an)_S 57 _t (encrypted)_S 57 _t (and)_S 57 _t (compiled)_S 57 _t (model)_S /Times-RomanR 600 _ff
+4836 7198 _m
+/CourierR 450 _ff
+(#)_S 90 _t (Loading)_S 90 _t (std.standard)_S 4836 7048 _m
+(#)_S 90 _t (Loading)_S 90 _t (std.textio\(body\))_S 4836 6898 _m
+(#)_S 90 _t (Loading)_S 90 _t (ieee.std_logic_1164\(body\))_S 4836 6748 _m
+(#)_S 90 _t (Loading)_S 90 _t (WORK.tctestdef\(body\))_S 4836 6598 _m
+(#)_S 90 _t (Loading)_S 90 _t (WORK.ptdtestbench\(functional\))_S 4836 6448 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.l1l1lll11)_S 4836 6298 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.ll111ll1l\(body\))_S 4836 6148 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.ptd\(boardlevel\))_S 4836 5998 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.lllllll1l\(body\))_S 4836 5848 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.l1l1ll1ll\(lllllllll\))_S 4836 5698 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.l11ll1l11\(lllllllll\))_S 4836 5548 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.ll1l1llll\(lllllllll\))_S 4836 5398 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.lll111l1l\(lllllllll\))_S 4836 5248 _m
+(#)_S 90 _t (Loading)_S 90 _t (PTD_LIB.llll111l1\(lllllllll\))_S /Times-RomanR 600 _ff
+1417 7128 _m
+(some)_S 96 _t (cases)_S 97 _t (the)_S 96 _t (compilation)_S 96 _t (will)_S 96 _t (be)_S 1417 6895 _m
+(c)_S 10 _t (o)_S 10 _t (m)_S 10 _t (b)_S 10 _t (i)_S 10 _t (n)_S 10 _t (e)_S 10 _t (d)_S 267 _t (w)_S 10 _t (i)_S 10 _t (t)_S 10 _t (h)_S 267 _t (s)_S 10 _t (o)_S 10 _t (u)_S 10 _t (r)_S 10 _t (c)_S 10 _t (e)_S 267 _t (c)_S 10 _t (o)_S 10 _t (d)_S 10 _t (e)_S 1417 6662 _m
+(encryption,)_S 175 _t (to)_S 174 _t (rename)_S 175 _t (units)_S 174 _t (and)_S 1417 6429 _m
+(signals)_S 148 _t (internal)_S 149 _t (to)_S 148 _t (the)_S 149 _t (model.)_S 148 _t (In)_S 1417 6196 _m
+(specific)_S 65 _t (cases)_S 65 _t (the)_S 65 _t (VHDL)_S 66 _t (models)_S 65 _t (can)_S 1417 5963 _m
+(first)_S 65 _t (be)_S 65 _t (modified)_S 66 _t (to)_S 65 _t (be)_S 65 _t (more)_S 66 _t (difficult)_S 1417 5730 _m
+(to)_S 218 _t (synthesize,)_S 219 _t (for)_S 219 _t (example)_S 219 _t (by)_S 1417 5497 _m
+(eliminating)_S 50 _t (hierarchy)_S 51 _t (and)_S 51 _t (by)_S 51 _t (merging)_S 1417 5264 _m
+(processes.)_S 203 _t (An)_S 203 _t (additional)_S 203 _t (benefit)_S 1417 5031 _m
+(would)_S 98 _t (then)_S 98 _t (be)_S 98 _t (increased)_S 98 _t (simulation)_S 1417 4798 _m
+(performance.)_S 1417 4330 _m
+(The)_S 42 _t /Times-ItalicR 600 _ff
+(Model)_S 42 _t (Technology)_S 42 _t (V-System)_S /Times-RomanR 600 _ff
+43 _t (simulator)_S 42 _t (compiles)_S 42 _t (to)_S 42 _t (an)_S 43 _t (intermediate)_S 42 _t (format)_S 42 _t (consisting)_S 1417 4097 _m
+(of)_S 108 _t (low-level)_S 107 _t (RISC-like)_S 108 _t (instructions.)_S 108 _t (The)_S 108 _t (format)_S 108 _t (is)_S 108 _t (claimed)_S 108 _t (to)_S 107 _t (be)_S 108 _t (identical)_S 108 _t (for)_S 108 _t (all)_S 1417 3864 _m
+(supported)_S 72 _t (workstations)_S 71 _t (and)_S 72 _t (operating)_S 71 _t (systems,)_S 72 _t (including)_S 72 _t (the)_S 71 _t (Windows)_S 72 _t (version)_S 71 _t (for)_S 72 _t (the)_S 1417 3631 _m
+(IBM)_S 75 _t (PC.)_S 75 _t (The)_S 74 _t (format)_S 75 _t (seems)_S 74 _t (to)_S 75 _t (be)_S 75 _t (stable)_S 74 _t (between)_S 75 _t (minor)_S 75 _t (releases,)_S 74 _t (but)_S 75 _t (may)_S 75 _t (change)_S 74 _t (for)_S 1417 3398 _m
+(major)_S 71 _t (releases.)_S 70 _t (When)_S 71 _t (supporting)_S 70 _t (the)_S 71 _t (IBM)_S 70 _t (PC)_S 71 _t (the)_S 70 _t (file)_S 71 _t (names)_S 70 _t (for)_S 71 _t (the)_S 70 _t (compiled)_S 71 _t (models)_S 1417 3163 _m
+(and)_S 67 _t (any)_S 67 _t (files)_S 67 _t (used)_S 67 _t (by)_S 67 _t (the)_S 67 _t (models)_S 67 _t (have)_S 67 _t (to)_S 67 _t (respect)_S 67 _t (the)_S 67 _t (IBM)_S 67 _t (PC)_S 67 _t (DOS)_S 67 _t /Times-ItalicR 600 _ff
+(8+3)_S /Times-RomanR 600 _ff
+67 _t (format.)_S 1417 2695 _m
+/Times-ItalicR 600 _ff
+(Synopsys)_S 65 _t (VSS)_S /Times-RomanR 600 _ff
+65 _t (has)_S 65 _t (two)_S 65 _t (intermediate)_S 65 _t (formats;)_S 65 _t (one)_S 64 _t (interpreted)_S 65 _t (\(must)_S 65 _t (be)_S 65 _t (present\))_S 65 _t (and)_S 64 _t (one)_S 1417 2462 _m
+(where)_S 83 _t (the)_S 83 _t (VHDL)_S 83 _t (code)_S 83 _t (is)_S 83 _t (translated)_S 82 _t (to)_S 83 _t (C)_S 83 _t (and)_S 83 _t (subsequently)_S 83 _t (compiled)_S 83 _t (\(optional\).)_S 83 _t (The)_S 1417 2229 _m
+(interpreted)_S 68 _t (format)_S 68 _t (is)_S 69 _t (relatively)_S 68 _t (simple)_S 68 _t (to)_S 68 _t (decode,)_S 69 _t (but)_S 68 _t (from)_S 68 _t (version)_S 68 _t (3.1)_S 69 _t (it)_S 68 _t (is)_S 68 _t (possible)_S 68 _t (to)_S 1417 1996 _m
+(encrypt)_S 67 _t (it,)_S 67 _t (which)_S 66 _t (should)_S 67 _t (make)_S 67 _t (reverse-engineering)_S 67 _t (more)_S 66 _t (difficult.)_S 67 _t (The)_S 67 _t (format)_S 67 _t (for)_S 66 _t (each)_S 1417 1763 _m
+(minor)_S 74 _t (release,)_S 75 _t (platform)_S 74 _t (and)_S 75 _t (operating)_S 74 _t (system)_S 75 _t (seems)_S 74 _t (to)_S 74 _t (be)_S 74 _t (incompatible,)_S 75 _t (complicating)_S 1417 1530 _m
+(the)_S 67 _t (task)_S 67 _t (of)_S 67 _t (distributing)_S 67 _t (compiled)_S 67 _t (models.)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S 4850 12687 _m
+(10)_S 6348 12687 _m
+(european)_S 67 _t (space)_S 67 _t (agency)_S /Times-RomanR 600 _ff
+1417 11792 _m
+(The)_S 134 _t /Times-ItalicR 600 _ff
+(Mentor)_S 134 _t (QuickVHDL)_S /Times-RomanR 600 _ff
+135 _t (simulator)_S 134 _t (core)_S 134 _t (is)_S 135 _t (identical)_S 134 _t (with)_S 135 _t (the)_S 134 _t (one)_S 134 _t (from)_S 135 _t /Times-ItalicR 600 _ff
+(Model)_S 1417 11557 _m
+(Technology)_S /Times-RomanR 600 _ff
+(,)_S 70 _t (though)_S 69 _t (it)_S 69 _t (can)_S 70 _t (be)_S 69 _t (a)_S 70 _t (problem)_S 69 _t (to)_S 70 _t (identify)_S 69 _t (what)_S 70 _t (version)_S 69 _t (numbers)_S 69 _t (correspond.)_S 1417 11324 _m
+(In)_S 66 _t (principle)_S 65 _t (it)_S 66 _t (should)_S 65 _t (therefore)_S 66 _t (be)_S 65 _t (possible)_S 66 _t (to)_S 65 _t (use)_S 66 _t (the)_S 65 _t (same)_S 66 _t (format)_S 65 _t (for)_S 66 _t (both)_S 65 _t (simulators.)_S 1417 10856 _m
+/Times-ItalicR 600 _ff
+(Cadence)_S 84 _t (Leapfrog)_S /Times-RomanR 600 _ff
+84 _t (is)_S 84 _t (a)_S 83 _t (candidate)_S 84 _t (for)_S 84 _t (future)_S 84 _t (evaluation,)_S 84 _t (since)_S 84 _t (most)_S 83 _t (of)_S 84 _t (the)_S 84 _t (companies)_S 1417 10623 _m
+(currently)_S 49 _t (working)_S 48 _t (with)_S 49 _t (ESA)_S 48 _t (would)_S 49 _t (then)_S 48 _t (be)_S 49 _t (supported.)_S 49 _t (This)_S 48 _t (simulator)_S 49 _t (compiles)_S 48 _t (into)_S 49 _t (low-)_S 1417 10388 _m
+(level)_S 67 _t (instructions)_S 67 _t (in)_S 67 _t (the)_S 67 _t (same)_S 67 _t (way)_S 67 _t (as)_S 67 _t (the)_S 67 _t (one)_S 67 _t (from)_S 67 _t /Times-ItalicR 600 _ff
+(Model)_S 67 _t (Technology)_S /Times-RomanR 600 _ff
+(.)_S 1417 9922 _m
+/Times-BoldR 600 _ff
+(4.3)_S 1889 9922 _m
+(Experiences)_S /Times-RomanR 600 _ff
+1417 9456 _m
+(Work)_S 50 _t (is)_S 51 _t (currently)_S 50 _t (ongoing)_S 51 _t (to)_S 50 _t (demonstrate)_S 51 _t (the)_S 50 _t (feasibility)_S 51 _t (of)_S 50 _t (distributing)_S 51 _t (compiled)_S 50 _t (VHDL)_S 1417 9223 _m
+(models.)_S 101 _t (We)_S 100 _t (have)_S 101 _t (created)_S 100 _t (scripts)_S 101 _t (that)_S 100 _t (automatically)_S 101 _t (compile)_S 100 _t (a)_S 101 _t (VHDL)_S 100 _t (model)_S 101 _t (for)_S 100 _t (a)_S 1417 8990 _m
+(specific)_S 47 _t (simulator)_S 46 _t (version)_S 46 _t (and)_S 46 _t (purge)_S 47 _t (all)_S 46 _t (unnecessary)_S 46 _t (source)_S 46 _t (code)_S 46 _t (information.)_S 46 _t (Automatic)_S 1417 8757 _m
+(testbenches)_S 52 _t (are)_S 52 _t (then)_S 52 _t (used)_S 52 _t (to)_S 51 _t (verify)_S 52 _t (the)_S 52 _t (compiled)_S 52 _t (model)_S 52 _t (without)_S 51 _t (manual)_S 52 _t (inspection)_S 52 _t (being)_S 1417 8524 _m
+(necessary.)_S 86 _t (When)_S 87 _t (the)_S 87 _t (approach)_S 87 _t (has)_S 87 _t (been)_S 87 _t (proven)_S 87 _t (it)_S 87 _t (is)_S 87 _t (the)_S 87 _t (intention)_S 87 _t (to)_S 87 _t (let)_S 87 _t (an)_S 87 _t (external)_S 1417 8291 _m
+(company)_S 54 _t (take)_S 54 _t (over)_S 54 _t (the)_S 55 _t (distribution)_S 54 _t (on)_S 54 _t (a)_S 54 _t (commercial)_S 54 _t (basis.)_S 55 _t (The)_S 54 _t (first)_S 54 _t (models)_S 54 _t (in)_S 55 _t (compiled)_S 1417 8058 _m
+(format)_S 67 _t (have)_S 67 _t (already)_S 67 _t (been)_S 67 _t (delivered)_S 67 _t (and)_S 67 _t (successfully)_S 67 _t (used)_S 67 _t (by)_S 67 _t (one)_S 67 _t (company.)_S 1417 7592 _m
+(An)_S 72 _t (activity)_S 72 _t (demonstrating)_S 72 _t (board-level)_S 72 _t (simulation)_S 72 _t (was)_S 72 _t (started)_S 73 _t (in)_S 72 _t (1994,)_S 72 _t (and)_S 72 _t (is)_S 73 _t (foreseen)_S 1417 7359 _m
+(to)_S 80 _t (be)_S 80 _t (completed)_S 79 _t (in)_S 80 _t (1995.)_S 80 _t (We)_S 80 _t (are)_S 80 _t (also)_S 79 _t (investigating)_S 80 _t (the)_S 80 _t (possibilities)_S 80 _t (to)_S 80 _t (introduce)_S 80 _t (full)_S 1417 7126 _m
+(board-level)_S 67 _t (simulation)_S 67 _t (for)_S 67 _t (one)_S 67 _t (of)_S 67 _t (the)_S 67 _t (spacecraft)_S 67 _t (currently)_S 67 _t (being)_S 67 _t (designed.)_S 1417 6660 _m
+/Times-BoldR 600 _ff
+(5)_S 1889 6660 _m
+(S)_S /Times-BoldR 480 _ff
+(UMMARY)_S /Times-RomanR 600 _ff
+1417 6194 _m
+(VHDL)_S 72 _t (is)_S 72 _t (an)_S 72 _t (ideal)_S 73 _t (language)_S 72 _t (for)_S 72 _t (hardware)_S 73 _t (modelling)_S 72 _t (when)_S 72 _t (interoperability)_S 72 _t (is)_S 73 _t (required.)_S 1417 5961 _m
+(In)_S 65 _t (this)_S 66 _t (paper)_S 65 _t (several)_S 66 _t (aspects)_S 65 _t (of)_S 65 _t (interoperability)_S 65 _t (have)_S 66 _t (been)_S 65 _t (discussed,)_S 65 _t (as)_S 66 _t (experienced)_S 65 _t (in)_S 1417 5726 _m
+(the)_S 74 _t (activities)_S 74 _t (of)_S 74 _t (the)_S 74 _t /Times-ItalicR 600 _ff
+(European)_S 74 _t (Space)_S 75 _t (Agency)_S /Times-RomanR 600 _ff
+(.)_S 74 _t (However,)_S 74 _t (VHDL)_S 74 _t (alone)_S 74 _t (is)_S 74 _t (not)_S 74 _t (sufficient)_S 1417 5493 _m
+(and)_S 50 _t (the)_S 51 _t (need)_S 51 _t (for)_S 51 _t (modelling)_S 51 _t (guidelines)_S 51 _t (has)_S 51 _t (been)_S 50 _t (described.)_S 51 _t (It)_S 51 _t (is)_S 51 _t (believed)_S 51 _t (that)_S 51 _t (establishing)_S 1417 5260 _m
+(guidelines)_S 48 _t (accepted)_S 48 _t (internationally)_S 48 _t (will)_S 47 _t (be)_S 48 _t (useful)_S 48 _t (due)_S 48 _t (to)_S 48 _t (the)_S 48 _t (ever-increasing)_S 47 _t (international)_S 1417 5025 _m
+(cooperation)_S 95 _t (between)_S 95 _t (companies.)_S 95 _t (The)_S 95 _t (ESA)_S 95 _t /Times-ItalicR 600 _ff
+(VHDL)_S 95 _t (Modelling)_S 95 _t (Guidelines)_S /Times-RomanR 600 _ff
+95 _t (could)_S 95 _t (be)_S 95 _t (a)_S 1417 4792 _m
+(possible)_S 67 _t (starting)_S 67 _t (point)_S 67 _t (for)_S 67 _t (such)_S 67 _t (modelling)_S 67 _t (guidelines.)_S 1417 4326 _m
+(Thereafter)_S 50 _t (several)_S 51 _t (modelling)_S 50 _t (aspects)_S 50 _t (when)_S 50 _t (using)_S 50 _t (VHDL)_S 50 _t (for)_S 50 _t (board-level)_S 50 _t (simulation)_S 50 _t (were)_S 1417 4093 _m
+(discussed.)_S 81 _t (As)_S 81 _t (one)_S 82 _t (example)_S 81 _t (a)_S 81 _t (verification)_S 81 _t (technique)_S 82 _t (based)_S 81 _t (on)_S 81 _t (MISRs)_S 82 _t (\(Multiple)_S 81 _t (Input)_S 1417 3860 _m
+(Shift)_S 67 _t (Registers\))_S 67 _t (was)_S 67 _t (described)_S 67 _t (in)_S 67 _t (detail.)_S 1417 3394 _m
+(Finally,)_S 59 _t (the)_S 59 _t (issue)_S 59 _t (of)_S 59 _t (protecting)_S 59 _t (the)_S 59 _t (design)_S 59 _t (information)_S 59 _t (when)_S 59 _t (distributing)_S 59 _t (VHDL)_S 59 _t (models)_S 1417 3161 _m
+(was)_S 127 _t (presented.)_S 127 _t (Two)_S 127 _t (possible)_S 127 _t (methods)_S 126 _t (to)_S 127 _t (protect)_S 127 _t (the)_S 127 _t (information)_S 126 _t (-)_S 127 _t (source)_S 127 _t (code)_S 1417 2928 _m
+(encryption)_S 101 _t (and)_S 101 _t (compiling)_S 101 _t (models)_S 101 _t (-)_S 101 _t (have)_S 101 _t (been)_S 101 _t (described)_S 101 _t (and)_S 101 _t (some)_S 101 _t (limitations)_S 101 _t (and)_S 1417 2695 _m
+(practical)_S 67 _t (problems)_S 67 _t (highlighted.)_S 1417 2229 _m
+(Rather)_S 105 _t (than)_S 105 _t (here)_S 105 _t (presenting)_S 105 _t (detailed)_S 105 _t (information)_S 105 _t (from)_S 105 _t (the)_S 105 _t (ESA)_S 106 _t (documents)_S 105 _t (out)_S 105 _t (of)_S 1417 1996 _m
+(context,)_S 65 _t (mainly)_S 65 _t (the)_S 65 _t (concepts)_S 65 _t (have)_S 64 _t (been)_S 65 _t (outlined.)_S 65 _t (The)_S 65 _t (reader)_S 65 _t (is)_S 65 _t (however)_S 65 _t (encouraged)_S 65 _t (to)_S 1417 1761 _m
+(retrieve)_S 67 _t (the)_S 67 _t (complete)_S 67 _t (information,)_S 67 _t (which)_S 67 _t (is)_S 67 _t (freely)_S 67 _t (available)_S 67 _t (on)_S 67 _t (the)_S 67 _t /Times-ItalicR 600 _ff
+(Internet)_S /Times-RomanR 600 _ff
+(.)_S _ep
+_bp /Times-RomanR 600 _ff
+0 14032 9922 _ornt gsave 0 0 translate 8 8 scale _s _s 100 _gs 177 1574 _m
+_sp 1063 1574 1063 1576 177 1576 3 _pl _f _s grestore 1417 12687 _m
+/HelveticaR 600 _ff
+(european)_S 67 _t (space)_S 67 _t (agency)_S 4850 12687 _m
+(11)_S 5991 12687 _m
+(The)_S 67 _t (Usage)_S 67 _t (of)_S 67 _t (VHDL)_S 67 _t (in)_S 67 _t (ESA)_S /Times-RomanR 600 _ff
+1417 11794 _m
+/Times-BoldR 600 _ff
+(R)_S /Times-BoldR 480 _ff
+(EFERENCES)_S /Times-RomanR 600 _ff
+1417 11326 _m
+([VHDL93])_S 2598 11326 _m
+/Times-ItalicR 600 _ff
+(IEEE)_S 66 _t (Standard)_S 66 _t (VHDL)_S 66 _t (Language)_S 67 _t (Reference)_S 66 _t (Manual)_S /Times-RomanR 600 _ff
+(,)_S 66 _t (IEEE)_S 66 _t (Std)_S 67 _t (1076-93,)_S 2598 11093 _m
+(IEEE,)_S 67 _t (New)_S 67 _t (York,)_S 67 _t (USA,)_S 67 _t (1994)_S 1417 10625 _m
+([Interpret])_S 2598 10625 _m
+/Times-ItalicR 600 _ff
+(IEEE)_S 118 _t (Standards)_S 118 _t (Interpretations:)_S 117 _t (IEEE)_S 118 _t (Std)_S 118 _t (1076-87,)_S 117 _t (IEEE)_S 118 _t (Standard)_S 2598 10392 _m
+(VHDL)_S 89 _t (Language)_S 89 _t (Reference)_S 90 _t (Manual)_S /Times-RomanR 600 _ff
+(,)_S 89 _t (IEEE)_S 89 _t (Std)_S 89 _t (1076/INT-1991,)_S 89 _t (IEEE,)_S 2598 10159 _m
+(New)_S 67 _t (York,)_S 67 _t (USA,)_S 67 _t (1992)_S 1417 9691 _m
+([VHDL-A])_S 2598 9691 _m
+/Times-ItalicR 600 _ff
+(VHDL-A)_S 85 _t (Design)_S 85 _t (Objective)_S 85 _t (Document)_S /Times-RomanR 600 _ff
+(,)_S 85 _t (version)_S 85 _t (2.1,)_S 85 _t (IEEE)_S 85 _t (PAR)_S 85 _t (1076.1,)_S 2598 9458 _m
+(1)_S 7 _t (9)_S 7 _t (9)_S 7 _t (4)_S 7 _t (.)_S 282 _t (U)_S 7 _t (R)_S 7 _t (L)_S 282 _t (f)_S 7 _t (t)_S 7 _t (p)_S 7 _t (:)_S 7 _t (/)_S 7 _t (/)_S 7 _t (n)_S 7 _t (e)_S 7 _t (s)_S 7 _t (t)_S 7 _t (o)_S 7 _t (r)_S 7 _t (.)_S 7 _t (e)_S 7 _t (p)_S 7 _t (f)_S 7 _t (l)_S 7 _t (.)_S 7 _t (c)_S 7 _t (h)_S 7 _t (/)_S 7 _t (p)_S 7 _t (u)_S 7 _t (b)_S 7 _t (/)_S 7 _t (v)_S 7 _t (h)_S 7 _t (d)_S 7 _t (l)_S 7 _t (/)_S 7 _t (s)_S 7 _t (t)_S 7 _t (a)_S 7 _t (n)_S 7 _t (d)_S 7 _t (a)_S 7 _t (r)_S 7 _t (d)_S 7 _t (s)_S 7 _t (/)_S 7 _t (i)_S 7 _t (e)_S 7 _t (e)_S 7 _t (e)_S 7 _t (/)_S 7 _t (1)_S 7 _t (0)_S 7 _t (7)_S 7 _t (6)_S 7 _t (.)_S 7 _t (1)_S 7 _t (/)_S 2598 9225 _m
+(requirements/DOD_v2.1_draft.txt)_S 1417 8757 _m
+([EIA567])_S 2598 8757 _m
+/Times-ItalicR 600 _ff
+(VHDL)_S 61 _t (Hardware)_S 61 _t (Component)_S 62 _t (Model)_S 61 _t (Specification)_S /Times-RomanR 600 _ff
+(,)_S 62 _t (EIA)_S 61 _t (Standard)_S 62 _t (567-A,)_S 2598 8524 _m
+(EIA,)_S 67 _t (Washington)_S 67 _t (DC,)_S 67 _t (USA,)_S 67 _t (1994)_S 1417 8056 _m
+([StdDevKit])_S 2598 8056 _m
+/Times-ItalicR 600 _ff
+(Std_DevelopersKit)_S 158 _t (v2.0)_S 158 _t (manuals)_S /Times-RomanR 600 _ff
+(,)_S 157 _t (The)_S 158 _t (VHDL)_S 158 _t (Technology)_S 158 _t (Group,)_S 2598 7823 _m
+(Pennsylvania,)_S 184 _t (USA,)_S 183 _t (1995.)_S 184 _t (URL)_S 184 _t (ftp://supportnet.mentorg.com/pub/)_S 2598 7590 _m
+(mentortech/tdd/manuals/std_developerskit.ps.tar.Z)_S 1417 7122 _m
+([ModGuide])_S 2598 7122 _m
+/Times-ItalicR 600 _ff
+(VHDL)_S 80 _t (Modelling)_S 79 _t (Guidelines)_S /Times-RomanR 600 _ff
+(,)_S 80 _t (ASIC/001,)_S 80 _t (European)_S 79 _t (Space)_S 80 _t (Agency,)_S 80 _t (The)_S 2598 6889 _m
+(N)_S -1 _t (e)_S -1 _t (t)_S -1 _t (h)_S -1 _t (e)_S -1 _t (r)_S -1 _t (l)_S -1 _t (a)_S -1 _t (n)_S -1 _t (d)_S -1 _t (s)_S -1 _t (,)_S 43 _t (1)_S -1 _t (9)_S -1 _t (9)_S -1 _t (4)_S -1 _t (.)_S 42 _t (U)_S -1 _t (R)_S -1 _t (L)_S 43 _t (f)_S -1 _t (t)_S -1 _t (p)_S -1 _t (:)_S -1 _t (/)_S -1 _t (/)_S -1 _t (f)_S -1 _t (t)_S -1 _t (p)_S -1 _t (.)_S -1 _t (e)_S -1 _t (s)_S -1 _t (t)_S -1 _t (e)_S -1 _t (c)_S -1 _t (.)_S -1 _t (e)_S -1 _t (s)_S -1 _t (a)_S -1 _t (.)_S -1 _t (n)_S -1 _t (l)_S -1 _t (/)_S -1 _t (p)_S -1 _t (u)_S -1 _t (b)_S -1 _t (/)_S -1 _t (v)_S -1 _t (h)_S -1 _t (d)_S -1 _t (l)_S -1 _t (/)_S -1 _t (d)_S -1 _t (o)_S -1 _t (c)_S -1 _t (/)_S -1 _t (M)_S -1 _t (o)_S -1 _t (d)_S -1 _t (e)_S -1 _t (l)_S -1 _t (G)_S -1 _t (u)_S -1 _t (i)_S -1 _t (d)_S -1 _t (e)_S -1 _t (.)_S -1 _t (p)_S -1 _t (s)_S 1417 6421 _m
+([StdLogic])_S 2598 6421 _m
+/Times-ItalicR 600 _ff
+(IEEE)_S 41 _t (Standard)_S 42 _t (Multivalue)_S 41 _t (Logic)_S 41 _t (System)_S 42 _t (for)_S 41 _t (VHDL)_S 41 _t (Model)_S 41 _t (Interoperability)_S 2598 6188 _m
+(\(Std_logic_1164\))_S /Times-RomanR 600 _ff
+(,)_S 67 _t (IEEE)_S 67 _t (Std)_S 67 _t (1164-93,)_S 67 _t (IEEE,)_S 67 _t (New)_S 67 _t (York,)_S 67 _t (USA,)_S 67 _t (1993)_S 1417 5720 _m
+([Vital])_S 2598 5720 _m
+/Times-ItalicR 600 _ff
+(VITAL)_S 114 _t (Model)_S 115 _t (Development)_S 115 _t (Specification)_S /Times-RomanR 600 _ff
+(,)_S 114 _t (version)_S 115 _t (v2.2b,)_S 114 _t (IEEE)_S 115 _t (PAR)_S 2598 5487 _m
+(1076.4,)_S 67 _t (1994.)_S 67 _t (URL)_S 67 _t (ftp://vhdl.org/vi/vital/Spec/v2.2b/vital22b.ps)_S 1417 5019 _m
+([BoardLevel])_S 2598 5019 _m
+/Times-ItalicR 600 _ff
+(VHDL)_S 38 _t (Models)_S 37 _t (for)_S 38 _t (Board-level)_S 38 _t (Simulation)_S /Times-RomanR 600 _ff
+(,)_S 37 _t (WSM/SH/010,)_S 38 _t (European)_S 37 _t (Space)_S 2598 4786 _m
+(Agency,)_S 133 _t (The)_S 132 _t (Netherlands,)_S 133 _t (1995.)_S 133 _t (URL)_S 132 _t (ftp://ftp.estec.esa.nl/pub/vhdl/)_S 2598 4553 _m
+(doc/BoardLevel.ps)_S 1417 4085 _m
+([MathPack])_S 2598 4085 _m
+/Times-ItalicR 600 _ff
+(Package)_S 140 _t (Math_Real)_S /Times-RomanR 600 _ff
+(,)_S 140 _t (version)_S 140 _t (0.9,)_S 140 _t (IEEE)_S 139 _t (PAR)_S 140 _t (1076.2,)_S 140 _t (1995.)_S 140 _t (URL)_S 2598 3852 _m
+(ftp://vhdl.org/vi/math/package/math_head.3.24.95.vhd)_S 1417 3384 _m
+([Krypton])_S 2598 3384 _m
+/Times-ItalicR 600 _ff
+(Non-Reversible)_S 123 _t (VHDL)_S 122 _t (Source-Source)_S 123 _t (Encryption)_S /Times-RomanR 600 _ff
+(,)_S 122 _t (K.)_S 123 _t (O'Brien)_S 122 _t (&)_S 123 _t (S.)_S 2598 3151 _m
+(Maginot,)_S 67 _t (Proceedings)_S 67 _t (of)_S 67 _t (Euro-VHDL)_S 67 _t ('94,)_S 67 _t (1994,)_S 67 _t (pp.)_S 67 _t (480)_S 67 _t (to)_S 67 _t (485)_S _ep
+_ed end

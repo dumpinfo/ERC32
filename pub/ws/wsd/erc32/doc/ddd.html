@@ -1,0 +1,316 @@
+From jgais@xs4all.nl  Mon Jan 22 00:45:46 1996
+Return-Path: jgais@xs4all.nl
+Received: from xs1.xs4all.nl (root@localhost) by obelix.wd.estec.esa.nl (8.6.8/WD-2.0) with SMTP id AAA07747 for <jgais@wd.estec.esa.nl>; Mon, 22 Jan 1996 00:45:45 +0100
+Received: from venus.xs4all.nl by xs1.xs4all.nl with SMTP id AA09969
+  (5.67b/IDA-1.5 for <jgais@wd.estec.esa.nl>); Mon, 22 Jan 1996 00:45:41 +0100
+Received: from venus (localhost.xs4all.nl) by venus.xs4all.nl (4.1/SMI-4.1)
+	id AA17499; Mon, 22 Jan 96 00:43:17 +0100
+Sender: jgais@xs4all.nl
+Message-Id: <3102CF94.41C67EA6@xs4all.nl>
+Date: Mon, 22 Jan 1996 00:43:16 +0100
+From: "J.Gaisler" <jgais@xs4all.nl>
+X-Mailer: Mozilla 2.0b5 (X11; I; SunOS 4.1.3_U1 sun4c)
+Mime-Version: 1.0
+To: Jiri Gaisler <jgais@wd.estec.esa.nl>
+Subject: DDD - The Data Display Debugger
+X-Url: http://www.cs.tu-bs.de/softech/ddd/
+Content-Type: multipart/mixed; boundary="------------167EB0E72781E494446B9B3D"
+X-Mozilla-Status: 0001
+
+This is a multi-part message in MIME format.
+
+--------------167EB0E72781E494446B9B3D
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+http://www.cs.tu-bs.de/softech/ddd/
+
+--------------167EB0E72781E494446B9B3D
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<BASE >
+
+<!-- $Id: ddd_e.html,v 1.37 1996/01/12 14:51:31 zeller Exp $ -->
+
+<HTML>
+<HEAD>
+<TITLE> DDD - The Data Display Debugger </TITLE>
+<!-- Changed by: Andreas Zeller, 12-Jan-1996 -->
+<LINK REV="made" HREF="mailto:zeller@ips.cs.tu-bs.de">
+
+<META name="resource-type" content="document">
+<META name="description" 
+content="The Data Display Debugger (DDD)
+is a novel graphical user interface to GDB and DBX, the popular UNIX
+debuggers.  Besides the usual features such as viewing source texts,
+DDD provides a graphical data display,
+ where data structures are displayed as graphs.  A
+simple mouse click dereferences pointers or views structure contents.
+Complex data structures can be explored incrementally and
+interactively, using automatic layout if preferred.  Each time the
+program stops, the data display reflects the current variable values.
+Using DDD, you can reason about your application by viewing its data,
+not just by viewing it execute lines of source code.
+Other DDD features include: debugging of programs
+written in C, C++, Fortran, Ada, Pascal, or Modula-2; hypertext source
+navigation and lookup; GDB/DBX command-line interface with full
+editing, history, and completion capabilities; breakpoint, backtrace,
+argument, and history editors; machine code and register windows;
+Emacs integration; optional program execution in terminal emulator
+window; debugging on remote host; on-line manual; interactive help on
+the OSF/Motif user interface.
+DDD is free software, protected by the GNU
+general public license.  It is actively maintained by its authors,
+Dorothea Luetkehaus and Andreas Zeller at the
+Software Technology Dept., Technische Universitaet
+Braunschweig, Germany.">
+<META name="keywords" content="Debugging, GDB, DBX,
+Software Engineering, Debugging Aids, Diagnostics, User Interfaces">
+<META name="distribution" content="global">
+
+</HEAD>
+
+<BODY BGCOLOR="#e5e5e5">
+<ADDRESS>
+<A HREF="../../../../../../../../../../www.tu-bs.de/default.htm">Technical Univ.
+of Braunschweig</A>, 
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/cs/welcome_e.html">Computer Science</A>,
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/welcome_e.html">Software Technology Dept.</A>
+</ADDRESS>
+<HR>
+<H1>
+<IMG ALT="" SRC="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/dddlogo.xbm">
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/software_e.html">DDD - The Data Display Debugger</A>
+</H1>
+<HR>
+
+<H2>DDD News</H2>
+
+<IMG ALIGN=RIGHT ALT="" WIDTH=215 HEIGHT=198 SRC="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-icon-interrupt.gif">
+
+<FONT SIZE=+2>T</FONT>he recent DDD version is <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/ANNOUNCE">DDD
+1.4b</A>.  This new release brings the long awaited machine code
+support, new breakpoint and execution symbols, improved DBX support,
+enhanced integration facilities, a program argument history, and lots
+of other <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/NEWS">features
+and improvements</A>.  Existing releases can be easily updated using
+the appropriate <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/diffs/default.htm">patch
+file</A>.
+
+<P>
+
+<FONT SIZE=+2>T</FONT>he <A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-guestbook.html">DDD
+Guestbook</A> is now open for you to <A
+HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/sign-ddd-guestbook.html">leave comments and suggestions</A>.
+
+<P>
+
+<FONT SIZE=+2>A</FONT> short <A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/papers/tr-95-07_e.html">DDD
+survey</A> with several screen shots is now available online.  The
+six-page technical report gives a short introduction to the
+``look-and-feel'' of DDD and highlights some internal aspects.
+
+<BR CLEAR=all>
+<HR>
+<H2>Summary of DDD</H2>
+
+<IMG ALIGN=LEFT ALT="" WIDTH=181 HEIGHT=163 SRC="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-icon-tree2.gif">
+
+<FONT SIZE=+2>T</FONT>he <A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-picture_e.html">Data Display
+Debugger (DDD)</A> is a novel graphical user interface to <A
+HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/info/gdb_toc.html">GDB</A> and DBX, the popular UNIX
+debuggers.  Besides the usual features such as viewing source texts,
+DDD provides a <EM><A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-tree_e.html">graphical data
+display</A></EM>, where data structures are displayed as graphs.  A
+simple mouse click dereferences pointers or views structure contents.
+Complex data structures can be explored incrementally and
+interactively, using automatic layout if preferred.  Each time the
+program stops, the data display reflects the current variable values.
+Using DDD, you can reason about your application by viewing its data,
+not just by viewing it execute lines of source code.
+
+<P>
+
+<IMG ALIGN=RIGHT ALT="" WIDTH=195 HEIGHT=263 SRC="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-icon-tree.gif">
+
+<FONT SIZE=+2>O</FONT>ther DDD features include: debugging of programs
+written in C, C++, Fortran, Ada, Pascal, or Modula-2; hypertext source
+navigation and lookup; GDB/DBX command-line interface with full
+editing, history, and completion capabilities; breakpoint, backtrace,
+argument, and history editors; machine code and register windows;
+Emacs integration; optional program execution in terminal emulator
+window; debugging on remote host; on-line manual; interactive help on
+the OSF/Motif user interface.
+
+<P>
+
+<FONT SIZE=+2>D</FONT>DD is free software, protected by the <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/COPYING">GNU
+general public license</A>.  It is actively maintained by its authors,
+ <EM>Dorothea L&uuml;tkehaus</EM> and <EM>Andreas Zeller</EM> at the
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/welcome_e.html">Software Technology Dept.</A>,
+<A HREF="../../../../../../../../../../www.tu-bs.de/default.htm">Technische Universit&auml;t
+Braunschweig</A>, Germany.
+
+
+<BR CLEAR=all>
+
+<HR>
+<H2>What others say about DDD</H2>
+
+<FONT SIZE=+2>T</FONT>he <A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-guestbook.html">DDD
+Guestbook</A> contains comments and suggestions from other DDD users.
+
+
+<HR>
+<H2>The DDD Source Package</H2>
+
+<FONT SIZE=+2>A</FONT> free
+<A HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/default.htm">
+DDD package</A>
+is available for UNIX systems.  Please read the
+<A HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/README">
+README file</A>
+und the
+<A HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/INSTALL">installation
+instructions</A> 
+for requirements and further details.
+</P>
+
+<P>
+<A HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/ddd-1.4b.tar.gz">
+<IMG ALT="" SRC="../../../../../../../../../../www.cs.tu-bs.de/softech/images/icons/packet.gif"></A> 
+<A HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/ddd-1.4b.tar.gz">Download 
+DDD (1.2 MB, compressed TAR format)</A>
+</P>
+
+<P> 
+
+<FONT SIZE=+2>A</FONT> <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/ANNOUNCE">list
+ of alternative FTP sites</A> is available. 
+
+<HR>
+<H2>DDD Binary Packages</H2>
+
+<FONT SIZE=+2>F</FONT>or several architectures, pre-compiled <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/bin/default.htm">DDD
+executables</A> are available.  This is useful for people who lack the
+OSF/Motif toolkit or the GNU C++ compiler.  No installation required:
+Get it, unpack it, run it.  See the <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/bin/README">README
+file</A> for details.
+
+<P>
+
+<FONT SIZE=+2>I</FONT>f you build DDD on a system for which binaries
+are not available yet, be sure to send it to us such that we can
+distribute your DDD executable to other users.  Again, see the <A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/bin/README">README
+file</A> for details.
+
+<HR>
+<H2>The DDD Mailing List</H2>
+
+<FONT SIZE=+2>W</FONT>e have installed a <A
+HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-users.info">mailing list</A> where DDD users can find
+assistance or exchange hints.  New DDD releases and bug fixes are also
+announced here.
+
+<P>
+
+<FONT SIZE=+2>S</FONT>end mail to the subscribers of this mailing list to
+
+<BLOCKQUOTE>
+<EM>
+<A HREF="mailto:ddd-users@ips.cs.tu-bs.de">ddd-users@ips.cs.tu-bs.de</A></EM>.
+</BLOCKQUOTE>
+
+<P>
+
+<FONT SIZE=+2>F</FONT>or subscribing this mailing list, or for other
+information, send a mail to
+<BLOCKQUOTE>
+<EM>
+<A HREF="mailto:ddd-users-request@ips.cs.tu-bs.de">ddd-users-request@ips.cs.tu-bs.de</A></EM>.
+</BLOCKQUOTE>
+
+<P>
+
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-users/default.htm"><FONT SIZE=+2>A</FONT> sorted archive of all
+mails sent to this list</A> is also available.
+
+
+<HR>
+<H2>If you like DDD...</H2>
+
+<FONT SIZE=+2>D</FONT>DD has been designed to compete with well-known
+commercial debuggers.  If you find DDD useful, please send a picture
+postcard to
+
+<BLOCKQUOTE>
+Technische Universit&auml;t Braunschweig<BR>
+Institut f&uuml;r Programmiersprachen und Informationssysteme<BR>
+Abteilung Softwaretechnologie <BR>
+Gau&szlig;stra&szlig;e 17 <BR>
+D-38106 Braunschweig <BR>
+<A HREF="../../../../../../../../../../www.leo.org/demap/default.htm">Germany</A>
+</BLOCKQUOTE>
+
+<FONT SIZE=+2>Y</FONT>ou may also <A
+HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/sign-ddd-guestbook.html">leave an entry</A> in the <A
+HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd-guestbook.html">DDD Guestbook</A>.
+
+<HR>
+<H2>References</H2>
+
+<UL>
+<LI><CITE><A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/papers/tr-95-07_e.html">DDD
+ - A Free Graphical Front-End for UNIX Debuggers</A></CITE>.  A
+six-page survey with several pictures.
+</LI>
+
+<LI><CITE><A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/doc/ddd.man.ps.gz">DDD
+- The Data Display Debugger</A></CITE>.  DDD online reference manual (37 KB,
+compressed PostScript).  No pictures.
+</LI>
+
+<LI><CITE><A
+HREF="../../../../../../../../../../ftp@ftp.ips.cs.tu-bs.de/pub/local/softech/ddd/doc/ddd-thesis.ps.gz">DDD
+- ein Debugger mit graphischer Datendarstellung</A></CITE>.  Dorothea's
+diploma thesis on DDD (458 KB, compressed PostScript).  In German.
+</LI>
+
+<LI><CITE><A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/info/gdb_toc.html">Debugging with
+GDB</A></CITE>.  GDB reference manual.
+</LI>
+</UL>
+
+<HR>
+
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd.html"><IMG ALT="" SRC="../../../../../../../../../../www.cs.tu-bs.de/softech/images/flags/german.gif"></A>
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/ddd/ddd.html">Dieses Dokument auf Deutsch</A>
+
+<BR>
+
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/welcome_e.html"><IMG ALT="" SRC="../../../../../../../../../../www.cs.tu-bs.de/softech/images/icons/home.gif"></A>
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/welcome_e.html">
+Go to the home page of the Software Technology Department
+</A>
+
+<HR>
+
+<ADDRESS>
+<A HREF="../../../../../../../../../../www.cs.tu-bs.de/softech/org_e.html#Zeller">Andreas Zeller</A> / 
+<A HREF="mailto:zeller@ips.cs.tu-bs.de"">zeller@ips.cs.tu-bs.de</A>
+</ADDRESS>
+</BODY>
+</HTML>
+
+--------------167EB0E72781E494446B9B3D--
+

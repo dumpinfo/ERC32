@@ -1,0 +1,39 @@
+Last updated 19 February 1996 by sh.
+ 
+ 
+       European Space Agency VHDL Repository: source code directory
+       ============================================================
+ 
+This directory is used for storing source code related to VHDL, ASIC
+design, FPGAs and components for designing spacecraft electronics.
+ 
+ 
+                             COPYRIGHT
+                             ---------
+ 
+Unless otherwise specified, the following copyright notice applies to
+all information in this repository:
+ 
+    Copyright (c) 1995 European Space Agency. All rights reserved.
+ 
+    This information may be used and distributed without restriction
+    provided that this copyright statement is retained and that any
+    derivative work acknowledges the origin of the information.
+ 
+ 
+                             DISCLAIMER
+                             ----------
+ 
+All information is provided "as is", there is no warranty that the
+information is correct or suitable for any purpose, neither implicit
+nor explicit.
+ 
+The information does not necessarily reflect the policy of the European
+Space Agency.
+ 
+ 
+                             CONTENTS
+                             --------
+ 
+boardlevel/      Directory for VHDL source code related to the page
+                 http://www.estec.esa.nl/wsmwww/vhdl/boardlevel.html
